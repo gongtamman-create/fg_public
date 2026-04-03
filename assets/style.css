@@ -406,23 +406,25 @@ a:hover { text-decoration: underline; }
 .chat-messages {
   flex: 1;
   overflow-y: auto;
-  padding: 0 12px 8px;
-  font-size: 12px;
+  padding: 4px 12px 8px;
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  font-size: 13px;
   scroll-behavior: smooth;
 }
 .chat-msg {
-  padding: 3px 0;
-  line-height: 1.4;
-  word-break: break-all;
+  padding: 4px 0;
+  line-height: 1.6;
+  word-break: break-word;
 }
 .chat-msg-nick {
   font-weight: 700;
-  font-size: 11px;
+  font-size: 12px;
   cursor: pointer;
-  margin-right: 4px;
+  margin-right: 6px;
+  letter-spacing: -0.3px;
 }
-.chat-msg-text { color: var(--text); }
-.chat-msg-time { font-size: 9px; color: #444; margin-left: 4px; }
+.chat-msg-text { color: var(--text); font-size: 13px; }
+.chat-msg-time { font-size: 10px; color: #555; margin-left: 6px; }
 .chat-msg-admin .chat-msg-nick { color: #FF1744 !important; }
 .chat-msg-admin .chat-msg-text { color: #FF1744; }
 .chat-banned {

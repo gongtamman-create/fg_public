@@ -5,7 +5,9 @@
 (function () {
   "use strict";
 
-  const $ = (s) => document.querySelector(s);
+  const _raw$ = (s) => document.querySelector(s);
+  const _noop = new Proxy({}, { get: () => () => {}, set: () => true });
+  const $ = (s) => _raw$(s) || _noop;
   const $$ = (s) => document.querySelectorAll(s);
   let DATA = null;
   let calendarMonth = null; // 현재 표시 중인 월 (YYYY-MM)

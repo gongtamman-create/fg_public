@@ -7,13 +7,13 @@
 
   /* ── Firebase 설정 (공개 키) ── */
   const FIREBASE_CONFIG = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-    projectId: "YOUR_PROJECT",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "000000000000",
-    appId: "1:000000000000:web:0000000000000000",
+    apiKey: "AIzaSyCL08aiP4C_wVvjkbmg-rpNsIN6IO___q0",
+    authDomain: "gongtamcom.firebaseapp.com",
+    databaseURL: "https://gongtamcom-default-rtdb.firebaseio.com",
+    projectId: "gongtamcom",
+    storageBucket: "gongtamcom.firebasestorage.app",
+    messagingSenderId: "378137903214",
+    appId: "1:378137903214:web:33c7d0f64c4720b562a67f",
   };
 
   /* ── 상수 ── */

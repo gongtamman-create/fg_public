@@ -29,7 +29,8 @@
           ".write": "!data.exists() && newData.exists()",
           ".validate": "newData.hasChildren(['vote','ts'])
             && (newData.child('vote').val() === 'up' || newData.child('vote').val() === 'down')
-            && newData.child('ts').isNumber()"
+            && newData.child('ts').isNumber()
+            && (!newData.hasChild('nick') || newData.child('nick').isString())"
         }
       }
     },

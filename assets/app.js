@@ -266,7 +266,10 @@
       });
       rect.addEventListener("mousemove", (e) => {
         const r = section.getBoundingClientRect();
-        tooltip.style.left = (e.clientX - r.left + 10) + "px";
+        let left = e.clientX - r.left + 10;
+        const maxLeft = r.width - tooltip.offsetWidth - 4;
+        if (left > maxLeft) left = maxLeft;
+        tooltip.style.left = left + "px";
         tooltip.style.top = "6px";
       });
       rect.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
@@ -611,7 +614,10 @@
       rect.addEventListener("mousemove", (e) => {
         const wrap = $(".svg-chart-wrap");
         const rect2 = wrap.getBoundingClientRect();
-        tooltip.style.left = (e.clientX - rect2.left + 10) + "px";
+        let left = e.clientX - rect2.left + 10;
+        const maxLeft = rect2.width - tooltip.offsetWidth - 4;
+        if (left > maxLeft) left = maxLeft;
+        tooltip.style.left = left + "px";
         tooltip.style.top = (e.clientY - rect2.top - 30) + "px";
       });
       rect.addEventListener("mouseleave", () => {

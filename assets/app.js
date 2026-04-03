@@ -321,7 +321,7 @@
         $("#stat-nasdaq-pct").textContent = `${sign}${pct.toFixed(2)}%`;
         // 라벨 업데이트
         const label = document.querySelector('.stats-row .stat-card:first-child .stat-label');
-        if (label) label.textContent = j.is_open ? "나스닥 (실시간)" : "나스닥 (종가)";
+        if (label) label.textContent = j.is_open ? "나스닥 (1분갱신)" : "나스닥 (종가)";
       }
     } catch (e) {}
   }

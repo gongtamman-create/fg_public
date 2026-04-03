@@ -180,35 +180,26 @@
 
   <!-- ── 산출 방법론 ── -->
   <section class="card method-card">
-    <h3 class="section-title">산출 방법론</h3>
+    <h3 class="section-title">산출 방법</h3>
     <p class="method-desc">온라인 투자자 커뮤니티의 게시글을 AI가 실시간 분석하여 산출합니다.</p>
     <div class="method-stats">
       <div class="method-stat">
-        <div class="method-num mono">180만+</div>
+        <div class="method-num">180만+</div>
         <div class="method-label">투자 의견 분석</div>
       </div>
       <div class="method-stat">
-        <div class="method-num mono">714일</div>
+        <div class="method-num">714일</div>
         <div class="method-label">백테스트 기간</div>
       </div>
       <div class="method-stat">
-        <div class="method-num mono up">86%</div>
+        <div class="method-num up">86%</div>
         <div class="method-label">공포 매수 승률</div>
       </div>
       <div class="method-stat">
-        <div class="method-num mono up">+3.1%</div>
+        <div class="method-num up">+3.1%</div>
         <div class="method-label">20일 평균 수익</div>
       </div>
     </div>
-    <details class="method-details">
-      <summary>자세히 보기</summary>
-      <ul>
-        <li><strong>키워드 분석</strong>: 258개 키워드로 게시글을 공포/탐욕/중립 분류, 시그모이드 함수로 점수화 (0~100)</li>
-        <li><strong>AI 보강</strong>: Gemini LLM이 200개 샘플을 추가 분류, 키워드 중립 게시글에 50% 신뢰도로 보강</li>
-        <li><strong>시그널 엔진</strong>: FG점수 + RSI(14) + MA이탈 + VIX를 가중 합산하여 매수/과열 판단</li>
-        <li><strong>CNN 선행성</strong>: CNN Fear & Greed 대비 2~3일 선행 (상관계수 r=0.59)</li>
-      </ul>
-    </details>
   </section>
 
   <!-- ── CNN 비교 ── -->

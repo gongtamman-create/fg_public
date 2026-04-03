@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-03T15:45:03+09:00",
+  "updated_at": "2026-04-03T15:53:17+09:00",
   "current": {
     "date": "2026-04-03",
     "score": 20.7,
@@ -5037,6 +5037,20 @@
         "hold_days": 20
       },
       {
+        "name": "극공포 (<=20)",
+        "trades": 5,
+        "return": 3.9,
+        "win_rate": 80.0,
+        "hold_days": 40
+      },
+      {
+        "name": "극공포 (<=20)",
+        "trades": 3,
+        "return": 7.0,
+        "win_rate": 67.0,
+        "hold_days": 120
+      },
+      {
         "name": "공포 (<=30)",
         "trades": 29,
         "return": 1.5,
@@ -5044,11 +5058,39 @@
         "hold_days": 20
       },
       {
+        "name": "공포 (<=30)",
+        "trades": 23,
+        "return": 5.1,
+        "win_rate": 78.0,
+        "hold_days": 40
+      },
+      {
+        "name": "공포 (<=30)",
+        "trades": 16,
+        "return": 11.2,
+        "win_rate": 88.0,
+        "hold_days": 120
+      },
+      {
         "name": "공포 (<=35)",
         "trades": 59,
         "return": 2.1,
         "win_rate": 78.0,
         "hold_days": 20
+      },
+      {
+        "name": "공포 (<=35)",
+        "trades": 53,
+        "return": 4.2,
+        "win_rate": 75.0,
+        "hold_days": 40
+      },
+      {
+        "name": "공포 (<=35)",
+        "trades": 44,
+        "return": 10.0,
+        "win_rate": 84.0,
+        "hold_days": 120
       }
     ]
   },

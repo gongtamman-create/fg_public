@@ -156,7 +156,8 @@
     initChartTabs();
 
     // 백테스트
-    renderBacktest(d.backtest);
+    renderBacktest(d.backtest, 20);
+    initBtTabs();
 
     // 달력
     calendarMonth = c.date.slice(0, 7);
@@ -534,13 +535,13 @@
   /* ════════════════════════════════════════
      백테스트 카드
      ════════════════════════════════════════ */
-  function renderBacktest(bt) {
+  function renderBacktest(bt, holdDays) {
     if (!bt) return;
+    holdDays = holdDays || 20;
     $("#bt-period").textContent = `${bt.period} (${bt.trading_days}거래일)`;
 
-    // 극공포, 공포, 공포35만 표시
     const zoneNames = ["극공포 (<=20)", "공포 (<=30)", "공포 (<=35)"];
-    const zones = (bt.zones || []).filter((z) => zoneNames.includes(z.name));
+    const zones = (bt.zones || []).filter((z) => zoneNames.includes(z.name) && z.hold_days === holdDays);
 
     const el = $("#bt-cards");
     el.innerHTML = zones.map((z) => {
@@ -552,6 +553,20 @@
         <div class="bt-trades">${z.trades}회</div>
       </div>`;
     }).join("");
+
+    if (!zones.length) {
+      el.innerHTML = '<div style="color:#6e6e8a;font-size:13px;text-align:center;padding:16px;">데이터 부족</div>';
+    }
+  }
+
+  function initBtTabs() {
+    $$(".bt-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        $$(".bt-tab").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderBacktest(DATA.backtest, +btn.dataset.hold);
+      });
+    });
   }
 
   /* ════════════════════════════════════════

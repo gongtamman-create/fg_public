@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1775198703">
+<link rel="stylesheet" href="assets/style.css?v=1775199197">
 </head>
 <body>
 <div id="app">
@@ -124,7 +124,14 @@
 
   <!-- ── 백테스트 성과 ── -->
   <section class="card">
-    <h3 class="section-title">백테스트 성과 <span class="badge">20거래일 보유</span></h3>
+    <div class="chart-header">
+      <h3 class="section-title">백테스트 성과</h3>
+      <div class="chart-tabs">
+        <button class="bt-tab active" data-hold="20">20일</button>
+        <button class="bt-tab" data-hold="40">40일</button>
+        <button class="bt-tab" data-hold="120">120일</button>
+      </div>
+    </div>
     <p class="bt-sub" id="bt-period"></p>
     <div class="bt-cards" id="bt-cards"></div>
   </section>
@@ -244,7 +251,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-<script src="assets/app.js?v=1775198703"></script>
-<script src="assets/chat.js?v=1775198703"></script>
+<script src="assets/app.js?v=1775199197"></script>
+<script src="assets/chat.js?v=1775199197"></script>
 </body>
 </html>

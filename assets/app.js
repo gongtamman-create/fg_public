@@ -192,13 +192,6 @@
       $("#stat-nasdaq-pct").textContent = `${sign}${pct.toFixed(2)}%`;
     }
 
-    // 일일 점수
-    const daily = d.current.daily_score;
-    if (daily != null) {
-      $("#stat-daily").textContent = Math.round(daily);
-      const g = getGrade(daily);
-      $("#stat-daily").style.color = g.color;
-    }
 
     // CNN
     const cnn = d.cnn_comparison;

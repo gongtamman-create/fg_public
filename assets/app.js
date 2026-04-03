@@ -70,9 +70,12 @@
     $("#gauge-needle-inner").setAttribute("cy", pos.y);
   }
 
+  let _lastGaugeScore = 0;
   function animateGauge(targetScore) {
     const grade = getGrade(targetScore);
-    let current = 0;
+    let current = _lastGaugeScore;
+    const startScore = _lastGaugeScore;
+    _lastGaugeScore = targetScore;
     const duration = 1200;
     const startTime = performance.now();
 
@@ -81,7 +84,7 @@
     function step(now) {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      current = targetScore * easeOut(progress);
+      current = startScore + (targetScore - startScore) * easeOut(progress);
 
       // 활성 아크
       const currentAngle = START_ANGLE + (current / 100) * ARC_SPAN;
@@ -813,5 +816,8 @@
   initGauge();
   initVote();
   loadData();
+
+  // 1분마다 자동 갱신 (채팅/투표/스크롤 건드리지 않음)
+  setInterval(loadData, 60 * 1000);
 
 })();

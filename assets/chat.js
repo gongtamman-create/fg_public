@@ -160,25 +160,27 @@
      관리자 모드 (Firebase Auth)
      ════════════════════════════════════════ */
   function checkAdmin() {
-    if (!firebaseReady || !ADMIN_UID) return;
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user && user.uid === ADMIN_UID) {
-        isAdmin = true;
-        myNick = "살충제";
-        sessionStorage.setItem("chat_nick", myNick);
-        renderNick();
-      }
-    });
-    // ?admin 파라미터 있으면 로그인 폼 표시
+    if (!ADMIN_UID) return;
+    // ?admin 파라미터 있으면 로그인 폼 먼저 표시
     if (new URLSearchParams(location.search).has("admin")) {
       showAdminLogin();
     }
+    // Firebase Auth 상태 감지
+    try {
+      if (firebase.auth) {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user && user.uid === ADMIN_UID) {
+            isAdmin = true;
+            myNick = "살충제";
+            sessionStorage.setItem("chat_nick", myNick);
+            renderNick();
+          }
+        });
+      }
+    } catch (e) {}
   }
 
   function showAdminLogin() {
-    // 이미 로그인 상태면 무시
-    const user = firebase.auth().currentUser;
-    if (user && user.uid === ADMIN_UID) return;
 
     const overlay = document.createElement("div");
     overlay.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;";

@@ -99,12 +99,10 @@
       }
     }
 
-    // 이벤트
-    chatSend.addEventListener("click", (e) => {
-      e.preventDefault();
-      sendMessage();
-      chatInput.focus();
-    });
+    // 이벤트 — 버튼 터치 시 input 포커스 유지 (모바일 키보드 안 내려감)
+    chatSend.addEventListener("touchstart", (e) => { e.preventDefault(); sendMessage(); }, { passive: false });
+    chatSend.addEventListener("mousedown", (e) => { e.preventDefault(); });
+    chatSend.addEventListener("click", (e) => { e.preventDefault(); sendMessage(); });
     chatInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") { e.preventDefault(); sendMessage(); }
     });

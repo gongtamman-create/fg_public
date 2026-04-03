@@ -146,8 +146,6 @@
     renderSparkline(d.realtime_24h);
 
     // 시그널
-    renderSignal(c.score);
-
     // 스탯 카드
     renderStats(d);
 
@@ -271,15 +269,6 @@
       });
       rect.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
     });
-  }
-
-  /* ── 시그널 배지 ── */
-  function renderSignal(score) {
-    const s = getSignal(score);
-    const el = $("#signal-badge");
-    el.textContent = s.text;
-    el.style.color = s.color;
-    el.style.borderColor = s.border;
   }
 
   /* ── 스탯 카드 ── */

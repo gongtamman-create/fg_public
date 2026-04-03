@@ -142,6 +142,9 @@
       $("#rt-label").textContent = "실시간 · " + c.realtime_time.slice(11, 16);
     }
 
+    // 24시간 스파크라인
+    renderSparkline(d.realtime_24h);
+
     // 시그널
     renderSignal(c.score);
 
@@ -164,11 +167,74 @@
     renderCalendar();
     initCalendarNav();
 
-    // CNN 비교
+    // CNN 비교 (실시간 점수 반영)
     renderCNN(d.cnn_comparison);
 
     // 일별 기록
     renderDayTable(d.history);
+  }
+
+  /* ── 24시간 스파크라인 ── */
+  function renderSparkline(data) {
+    if (!data || data.length < 3) return;
+    const section = $("#spark-section");
+    section.style.display = "block";
+
+    const svg = $("#spark-svg");
+    const W = svg.clientWidth || 520;
+    const H = 50;
+    const PAD = { left: 2, right: 2, top: 4, bottom: 4 };
+    const cw = W - PAD.left - PAD.right;
+    const ch = H - PAD.top - PAD.bottom;
+
+    const scores = data.map((d) => d.score);
+    const minS = Math.min(...scores);
+    const maxS = Math.max(...scores);
+    const range = maxS - minS || 1;
+    const xStep = cw / (data.length - 1);
+
+    const points = data.map((d, i) => {
+      const x = PAD.left + i * xStep;
+      const y = PAD.top + ch - ((d.score - minS) / range) * ch;
+      return { x, y, score: d.score, time: d.time };
+    });
+
+    // 영역 채우기 (그라데이션)
+    const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+    const areaPath = linePath + ` L${points[points.length - 1].x.toFixed(1)},${H} L${points[0].x.toFixed(1)},${H} Z`;
+
+    let html = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+    html += `<defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">`;
+    html += `<stop offset="0%" stop-color="${scoreColor(scores[scores.length - 1])}" stop-opacity="0.3"/>`;
+    html += `<stop offset="100%" stop-color="${scoreColor(scores[scores.length - 1])}" stop-opacity="0.02"/>`;
+    html += `</linearGradient></defs>`;
+
+    // 구간 기준선 (50)
+    const y50 = PAD.top + ch - ((50 - minS) / range) * ch;
+    if (y50 > PAD.top && y50 < H - PAD.bottom) {
+      html += `<line x1="0" y1="${y50}" x2="${W}" y2="${y50}" stroke="#333" stroke-width="0.5" stroke-dasharray="3,3"/>`;
+    }
+
+    // 영역
+    html += `<path d="${areaPath}" fill="url(#sparkGrad)"/>`;
+
+    // 라인 (각 구간 색상)
+    for (let i = 1; i < points.length; i++) {
+      const color = scoreColor(points[i].score);
+      html += `<line x1="${points[i - 1].x.toFixed(1)}" y1="${points[i - 1].y.toFixed(1)}" x2="${points[i].x.toFixed(1)}" y2="${points[i].y.toFixed(1)}" stroke="${color}" stroke-width="2"/>`;
+    }
+
+    // 마지막 점
+    const last = points[points.length - 1];
+    html += `<circle cx="${last.x}" cy="${last.y}" r="3" fill="${scoreColor(last.score)}"/>`;
+    html += `<circle cx="${last.x}" cy="${last.y}" r="5" fill="${scoreColor(last.score)}" opacity="0.3"/>`;
+
+    html += `</svg>`;
+    svg.innerHTML = html;
+
+    // 범위 표시
+    $("#spark-min").textContent = `${data[0].time} · ${Math.round(minS)}`;
+    $("#spark-max").textContent = `${data[data.length - 1].time} · 최고 ${Math.round(maxS)}`;
   }
 
   /* ── 시그널 배지 ── */

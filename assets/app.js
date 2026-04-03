@@ -256,7 +256,7 @@
     $("#spark-max").textContent = data[data.length - 1].time;
 
     // 호버 툴팁
-    const tooltip = $("#chart-tooltip");
+    const tooltip = $("#spark-tooltip");
     svg.querySelectorAll(".spark-hit").forEach((rect) => {
       rect.addEventListener("mouseenter", () => {
         const i = +rect.dataset.idx;
@@ -267,7 +267,7 @@
       rect.addEventListener("mousemove", (e) => {
         const r = section.getBoundingClientRect();
         tooltip.style.left = (e.clientX - r.left + 10) + "px";
-        tooltip.style.top = "-30px";
+        tooltip.style.top = "6px";
       });
       rect.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
     });

@@ -21,7 +21,7 @@
   const COOLDOWN_MS = 5000;
   const MAX_DISPLAY = 50;
   const MSG_EXPIRE_MS = 10 * 60 * 1000; // 10분
-  const ADMIN_UID = ""; // Firebase Auth UID — 콘솔에서 생성 후 여기에 입력
+  const ADMIN_UID = "pVNCtNqzoGgmmUSnshkBIICaz452";
 
   /* ── 금칙어 ── */
   const BANNED_WORDS = [

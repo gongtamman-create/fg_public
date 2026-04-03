@@ -18,7 +18,7 @@
     "bans": {
       ".read": true,
       "$ipHash": {
-        ".write": "auth != null && auth.uid === 'ADMIN_UID_HERE'",
+        ".write": "auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'",
         ".validate": "newData.hasChildren(['banned_at','banned_by'])"
       }
     },

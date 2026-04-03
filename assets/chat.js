@@ -310,8 +310,8 @@
       lastSendTime = now;
     }
 
-    // 금칙어
-    if (containsBannedWord(text)) {
+    // 금칙어 (관리자 면제)
+    if (!isAdmin && containsBannedWord(text)) {
       chatInput.value = "";
       chatInput.placeholder = "부적절한 단어 포함";
       chatInput.focus();

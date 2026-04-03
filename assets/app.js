@@ -134,9 +134,13 @@
 
     // 게이지
     animateGauge(c.score ?? 0);
-    $("#kw-score").textContent = c.score != null ? Math.round(c.score) : "--";
-    $("#ai-score").textContent = c.hybrid_score != null ? Math.round(c.hybrid_score) : "—";
     $("#gauge-date").textContent = c.date;
+    // 실시간 배지
+    if (c.realtime && c.realtime_time) {
+      const el = $("#realtime-badge");
+      el.style.display = "flex";
+      $("#rt-label").textContent = "실시간 · " + c.realtime_time.slice(11, 16);
+    }
 
     // 시그널
     renderSignal(c.score);
@@ -188,13 +192,12 @@
       $("#stat-nasdaq-pct").textContent = `${sign}${pct.toFixed(2)}%`;
     }
 
-    // AI보강
-    const ai = d.current.hybrid_score;
-    if (ai != null) {
-      $("#stat-ai").textContent = Math.round(ai);
-      const g = getGrade(ai);
-      $("#stat-ai-grade").textContent = g.label;
-      $("#stat-ai-grade").style.color = g.color;
+    // 일일 점수
+    const daily = d.current.daily_score;
+    if (daily != null) {
+      $("#stat-daily").textContent = Math.round(daily);
+      const g = getGrade(daily);
+      $("#stat-daily").style.color = g.color;
     }
 
     // CNN

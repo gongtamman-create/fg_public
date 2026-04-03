@@ -58,15 +58,9 @@
         <div class="gauge-grade" id="gauge-grade">로딩 중</div>
       </div>
     </div>
-    <div class="score-pills">
+    <div class="score-pills" id="realtime-badge" style="display:none;">
       <div class="pill">
-        <span class="pill-label">키워드</span>
-        <span class="pill-value mono" id="kw-score">--</span>
-      </div>
-      <div class="pill-divider"></div>
-      <div class="pill">
-        <span class="pill-label">AI보강</span>
-        <span class="pill-value mono" id="ai-score">--</span>
+        <span class="pill-label" id="rt-label">실시간</span>
       </div>
     </div>
     <p class="gauge-date" id="gauge-date"></p>
@@ -85,9 +79,9 @@
       <span class="stat-sub" id="stat-nasdaq-pct"></span>
     </div>
     <div class="stat-card">
-      <span class="stat-label">AI보강</span>
-      <span class="stat-value" id="stat-ai">--</span>
-      <span class="stat-sub" id="stat-ai-grade"></span>
+      <span class="stat-label">일일 점수</span>
+      <span class="stat-value" id="stat-daily">--</span>
+      <span class="stat-sub" id="stat-daily-label">07:00 기준</span>
     </div>
     <div class="stat-card">
       <span class="stat-label">CNN F&G</span>

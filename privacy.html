@@ -19,7 +19,7 @@
 <h3 class="section-title">1. 수집하는 정보</h3>
 <p>개미공탐지수(gongtam.com)는 별도 회원가입 없이 이용 가능하며, 다음 정보만 처리합니다.</p>
 <ul style="margin:8px 0 0 16px;font-size:13px;color:#6e6e8a;">
-  <li><strong style="color:#e0e0ef;">IP 해시</strong>: 채팅 밴 관리 목적으로 IP 주소를 SHA-256 해시로 변환하여 저장합니다. 원본 IP 주소는 서버에 저장되지 않으며, 해시값으로부터 원본 IP를 복원할 수 없습니다.</li>
+  <li><strong style="color:#e0e0ef;">IP 해시</strong>: 채팅 밴 관리 및 중복 투표 방지 목적으로 IP 주소를 SHA-256 해시로 변환하여 저장합니다. IP 주소 확인을 위해 제3자 서비스(ipify.org)에 요청을 전송하며, 원본 IP 주소는 본 서비스 서버에 저장되지 않습니다.</li>
   <li><strong style="color:#e0e0ef;">투표/예측 데이터</strong>: 투표 선택과 종가 예측값은 IP 해시와 함께 Firebase에 저장되며, 1일 1회 제한 및 랭킹 표시에 사용됩니다.</li>
 </ul>
 </section>
@@ -49,8 +49,31 @@
 </section>
 
 <section class="card">
-<h3 class="section-title">5. 문의</h3>
-<p style="font-size:13px;color:#6e6e8a;">개인정보 관련 문의: <a href="mailto:admin@gongtam.com">admin@gongtam.com</a></p>
+<h3 class="section-title">5. 국외 이전</h3>
+<p style="font-size:13px;color:#6e6e8a;">본 서비스는 다음 해외 서비스를 이용하며, 이에 따라 개인정보가 국외로 이전될 수 있습니다.</p>
+<ul style="margin:8px 0 0 16px;font-size:13px;color:#6e6e8a;">
+  <li><strong style="color:#e0e0ef;">Firebase (Google LLC, 미국)</strong>: 채팅 메시지, 투표 데이터, 밴 기록 저장 및 처리</li>
+  <li><strong style="color:#e0e0ef;">ipify.org (미국)</strong>: IP 주소 확인 (해시 변환 목적)</li>
+  <li><strong style="color:#e0e0ef;">Cloudflare (미국)</strong>: 웹사이트 호스팅 및 CDN</li>
+</ul>
+</section>
+
+<section class="card">
+<h3 class="section-title">6. 정보주체의 권리</h3>
+<p style="font-size:13px;color:#6e6e8a;">이용자는 다음 권리를 행사할 수 있습니다.</p>
+<ul style="margin:8px 0 0 16px;font-size:13px;color:#6e6e8a;">
+  <li>본인의 채팅 기록, 투표 데이터, 밴 기록의 열람·정정·삭제 요청</li>
+  <li>개인정보 처리 정지 요청</li>
+</ul>
+<p style="font-size:13px;color:#6e6e8a;margin-top:8px;">위 권리는 아래 문의처로 요청하시면 지체 없이 처리합니다.</p>
+</section>
+
+<section class="card">
+<h3 class="section-title">7. 개인정보보호책임자</h3>
+<ul style="margin:0 0 0 16px;font-size:13px;color:#6e6e8a;">
+  <li>책임자: 사이트 운영자</li>
+  <li>이메일: <a href="mailto:admin@gongtam.com">admin@gongtam.com</a></li>
+</ul>
 </section>
 
 <p style="margin-top:24px;text-align:center;"><a href="/">메인으로 돌아가기</a></p>

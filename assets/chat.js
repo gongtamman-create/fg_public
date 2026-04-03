@@ -21,7 +21,7 @@
   const COOLDOWN_MS = 5000;
   const MAX_DISPLAY = 50;
   const MSG_EXPIRE_MS = 10 * 60 * 1000; // 10분
-  const ADMIN_KEY = "gongtam2026admin";
+  const ADMIN_UID = ""; // Firebase Auth UID — 콘솔에서 생성 후 여기에 입력
 
   /* ── 금칙어 ── */
   const BANNED_WORDS = [
@@ -82,7 +82,6 @@
     initToggle();
     myNick = getOrCreateNick();
     renderNick();
-    checkAdmin();
 
     // Firebase 초기화
     if (typeof firebase !== "undefined" && FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY") {
@@ -90,6 +89,7 @@
         firebase.initializeApp(FIREBASE_CONFIG);
         db = firebase.database();
         firebaseReady = true;
+        checkAdmin();
         initPresence();
         checkBan().then(() => {
           if (!isBanned) listenMessages();
@@ -157,17 +157,29 @@
   }
 
   /* ════════════════════════════════════════
-     관리자 모드
+     관리자 모드 (Firebase Auth)
      ════════════════════════════════════════ */
   function checkAdmin() {
-    const params = new URLSearchParams(location.search);
-    if (params.get("admin") === ADMIN_KEY) {
-      isAdmin = true;
-      myNick = "살충제";
-      sessionStorage.setItem("chat_nick", myNick);
-      renderNick();
-    }
+    if (!firebaseReady || !ADMIN_UID) return;
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user && user.uid === ADMIN_UID) {
+        isAdmin = true;
+        myNick = "살충제";
+        sessionStorage.setItem("chat_nick", myNick);
+        renderNick();
+      }
+    });
   }
+
+  /* 관리자 로그인: 브라우저 콘솔에서 gongtamAdminLogin('email','pw') 호출 */
+  window.gongtamAdminLogin = async function (email, pw) {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, pw);
+      console.log("관리자 로그인 성공. 새로고침하세요.");
+    } catch (e) {
+      console.error("로그인 실패:", e.message);
+    }
+  };
 
   /* ════════════════════════════════════════
      IP 해시 (SHA-256)
@@ -205,9 +217,11 @@
 
   async function banUser(ipHash) {
     if (!firebaseReady || !isAdmin) return;
+    const user = firebase.auth().currentUser;
+    if (!user || user.uid !== ADMIN_UID) return;
     await db.ref("bans/" + ipHash).set({
       banned_at: Date.now(),
-      banned_by: "admin",
+      banned_by: user.uid,
     });
   }
 

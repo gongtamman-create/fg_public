@@ -169,17 +169,44 @@
         renderNick();
       }
     });
+    // ?admin 파라미터 있으면 로그인 폼 표시
+    if (new URLSearchParams(location.search).has("admin")) {
+      showAdminLogin();
+    }
   }
 
-  /* 관리자 로그인: 브라우저 콘솔에서 gongtamAdminLogin('email','pw') 호출 */
-  window.gongtamAdminLogin = async function (email, pw) {
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, pw);
-      console.log("관리자 로그인 성공. 새로고침하세요.");
-    } catch (e) {
-      console.error("로그인 실패:", e.message);
-    }
-  };
+  function showAdminLogin() {
+    // 이미 로그인 상태면 무시
+    const user = firebase.auth().currentUser;
+    if (user && user.uid === ADMIN_UID) return;
+
+    const overlay = document.createElement("div");
+    overlay.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;";
+    overlay.innerHTML = `<div style="background:#1a1a2e;border:1px solid #2a2a4a;border-radius:12px;padding:24px;width:280px;text-align:center;">
+      <div style="font-size:24px;margin-bottom:12px;">🪳 살충제 로그인</div>
+      <input id="adm-email" type="email" placeholder="이메일" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #333;background:#0d1117;color:#e6edf3;box-sizing:border-box;">
+      <input id="adm-pw" type="password" placeholder="비밀번호" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #333;background:#0d1117;color:#e6edf3;box-sizing:border-box;">
+      <button id="adm-btn" style="width:100%;padding:10px;margin-top:8px;border-radius:8px;border:none;background:#FF1744;color:#fff;font-weight:700;cursor:pointer;">로그인</button>
+      <div id="adm-msg" style="margin-top:8px;font-size:12px;color:#FF6D00;"></div>
+      <button id="adm-close" style="margin-top:8px;background:none;border:none;color:#6e6e8a;cursor:pointer;font-size:12px;">닫기</button>
+    </div>`;
+    document.body.appendChild(overlay);
+
+    overlay.querySelector("#adm-close").onclick = () => overlay.remove();
+    overlay.querySelector("#adm-btn").onclick = async () => {
+      const email = overlay.querySelector("#adm-email").value;
+      const pw = overlay.querySelector("#adm-pw").value;
+      const msg = overlay.querySelector("#adm-msg");
+      try {
+        await firebase.auth().signInWithEmailAndPassword(email, pw);
+        msg.style.color = "#00E676";
+        msg.textContent = "살충 준비 완료. 새로고침합니다...";
+        setTimeout(() => { location.href = location.pathname; }, 1000);
+      } catch (e) {
+        msg.textContent = "실패: " + e.message;
+      }
+    };
+  }
 
   /* ════════════════════════════════════════
      IP 해시 (SHA-256)

@@ -304,6 +304,26 @@
 
     // 한강 수온
     fetchHangang();
+    // 나스닥 실시간
+    fetchNasdaq();
+  }
+
+  async function fetchNasdaq() {
+    try {
+      const res = await fetch("/api/nasdaq");
+      const j = await res.json();
+      if (j.price) {
+        $("#stat-nasdaq").textContent = Math.round(j.price).toLocaleString();
+        const pct = j.change_pct || 0;
+        const cls = pct >= 0 ? "up" : "down";
+        const sign = pct >= 0 ? "+" : "";
+        $("#stat-nasdaq-pct").className = `stat-sub ${cls}`;
+        $("#stat-nasdaq-pct").textContent = `${sign}${pct.toFixed(2)}%`;
+        // 라벨 업데이트
+        const label = document.querySelector('.stats-row .stat-card:first-child .stat-label');
+        if (label) label.textContent = j.is_open ? "나스닥 (실시간)" : "나스닥 (종가)";
+      }
+    } catch (e) {}
   }
 
   async function fetchHangang() {

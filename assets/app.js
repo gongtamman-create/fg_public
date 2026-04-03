@@ -295,6 +295,29 @@
       $("#stat-cnn-grade").textContent = g.label;
       $("#stat-cnn-grade").style.color = g.color;
     }
+
+    // 한강 수온
+    fetchHangang();
+  }
+
+  async function fetchHangang() {
+    try {
+      const res = await fetch("https://api.hangang.life/");
+      const j = await res.json();
+      const su = j.DATAs?.DATA?.HANGANG?.["선유"];
+      if (su) {
+        $("#stat-hangang").textContent = su.TEMP + "°C";
+        const t = su.LAST_UPDATE?.slice(11, 16) || "";
+        $("#stat-hangang-time").textContent = t ? t + " 측정" : "";
+        // 수온별 색상
+        const temp = parseFloat(su.TEMP);
+        if (temp <= 10) $("#stat-hangang").style.color = "#4FC3F7";
+        else if (temp <= 20) $("#stat-hangang").style.color = "#81C784";
+        else $("#stat-hangang").style.color = "#FF8A65";
+      }
+    } catch (e) {
+      $("#stat-hangang").textContent = "--";
+    }
   }
 
   /* ════════════════════════════════════════

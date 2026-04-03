@@ -182,14 +182,16 @@
 
     const svg = $("#spark-svg");
     const W = svg.clientWidth || 520;
-    const H = 50;
-    const PAD = { left: 2, right: 2, top: 4, bottom: 4 };
+    const H = 60;
+    const PAD = { left: 4, right: 4, top: 12, bottom: 12 };
     const cw = W - PAD.left - PAD.right;
     const ch = H - PAD.top - PAD.bottom;
 
     const scores = data.map((d) => d.score);
     const minS = Math.min(...scores);
     const maxS = Math.max(...scores);
+    const minIdx = scores.indexOf(minS);
+    const maxIdx = scores.indexOf(maxS);
     const range = maxS - minS || 1;
     const xStep = cw / (data.length - 1);
 
@@ -199,7 +201,6 @@
       return { x, y, score: d.score, time: d.time };
     });
 
-    // 영역 채우기 (그라데이션)
     const linePath = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
     const areaPath = linePath + ` L${points[points.length - 1].x.toFixed(1)},${H} L${points[0].x.toFixed(1)},${H} Z`;
 
@@ -209,32 +210,67 @@
     html += `<stop offset="100%" stop-color="${scoreColor(scores[scores.length - 1])}" stop-opacity="0.02"/>`;
     html += `</linearGradient></defs>`;
 
-    // 구간 기준선 (50)
+    // 50점 기준선
     const y50 = PAD.top + ch - ((50 - minS) / range) * ch;
     if (y50 > PAD.top && y50 < H - PAD.bottom) {
       html += `<line x1="0" y1="${y50}" x2="${W}" y2="${y50}" stroke="#333" stroke-width="0.5" stroke-dasharray="3,3"/>`;
     }
 
-    // 영역
     html += `<path d="${areaPath}" fill="url(#sparkGrad)"/>`;
 
-    // 라인 (각 구간 색상)
+    // 라인
     for (let i = 1; i < points.length; i++) {
       const color = scoreColor(points[i].score);
       html += `<line x1="${points[i - 1].x.toFixed(1)}" y1="${points[i - 1].y.toFixed(1)}" x2="${points[i].x.toFixed(1)}" y2="${points[i].y.toFixed(1)}" stroke="${color}" stroke-width="2"/>`;
     }
 
-    // 마지막 점
+    // 최고점 표시
+    const hi = points[maxIdx];
+    const hiLabelY = hi.y - 6 < PAD.top ? hi.y + 12 : hi.y - 6;
+    html += `<circle cx="${hi.x}" cy="${hi.y}" r="3" fill="${scoreColor(hi.score)}"/>`;
+    html += `<text x="${hi.x}" y="${hiLabelY}" fill="${scoreColor(hi.score)}" font-size="9" font-weight="700" text-anchor="middle" font-family="JetBrains Mono">${Math.round(maxS)}</text>`;
+
+    // 최저점 표시
+    const lo = points[minIdx];
+    const loLabelY = lo.y + 12 > H - PAD.bottom ? lo.y - 6 : lo.y + 12;
+    html += `<circle cx="${lo.x}" cy="${lo.y}" r="3" fill="${scoreColor(lo.score)}"/>`;
+    html += `<text x="${lo.x}" y="${loLabelY}" fill="${scoreColor(lo.score)}" font-size="9" font-weight="700" text-anchor="middle" font-family="JetBrains Mono">${Math.round(minS)}</text>`;
+
+    // 마지막 점 (현재)
     const last = points[points.length - 1];
-    html += `<circle cx="${last.x}" cy="${last.y}" r="3" fill="${scoreColor(last.score)}"/>`;
-    html += `<circle cx="${last.x}" cy="${last.y}" r="5" fill="${scoreColor(last.score)}" opacity="0.3"/>`;
+    if (points.length - 1 !== maxIdx && points.length - 1 !== minIdx) {
+      html += `<circle cx="${last.x}" cy="${last.y}" r="3" fill="${scoreColor(last.score)}"/>`;
+      html += `<circle cx="${last.x}" cy="${last.y}" r="6" fill="${scoreColor(last.score)}" opacity="0.25"/>`;
+    }
+
+    // 호버 영역
+    points.forEach((p, i) => {
+      html += `<rect x="${p.x - xStep / 2}" y="0" width="${xStep}" height="${H}" fill="transparent" class="spark-hit" data-idx="${i}"/>`;
+    });
 
     html += `</svg>`;
     svg.innerHTML = html;
 
-    // 범위 표시
-    $("#spark-min").textContent = `${data[0].time} · ${Math.round(minS)}`;
-    $("#spark-max").textContent = `${data[data.length - 1].time} · 최고 ${Math.round(maxS)}`;
+    // 범위 텍스트
+    $("#spark-min").textContent = data[0].time;
+    $("#spark-max").textContent = data[data.length - 1].time;
+
+    // 호버 툴팁
+    const tooltip = $("#chart-tooltip");
+    svg.querySelectorAll(".spark-hit").forEach((rect) => {
+      rect.addEventListener("mouseenter", () => {
+        const i = +rect.dataset.idx;
+        const p = points[i];
+        tooltip.style.display = "block";
+        tooltip.innerHTML = `<strong>${data[i].time}</strong> · ${Math.round(p.score)}점`;
+      });
+      rect.addEventListener("mousemove", (e) => {
+        const r = section.getBoundingClientRect();
+        tooltip.style.left = (e.clientX - r.left + 10) + "px";
+        tooltip.style.top = "-30px";
+      });
+      rect.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
+    });
   }
 
   /* ── 시그널 배지 ── */

@@ -1,0 +1,6 @@
+/data.json
+  Cache-Control: public, max-age=3600
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff

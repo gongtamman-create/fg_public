@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>개미공탐지수 — 한국 투자자 감정 기반 공포·탐욕 지수</title>
+<meta name="description" content="한국 온라인 투자자 커뮤니티 감정을 실시간 분석한 공포·탐욕 지수. 480거래일 백테스트 승률 86%. 매일 업데이트.">
+<meta name="keywords" content="공포탐욕지수,fear and greed index,미국주식,나스닥,투자심리,개미투자자">
+<meta property="og:title" content="개미공탐지수 — 오늘 점수 확인">
+<meta property="og:description" content="한국 개미투자자 감정 기반 공포·탐욕 지수">
+<meta property="og:image" content="https://gongtam.com/assets/og-image.png">
+<meta property="og:url" content="https://gongtam.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="개미공탐지수 — 오늘 점수 확인">
+<meta name="twitter:description" content="한국 개미투자자 감정 기반 공포·탐욕 지수. 승률 86%.">
+<meta name="twitter:image" content="https://gongtam.com/assets/og-image.png">
+<link rel="canonical" href="https://gongtam.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ── 헤더 ── -->
+  <header class="header">
+    <h1 class="logo">개미공탐지수</h1>
+    <span class="updated" id="updated">로딩 중...</span>
+  </header>
+
+  <!-- ── 게이지 ── -->
+  <section class="gauge-section">
+    <div class="gauge-container">
+      <svg id="gauge-svg" viewBox="0 0 280 170" class="gauge-svg">
+        <defs>
+          <linearGradient id="gaugeBg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FF1744"/>
+            <stop offset="25%" stop-color="#FF6D00"/>
+            <stop offset="50%" stop-color="#FFD600"/>
+            <stop offset="75%" stop-color="#00E676"/>
+            <stop offset="100%" stop-color="#00C853"/>
+          </linearGradient>
+        </defs>
+        <!-- 배경 아크 -->
+        <path id="gauge-bg" fill="none" stroke="#1a1a2e" stroke-width="18" stroke-linecap="round"/>
+        <!-- 그라데이션 아크 -->
+        <path id="gauge-arc" fill="none" stroke="url(#gaugeBg)" stroke-width="16" stroke-linecap="round" opacity="0.3"/>
+        <!-- 활성 아크 -->
+        <path id="gauge-active" fill="none" stroke-width="16" stroke-linecap="round"/>
+        <!-- 니들 -->
+        <circle id="gauge-needle" r="8" fill="#fff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.5))"/>
+        <circle id="gauge-needle-inner" r="4"/>
+      </svg>
+      <div class="gauge-center">
+        <div class="gauge-score" id="gauge-score">--</div>
+        <div class="gauge-grade" id="gauge-grade">로딩 중</div>
+      </div>
+    </div>
+    <div class="score-pills">
+      <div class="pill">
+        <span class="pill-label">키워드</span>
+        <span class="pill-value mono" id="kw-score">--</span>
+      </div>
+      <div class="pill-divider"></div>
+      <div class="pill">
+        <span class="pill-label">AI보강</span>
+        <span class="pill-value mono" id="ai-score">--</span>
+      </div>
+    </div>
+    <p class="gauge-date" id="gauge-date"></p>
+  </section>
+
+  <!-- ── 시그널 배지 ── -->
+  <section class="signal-section">
+    <div class="signal-badge" id="signal-badge">--</div>
+  </section>
+
+  <!-- ── 스탯 카드 (3열) ── -->
+  <section class="stats-row">
+    <div class="stat-card">
+      <span class="stat-label">나스닥</span>
+      <span class="stat-value mono" id="stat-nasdaq">--</span>
+      <span class="stat-sub" id="stat-nasdaq-pct"></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">AI보강</span>
+      <span class="stat-value mono" id="stat-ai">--</span>
+      <span class="stat-sub" id="stat-ai-grade"></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">CNN F&G</span>
+      <span class="stat-value mono" id="stat-cnn">--</span>
+      <span class="stat-sub" id="stat-cnn-grade"></span>
+    </div>
+  </section>
+
+  <!-- ── 광고 슬롯 1 ── -->
+  <div class="ad-slot" id="ad-1"></div>
+
+  <!-- ── 실시간 투표 ── -->
+  <section class="card vote-card" id="vote-section">
+    <h3 class="section-title">오늘 나스닥 오를까?</h3>
+    <div class="vote-buttons" id="vote-buttons">
+      <button class="vote-btn vote-up" data-vote="up">🟢 오른다</button>
+      <button class="vote-btn vote-down" data-vote="down">🔴 내린다</button>
+    </div>
+    <div class="vote-result" id="vote-result" style="display:none;">
+      <div class="vote-bar-wrap">
+        <div class="vote-bar vote-bar-up" id="vote-bar-up"></div>
+      </div>
+      <div class="vote-labels">
+        <span class="vote-pct up" id="vote-up-pct">50%</span>
+        <span class="vote-pct down" id="vote-down-pct">50%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 추이 차트 (SVG) ── -->
+  <section class="card">
+    <div class="chart-header">
+      <h3 class="section-title">공탐지수 추이</h3>
+      <div class="chart-tabs">
+        <button class="chart-tab active" data-days="30">30일</button>
+        <button class="chart-tab" data-days="60">60일</button>
+        <button class="chart-tab" data-days="90">90일</button>
+      </div>
+    </div>
+    <div class="svg-chart-wrap">
+      <svg id="trend-svg" class="trend-svg" preserveAspectRatio="none"></svg>
+      <div class="chart-tooltip" id="chart-tooltip"></div>
+    </div>
+  </section>
+
+  <!-- ── 백테스트 성과 ── -->
+  <section class="card">
+    <h3 class="section-title">백테스트 성과 <span class="badge">20거래일 보유</span></h3>
+    <p class="bt-sub" id="bt-period"></p>
+    <div class="bt-cards" id="bt-cards"></div>
+  </section>
+
+  <!-- ── 광고 슬롯 2 ── -->
+  <div class="ad-slot" id="ad-2"></div>
+
+  <!-- ── 종가 맞추기 ── -->
+  <section class="card" id="predict-section">
+    <h3 class="section-title">나스닥 종가 맞추기</h3>
+    <p class="predict-desc">오늘 나스닥 종가를 예측하세요 (현재가 ±5%). 가장 가까운 Top 10 공개!</p>
+    <div class="predict-input-row" id="predict-input-row">
+      <input type="number" class="predict-input" id="predict-input" placeholder="로딩 중..." step="1">
+      <button class="predict-btn" id="predict-btn">제출</button>
+    </div>
+    <div class="predict-rank" id="predict-rank"></div>
+  </section>
+
+  <!-- ── 공탐 달력 (히트맵) ── -->
+  <section class="card">
+    <div class="cal-header">
+      <h3 class="section-title">공탐 달력</h3>
+      <div class="cal-nav">
+        <button class="cal-btn" id="cal-prev">&lt;</button>
+        <span class="cal-month mono" id="cal-month">2026-04</span>
+        <button class="cal-btn" id="cal-next">&gt;</button>
+      </div>
+    </div>
+    <div class="cal-legend">
+      <span class="cal-leg-item"><span class="cal-dot" style="background:#FF1744"></span>극공포</span>
+      <span class="cal-leg-item"><span class="cal-dot" style="background:#FF6D00"></span>공포</span>
+      <span class="cal-leg-item"><span class="cal-dot" style="background:#FFD600"></span>중립</span>
+      <span class="cal-leg-item"><span class="cal-dot" style="background:#00E676"></span>탐욕</span>
+      <span class="cal-leg-item"><span class="cal-dot" style="background:#00C853"></span>극탐욕</span>
+    </div>
+    <div class="cal-weekdays">
+      <span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div class="cal-tooltip" id="cal-tooltip"></div>
+  </section>
+
+  <!-- ── 산출 방법론 ── -->
+  <section class="card method-card">
+    <h3 class="section-title">산출 방법론</h3>
+    <p class="method-desc">온라인 투자자 커뮤니티의 게시글을 AI가 실시간 분석하여 산출합니다.</p>
+    <div class="method-stats">
+      <div class="method-stat">
+        <div class="method-num mono">180만+</div>
+        <div class="method-label">투자 의견 분석</div>
+      </div>
+      <div class="method-stat">
+        <div class="method-num mono">714일</div>
+        <div class="method-label">백테스트 기간</div>
+      </div>
+      <div class="method-stat">
+        <div class="method-num mono up">86%</div>
+        <div class="method-label">공포 매수 승률</div>
+      </div>
+      <div class="method-stat">
+        <div class="method-num mono up">+3.1%</div>
+        <div class="method-label">20일 평균 수익</div>
+      </div>
+    </div>
+    <details class="method-details">
+      <summary>자세히 보기</summary>
+      <ul>
+        <li><strong>키워드 분석</strong>: 258개 키워드로 게시글을 공포/탐욕/중립 분류, 시그모이드 함수로 점수화 (0~100)</li>
+        <li><strong>AI 보강</strong>: Gemini LLM이 200개 샘플을 추가 분류, 키워드 중립 게시글에 50% 신뢰도로 보강</li>
+        <li><strong>시그널 엔진</strong>: FG점수 + RSI(14) + MA이탈 + VIX를 가중 합산하여 매수/과열 판단</li>
+        <li><strong>CNN 선행성</strong>: CNN Fear & Greed 대비 2~3일 선행 (상관계수 r=0.59)</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ── CNN 비교 ── -->
+  <section class="card">
+    <h3 class="section-title">CNN Fear & Greed 비교</h3>
+    <div class="cnn-compare" id="cnn-compare">
+      <div class="cnn-col">
+        <span class="cnn-label">개미공탐</span>
+        <div class="cnn-score mono" id="cmp-our">--</div>
+        <div class="cnn-grade" id="cmp-our-grade"></div>
+      </div>
+      <div class="cnn-vs-badge">VS</div>
+      <div class="cnn-col">
+        <span class="cnn-label">CNN</span>
+        <div class="cnn-score mono" id="cmp-cnn">--</div>
+        <div class="cnn-grade" id="cmp-cnn-grade"></div>
+      </div>
+    </div>
+    <p class="cnn-note" id="cmp-note"></p>
+  </section>
+
+  <!-- ── 일별 기록 ── -->
+  <section class="card">
+    <h3 class="section-title">일별 기록</h3>
+    <div class="table-scroll">
+      <table class="day-table">
+        <thead><tr><th>날짜</th><th>키워드</th><th>AI</th><th>나스닥</th><th>등락</th></tr></thead>
+        <tbody id="day-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 광고 슬롯 3 ── -->
+  <div class="ad-slot" id="ad-3"></div>
+
+  <!-- ── 푸터 ── -->
+  <footer class="footer">
+    <p class="footer-disc">본 지표는 참고용이며 투자 권유가 아닙니다. 과거 성과가 미래를 보장하지 않습니다.</p>
+    <p class="footer-links">
+      <a href="disclaimer.html">면책조항</a> · <a href="privacy.html">개인정보처리방침</a>
+    </p>
+    <p class="footer-copy">&copy; 2026 개미공탐지수 · gongtam.com</p>
+  </footer>
+
+</div>
+
+<!-- ── 채팅 (하단 고정) ── -->
+<div class="chat-wrap" id="chat-wrap">
+  <div class="chat-header" id="chat-toggle">
+    <span class="chat-title">실시간 채팅</span>
+    <span class="chat-online" id="chat-online">0명</span>
+    <span class="chat-arrow" id="chat-arrow">▲</span>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-banned" id="chat-banned" style="display:none;">🪳 살충 당했습니다</div>
+    <div class="chat-input-row" id="chat-input-row">
+      <span class="chat-nick" id="chat-nick"></span>
+      <input type="text" class="chat-input" id="chat-input" maxlength="20" placeholder="메시지 (20자)">
+      <button class="chat-send" id="chat-send">전송</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/chat.js"></script>
+</body>
+</html>

@@ -100,9 +100,13 @@
     }
 
     // 이벤트
-    chatSend.addEventListener("click", sendMessage);
+    chatSend.addEventListener("click", (e) => {
+      e.preventDefault();
+      sendMessage();
+      chatInput.focus();
+    });
     chatInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") sendMessage();
+      if (e.key === "Enter") { e.preventDefault(); sendMessage(); }
     });
   }
 
@@ -299,8 +303,10 @@
       const now = Date.now();
       if (now - lastSendTime < COOLDOWN_MS) {
         const remaining = Math.ceil((COOLDOWN_MS - (now - lastSendTime)) / 1000);
-        chatInput.placeholder = remaining + "초 대기...";
-        setTimeout(() => { chatInput.placeholder = "메시지 (20자)"; }, 1500);
+        chatInput.value = "";
+        chatInput.placeholder = remaining + "초 후 전송 가능";
+        chatInput.focus();
+        setTimeout(() => { chatInput.placeholder = "메시지 (20자)"; }, 2000);
         return;
       }
       lastSendTime = now;
@@ -310,7 +316,8 @@
     if (containsBannedWord(text)) {
       chatInput.value = "";
       chatInput.placeholder = "부적절한 단어 포함";
-      setTimeout(() => { chatInput.placeholder = "메시지 (20자)"; }, 1500);
+      chatInput.focus();
+      setTimeout(() => { chatInput.placeholder = "메시지 (20자)"; }, 2000);
       return;
     }
 
@@ -324,6 +331,7 @@
     };
 
     chatInput.value = "";
+    chatInput.focus();
 
     if (firebaseReady) {
       db.ref("messages").push(msg);

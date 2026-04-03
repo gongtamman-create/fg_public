@@ -27,7 +27,7 @@
       ".read": true,
       "$date": {
         "$ipHash": {
-          ".write": "!data.exists() && newData.exists()",
+          ".write": "auth != null && !data.exists() && newData.exists()",
           ".validate": "newData.hasChildren(['vote','ts'])
             && (newData.child('vote').val() === 'up' || newData.child('vote').val() === 'down')
             && newData.child('ts').isNumber()

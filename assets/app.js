@@ -397,30 +397,30 @@
         const vote = btn.dataset.vote;
         const today = DATA.current.date;
 
-        // IP 해시로 중복 확인
-        const ipHash = await getIpHash();
-        const db = getFirebaseDb();
-
-        if (db) {
-          // Firebase 중복 체크
-          const existing = await db.ref(`votes/${today}/${ipHash}`).once("value");
-          if (existing.exists()) {
-            // 이미 투표함 — 기존 데이터로 결과 표시
-            await loadVoteResults(today);
+        try {
+          // 서버사이드 프록시로 투표 (IP 위조 방지)
+          const res = await fetch("/api/vote", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ vote }),
+          });
+          const result = await res.json();
+          if (result.error) {
+            console.warn("투표 실패:", result.error);
             return;
           }
-          // Firebase에 저장
-          await db.ref(`votes/${today}/${ipHash}`).set({
-            vote: vote,
-            nick: getChatNick(),
-            ts: Date.now(),
-          });
-          await loadVoteResults(today);
-        } else {
-          // Firebase 미연결: 로컬만
-          const result = { up: vote === "up" ? 65 : 35, down: vote === "up" ? 35 : 65, my: vote };
           localStorage.setItem("vote_" + today, JSON.stringify(result));
           showVoteResult(result);
+        } catch (e) {
+          // 프록시 실패 시 Firebase 직접 (폴백)
+          const ipHash = await getIpHash();
+          const db = getFirebaseDb();
+          if (db) {
+            const existing = await db.ref(`votes/${today}/${ipHash}`).once("value");
+            if (existing.exists()) { await loadVoteResults(today); return; }
+            await db.ref(`votes/${today}/${ipHash}`).set({ vote, ts: Date.now() });
+            await loadVoteResults(today);
+          }
         }
       });
     });

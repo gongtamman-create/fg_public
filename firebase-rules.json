@@ -12,7 +12,8 @@
           && newData.child('nick').isString()
           && newData.child('nick').val().length <= 30
           && newData.child('ts').isNumber()
-          && newData.child('ip').isString()"
+          && newData.child('ip').isString()
+          && (!newData.hasChild('admin') || newData.child('admin').isBoolean())"
       }
     },
     "bans": {
@@ -34,11 +35,19 @@
         }
       }
     },
+    "predictions": {
+      ".read": true,
+      "$date": {
+        "$ipHash": {
+          ".write": "!data.exists() && newData.exists()",
+          ".validate": "newData.child('ts').isNumber()"
+        }
+      }
+    },
     "presence": {
       ".read": true,
       "$hash": {
-        ".write": true,
-        ".validate": "newData.isBoolean() || !newData.exists()"
+        ".write": true
       }
     },
     "$other": {

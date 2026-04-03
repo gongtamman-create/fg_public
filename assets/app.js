@@ -679,7 +679,6 @@
       return `<tr>
         <td class="dim">${d.date.slice(5)}</td>
         <td style="color:${scoreColor(d.score)};font-weight:700;" class="mono">${d.score != null ? Math.round(d.score) : "—"}</td>
-        <td style="color:${scoreColor(d.hybrid)}" class="mono">${d.hybrid != null ? Math.round(d.hybrid) : "—"}</td>
         <td class="dim mono">${d.nasdaq_close ? Math.round(d.nasdaq_close).toLocaleString() : "—"}</td>
         <td class="${pctCls} mono" style="font-weight:600;">${pctStr}</td>
       </tr>`;

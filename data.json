@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-04-09T07:00:03+09:00",
+  "updated_at": "2026-04-09T07:05:02+09:00",
   "current": {
-    "date": "2026-04-08",
-    "score": 53.8,
+    "date": "2026-04-09",
+    "score": 51.7,
     "grade": "중립",
-    "daily_score": 55.4,
+    "daily_score": 41.5,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망",
+    "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-04-09 06:30:19"
+    "realtime_time": "2026-04-09 07:00:19"
   },
   "nasdaq": {
     "price": 22634.99,
@@ -18,13 +18,6 @@
     "change_pct": 2.8
   },
   "history": [
-    {
-      "date": "2025-12-15",
-      "score": 65.1,
-      "hybrid": 61.8,
-      "nasdaq_close": 23057.41,
-      "nasdaq_pct": -0.59
-    },
     {
       "date": "2025-12-16",
       "score": 45.9,
@@ -644,6 +637,13 @@
     {
       "date": "2026-04-08",
       "score": 55.4,
+      "hybrid": null,
+      "nasdaq_close": 22634.99,
+      "nasdaq_pct": 2.8
+    },
+    {
+      "date": "2026-04-09",
+      "score": 41.5,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5029,11 +5029,15 @@
     {
       "date": "2026-04-08",
       "score": 55.4
+    },
+    {
+      "date": "2026-04-09",
+      "score": 41.5
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-04-07",
-    "trading_days": 754,
+    "period": "2022-01-03 ~ 2026-04-08",
+    "trading_days": 755,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5072,16 +5076,16 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 30,
+        "trades": 31,
         "return": 1.4,
-        "win_rate": 67.0,
+        "win_rate": 65.0,
         "hold_days": 20
       },
       {
         "name": "공포 (<=30)",
-        "trades": 23,
-        "return": 5.1,
-        "win_rate": 78.0,
+        "trades": 24,
+        "return": 4.9,
+        "win_rate": 79.0,
         "hold_days": 40
       },
       {
@@ -5093,16 +5097,16 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 61,
+        "trades": 62,
         "return": 1.9,
-        "win_rate": 75.0,
+        "win_rate": 74.0,
         "hold_days": 20
       },
       {
         "name": "공포 (<=35)",
-        "trades": 53,
-        "return": 4.2,
-        "win_rate": 75.0,
+        "trades": 54,
+        "return": 4.1,
+        "win_rate": 76.0,
         "hold_days": 40
       },
       {
@@ -5117,59 +5121,54 @@
   "cnn_comparison": {
     "cnn_score": 30.8,
     "cnn_grade": "공포",
-    "our_score": 53.8,
+    "our_score": 51.7,
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "관망",
+    "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 55, RSI 53 — 뚜렷한 방향성 없음",
+    "reason": "FG 42으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": -15.4,
-        "rsi_gap": -17.7,
-        "pct": 0
+        "fg_gap": -1.5,
+        "rsi_gap": -28.6,
+        "pct": 45
       },
       "sell": {
-        "fg_gap": -19.6,
-        "rsi_gap": -22.3,
-        "pct": 0
+        "fg_gap": -33.5,
+        "rsi_gap": -11.4,
+        "pct": 12
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "55.4",
+        "value": "41.5",
         "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "52.7",
-        "status": "중립"
+        "value": "63.6",
+        "status": "과매수 접근"
       },
       {
         "name": "MA이탈",
-        "value": "+1.6%",
-        "status": "정상"
+        "value": "+4.2%",
+        "status": "과열"
       }
     ],
     "similar_history": {
-      "count": 257,
-      "win_5d": 56.0,
-      "avg_5d": -0.15,
-      "win_10d": 54.7,
-      "avg_10d": -0.25,
-      "win_20d": 54.3,
-      "avg_20d": 0.56
+      "count": 129,
+      "win_5d": 55.0,
+      "avg_5d": 0.16,
+      "win_10d": 59.7,
+      "avg_10d": 0.41,
+      "win_20d": 63.6,
+      "avg_20d": 0.44
     }
   },
   "signal_chart": [
-    {
-      "date": "2025-12-15",
-      "composite": -7.1,
-      "signal": "neutral"
-    },
     {
       "date": "2025-12-16",
       "composite": 0.0,
@@ -5612,15 +5611,16 @@
     },
     {
       "date": "2026-04-08",
-      "composite": 0.0,
+      "composite": -4.1,
+      "signal": "neutral"
+    },
+    {
+      "date": "2026-04-09",
+      "composite": -4.6,
       "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 74.4,
-      "time": "07:00"
-    },
     {
       "score": 33.6,
       "time": "07:30"
@@ -5808,6 +5808,10 @@
     {
       "score": 50.5,
       "time": "06:30"
+    },
+    {
+      "score": 47.8,
+      "time": "07:00"
     }
   ]
 }

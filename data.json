@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-10T23:55:02+09:00",
+  "updated_at": "2026-04-11T00:00:03+09:00",
   "current": {
     "date": "2026-04-10",
     "score": 59.5,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-04-10 23:30:16"
   },
   "nasdaq": {
-    "price": 22950.87,
-    "change": 128.45,
-    "change_pct": 0.56
+    "price": 22979.38,
+    "change": 156.96,
+    "change_pct": 0.69
   },
   "history": [
     {
@@ -5132,7 +5132,7 @@
     "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 52, RSI 66 — 뚜렷한 방향성 없음",
+    "reason": "FG 52 — 중립 구간 [휴장]",
     "proximity": {
       "buy": {
         "fg_gap": -11.8,
@@ -5153,13 +5153,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "66.1",
-        "status": "과매수 접근"
+        "value": "66.1 (전일)",
+        "status": "과매수 접근 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "+4.8%",
-        "status": "과열"
+        "value": "+4.8% (전일)",
+        "status": "과열 (휴장)"
       }
     ],
     "similar_history": {

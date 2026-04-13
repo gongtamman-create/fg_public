@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-14T00:30:03+09:00",
+  "updated_at": "2026-04-14T00:35:03+09:00",
   "current": {
     "date": "2026-04-13",
-    "score": 77.7,
+    "score": 78.4,
     "grade": "탐욕",
     "daily_score": 13.9,
     "hybrid_score": null,
@@ -10,11 +10,11 @@
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-04-14 00:00:21"
+    "realtime_time": "2026-04-14 00:30:19"
   },
   "nasdaq": {
-    "price": 22966.66,
-    "change": 63.77,
+    "price": 22966.98,
+    "change": 64.09,
     "change_pct": 0.28
   },
   "history": [
@@ -5137,7 +5137,7 @@
   "cnn_comparison": {
     "cnn_score": 38.9,
     "cnn_grade": "공포",
-    "our_score": 77.7,
+    "our_score": 78.4,
     "our_grade": "탐욕"
   },
   "action_detail": {
@@ -5638,10 +5638,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 2.6,
-      "time": "00:30"
-    },
-    {
       "score": 2.2,
       "time": "01:00"
     },
@@ -5828,6 +5824,10 @@
     {
       "score": 85.0,
       "time": "00:00"
+    },
+    {
+      "score": 87.4,
+      "time": "00:30"
     }
   ]
 }

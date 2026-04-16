@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-04-17T07:00:03+09:00",
+  "updated_at": "2026-04-17T07:05:03+09:00",
   "current": {
-    "date": "2026-04-16",
-    "score": 54.3,
+    "date": "2026-04-17",
+    "score": 55.0,
     "grade": "중립",
-    "daily_score": 64.2,
+    "daily_score": 62.5,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (탐욕 접근)",
     "realtime": true,
-    "realtime_time": "2026-04-17 06:30:20"
+    "realtime_time": "2026-04-17 07:00:20"
   },
   "nasdaq": {
     "price": 24102.7,
@@ -18,13 +18,6 @@
     "change_pct": 0.36
   },
   "history": [
-    {
-      "date": "2025-12-23",
-      "score": 60.2,
-      "hybrid": 49.5,
-      "nasdaq_close": 23561.84,
-      "nasdaq_pct": 0.57
-    },
     {
       "date": "2025-12-24",
       "score": 52.0,
@@ -644,6 +637,13 @@
     {
       "date": "2026-04-16",
       "score": 64.2,
+      "hybrid": null,
+      "nasdaq_close": 24102.7,
+      "nasdaq_pct": 0.36
+    },
+    {
+      "date": "2026-04-17",
+      "score": 62.5,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5061,17 +5061,21 @@
     {
       "date": "2026-04-16",
       "score": 64.2
+    },
+    {
+      "date": "2026-04-17",
+      "score": 62.5
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-04-15",
-    "trading_days": 760,
+    "period": "2022-01-03 ~ 2026-04-16",
+    "trading_days": 761,
     "zones": [
       {
         "name": "매수 시그널",
-        "trades": 35,
-        "return": 3.46,
-        "win_rate": 68.6,
+        "trades": 36,
+        "return": 3.8,
+        "win_rate": 69.4,
         "hold_days": 20
       },
       {
@@ -5083,8 +5087,8 @@
       },
       {
         "name": "극공포 (<=20)",
-        "trades": 7,
-        "return": 3.4,
+        "trades": 8,
+        "return": 4.0,
         "win_rate": 100.0,
         "hold_days": 20
       },
@@ -5104,16 +5108,16 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 34,
-        "return": 1.5,
-        "win_rate": 68.0,
+        "trades": 35,
+        "return": 1.7,
+        "win_rate": 69.0,
         "hold_days": 20
       },
       {
         "name": "공포 (<=30)",
-        "trades": 24,
+        "trades": 25,
         "return": 4.9,
-        "win_rate": 79.0,
+        "win_rate": 80.0,
         "hold_days": 40
       },
       {
@@ -5125,14 +5129,14 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 66,
-        "return": 2.0,
+        "trades": 67,
+        "return": 2.1,
         "win_rate": 76.0,
         "hold_days": 20
       },
       {
         "name": "공포 (<=35)",
-        "trades": 54,
+        "trades": 55,
         "return": 4.1,
         "win_rate": 76.0,
         "hold_days": 40
@@ -5149,59 +5153,54 @@
   "cnn_comparison": {
     "cnn_score": 62.2,
     "cnn_grade": "탐욕",
-    "our_score": 54.3,
+    "our_score": 55.0,
     "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망 (탐욕 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 64으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
+    "reason": "FG 62으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
     "proximity": {
       "buy": {
-        "fg_gap": -24.2,
-        "rsi_gap": -44.3,
+        "fg_gap": -22.5,
+        "rsi_gap": -45.0,
         "pct": 0
       },
       "sell": {
-        "fg_gap": -10.8,
-        "rsi_gap": 4.3,
-        "pct": 78
+        "fg_gap": -12.5,
+        "rsi_gap": 5.0,
+        "pct": 75
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "64.2",
+        "value": "62.5",
         "status": "탐욕 접근"
       },
       {
         "name": "RSI(14)",
-        "value": "79.3",
+        "value": "80.0",
         "status": "과매수"
       },
       {
         "name": "MA이탈",
-        "value": "+7.5%",
+        "value": "+7.1%",
         "status": "과열"
       }
     ],
     "similar_history": {
-      "count": 91,
-      "win_5d": 52.2,
-      "avg_5d": -0.06,
-      "win_10d": 54.4,
-      "avg_10d": -0.15,
-      "win_20d": 63.3,
-      "avg_20d": -0.13
+      "count": 89,
+      "win_5d": 51.7,
+      "avg_5d": -0.03,
+      "win_10d": 56.3,
+      "avg_10d": -0.06,
+      "win_20d": 58.6,
+      "avg_20d": -0.49
     }
   },
   "signal_chart": [
-    {
-      "date": "2025-12-23",
-      "composite": -0.4,
-      "signal": "neutral"
-    },
     {
       "date": "2025-12-24",
       "composite": 0.1,
@@ -5644,15 +5643,16 @@
     },
     {
       "date": "2026-04-16",
-      "composite": -18.0,
+      "composite": -16.1,
+      "signal": "weak_sell"
+    },
+    {
+      "date": "2026-04-17",
+      "composite": -15.0,
       "signal": "weak_sell"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 84.0,
-      "time": "07:00"
-    },
     {
       "score": 76.8,
       "time": "07:30"
@@ -5840,6 +5840,10 @@
     {
       "score": 51.0,
       "time": "06:30"
+    },
+    {
+      "score": 56.7,
+      "time": "07:00"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-19T23:55:03+09:00",
+  "updated_at": "2026-04-20T00:00:03+09:00",
   "current": {
     "date": "2026-04-19",
     "score": 63.3,
@@ -7,8 +7,8 @@
     "daily_score": 17.9,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "neutral",
+    "signal_label": "관망 (공포 접근)",
     "realtime": true,
     "realtime_time": "2026-04-19 23:30:21"
   },
@@ -5165,10 +5165,10 @@
     "our_grade": "탐욕"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "개장 확인 필요",
-    "reason": "극단적 공포 (FG 18) [휴장] — 개장 후 RSI/가격 확인 시 매수 검토",
+    "action": "관망 (공포 접근)",
+    "action_key": "neutral",
+    "confidence": "-",
+    "reason": "FG 18으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
         "fg_gap": 22.1,
@@ -5189,13 +5189,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "82.5 (전일)",
-        "status": "과매수 (휴장)"
+        "value": "82.5",
+        "status": "과매수"
       },
       {
         "name": "MA이탈",
-        "value": "+7.0% (전일)",
-        "status": "과열 (휴장)"
+        "value": "+7.0%",
+        "status": "과열"
       }
     ],
     "similar_history": {

@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-04-22T07:00:03+09:00",
+  "updated_at": "2026-04-22T07:05:02+09:00",
   "current": {
-    "date": "2026-04-21",
-    "score": 35.4,
+    "date": "2026-04-22",
+    "score": 33.0,
     "grade": "공포",
-    "daily_score": 48.5,
+    "daily_score": 27.7,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망",
+    "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-04-22 06:30:20"
+    "realtime_time": "2026-04-22 07:00:20"
   },
   "nasdaq": {
     "price": 24259.96,
@@ -18,13 +18,6 @@
     "change_pct": -0.59
   },
   "history": [
-    {
-      "date": "2025-12-28",
-      "score": 72.1,
-      "hybrid": 68.4,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2025-12-29",
       "score": 52.6,
@@ -644,6 +637,13 @@
     {
       "date": "2026-04-21",
       "score": 48.5,
+      "hybrid": null,
+      "nasdaq_close": 24259.96,
+      "nasdaq_pct": -0.59
+    },
+    {
+      "date": "2026-04-22",
+      "score": 27.7,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5081,11 +5081,15 @@
     {
       "date": "2026-04-21",
       "score": 48.5
+    },
+    {
+      "date": "2026-04-22",
+      "score": 27.7
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-04-20",
-    "trading_days": 763,
+    "period": "2022-01-03 ~ 2026-04-21",
+    "trading_days": 764,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5169,59 +5173,54 @@
   "cnn_comparison": {
     "cnn_score": 67.6,
     "cnn_grade": "탐욕",
-    "our_score": 35.4,
+    "our_score": 33.0,
     "our_grade": "공포"
   },
   "action_detail": {
-    "action": "관망",
+    "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 48, RSI 80 — 뚜렷한 방향성 없음",
+    "reason": "FG 28으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": -8.5,
-        "rsi_gap": -45.3,
-        "pct": 22
+        "fg_gap": 12.3,
+        "rsi_gap": -40.4,
+        "pct": 41
       },
       "sell": {
-        "fg_gap": -26.5,
-        "rsi_gap": 5.3,
-        "pct": 68
+        "fg_gap": -47.3,
+        "rsi_gap": 0.4,
+        "pct": 51
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "48.5",
-        "status": "중립"
+        "value": "27.7",
+        "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "80.3",
+        "value": "75.4",
         "status": "과매수"
       },
       {
         "name": "MA이탈",
-        "value": "+5.5%",
+        "value": "+4.3%",
         "status": "과열"
       }
     ],
     "similar_history": {
-      "count": 83,
-      "win_5d": 52.4,
-      "avg_5d": 0.03,
-      "win_10d": 54.9,
+      "count": 17,
+      "win_5d": 53.3,
+      "avg_5d": -0.19,
+      "win_10d": 53.3,
       "avg_10d": 0.06,
-      "win_20d": 62.2,
-      "avg_20d": 0.23
+      "win_20d": 86.7,
+      "avg_20d": 2.06
     }
   },
   "signal_chart": [
-    {
-      "date": "2025-12-28",
-      "composite": -37.8,
-      "signal": "weak_sell"
-    },
     {
       "date": "2025-12-29",
       "composite": 0.0,
@@ -5664,15 +5663,16 @@
     },
     {
       "date": "2026-04-21",
-      "composite": -6.2,
+      "composite": -2.7,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-04-22",
+      "composite": 23.7,
+      "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 63.7,
-      "time": "07:00"
-    },
     {
       "score": 74.2,
       "time": "07:30"
@@ -5860,6 +5860,10 @@
     {
       "score": 32.3,
       "time": "06:30"
+    },
+    {
+      "score": 32.5,
+      "time": "07:00"
     }
   ]
 }

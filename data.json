@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-23T08:25:03+09:00",
+  "updated_at": "2026-04-23T08:30:03+09:00",
   "current": {
     "date": "2026-04-23",
     "score": 28.0,
@@ -5667,8 +5667,8 @@
     },
     {
       "date": "2026-04-22",
-      "composite": 16.7,
-      "signal": "weak_buy"
+      "composite": 14.2,
+      "signal": "neutral"
     },
     {
       "date": "2026-04-23",

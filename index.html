@@ -3,6 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>
+/* 사용자 단말 강제 정리 — 옛 service worker / 캐시 / 깨진 PWA 상태가 화면을 빈 상태로 잡고
+   있을 수 있어 페이지 로드 직후 1회만 자기 정리 후 새로고침. sessionStorage 마커로 무한 reload 방지.
+   SW 없는 사용자에게는 무해 (regs.length===0이면 reload 안 함). */
+(function(){
+  try {
+    if (sessionStorage.getItem('_gt_clean')) return;
+    var jobs = [];
+    var hadSW = false;
+    if ('serviceWorker' in navigator) {
+      jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){
+        hadSW = rs.length > 0;
+        return Promise.all(rs.map(function(r){ return r.unregister(); }));
+      }));
+    }
+    if (typeof caches !== 'undefined') {
+      jobs.push(caches.keys().then(function(ks){
+        return Promise.all(ks.map(function(k){ return caches.delete(k); }));
+      }));
+    }
+    Promise.all(jobs).then(function(){
+      if (hadSW) {
+        sessionStorage.setItem('_gt_clean', '1');
+        location.reload();
+      }
+    }).catch(function(){});
+  } catch(_) {}
+})();
+</script>
 <title>개미공탐지수 — 한국 투자자 감정 기반 공포·탐욕 지수</title>
 <meta name="description" content="한국 온라인 투자자 커뮤니티 감정을 실시간 분석한 공포·탐욕 지수. 480거래일 백테스트 승률 86%. 매일 업데이트.">
 <meta name="keywords" content="공포탐욕지수,fear and greed index,미국주식,나스닥,투자심리,개미투자자">
@@ -19,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1777293302">
+<link rel="stylesheet" href="assets/style.css?v=1777293603">
 </head>
 <body>
 <div id="app">
@@ -265,7 +294,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" integrity="sha384-sEVIly94UBRLKWdkYoPpSG7GD/e79YHMrxVyZaOk712Ga7+EAw6w1EFi+xBzBdd+" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js" integrity="sha384-1/m+A1jVWbD3yiK3/vtFvm1+LjK1WLpSoDY+Kaxppwn/yP9BVSgdHTNQVOjrzUO5" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" integrity="sha384-EkqK+ezBWJuvO3hfrSx2iVqr3YQbhmnzn8kPhOpBZ+0GMVU5oGSgptwIu8D84HjE" crossorigin="anonymous"></script>
-<script src="assets/app.js?v=1777293302"></script>
-<script src="assets/chat.js?v=1777293302"></script>
+<script src="assets/app.js?v=1777293603"></script>
+<script src="assets/chat.js?v=1777293603"></script>
 </body>
 </html>

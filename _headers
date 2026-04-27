@@ -1,6 +1,17 @@
 /data.json
   Cache-Control: public, max-age=3600
 
+# Self-cleanup service worker — 옛 SW가 update check 시 받아갈 수 있게 캐시 금지 + MIME 명시.
+/sw.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate
+  Service-Worker-Allowed: /
+
+/service-worker.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: no-cache, no-store, must-revalidate
+  Service-Worker-Allowed: /
+
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff

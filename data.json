@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-30T05:10:02+09:00",
+  "updated_at": "2026-04-30T05:15:02+09:00",
   "current": {
     "date": "2026-04-29",
     "score": 47.8,
@@ -5199,7 +5199,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 63.3,
+    "cnn_score": 63.2,
     "cnn_grade": "탐욕",
     "our_score": 47.8,
     "our_grade": "중립"

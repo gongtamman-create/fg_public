@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-01T23:55:03+09:00",
+  "updated_at": "2026-05-02T00:00:03+09:00",
   "current": {
     "date": "2026-05-01",
     "score": 61.0,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-05-01 23:30:21"
   },
   "nasdaq": {
-    "price": 25129.35,
-    "change": 237.04,
-    "change_pct": 0.95
+    "price": 25120.89,
+    "change": 228.58,
+    "change_pct": 0.92
   },
   "history": [
     {
@@ -5216,7 +5216,7 @@
     "action": "관망 (탐욕 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 63으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
+    "reason": "FG 63으로 탐욕 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
         "fg_gap": -23.0,
@@ -5237,13 +5237,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "72.7",
-        "status": "과매수 접근"
+        "value": "72.7 (전일)",
+        "status": "과매수 접근 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "+2.1%",
-        "status": "과열 접근"
+        "value": "+2.1% (전일)",
+        "status": "과열 접근 (휴장)"
       }
     ],
     "similar_history": {

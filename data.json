@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-03T23:55:03+09:00",
+  "updated_at": "2026-05-04T00:00:03+09:00",
   "current": {
     "date": "2026-05-03",
     "score": 47.3,
@@ -5224,7 +5224,7 @@
     "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 47 — 중립 구간 [휴장]",
+    "reason": "FG 47, RSI 75 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
         "fg_gap": -7.4,
@@ -5245,13 +5245,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "75.3 (전일)",
-        "status": "과매수 (휴장)"
+        "value": "75.3",
+        "status": "과매수"
       },
       {
         "name": "MA이탈",
-        "value": "+2.1% (전일)",
-        "status": "과열 접근 (휴장)"
+        "value": "+2.1%",
+        "status": "과열 접근"
       }
     ],
     "similar_history": {

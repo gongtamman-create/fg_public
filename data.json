@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-06T07:00:03+09:00",
+  "updated_at": "2026-05-06T07:05:03+09:00",
   "current": {
-    "date": "2026-05-05",
-    "score": 64.5,
+    "date": "2026-05-06",
+    "score": 63.7,
     "grade": "탐욕",
-    "daily_score": 14.2,
+    "daily_score": 45.0,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망 (공포 접근)",
+    "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-05-06 06:30:20"
+    "realtime_time": "2026-05-06 07:00:20"
   },
   "nasdaq": {
     "price": 25326.12,
@@ -18,13 +18,6 @@
     "change_pct": 1.03
   },
   "history": [
-    {
-      "date": "2026-01-31",
-      "score": 33.3,
-      "hybrid": 23.3,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-02-01",
       "score": 28.4,
@@ -644,6 +637,13 @@
     {
       "date": "2026-05-05",
       "score": 14.2,
+      "hybrid": null,
+      "nasdaq_close": 25326.12,
+      "nasdaq_pct": 1.03
+    },
+    {
+      "date": "2026-05-06",
+      "score": 45.0,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5137,11 +5137,15 @@
     {
       "date": "2026-05-05",
       "score": 14.2
+    },
+    {
+      "date": "2026-05-06",
+      "score": 45.0
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-05-04",
-    "trading_days": 773,
+    "period": "2022-01-03 ~ 2026-05-05",
+    "trading_days": 774,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5208,9 +5212,9 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 60,
-        "return": 4.6,
-        "win_rate": 78.0,
+        "trades": 61,
+        "return": 4.7,
+        "win_rate": 79.0,
         "hold_days": 40
       },
       {
@@ -5225,59 +5229,54 @@
   "cnn_comparison": {
     "cnn_score": 66.9,
     "cnn_grade": "탐욕",
-    "our_score": 64.5,
+    "our_score": 63.7,
     "our_grade": "탐욕"
   },
   "action_detail": {
-    "action": "관망 (공포 접근)",
+    "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 14으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 45, RSI 77 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
-        "fg_gap": 25.8,
-        "rsi_gap": -38.5,
-        "pct": 86
+        "fg_gap": -5.0,
+        "rsi_gap": -41.8,
+        "pct": 33
       },
       "sell": {
-        "fg_gap": -60.8,
-        "rsi_gap": -1.5,
-        "pct": 45
+        "fg_gap": -30.0,
+        "rsi_gap": 1.8,
+        "pct": 56
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "14.2",
-        "status": "매수 구간"
+        "value": "45.0",
+        "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "73.5",
-        "status": "과매수 접근"
+        "value": "76.8",
+        "status": "과매수"
       },
       {
         "name": "MA이탈",
-        "value": "+1.4%",
-        "status": "정상"
+        "value": "+2.1%",
+        "status": "과열 접근"
       }
     ],
     "similar_history": {
-      "count": 6,
-      "win_5d": 66.7,
-      "avg_5d": 0.67,
-      "win_10d": 60.0,
-      "avg_10d": 1.35,
-      "win_20d": 75.0,
-      "avg_20d": 1.07
+      "count": 86,
+      "win_5d": 55.3,
+      "avg_5d": 0.27,
+      "win_10d": 57.8,
+      "avg_10d": 0.37,
+      "win_20d": 66.2,
+      "avg_20d": 0.79
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-01-31",
-      "composite": 25.6,
-      "signal": "weak_buy"
-    },
     {
       "date": "2026-02-01",
       "composite": 27.3,
@@ -5720,15 +5719,16 @@
     },
     {
       "date": "2026-05-05",
-      "composite": 35.3,
+      "composite": 28.5,
       "signal": "weak_buy"
+    },
+    {
+      "date": "2026-05-06",
+      "composite": -0.9,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 10.7,
-      "time": "07:00"
-    },
     {
       "score": 8.9,
       "time": "07:30"
@@ -5916,6 +5916,10 @@
     {
       "score": 55.7,
       "time": "06:30"
+    },
+    {
+      "score": 60.4,
+      "time": "07:00"
     }
   ]
 }

@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-08T07:00:03+09:00",
+  "updated_at": "2026-05-08T07:05:02+09:00",
   "current": {
-    "date": "2026-05-07",
-    "score": 54.7,
+    "date": "2026-05-08",
+    "score": 46.7,
     "grade": "중립",
-    "daily_score": 40.3,
+    "daily_score": 20.2,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-05-08 06:30:20"
+    "realtime_time": "2026-05-08 07:00:21"
   },
   "nasdaq": {
     "price": 25806.2,
@@ -18,13 +18,6 @@
     "change_pct": -0.13
   },
   "history": [
-    {
-      "date": "2026-02-02",
-      "score": 26.2,
-      "hybrid": 21.6,
-      "nasdaq_close": 23592.11,
-      "nasdaq_pct": 0.56
-    },
     {
       "date": "2026-02-03",
       "score": 49.2,
@@ -644,6 +637,13 @@
     {
       "date": "2026-05-07",
       "score": 40.3,
+      "hybrid": null,
+      "nasdaq_close": 25806.2,
+      "nasdaq_pct": -0.13
+    },
+    {
+      "date": "2026-05-08",
+      "score": 20.2,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5145,11 +5145,15 @@
     {
       "date": "2026-05-07",
       "score": 40.3
+    },
+    {
+      "date": "2026-05-08",
+      "score": 20.2
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-05-06",
-    "trading_days": 775,
+    "period": "2022-01-03 ~ 2026-05-07",
+    "trading_days": 776,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5195,8 +5199,8 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 31,
-        "return": 6.0,
+        "trades": 32,
+        "return": 6.2,
         "win_rate": 84.0,
         "hold_days": 40
       },
@@ -5216,8 +5220,8 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 62,
-        "return": 4.9,
+        "trades": 63,
+        "return": 5.0,
         "win_rate": 79.0,
         "hold_days": 40
       },
@@ -5233,59 +5237,54 @@
   "cnn_comparison": {
     "cnn_score": 67.6,
     "cnn_grade": "탐욕",
-    "our_score": 54.7,
+    "our_score": 46.7,
     "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 40으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 20으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": -0.3,
-        "rsi_gap": -46.8,
-        "pct": 49
+        "fg_gap": 19.8,
+        "rsi_gap": -45.6,
+        "pct": 66
       },
       "sell": {
-        "fg_gap": -34.7,
-        "rsi_gap": 6.8,
-        "pct": 73
+        "fg_gap": -54.8,
+        "rsi_gap": 5.6,
+        "pct": 69
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "40.3",
-        "status": "중립"
+        "value": "20.2",
+        "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "81.8",
+        "value": "80.6",
         "status": "과매수"
       },
       {
         "name": "MA이탈",
-        "value": "+3.8%",
+        "value": "+3.4%",
         "status": "과열 접근"
       }
     ],
     "similar_history": {
-      "count": 39,
-      "win_5d": 48.6,
-      "avg_5d": 0.0,
-      "win_10d": 47.2,
-      "avg_10d": 0.04,
-      "win_20d": 70.6,
-      "avg_20d": 1.45
+      "count": 8,
+      "win_5d": 100.0,
+      "avg_5d": 1.74,
+      "win_10d": 85.7,
+      "avg_10d": 1.93,
+      "win_20d": 100.0,
+      "avg_20d": 4.17
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-02-02",
-      "composite": 30.3,
-      "signal": "weak_buy"
-    },
     {
       "date": "2026-02-03",
       "composite": 0.0,
@@ -5728,15 +5727,16 @@
     },
     {
       "date": "2026-05-07",
-      "composite": -3.2,
+      "composite": -2.2,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-05-08",
+      "composite": 30.0,
+      "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 14.1,
-      "time": "07:00"
-    },
     {
       "score": 2.0,
       "time": "07:30"
@@ -5924,6 +5924,10 @@
     {
       "score": 48.5,
       "time": "06:30"
+    },
+    {
+      "score": 23.3,
+      "time": "07:00"
     }
   ]
 }

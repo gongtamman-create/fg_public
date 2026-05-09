@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-10T07:00:03+09:00",
+  "updated_at": "2026-05-10T07:05:04+09:00",
   "current": {
-    "date": "2026-05-09",
-    "score": 21.9,
+    "date": "2026-05-10",
+    "score": 25.7,
     "grade": "공포",
-    "daily_score": 58.4,
+    "daily_score": 43.9,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망",
+    "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-05-10 06:30:20"
+    "realtime_time": "2026-05-10 07:00:21"
   },
   "nasdaq": {
     "price": 26247.08,
@@ -18,13 +18,6 @@
     "change_pct": 1.71
   },
   "history": [
-    {
-      "date": "2026-02-04",
-      "score": 35.3,
-      "hybrid": 28.9,
-      "nasdaq_close": 22904.58,
-      "nasdaq_pct": -1.51
-    },
     {
       "date": "2026-02-05",
       "score": 23.7,
@@ -644,6 +637,13 @@
     {
       "date": "2026-05-09",
       "score": 58.4,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-05-10",
+      "score": 43.9,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5153,6 +5153,10 @@
     {
       "date": "2026-05-09",
       "score": 58.4
+    },
+    {
+      "date": "2026-05-10",
+      "score": 43.9
     }
   ],
   "backtest": {
@@ -5241,22 +5245,22 @@
   "cnn_comparison": {
     "cnn_score": 66.9,
     "cnn_grade": "탐욕",
-    "our_score": 21.9,
+    "our_score": 25.7,
     "our_grade": "공포"
   },
   "action_detail": {
-    "action": "관망",
+    "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 58 — 중립 구간 [휴장]",
+    "reason": "FG 44으로 공포 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
-        "fg_gap": -18.4,
+        "fg_gap": -3.9,
         "rsi_gap": -49.0,
-        "pct": 0
+        "pct": 37
       },
       "sell": {
-        "fg_gap": -16.6,
+        "fg_gap": -31.1,
         "rsi_gap": 9.0,
         "pct": 80
       }
@@ -5264,7 +5268,7 @@
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "58.4",
+        "value": "43.9",
         "status": "중립"
       },
       {
@@ -5274,26 +5278,21 @@
       },
       {
         "name": "MA이탈",
-        "value": "+4.7% (전일)",
+        "value": "+4.3% (전일)",
         "status": "과열 (휴장)"
       }
     ],
     "similar_history": {
-      "count": 56,
-      "win_5d": 51.8,
-      "avg_5d": 0.14,
-      "win_10d": 61.8,
-      "avg_10d": 0.02,
-      "win_20d": 65.4,
-      "avg_20d": 0.42
+      "count": 40,
+      "win_5d": 55.3,
+      "avg_5d": 0.17,
+      "win_10d": 59.5,
+      "avg_10d": 0.22,
+      "win_20d": 71.4,
+      "avg_20d": 0.97
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-02-04",
-      "composite": 60,
-      "signal": "strong_buy"
-    },
     {
       "date": "2026-02-05",
       "composite": 60,
@@ -5738,13 +5737,14 @@
       "date": "2026-05-09",
       "composite": -7.1,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-05-10",
+      "composite": -6.7,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 46.9,
-      "time": "07:00"
-    },
     {
       "score": 31.6,
       "time": "07:30"
@@ -5932,6 +5932,10 @@
     {
       "score": 16.1,
       "time": "06:30"
+    },
+    {
+      "score": 32.0,
+      "time": "07:00"
     }
   ]
 }

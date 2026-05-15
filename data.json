@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T23:55:03+09:00",
+  "updated_at": "2026-05-16T00:00:03+09:00",
   "current": {
     "date": "2026-05-15",
     "score": 39.1,
@@ -7,15 +7,15 @@
     "daily_score": 69.9,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "caution",
-    "signal_label": "과열 주의",
+    "signal": "neutral",
+    "signal_label": "관망 (탐욕 접근)",
     "realtime": true,
     "realtime_time": "2026-05-15 23:30:20"
   },
   "nasdaq": {
-    "price": 26289.68,
-    "change": -345.54,
-    "change_pct": -1.3
+    "price": 26278.12,
+    "change": -357.1,
+    "change_pct": -1.34
   },
   "history": [
     {
@@ -5269,10 +5269,10 @@
     "our_grade": "공포"
   },
   "action_detail": {
-    "action": "과열 주의",
-    "action_key": "caution",
-    "confidence": "참고용",
-    "reason": "탐욕 접근 (FG 70, RSI 82) — 과열 징후 모니터링",
+    "action": "관망 (탐욕 접근)",
+    "action_key": "neutral",
+    "confidence": "-",
+    "reason": "FG 70으로 탐욕 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
         "fg_gap": -29.9,
@@ -5293,13 +5293,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "82.0",
-        "status": "과매수"
+        "value": "82.0 (전일)",
+        "status": "과매수 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "+4.0%",
-        "status": "과열"
+        "value": "+4.0% (전일)",
+        "status": "과열 (휴장)"
       }
     ],
     "similar_history": {

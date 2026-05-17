@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-18T07:00:03+09:00",
+  "updated_at": "2026-05-18T07:05:03+09:00",
   "current": {
-    "date": "2026-05-17",
+    "date": "2026-05-18",
     "score": 2.5,
     "grade": "극단적 공포",
-    "daily_score": 23.6,
+    "daily_score": 2.0,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-05-18 06:30:20"
+    "realtime_time": "2026-05-18 07:00:20"
   },
   "nasdaq": {
     "price": 26225.14,
@@ -18,13 +18,6 @@
     "change_pct": -1.54
   },
   "history": [
-    {
-      "date": "2026-02-12",
-      "score": 46.5,
-      "hybrid": 42.0,
-      "nasdaq_close": 22597.15,
-      "nasdaq_pct": -2.03
-    },
     {
       "date": "2026-02-13",
       "score": 24.1,
@@ -644,6 +637,13 @@
     {
       "date": "2026-05-17",
       "score": 23.6,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-05-18",
+      "score": 2.0,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5185,6 +5185,10 @@
     {
       "date": "2026-05-17",
       "score": 23.6
+    },
+    {
+      "date": "2026-05-18",
+      "score": 2.0
     }
   ],
   "backtest": {
@@ -5280,15 +5284,15 @@
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 24으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 2으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": 16.4,
+        "fg_gap": 38.0,
         "rsi_gap": -33.9,
-        "pct": 55
+        "pct": 100
       },
       "sell": {
-        "fg_gap": -51.4,
+        "fg_gap": -73.0,
         "rsi_gap": -6.1,
         "pct": 30
       }
@@ -5296,7 +5300,7 @@
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "23.6",
+        "value": "2.0",
         "status": "매수 구간"
       },
       {
@@ -5306,26 +5310,15 @@
       },
       {
         "name": "MA이탈",
-        "value": "+2.0%",
+        "value": "+1.6%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 18,
-      "win_5d": 58.8,
-      "avg_5d": 0.14,
-      "win_10d": 52.9,
-      "avg_10d": 1.06,
-      "win_20d": 80.0,
-      "avg_20d": 1.29
+      "count": 0
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-02-12",
-      "composite": 6.7,
-      "signal": "neutral"
-    },
     {
       "date": "2026-02-13",
       "composite": 60,
@@ -5770,13 +5763,14 @@
       "date": "2026-05-17",
       "composite": 35.3,
       "signal": "weak_buy"
+    },
+    {
+      "date": "2026-05-18",
+      "composite": 35.3,
+      "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 2.0,
-      "time": "07:00"
-    },
     {
       "score": 2.0,
       "time": "07:30"
@@ -5964,6 +5958,10 @@
     {
       "score": 2.0,
       "time": "06:30"
+    },
+    {
+      "score": 2.0,
+      "time": "07:00"
     }
   ]
 }

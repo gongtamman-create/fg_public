@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-27T07:00:03+09:00",
+  "updated_at": "2026-05-27T07:05:04+09:00",
   "current": {
-    "date": "2026-05-26",
-    "score": 28.0,
+    "date": "2026-05-27",
+    "score": 32.8,
     "grade": "공포",
-    "daily_score": 32.7,
+    "daily_score": 30.3,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-05-27 06:30:21"
+    "realtime_time": "2026-05-27 07:00:23"
   },
   "nasdaq": {
     "price": 26656.18,
@@ -18,13 +18,6 @@
     "change_pct": 1.19
   },
   "history": [
-    {
-      "date": "2026-02-21",
-      "score": 54.3,
-      "hybrid": 50.8,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-02-25",
       "score": 36.5,
@@ -644,6 +637,13 @@
     {
       "date": "2026-05-26",
       "score": 32.7,
+      "hybrid": null,
+      "nasdaq_close": 26656.18,
+      "nasdaq_pct": 1.19
+    },
+    {
+      "date": "2026-05-27",
+      "score": 30.3,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5221,11 +5221,15 @@
     {
       "date": "2026-05-26",
       "score": 32.7
+    },
+    {
+      "date": "2026-05-27",
+      "score": 30.3
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-05-22",
-    "trading_days": 787,
+    "period": "2022-01-03 ~ 2026-05-26",
+    "trading_days": 788,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5250,9 +5254,9 @@
       },
       {
         "name": "극공포 (<=20)",
-        "trades": 11,
-        "return": 12.6,
-        "win_rate": 91.0,
+        "trades": 12,
+        "return": 13.8,
+        "win_rate": 92.0,
         "hold_days": 40
       },
       {
@@ -5271,9 +5275,9 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 39,
-        "return": 8.7,
-        "win_rate": 87.0,
+        "trades": 40,
+        "return": 9.2,
+        "win_rate": 88.0,
         "hold_days": 40
       },
       {
@@ -5292,8 +5296,8 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 71,
-        "return": 6.7,
+        "trades": 72,
+        "return": 6.9,
         "win_rate": 82.0,
         "hold_days": 40
       },
@@ -5309,59 +5313,54 @@
   "cnn_comparison": {
     "cnn_score": 60.8,
     "cnn_grade": "탐욕",
-    "our_score": 28.0,
+    "our_score": 32.8,
     "our_grade": "공포"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 33으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 30으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": 7.3,
-        "rsi_gap": -31.2,
-        "pct": 24
+        "fg_gap": 9.7,
+        "rsi_gap": -36.6,
+        "pct": 32
       },
       "sell": {
-        "fg_gap": -42.3,
-        "rsi_gap": -8.8,
-        "pct": 21
+        "fg_gap": -44.7,
+        "rsi_gap": -3.4,
+        "pct": 39
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "32.7",
+        "value": "30.3",
         "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "66.2",
+        "value": "71.6",
         "status": "과매수 접근"
       },
       {
         "name": "MA이탈",
-        "value": "+0.4%",
+        "value": "+1.4%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 66,
-      "win_5d": 61.5,
-      "avg_5d": 0.09,
-      "win_10d": 63.5,
-      "avg_10d": 0.85,
-      "win_20d": 79.0,
-      "avg_20d": 1.8
+      "count": 38,
+      "win_5d": 72.2,
+      "avg_5d": 0.28,
+      "win_10d": 72.2,
+      "avg_10d": 0.93,
+      "win_20d": 88.2,
+      "avg_20d": 1.99
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-02-21",
-      "composite": -1.1,
-      "signal": "neutral"
-    },
     {
       "date": "2026-02-25",
       "composite": 4.9,
@@ -5804,15 +5803,16 @@
     },
     {
       "date": "2026-05-26",
-      "composite": 22.4,
+      "composite": 19.0,
+      "signal": "weak_buy"
+    },
+    {
+      "date": "2026-05-27",
+      "composite": 26.2,
       "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 47.2,
-      "time": "07:00"
-    },
     {
       "score": 27.5,
       "time": "07:30"
@@ -6000,6 +6000,10 @@
     {
       "score": 31.7,
       "time": "06:30"
+    },
+    {
+      "score": 37.6,
+      "time": "07:00"
     }
   ]
 }

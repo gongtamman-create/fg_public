@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-06-04T01:30:03+09:00",
+  "updated_at": "2026-06-04T01:35:03+09:00",
   "current": {
     "date": "2026-06-03",
-    "score": 22.0,
-    "grade": "공포",
+    "score": 13.0,
+    "grade": "극단적 공포",
     "daily_score": 33.4,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-06-04 01:00:19"
+    "realtime_time": "2026-06-04 01:30:21"
   },
   "nasdaq": {
-    "price": 26813.63,
-    "change": -280.27,
-    "change_pct": -1.03
+    "price": 26820.29,
+    "change": -273.61,
+    "change_pct": -1.01
   },
   "history": [
     {
@@ -5341,8 +5341,8 @@
   "cnn_comparison": {
     "cnn_score": 54.2,
     "cnn_grade": "중립",
-    "our_score": 22.0,
-    "our_grade": "공포"
+    "our_score": 13.0,
+    "our_grade": "극단적 공포"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
@@ -5842,10 +5842,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 37.0,
-      "time": "01:30"
-    },
-    {
       "score": 14.7,
       "time": "02:00"
     },
@@ -6032,6 +6028,10 @@
     {
       "score": 10.3,
       "time": "01:00"
+    },
+    {
+      "score": 3.7,
+      "time": "01:30"
     }
   ]
 }

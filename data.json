@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-07T23:55:03+09:00",
+  "updated_at": "2026-06-08T00:00:03+09:00",
   "current": {
     "date": "2026-06-07",
     "score": 2.0,
@@ -5363,8 +5363,8 @@
   "action_detail": {
     "action": "매수 대기",
     "action_key": "buy_wait",
-    "confidence": "개장 확인 필요",
-    "reason": "극단적 공포 (FG 2) [휴장] — 개장 후 RSI/가격 확인 시 매수 검토",
+    "confidence": "~68%",
+    "reason": "공포 구간 (FG 2) — RSI 37이(가) 35 이하로 내려오면 매수",
     "proximity": {
       "buy": {
         "fg_gap": 38.0,
@@ -5385,13 +5385,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "36.7 (전일)",
-        "status": "중립 (휴장)"
+        "value": "36.7",
+        "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "-3.0% (전일)",
-        "status": "급락 (휴장)"
+        "value": "-3.0%",
+        "status": "급락"
       }
     ],
     "similar_history": {

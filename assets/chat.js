@@ -106,6 +106,27 @@
     chatInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") { e.preventDefault(); sendMessage(); }
     });
+
+    initKeyboardAdjust();
+  }
+
+  /* 모바일 키보드 대응 — position:fixed 채팅창이 키보드 아래로 가려 입력 불가하던 문제 (2026-06-09).
+     visualViewport로 키보드 높이를 측정해 chat-wrap을 그만큼 위로 올린다. */
+  function initKeyboardAdjust() {
+    const vv = window.visualViewport;
+    if (!vv) return; // 미지원 브라우저는 기존 동작 유지
+    const apply = () => {
+      // 키보드 높이 ≈ 레이아웃 높이 − 보이는 뷰포트 높이 − 스크롤 오프셋
+      const kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      chatWrap.style.transform = `translateX(-50%) translateY(${kb > 0 ? -kb : 0}px)`;
+      if (kb > 0) scrollToBottom();
+    };
+    vv.addEventListener("resize", apply);
+    vv.addEventListener("scroll", apply);
+    chatInput.addEventListener("focus", () => setTimeout(apply, 100));
+    chatInput.addEventListener("blur", () => {
+      chatWrap.style.transform = "translateX(-50%)";
+    });
   }
 
   /* ════════════════════════════════════════

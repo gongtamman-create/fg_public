@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-06-11T07:00:04+09:00",
+  "updated_at": "2026-06-11T07:05:03+09:00",
   "current": {
-    "date": "2026-06-10",
-    "score": 18.3,
+    "date": "2026-06-11",
+    "score": 13.4,
     "grade": "극단적 공포",
-    "daily_score": 17.5,
+    "daily_score": 33.0,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "strong_buy",
+    "signal_label": "적극 매수",
     "realtime": true,
-    "realtime_time": "2026-06-11 06:30:24"
+    "realtime_time": "2026-06-11 07:00:22"
   },
   "nasdaq": {
     "price": 25169.5,
@@ -18,13 +18,6 @@
     "change_pct": -1.98
   },
   "history": [
-    {
-      "date": "2026-03-11",
-      "score": 27.4,
-      "hybrid": 23.3,
-      "nasdaq_close": 22716.13,
-      "nasdaq_pct": 0.08
-    },
     {
       "date": "2026-03-12",
       "score": 12.8,
@@ -644,6 +637,13 @@
     {
       "date": "2026-06-10",
       "score": 17.5,
+      "hybrid": null,
+      "nasdaq_close": 25169.5,
+      "nasdaq_pct": -1.98
+    },
+    {
+      "date": "2026-06-11",
+      "score": 33.0,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5281,11 +5281,15 @@
     {
       "date": "2026-06-10",
       "score": 17.5
+    },
+    {
+      "date": "2026-06-11",
+      "score": 33.0
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-06-09",
-    "trading_days": 798,
+    "period": "2022-01-03 ~ 2026-06-10",
+    "trading_days": 799,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5369,59 +5373,54 @@
   "cnn_comparison": {
     "cnn_score": 27.5,
     "cnn_grade": "공포",
-    "our_score": 18.3,
+    "our_score": 13.4,
     "our_grade": "극단적 공포"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "~68%",
-    "reason": "공포 구간 (FG 18) — RSI 38이(가) 35 이하로 내려오면 매수",
+    "action": "적극 매수",
+    "action_key": "strong_buy",
+    "confidence": "85%+",
+    "reason": "공포 극심 (FG 33) + 가격 급락 (RSI 31) = 버핏 매수 조건 충족",
     "proximity": {
       "buy": {
-        "fg_gap": 22.5,
-        "rsi_gap": -3.3,
-        "pct": 100
+        "fg_gap": 7.0,
+        "rsi_gap": 3.9,
+        "pct": 36
       },
       "sell": {
-        "fg_gap": -57.5,
-        "rsi_gap": -36.7,
+        "fg_gap": -42.0,
+        "rsi_gap": -43.9,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "17.5",
+        "value": "33.0",
         "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "38.3",
-        "status": "중립"
+        "value": "31.1",
+        "status": "과매도"
       },
       {
         "name": "MA이탈",
-        "value": "-2.9%",
+        "value": "-4.5%",
         "status": "급락"
       }
     ],
     "similar_history": {
-      "count": 23,
-      "win_5d": 72.7,
+      "count": 62,
+      "win_5d": 56.5,
       "avg_5d": 1.03,
-      "win_10d": 63.6,
-      "avg_10d": 1.73,
-      "win_20d": 63.6,
-      "avg_20d": 3.19
+      "win_10d": 62.3,
+      "avg_10d": 1.45,
+      "win_20d": 60.7,
+      "avg_20d": 2.53
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-03-11",
-      "composite": 18.2,
-      "signal": "weak_buy"
-    },
     {
       "date": "2026-03-12",
       "composite": 55,
@@ -5864,15 +5863,16 @@
     },
     {
       "date": "2026-06-10",
-      "composite": 42.9,
-      "signal": "weak_buy"
+      "composite": 60,
+      "signal": "strong_buy"
+    },
+    {
+      "date": "2026-06-11",
+      "composite": 60,
+      "signal": "strong_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 2.0,
-      "time": "07:00"
-    },
     {
       "score": 2.0,
       "time": "07:30"
@@ -6060,6 +6060,10 @@
     {
       "score": 9.8,
       "time": "06:30"
+    },
+    {
+      "score": 28.5,
+      "time": "07:00"
     }
   ]
 }

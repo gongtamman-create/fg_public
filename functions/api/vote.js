@@ -87,6 +87,7 @@ async function getVoteResults(dbUrl, auth, dateStr, myHash) {
 
   let upCount = 0, downCount = 0, myVote = null;
   for (const [hash, v] of Object.entries(data)) {
+    if (!v || typeof v !== "object") continue;
     if (v.vote === "up") upCount++;
     else downCount++;
     if (hash === myHash) myVote = v.vote;

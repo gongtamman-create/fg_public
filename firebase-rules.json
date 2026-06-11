@@ -35,15 +35,6 @@
         }
       }
     },
-    "predictions": {
-      ".read": true,
-      "$date": {
-        "$ipHash": {
-          ".write": "!data.exists() && newData.exists()",
-          ".validate": "newData.child('ts').isNumber()"
-        }
-      }
-    },
     "presence": {
       ".read": true,
       "$hash": {

@@ -130,6 +130,11 @@
 
   function render() {
     const d = DATA;
+    // 방어: data.json 이 비었거나 핵심 필드(current/history_full)가 없으면 크래시 대신 안내만.
+    if (!d || !d.current || !Array.isArray(d.history_full)) {
+      $("#updated").textContent = "데이터 준비 중";
+      return;
+    }
     const c = d.current;
 
     // 헤더
@@ -435,15 +440,9 @@
           localStorage.setItem("vote_" + today, JSON.stringify(result));
           showVoteResult(result);
         } catch (e) {
-          // 프록시 실패 시 Firebase 직접 (폴백)
-          const ipHash = await getIpHash();
-          const db = getFirebaseDb();
-          if (db) {
-            const existing = await db.ref(`votes/${today}/${ipHash}`).once("value");
-            if (existing.exists()) { await loadVoteResults(today); return; }
-            await db.ref(`votes/${today}/${ipHash}`).set({ vote, ts: Date.now() });
-            await loadVoteResults(today);
-          }
+          // Firebase 직접 폴백 제거 (2026-06-11): votes 쓰기 규칙이 auth!=null 요구 + 익명 인증 미사용이라
+          // 항상 PERMISSION_DENIED였던 죽은 경로. 살리면 프록시의 IP 위조 방지를 우회하므로 제거가 정답.
+          console.warn("투표 프록시 실패:", e?.message || e);
         }
       });
     });
@@ -460,6 +459,7 @@
     const myHash = await getIpHash();
     let myVote = null;
     Object.entries(data).forEach(([hash, v]) => {
+      if (!v || typeof v !== "object") return;
       if (v.vote === "up") upCount++;
       else downCount++;
       if (hash === myHash) myVote = v.vote;
@@ -503,8 +503,9 @@
       const data = snap.val();
       if (data) {
         let up = 0, down = 0;
-        Object.values(data).forEach((v) => { if (v.vote === "up") up++; else down++; });
+        Object.values(data).forEach((v) => { if (!v || typeof v !== "object") return; if (v.vote === "up") up++; else down++; });
         const total = up + down;
+        if (total === 0) return; // 유효 투표 0건 — 0 나눗셈 방지
         prevResult = { up: Math.round((up / total) * 100), down: Math.round((down / total) * 100), total };
       }
     }

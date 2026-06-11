@@ -22,9 +22,11 @@ export async function onRequestGet() {
     }
 
     const price = meta.regularMarketPrice;
+    if (price == null) {
+      return new Response(JSON.stringify({ error: "no price" }), { status: 502, headers });
+    }
     const prevClose = meta.chartPreviousClose || meta.previousClose;
     const changePct = prevClose ? ((price - prevClose) / prevClose * 100) : 0;
-    const marketState = meta.currentTradingPeriod?.current?.timezone || "";
     const isOpen = meta.currentTradingPeriod?.regular
       ? (Date.now() / 1000 >= meta.currentTradingPeriod.regular.start && Date.now() / 1000 <= meta.currentTradingPeriod.regular.end)
       : false;

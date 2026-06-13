@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-06-14T07:00:03+09:00",
+  "updated_at": "2026-06-14T07:05:02+09:00",
   "current": {
-    "date": "2026-06-13",
-    "score": 56.0,
+    "date": "2026-06-14",
+    "score": 49.6,
     "grade": "중립",
-    "daily_score": 61.0,
+    "daily_score": 56.0,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망 (탐욕 접근)",
+    "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-06-14 06:30:24"
+    "realtime_time": "2026-06-14 07:00:20"
   },
   "nasdaq": {
     "price": 25888.84,
@@ -18,13 +18,6 @@
     "change_pct": 0.31
   },
   "history": [
-    {
-      "date": "2026-03-14",
-      "score": 39.1,
-      "hybrid": 34.5,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-03-15",
       "score": 35.3,
@@ -644,6 +637,13 @@
     {
       "date": "2026-06-13",
       "score": 61.0,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-06-14",
+      "score": 56.0,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5293,6 +5293,10 @@
     {
       "date": "2026-06-13",
       "score": 61.0
+    },
+    {
+      "date": "2026-06-14",
+      "score": 56.0
     }
   ],
   "backtest": {
@@ -5381,31 +5385,31 @@
   "cnn_comparison": {
     "cnn_score": 34,
     "cnn_grade": "공포",
-    "our_score": 56.0,
+    "our_score": 49.6,
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "관망 (탐욕 접근)",
+    "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 61으로 탐욕 접근 중 [휴장] — 개장 후 추이 확인",
+    "reason": "FG 56 — 중립 구간 [휴장]",
     "proximity": {
       "buy": {
-        "fg_gap": -21.0,
+        "fg_gap": -16.0,
         "rsi_gap": -12.2,
         "pct": 9
       },
       "sell": {
-        "fg_gap": -14.0,
+        "fg_gap": -19.0,
         "rsi_gap": -27.8,
-        "pct": 3
+        "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "61.0",
-        "status": "탐욕 접근"
+        "value": "56.0",
+        "status": "중립"
       },
       {
         "name": "RSI(14)",
@@ -5419,21 +5423,16 @@
       }
     ],
     "similar_history": {
-      "count": 227,
-      "win_5d": 53.5,
-      "avg_5d": 0.31,
-      "win_10d": 48.2,
-      "avg_10d": -0.3,
-      "win_20d": 48.7,
-      "avg_20d": 0.75
+      "count": 236,
+      "win_5d": 51.1,
+      "avg_5d": -0.13,
+      "win_10d": 48.3,
+      "avg_10d": -0.55,
+      "win_20d": 48.3,
+      "avg_20d": 0.61
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-03-14",
-      "composite": 5.7,
-      "signal": "neutral"
-    },
     {
       "date": "2026-03-15",
       "composite": 11.7,
@@ -5878,13 +5877,14 @@
       "date": "2026-06-13",
       "composite": -1.2,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-06-14",
+      "composite": 0.0,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 58.9,
-      "time": "07:00"
-    },
     {
       "score": 64.0,
       "time": "07:30"
@@ -6072,6 +6072,10 @@
     {
       "score": 45.6,
       "time": "06:30"
+    },
+    {
+      "score": 38.6,
+      "time": "07:00"
     }
   ]
 }

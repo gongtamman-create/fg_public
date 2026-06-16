@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T01:10:02+09:00",
+  "updated_at": "2026-06-17T01:15:02+09:00",
   "current": {
     "date": "2026-06-16",
     "score": 17.1,
@@ -5391,7 +5391,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 39.7,
+    "cnn_score": 39.9,
     "cnn_grade": "공포",
     "our_score": 17.1,
     "our_grade": "극단적 공포"

@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-06-19T00:30:03+09:00",
+  "updated_at": "2026-06-19T00:36:43+09:00",
   "current": {
     "date": "2026-06-18",
-    "score": 51.6,
+    "score": 44.1,
     "grade": "중립",
     "daily_score": 31.8,
     "hybrid_score": null,
@@ -10,12 +10,12 @@
     "signal": "buy_wait",
     "signal_label": "매수 대기",
     "realtime": true,
-    "realtime_time": "2026-06-19 00:00:39"
+    "realtime_time": "2026-06-19 00:30:23"
   },
   "nasdaq": {
-    "price": 26326.35,
-    "change": 304.69,
-    "change_pct": 1.17
+    "price": 26302.41,
+    "change": 280.75,
+    "change_pct": 1.08
   },
   "history": [
     {
@@ -5399,9 +5399,9 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 36.9,
+    "cnn_score": 36.6,
     "cnn_grade": "공포",
-    "our_score": 51.6,
+    "our_score": 44.1,
     "our_grade": "중립"
   },
   "action_detail": {
@@ -5902,10 +5902,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 31.1,
-      "time": "00:30"
-    },
-    {
       "score": 54.4,
       "time": "01:00"
     },
@@ -6092,33 +6088,25 @@
     {
       "score": 52.1,
       "time": "00:00"
+    },
+    {
+      "score": 27.2,
+      "time": "00:30"
     }
   ],
   "shortpos": {
-    "date": "2026-06-18",
-    "activity": 1967,
+    "date": "2026-06-19",
+    "activity": 53,
     "shorts": [
       {
-        "ticker": "SOXX",
-        "count": 22
-      },
-      {
-        "ticker": "IONQ",
+        "ticker": "QQQ",
         "count": 1
       }
     ],
     "longs": [
       {
         "ticker": "USO",
-        "count": 9
-      },
-      {
-        "ticker": "XLE",
-        "count": 5
-      },
-      {
-        "ticker": "QQQ",
-        "count": 2
+        "count": 1
       }
     ],
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

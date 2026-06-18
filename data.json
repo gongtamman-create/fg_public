@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T23:10:03+09:00",
+  "updated_at": "2026-06-18T23:19:03+09:00",
   "current": {
     "date": "2026-06-18",
     "score": 48.3,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-06-18 23:00:23"
   },
   "nasdaq": {
-    "price": 26334.69,
-    "change": 313.03,
-    "change_pct": 1.2
+    "price": 26365.96,
+    "change": 344.3,
+    "change_pct": 1.32
   },
   "history": [
     {
@@ -5399,7 +5399,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 37.4,
+    "cnn_score": 37.1,
     "cnn_grade": "공포",
     "our_score": 48.3,
     "our_grade": "중립"
@@ -6093,5 +6093,33 @@
       "score": 49.7,
       "time": "23:00"
     }
-  ]
+  ],
+  "shortpos": {
+    "date": "2026-06-18",
+    "activity": 149,
+    "top_target": "SOXX",
+    "targets": [
+      {
+        "ticker": "SOXX",
+        "count": 23
+      },
+      {
+        "ticker": "USO",
+        "count": 11
+      },
+      {
+        "ticker": "XLE",
+        "count": 5
+      },
+      {
+        "ticker": "QQQ",
+        "count": 5
+      },
+      {
+        "ticker": "IONQ",
+        "count": 1
+      }
+    ],
+    "note": "개미가 가장 많이 하락 베팅하는 종목 — 검증된 매수 신호 아님, 군중심리 참고용"
+  }
 }

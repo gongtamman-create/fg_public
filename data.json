@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T06:35:03+09:00",
+  "updated_at": "2026-06-19T06:40:03+09:00",
   "current": {
     "date": "2026-06-18",
     "score": 55.3,
@@ -6095,30 +6095,22 @@
     }
   ],
   "shortpos": {
-    "date": "2026-06-18",
-    "activity": 1980,
+    "date": "2026-06-19",
+    "activity": 250,
     "shorts": [
       {
         "ticker": "SOXX",
-        "count": 23
+        "count": 11
       },
       {
-        "ticker": "IONQ",
+        "ticker": "USO",
         "count": 1
       }
     ],
     "longs": [
       {
-        "ticker": "USO",
-        "count": 10
-      },
-      {
         "ticker": "XLE",
-        "count": 5
-      },
-      {
-        "ticker": "QQQ",
-        "count": 2
+        "count": 1
       }
     ],
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

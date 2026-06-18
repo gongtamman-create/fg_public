@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-06-18T23:30:03+09:00",
+  "updated_at": "2026-06-18T23:39:15+09:00",
   "current": {
     "date": "2026-06-18",
-    "score": 48.3,
+    "score": 46.5,
     "grade": "중립",
     "daily_score": 31.8,
     "hybrid_score": null,
@@ -10,12 +10,12 @@
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-06-18 23:00:23"
+    "realtime_time": "2026-06-18 23:30:23"
   },
   "nasdaq": {
-    "price": 26295.58,
-    "change": 273.92,
-    "change_pct": 1.05
+    "price": 26349.29,
+    "change": 327.63,
+    "change_pct": 1.26
   },
   "history": [
     {
@@ -5399,9 +5399,9 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 37.5,
+    "cnn_score": 37.3,
     "cnn_grade": "공포",
-    "our_score": 48.3,
+    "our_score": 46.5,
     "our_grade": "중립"
   },
   "action_detail": {
@@ -5902,10 +5902,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 59.8,
-      "time": "23:30"
-    },
-    {
       "score": 43.8,
       "time": "00:00"
     },
@@ -6092,16 +6088,19 @@
     {
       "score": 49.7,
       "time": "23:00"
+    },
+    {
+      "score": 52.9,
+      "time": "23:30"
     }
   ],
   "shortpos": {
     "date": "2026-06-18",
-    "activity": 149,
-    "top_target": "SOXX",
-    "targets": [
+    "activity": 251,
+    "shorts": [
       {
         "ticker": "SOXX",
-        "count": 5
+        "count": 6
       },
       {
         "ticker": "QQQ",
@@ -6110,12 +6109,18 @@
       {
         "ticker": "IONQ",
         "count": 1
+      }
+    ],
+    "longs": [
+      {
+        "ticker": "XLE",
+        "count": 3
       },
       {
         "ticker": "USO",
-        "count": 1
+        "count": 2
       }
     ],
-    "note": "개미가 가장 많이 하락 베팅하는 종목 — 검증된 매수 신호 아님, 군중심리 참고용"
+    "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   }
 }

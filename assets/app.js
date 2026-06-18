@@ -708,35 +708,36 @@
     }
   }
 
-  // 개미 숏 군중 관찰 — "지금 가장 많이 하락 베팅(숏)되는 종목".
-  // ⚠ 검증된 매수 신호 아님(백테스트 누적 중). 군중심리 관찰 데이터만. 성과 숫자/출처 노출 없음.
+  // 개미 베팅 지형 관찰 — 종목별 순숏(하락 베팅) vs 순롱(상승 베팅).
+  // ⚠ 검증된 신호 아님(백테스트 누적 중). 군중심리 관찰 데이터만. 성과 숫자/출처 노출 없음.
   function renderShortpos(sp) {
     const sec = $("#shortpos-section");
     if (!sec) return;
-    if (!sp || !Array.isArray(sp.targets) || sp.targets.length === 0) {
+    const shorts = (sp && Array.isArray(sp.shorts)) ? sp.shorts : [];
+    const longs = (sp && Array.isArray(sp.longs)) ? sp.longs : [];
+    if (shorts.length === 0 && longs.length === 0) {
       sec.style.display = "none";
       return;
     }
     sec.style.display = "";
     const sub = $("#shortpos-sub");
-    if (sub) sub.textContent = `${sp.date} · 개미 숏 군중 ${sp.activity || 0}건 언급 기준`;
-    const maxC = Math.max(...sp.targets.map((t) => t.count || 0), 1);
-    const list = $("#shortpos-list");
-    if (list) {
-      list.innerHTML = sp.targets.map((t, i) => {
-        const pct = Math.round(((t.count || 0) / maxC) * 100);
-        const lead = i === 0 ? "🔥 " : "";
-        return `<div style="display:flex;align-items:center;gap:8px;margin:6px 0;">
-          <span class="mono" style="width:64px;font-weight:700;color:${i === 0 ? "#FF6D00" : "#bbb"};">${lead}${t.ticker}</span>
-          <div style="flex:1;height:14px;background:#1a1a2e;border-radius:3px;overflow:hidden;">
-            <div style="width:${pct}%;height:100%;background:${i === 0 ? "#FF6D00" : "#445"};border-radius:3px;"></div>
-          </div>
-          <span class="mono" style="width:40px;text-align:right;color:#888;font-size:12px;">${t.count}회</span>
-        </div>`;
-      }).join("");
-    }
+    if (sub) sub.textContent = `${sp.date} · 개미 베팅 ${sp.activity || 0}건 언급 기준`;
+    const maxAll = Math.max(1, ...shorts.map((t) => t.count || 0), ...longs.map((t) => t.count || 0));
+    const rows = (arr, color) => arr.map((t, i) => {
+      const pct = Math.round(((t.count || 0) / maxAll) * 100);
+      const lead = i === 0 ? "🔥 " : "";
+      return `<div style="display:flex;align-items:center;gap:6px;margin:5px 0;">
+        <span class="mono" style="width:56px;font-weight:700;color:${i === 0 ? color : "#bbb"};font-size:13px;">${lead}${t.ticker}</span>
+        <div style="flex:1;height:12px;background:#1a1a2e;border-radius:3px;overflow:hidden;">
+          <div style="width:${pct}%;height:100%;background:${color};border-radius:3px;opacity:${i === 0 ? 1 : 0.6};"></div>
+        </div>
+        <span class="mono" style="width:28px;text-align:right;color:#888;font-size:11px;">${t.count}</span>
+      </div>`;
+    }).join("") || '<div style="color:#666;font-size:12px;">—</div>';
+    if ($("#shortpos-short-list")) $("#shortpos-short-list").innerHTML = rows(shorts, "#FF6D00");
+    if ($("#shortpos-long-list")) $("#shortpos-long-list").innerHTML = rows(longs, "#00C853");
     const note = $("#shortpos-note");
-    if (note) note.textContent = "※ 개미 투자자들이 가장 많이 하락 베팅(숏)하는 종목 빈도. 많이 몰릴수록 역발상(스퀴즈) 후보로 회자되나, 검증된 매수 신호는 아닙니다 — 군중심리 참고용.";
+    if (note) note.textContent = "※ 개미 투자자들의 순(純) 베팅 방향 — 숏(하락)에서 빼고 롱(상승)에서 더한 순포지션. 쏠릴수록 역발상 후보로 회자되나, 검증된 신호는 아닙니다 — 군중심리 참고용.";
   }
 
   function initBtTabs() {

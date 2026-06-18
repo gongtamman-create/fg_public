@@ -170,6 +170,9 @@
     renderBacktest(d.backtest, 20);
     initBtTabs();
 
+    // 숏 군중 (개미 하락 베팅 관찰)
+    renderShortpos(d.shortpos);
+
     // 달력
     calendarMonth = c.date.slice(0, 7);
     renderCalendar();
@@ -703,6 +706,37 @@
     if (!zones.length) {
       el.innerHTML = '<div style="color:#6e6e8a;font-size:13px;text-align:center;padding:16px;">데이터 부족</div>';
     }
+  }
+
+  // 개미 숏 군중 관찰 — "지금 가장 많이 하락 베팅(숏)되는 종목".
+  // ⚠ 검증된 매수 신호 아님(백테스트 누적 중). 군중심리 관찰 데이터만. 성과 숫자/출처 노출 없음.
+  function renderShortpos(sp) {
+    const sec = $("#shortpos-section");
+    if (!sec) return;
+    if (!sp || !Array.isArray(sp.targets) || sp.targets.length === 0) {
+      sec.style.display = "none";
+      return;
+    }
+    sec.style.display = "";
+    const sub = $("#shortpos-sub");
+    if (sub) sub.textContent = `${sp.date} · 개미 숏 군중 ${sp.activity || 0}건 언급 기준`;
+    const maxC = Math.max(...sp.targets.map((t) => t.count || 0), 1);
+    const list = $("#shortpos-list");
+    if (list) {
+      list.innerHTML = sp.targets.map((t, i) => {
+        const pct = Math.round(((t.count || 0) / maxC) * 100);
+        const lead = i === 0 ? "🔥 " : "";
+        return `<div style="display:flex;align-items:center;gap:8px;margin:6px 0;">
+          <span class="mono" style="width:64px;font-weight:700;color:${i === 0 ? "#FF6D00" : "#bbb"};">${lead}${t.ticker}</span>
+          <div style="flex:1;height:14px;background:#1a1a2e;border-radius:3px;overflow:hidden;">
+            <div style="width:${pct}%;height:100%;background:${i === 0 ? "#FF6D00" : "#445"};border-radius:3px;"></div>
+          </div>
+          <span class="mono" style="width:40px;text-align:right;color:#888;font-size:12px;">${t.count}회</span>
+        </div>`;
+      }).join("");
+    }
+    const note = $("#shortpos-note");
+    if (note) note.textContent = "※ 개미 투자자들이 가장 많이 하락 베팅(숏)하는 종목 빈도. 많이 몰릴수록 역발상(스퀴즈) 후보로 회자되나, 검증된 매수 신호는 아닙니다 — 군중심리 참고용.";
   }
 
   function initBtTabs() {

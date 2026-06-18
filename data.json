@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T23:20:19+09:00",
+  "updated_at": "2026-06-18T23:25:04+09:00",
   "current": {
     "date": "2026-06-18",
     "score": 48.3,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-06-18 23:00:23"
   },
   "nasdaq": {
-    "price": 26367.5,
-    "change": 345.84,
-    "change_pct": 1.33
+    "price": 26375.96,
+    "change": 354.29,
+    "change_pct": 1.36
   },
   "history": [
     {
@@ -5399,7 +5399,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 37.1,
+    "cnn_score": 37.5,
     "cnn_grade": "공포",
     "our_score": 48.3,
     "our_grade": "중립"
@@ -6101,22 +6101,18 @@
     "targets": [
       {
         "ticker": "SOXX",
-        "count": 23
-      },
-      {
-        "ticker": "USO",
-        "count": 11
-      },
-      {
-        "ticker": "XLE",
         "count": 5
       },
       {
         "ticker": "QQQ",
-        "count": 5
+        "count": 1
       },
       {
         "ticker": "IONQ",
+        "count": 1
+      },
+      {
+        "ticker": "USO",
         "count": 1
       }
     ],

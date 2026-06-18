@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T23:55:03+09:00",
+  "updated_at": "2026-06-19T00:00:03+09:00",
   "current": {
     "date": "2026-06-18",
     "score": 46.5,
@@ -7,14 +7,14 @@
     "daily_score": 31.8,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "neutral",
-    "signal_label": "관망 (공포 접근)",
+    "signal": "buy_wait",
+    "signal_label": "매수 대기",
     "realtime": true,
     "realtime_time": "2026-06-18 23:30:23"
   },
   "nasdaq": {
-    "price": 26373.71,
-    "change": 352.05,
+    "price": 26372.52,
+    "change": 350.86,
     "change_pct": 1.35
   },
   "history": [
@@ -5399,16 +5399,16 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 36.6,
+    "cnn_score": 37.1,
     "cnn_grade": "공포",
     "our_score": 46.5,
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "관망 (공포 접근)",
-    "action_key": "neutral",
-    "confidence": "-",
-    "reason": "FG 32으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "action": "매수 대기",
+    "action_key": "buy_wait",
+    "confidence": "개장 확인 필요",
+    "reason": "공포 구간 (FG 32) [휴장] — 개장 후 기술적 지표 확인 필요",
     "proximity": {
       "buy": {
         "fg_gap": 8.2,
@@ -5429,13 +5429,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "48.9",
-        "status": "중립"
+        "value": "48.9 (전일)",
+        "status": "중립 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-0.6%",
-        "status": "정상"
+        "value": "-0.6% (전일)",
+        "status": "정상 (휴장)"
       }
     ],
     "similar_history": {
@@ -6094,5 +6094,33 @@
       "time": "23:30"
     }
   ],
-  "shortpos": null
+  "shortpos": {
+    "date": "2026-06-18",
+    "activity": 1967,
+    "shorts": [
+      {
+        "ticker": "SOXX",
+        "count": 22
+      },
+      {
+        "ticker": "IONQ",
+        "count": 1
+      }
+    ],
+    "longs": [
+      {
+        "ticker": "USO",
+        "count": 9
+      },
+      {
+        "ticker": "XLE",
+        "count": 5
+      },
+      {
+        "ticker": "QQQ",
+        "count": 2
+      }
+    ],
+    "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
+  }
 }

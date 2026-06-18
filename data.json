@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T23:50:02+09:00",
+  "updated_at": "2026-06-18T23:55:03+09:00",
   "current": {
     "date": "2026-06-18",
     "score": 46.5,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-06-18 23:30:23"
   },
   "nasdaq": {
-    "price": 26389.7,
-    "change": 368.04,
-    "change_pct": 1.41
+    "price": 26373.71,
+    "change": 352.05,
+    "change_pct": 1.35
   },
   "history": [
     {
@@ -6094,33 +6094,5 @@
       "time": "23:30"
     }
   ],
-  "shortpos": {
-    "date": "2026-06-18",
-    "activity": 1966,
-    "shorts": [
-      {
-        "ticker": "SOXX",
-        "count": 22
-      },
-      {
-        "ticker": "IONQ",
-        "count": 1
-      }
-    ],
-    "longs": [
-      {
-        "ticker": "USO",
-        "count": 9
-      },
-      {
-        "ticker": "XLE",
-        "count": 5
-      },
-      {
-        "ticker": "QQQ",
-        "count": 2
-      }
-    ],
-    "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
-  }
+  "shortpos": null
 }

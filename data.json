@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T00:36:43+09:00",
+  "updated_at": "2026-06-19T00:40:08+09:00",
   "current": {
     "date": "2026-06-18",
     "score": 44.1,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-06-19 00:30:23"
   },
   "nasdaq": {
-    "price": 26302.41,
-    "change": 280.75,
-    "change_pct": 1.08
+    "price": 26294.81,
+    "change": 273.15,
+    "change_pct": 1.05
   },
   "history": [
     {
@@ -6095,18 +6095,30 @@
     }
   ],
   "shortpos": {
-    "date": "2026-06-19",
-    "activity": 53,
+    "date": "2026-06-18",
+    "activity": 1980,
     "shorts": [
       {
-        "ticker": "QQQ",
+        "ticker": "SOXX",
+        "count": 23
+      },
+      {
+        "ticker": "IONQ",
         "count": 1
       }
     ],
     "longs": [
       {
         "ticker": "USO",
-        "count": 1
+        "count": 10
+      },
+      {
+        "ticker": "XLE",
+        "count": 5
+      },
+      {
+        "ticker": "QQQ",
+        "count": 2
       }
     ],
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

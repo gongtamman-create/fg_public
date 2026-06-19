@@ -736,8 +736,44 @@
     }).join("") || '<div style="color:#666;font-size:12px;">—</div>';
     if ($("#shortpos-short-list")) $("#shortpos-short-list").innerHTML = rows(shorts, "#FF6D00");
     if ($("#shortpos-long-list")) $("#shortpos-long-list").innerHTML = rows(longs, "#00C853");
+    renderShortposTrend(sp);
     const note = $("#shortpos-note");
     if (note) note.textContent = "※ 개미 투자자들의 순(純) 베팅 방향 — 숏(하락)에서 빼고 롱(상승)에서 더한 순포지션. 쏠릴수록 역발상 후보로 회자되나, 검증된 신호는 아닙니다 — 군중심리 참고용.";
+  }
+
+  function renderShortposTrend(sp) {
+    const wrap = $("#shortpos-trend-wrap");
+    const svg = $("#shortpos-trend-svg");
+    if (!wrap || !svg) return;
+    const trend = (sp && Array.isArray(sp.trend)) ? sp.trend : [];
+    if (trend.length < 3) { wrap.style.display = "none"; return; }
+    wrap.style.display = "";
+    const sTk = sp.trendShortTicker || "숏";
+    const lTk = sp.trendLongTicker || "롱";
+    const title = $("#shortpos-trend-title");
+    if (title) title.innerHTML = `최근 ${trend.length}일 쏠림 추이 · ` +
+      `<span style="color:#FF6D00;">▲ ${sTk} 숏</span> / <span style="color:#00C853;">▼ ${lTk} 롱</span>`;
+    const W = 520, H = 90, mid = H / 2, n = trend.length;
+    const gap = 1.5;
+    const bw = Math.max(2, (W - gap * (n - 1)) / n);
+    const maxV = Math.max(1, ...trend.map((t) => Math.max(t.short || 0, t.long || 0)));
+    const sc = (mid - 6) / maxV; // 위/아래 여유 6px
+    let html = `<line x1="0" y1="${mid}" x2="${W}" y2="${mid}" stroke="#333" stroke-width="1"/>`;
+    trend.forEach((t, i) => {
+      const x = i * (bw + gap);
+      const sh = (t.short || 0) * sc;
+      const lh = (t.long || 0) * sc;
+      if (sh > 0) html += `<rect x="${x.toFixed(1)}" y="${(mid - sh).toFixed(1)}" width="${bw.toFixed(1)}" height="${sh.toFixed(1)}" fill="#FF6D00" opacity="0.85"/>`;
+      if (lh > 0) html += `<rect x="${x.toFixed(1)}" y="${mid.toFixed(1)}" width="${bw.toFixed(1)}" height="${lh.toFixed(1)}" fill="#00C853" opacity="0.85"/>`;
+    });
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.setAttribute("preserveAspectRatio", "none");
+    svg.innerHTML = html;
+    const axis = $("#shortpos-trend-axis");
+    if (axis) {
+      const fmt = (d) => (d || "").slice(5); // MM-DD
+      axis.innerHTML = `<span>${fmt(trend[0].date)}</span><span>${fmt(trend[n - 1].date)}</span>`;
+    }
   }
 
   function initBtTabs() {

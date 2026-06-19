@@ -736,9 +736,33 @@
     }).join("") || '<div style="color:#666;font-size:12px;">—</div>';
     if ($("#shortpos-short-list")) $("#shortpos-short-list").innerHTML = rows(shorts, "#FF6D00");
     if ($("#shortpos-long-list")) $("#shortpos-long-list").innerHTML = rows(longs, "#00C853");
+    renderShortposStrength(sp);
     renderShortposTrend(sp);
     const note = $("#shortpos-note");
     if (note) note.textContent = "※ 개미 투자자들의 순(純) 베팅 방향 — 숏(하락)에서 빼고 롱(상승)에서 더한 순포지션. 쏠릴수록 역발상 후보로 회자되나, 검증된 신호는 아닙니다 — 군중심리 참고용.";
+  }
+
+  function renderShortposStrength(sp) {
+    const wrap = $("#shortpos-strength");
+    if (!wrap) return;
+    const st = sp && sp.strength;
+    if (!st || typeof st.score !== "number") { wrap.style.display = "none"; return; }
+    wrap.style.display = "";
+    const score = Math.max(0, Math.min(100, st.score));
+    // 색: 약함(회색)→중간(주황)→강함(빨강)
+    const color = score >= 80 ? "#FF1744" : score >= 50 ? "#FF6D00" : "#888";
+    const tier = score >= 80 ? "역대급 쏠림" : score >= 50 ? "평균 이상" : "평이";
+    const lbl = $("#shortpos-str-label");
+    if (lbl) lbl.textContent = `🔥 ${st.ticker || ""} 숏 쏠림 강도`;
+    const sc = $("#shortpos-str-score");
+    if (sc) { sc.textContent = `${score} / 100`; sc.style.color = color; }
+    const bar = $("#shortpos-str-bar");
+    if (bar) { bar.style.width = score + "%"; bar.style.background = color; }
+    const sub = $("#shortpos-str-sub");
+    if (sub) {
+      const heat = (typeof st.heatZ === "number" && st.heatZ > 0) ? `과열 +${st.heatZ}σ · ` : "";
+      sub.textContent = `${tier} · 오늘 글의 ${st.share}%가 ${st.ticker} 숏 · ${heat}글당 댓글 ${st.repPerPost} (활동량 보정·역대 백분위)`;
+    }
   }
 
   function renderShortposTrend(sp) {

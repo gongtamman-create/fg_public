@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T10:50:03+09:00",
+  "updated_at": "2026-06-19T10:58:45+09:00",
   "current": {
     "date": "2026-06-19",
     "score": 28.7,
@@ -6346,6 +6346,13 @@
     ],
     "trendShortTicker": "SOXX",
     "trendLongTicker": "XLE",
+    "strength": {
+      "score": 96,
+      "share": 4.4,
+      "heatZ": -1.9,
+      "repPerPost": 3.4,
+      "ticker": "SOXX"
+    },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   }
 }

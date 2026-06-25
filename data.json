@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-06-26T07:00:03+09:00",
+  "updated_at": "2026-06-26T07:05:02+09:00",
   "current": {
-    "date": "2026-06-25",
-    "score": 43.3,
-    "grade": "중립",
-    "daily_score": 7.3,
+    "date": "2026-06-26",
+    "score": 30.1,
+    "grade": "공포",
+    "daily_score": 23.0,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "buy_wait",
     "signal_label": "매수 대기",
     "realtime": true,
-    "realtime_time": "2026-06-26 06:30:21"
+    "realtime_time": "2026-06-26 07:00:17"
   },
   "nasdaq": {
     "price": 25358.6,
@@ -18,13 +18,6 @@
     "change_pct": -0.46
   },
   "history": [
-    {
-      "date": "2026-03-28",
-      "score": 25.7,
-      "hybrid": 17.1,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-03-29",
       "score": 19.5,
@@ -644,6 +637,13 @@
     {
       "date": "2026-06-25",
       "score": 7.3,
+      "hybrid": null,
+      "nasdaq_close": 25358.6,
+      "nasdaq_pct": -0.46
+    },
+    {
+      "date": "2026-06-26",
+      "score": 23.0,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5341,17 +5341,21 @@
     {
       "date": "2026-06-25",
       "score": 7.3
+    },
+    {
+      "date": "2026-06-26",
+      "score": 23.0
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-06-24",
-    "trading_days": 808,
+    "period": "2022-01-03 ~ 2026-06-25",
+    "trading_days": 809,
     "zones": [
       {
         "name": "매수 시그널",
-        "trades": 38,
-        "return": 4.55,
-        "win_rate": 71.1,
+        "trades": 39,
+        "return": 4.4,
+        "win_rate": 69.2,
         "hold_days": 20
       },
       {
@@ -5405,9 +5409,9 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 88,
-        "return": 3.5,
-        "win_rate": 76.0,
+        "trades": 89,
+        "return": 3.4,
+        "win_rate": 75.0,
         "hold_days": 20
       },
       {
@@ -5429,59 +5433,54 @@
   "cnn_comparison": {
     "cnn_score": 25.5,
     "cnn_grade": "공포",
-    "our_score": 43.3,
-    "our_grade": "중립"
+    "our_score": 30.1,
+    "our_grade": "공포"
   },
   "action_detail": {
     "action": "매수 대기",
     "action_key": "buy_wait",
     "confidence": "~68%",
-    "reason": "공포 구간 (FG 7) — RSI 40이(가) 35 이하로 내려오면 매수",
+    "reason": "공포 구간 (FG 23) — RSI 38이(가) 35 이하로 내려오면 매수",
     "proximity": {
       "buy": {
-        "fg_gap": 32.7,
-        "rsi_gap": -4.8,
-        "pct": 100
+        "fg_gap": 17.0,
+        "rsi_gap": -3.3,
+        "pct": 96
       },
       "sell": {
-        "fg_gap": -67.7,
-        "rsi_gap": -35.2,
+        "fg_gap": -52.0,
+        "rsi_gap": -36.7,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "7.3",
+        "value": "23.0",
         "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "39.8",
+        "value": "38.3",
         "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "-1.8%",
-        "status": "정상"
+        "value": "-2.2%",
+        "status": "급락"
       }
     ],
     "similar_history": {
-      "count": 10,
-      "win_5d": 55.6,
-      "avg_5d": 0.15,
-      "win_10d": 55.6,
-      "avg_10d": 0.71,
-      "win_20d": 66.7,
-      "avg_20d": 4.91
+      "count": 45,
+      "win_5d": 60.5,
+      "avg_5d": 0.8,
+      "win_10d": 65.1,
+      "avg_10d": 1.53,
+      "win_20d": 61.0,
+      "avg_20d": 2.15
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-03-28",
-      "composite": 60,
-      "signal": "strong_buy"
-    },
     {
       "date": "2026-03-29",
       "composite": 60,
@@ -5924,15 +5923,16 @@
     },
     {
       "date": "2026-06-25",
-      "composite": 47.1,
+      "composite": 45.1,
+      "signal": "weak_buy"
+    },
+    {
+      "date": "2026-06-26",
+      "composite": 41.1,
       "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 14.4,
-      "time": "07:00"
-    },
     {
       "score": 22.8,
       "time": "07:30"
@@ -6120,6 +6120,10 @@
     {
       "score": 33.0,
       "time": "06:30"
+    },
+    {
+      "score": 6.6,
+      "time": "07:00"
     }
   ],
   "shortpos": {

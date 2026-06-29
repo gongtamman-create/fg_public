@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-06-30T07:00:03+09:00",
+  "updated_at": "2026-06-30T07:05:03+09:00",
   "current": {
-    "date": "2026-06-29",
-    "score": 41.5,
-    "grade": "중립",
-    "daily_score": 36.1,
+    "date": "2026-06-30",
+    "score": 35.6,
+    "grade": "공포",
+    "daily_score": 41.8,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "neutral",
+    "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-06-30 06:30:20"
+    "realtime_time": "2026-06-30 07:00:21"
   },
   "nasdaq": {
     "price": 25820.14,
@@ -18,13 +18,6 @@
     "change_pct": 2.07
   },
   "history": [
-    {
-      "date": "2026-04-01",
-      "score": 36.6,
-      "hybrid": 33.0,
-      "nasdaq_close": 21840.95,
-      "nasdaq_pct": 1.16
-    },
     {
       "date": "2026-04-02",
       "score": 23.2,
@@ -644,6 +637,13 @@
     {
       "date": "2026-06-29",
       "score": 36.1,
+      "hybrid": null,
+      "nasdaq_close": 25820.14,
+      "nasdaq_pct": 2.07
+    },
+    {
+      "date": "2026-06-30",
+      "score": 41.8,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5357,17 +5357,21 @@
     {
       "date": "2026-06-29",
       "score": 36.1
+    },
+    {
+      "date": "2026-06-30",
+      "score": 41.8
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-06-26",
-    "trading_days": 810,
+    "period": "2022-01-03 ~ 2026-06-29",
+    "trading_days": 811,
     "zones": [
       {
         "name": "매수 시그널",
-        "trades": 39,
-        "return": 4.39,
-        "win_rate": 69.2,
+        "trades": 40,
+        "return": 4.35,
+        "win_rate": 70.0,
         "hold_days": 20
       },
       {
@@ -5445,59 +5449,54 @@
   "cnn_comparison": {
     "cnn_score": 27.0,
     "cnn_grade": "공포",
-    "our_score": 41.5,
-    "our_grade": "중립"
+    "our_score": 35.6,
+    "our_grade": "공포"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "~68%",
-    "reason": "공포 구간 (FG 36) — RSI 38이(가) 35 이하로 내려오면 매수",
+    "action": "관망 (공포 접근)",
+    "action_key": "neutral",
+    "confidence": "-",
+    "reason": "FG 42으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": 3.9,
-        "rsi_gap": -2.5,
-        "pct": 55
+        "fg_gap": -1.8,
+        "rsi_gap": -13.6,
+        "pct": 49
       },
       "sell": {
-        "fg_gap": -38.9,
-        "rsi_gap": -37.5,
+        "fg_gap": -33.2,
+        "rsi_gap": -26.4,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "36.1",
-        "status": "매수 구간"
+        "value": "41.8",
+        "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "37.5",
+        "value": "48.6",
         "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "-2.1%",
-        "status": "급락"
+        "value": "-0.4%",
+        "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 105,
-      "win_5d": 50.5,
-      "avg_5d": 0.22,
-      "win_10d": 57.8,
-      "avg_10d": 1.21,
-      "win_20d": 58.0,
-      "avg_20d": 1.67
+      "count": 157,
+      "win_5d": 52.6,
+      "avg_5d": -0.16,
+      "win_10d": 55.5,
+      "avg_10d": 0.2,
+      "win_20d": 61.8,
+      "avg_20d": 1.28
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-04-01",
-      "composite": 3.4,
-      "signal": "neutral"
-    },
     {
       "date": "2026-04-02",
       "composite": 15.0,
@@ -5940,15 +5939,16 @@
     },
     {
       "date": "2026-06-29",
-      "composite": 14.9,
+      "composite": 7.8,
+      "signal": "neutral"
+    },
+    {
+      "date": "2026-06-30",
+      "composite": -2.7,
       "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 59.3,
-      "time": "07:00"
-    },
     {
       "score": 31.1,
       "time": "07:30"
@@ -6136,6 +6136,10 @@
     {
       "score": 36.1,
       "time": "06:30"
+    },
+    {
+      "score": 27.0,
+      "time": "07:00"
     }
   ],
   "shortpos": {

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T19:30:03+09:00",
+  "updated_at": "2026-06-29T19:35:03+09:00",
   "current": {
     "date": "2026-06-29",
     "score": 18.1,
@@ -10,7 +10,7 @@
     "signal": "buy_wait",
     "signal_label": "매수 대기",
     "realtime": true,
-    "realtime_time": "2026-06-29 19:00:17"
+    "realtime_time": "2026-06-29 19:30:23"
   },
   "nasdaq": {
     "price": 25297.62,
@@ -5946,10 +5946,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 46.1,
-      "time": "19:30"
-    },
-    {
       "score": 27.1,
       "time": "20:00"
     },
@@ -6136,6 +6132,10 @@
     {
       "score": 14.5,
       "time": "19:00"
+    },
+    {
+      "score": 20.3,
+      "time": "19:30"
     }
   ],
   "shortpos": {

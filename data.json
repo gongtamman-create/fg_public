@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-05T23:55:06+09:00",
+  "updated_at": "2026-07-06T00:00:03+09:00",
   "current": {
     "date": "2026-07-05",
     "score": 30.4,
@@ -5476,7 +5476,7 @@
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 41으로 공포 접근 중 [휴장] — 개장 후 추이 확인",
+    "reason": "FG 41으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
         "fg_gap": -0.8,
@@ -5497,13 +5497,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "48.5 (전일)",
-        "status": "중립 (휴장)"
+        "value": "48.5",
+        "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "-0.3% (전일)",
-        "status": "정상 (휴장)"
+        "value": "-0.3%",
+        "status": "정상"
       }
     ],
     "similar_history": {

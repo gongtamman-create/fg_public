@@ -168,7 +168,7 @@
 
   function renderNick() {
     chatNick.textContent = myNick;
-    chatNick.style.color = isAdmin ? "#E8331A" : nickColor(myNick);
+    chatNick.style.color = isAdmin ? "#E10600" : nickColor(myNick);
   }
 
   function nickColor(nick) {
@@ -211,8 +211,8 @@
       <div style="font-size:24px;margin-bottom:12px;">🪳 살충제 로그인</div>
       <input id="adm-email" type="email" placeholder="이메일" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #333;background:#0d1117;color:#e6edf3;box-sizing:border-box;">
       <input id="adm-pw" type="password" placeholder="비밀번호" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #333;background:#0d1117;color:#e6edf3;box-sizing:border-box;">
-      <button id="adm-btn" style="width:100%;padding:10px;margin-top:8px;border-radius:8px;border:none;background:#E8331A;color:#fff;font-weight:700;cursor:pointer;">로그인</button>
-      <div id="adm-msg" style="margin-top:8px;font-size:12px;color:#FF6A1A;"></div>
+      <button id="adm-btn" style="width:100%;padding:10px;margin-top:8px;border-radius:8px;border:none;background:#E10600;color:#fff;font-weight:700;cursor:pointer;">로그인</button>
+      <div id="adm-msg" style="margin-top:8px;font-size:12px;color:#FFAB00;"></div>
       <button id="adm-close" style="margin-top:8px;background:none;border:none;color:#6e6e8a;cursor:pointer;font-size:12px;">닫기</button>
     </div>`;
     document.body.appendChild(overlay);
@@ -224,7 +224,7 @@
       const msg = overlay.querySelector("#adm-msg");
       try {
         await firebase.auth().signInWithEmailAndPassword(email, pw);
-        msg.style.color = "#22C55E";
+        msg.style.color = "#00C853";
         msg.textContent = "살충 준비 완료. 새로고침합니다...";
         setTimeout(() => { location.href = location.pathname; }, 1000);
       } catch (e) {
@@ -396,7 +396,7 @@
     const nickSpan = document.createElement("span");
     nickSpan.className = "chat-msg-nick";
     nickSpan.textContent = msg.nick;
-    nickSpan.style.color = msg.admin ? "#E8331A" : nickColor(msg.nick);
+    nickSpan.style.color = msg.admin ? "#E10600" : nickColor(msg.nick);
 
     // 관리자: 닉 클릭 시 살충 버튼
     if (isAdmin && !msg.admin && msg.ip) {

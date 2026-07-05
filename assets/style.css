@@ -10,12 +10,13 @@
   --card-border: #1e1e3a;
   --text: #e0e0ef;
   --dim: #6e6e8a;
-  /* 액센트 3색 — 공유 디자인 토큰 값 정렬 (2026-07-05): green/red/orange.
-     yellow(#FFD600)·blue는 이 페이지 고유 유지. */
-  --green: #22C55E;
-  --green-dark: #16A34A;
-  --red: #E8331A;
-  --orange: #FF6A1A;
+  /* 액센트 3색 — 공유 디자인 토큰 값 정렬 (2026-07-05 BLACKSITE 개정):
+     green→go #00C853 · red→crit #E10600 · orange→warn #FFAB00 (strike=crit 통합에
+     따른 의미 매핑 — 사령관 결정). yellow(#FFD600)·blue는 이 페이지 고유 유지. */
+  --green: #00C853;
+  --green-dark: #009624;
+  --red: #E10600;
+  --orange: #FFAB00;
   --yellow: #FFD600;
   --blue: #448aff;
   --radius: 14px;
@@ -440,8 +441,8 @@ a:hover { text-decoration: underline; }
 }
 .chat-msg-text { color: var(--text); font-size: 13px; }
 .chat-msg-time { font-size: 10px; color: #555; margin-left: 6px; }
-.chat-msg-admin .chat-msg-nick { color: #E8331A !important; }
-.chat-msg-admin .chat-msg-text { color: #E8331A; }
+.chat-msg-admin .chat-msg-nick { color: #E10600 !important; }
+.chat-msg-admin .chat-msg-text { color: #E10600; }
 .chat-banned {
   flex: 1;
   display: flex;
@@ -494,7 +495,7 @@ a:hover { text-decoration: underline; }
 .chat-send:disabled { opacity: 0.3; cursor: not-allowed; }
 .chat-admin-action {
   display: inline-block;
-  background: #E8331A;
+  background: #E10600;
   color: #fff;
   font-size: 10px;
   font-weight: 700;

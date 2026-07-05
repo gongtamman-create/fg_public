@@ -17,20 +17,20 @@
      ════════════════════════════════════════ */
   function getGrade(score) {
     if (score == null) return { label: "--", color: "#6e6e8a" };
-    if (score <= 20) return { label: "극단적 공포", color: "#E8331A" };
-    if (score <= 40) return { label: "공포", color: "#FF6A1A" };
+    if (score <= 20) return { label: "극단적 공포", color: "#E10600" };
+    if (score <= 40) return { label: "공포", color: "#FFAB00" };
     if (score <= 60) return { label: "중립", color: "#FFD600" };
-    if (score <= 80) return { label: "탐욕", color: "#22C55E" };
-    return { label: "극단적 탐욕", color: "#16A34A" };
+    if (score <= 80) return { label: "탐욕", color: "#00C853" };
+    return { label: "극단적 탐욕", color: "#009624" };
   }
 
   function getSignal(score) {
     if (score == null) return { text: "데이터 없음", color: "#6e6e8a", border: "#1e1e3a" };
-    if (score <= 20) return { text: "🚨 강력 매수", color: "#E8331A", border: "#E8331A" };
-    if (score <= 30) return { text: "📢 매수", color: "#22C55E", border: "#22C55E" };
-    if (score <= 35) return { text: "👀 매수 대기", color: "#22C55E", border: "#1e3a1e" };
-    if (score >= 80) return { text: "⚠️ 극단적 과열", color: "#E8331A", border: "#E8331A" };
-    if (score >= 65) return { text: "📊 경계", color: "#FF6A1A", border: "#FF6A1A" };
+    if (score <= 20) return { text: "🚨 강력 매수", color: "#E10600", border: "#E10600" };
+    if (score <= 30) return { text: "📢 매수", color: "#00C853", border: "#00C853" };
+    if (score <= 35) return { text: "👀 매수 대기", color: "#00C853", border: "#1e3a1e" };
+    if (score >= 80) return { text: "⚠️ 극단적 과열", color: "#E10600", border: "#E10600" };
+    if (score >= 65) return { text: "📊 경계", color: "#FFAB00", border: "#FFAB00" };
     return { text: "😐 관망", color: "#FFD600", border: "#3a3a1e" };
   }
 
@@ -604,7 +604,7 @@
         return { x, y };
       }).filter(Boolean);
       const hLine = hPath.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
-      html += `<path d="${hLine}" fill="none" stroke="#FF6A1A" stroke-width="1.5" stroke-dasharray="4 2" stroke-linejoin="round" opacity="0.7"/>`;
+      html += `<path d="${hLine}" fill="none" stroke="#FFAB00" stroke-width="1.5" stroke-dasharray="4 2" stroke-linejoin="round" opacity="0.7"/>`;
     }
 
     // 인터랙션 영역 (투명 사각형)
@@ -734,8 +734,8 @@
         <span class="mono" style="width:28px;text-align:right;color:#888;font-size:11px;">${t.count}</span>
       </div>`;
     }).join("") || '<div style="color:#666;font-size:12px;">—</div>';
-    if ($("#shortpos-short-list")) $("#shortpos-short-list").innerHTML = rows(shorts, "#FF6A1A");
-    if ($("#shortpos-long-list")) $("#shortpos-long-list").innerHTML = rows(longs, "#16A34A");
+    if ($("#shortpos-short-list")) $("#shortpos-short-list").innerHTML = rows(shorts, "#FFAB00");
+    if ($("#shortpos-long-list")) $("#shortpos-long-list").innerHTML = rows(longs, "#009624");
     renderShortposStrength(sp);
     renderShortposTrend(sp);
     const note = $("#shortpos-note");
@@ -750,7 +750,7 @@
     wrap.style.display = "";
     const score = Math.max(0, Math.min(100, st.score));
     // 색: 약함(회색)→중간(주황)→강함(빨강)
-    const color = score >= 80 ? "#E8331A" : score >= 50 ? "#FF6A1A" : "#888";
+    const color = score >= 80 ? "#E10600" : score >= 50 ? "#FFAB00" : "#888";
     const tier = score >= 80 ? "역대급 쏠림" : score >= 50 ? "평균 이상" : "평이";
     const lbl = $("#shortpos-str-label");
     if (lbl) lbl.textContent = `🔥 ${st.ticker || ""} 숏 쏠림 강도`;
@@ -776,7 +776,7 @@
     const lTk = sp.trendLongTicker || "롱";
     const title = $("#shortpos-trend-title");
     if (title) title.innerHTML = `최근 ${trend.length}일 쏠림 추이 · ` +
-      `<span style="color:#FF6A1A;">▲ ${sTk} 숏</span> / <span style="color:#16A34A;">▼ ${lTk} 롱</span>`;
+      `<span style="color:#FFAB00;">▲ ${sTk} 숏</span> / <span style="color:#009624;">▼ ${lTk} 롱</span>`;
     const W = 520, H = 90, mid = H / 2, n = trend.length;
     const gap = 1.5;
     const bw = Math.max(2, (W - gap * (n - 1)) / n);
@@ -787,8 +787,8 @@
       const x = i * (bw + gap);
       const sh = (t.short || 0) * sc;
       const lh = (t.long || 0) * sc;
-      if (sh > 0) html += `<rect x="${x.toFixed(1)}" y="${(mid - sh).toFixed(1)}" width="${bw.toFixed(1)}" height="${sh.toFixed(1)}" fill="#FF6A1A" opacity="0.85"/>`;
-      if (lh > 0) html += `<rect x="${x.toFixed(1)}" y="${mid.toFixed(1)}" width="${bw.toFixed(1)}" height="${lh.toFixed(1)}" fill="#16A34A" opacity="0.85"/>`;
+      if (sh > 0) html += `<rect x="${x.toFixed(1)}" y="${(mid - sh).toFixed(1)}" width="${bw.toFixed(1)}" height="${sh.toFixed(1)}" fill="#FFAB00" opacity="0.85"/>`;
+      if (lh > 0) html += `<rect x="${x.toFixed(1)}" y="${mid.toFixed(1)}" width="${bw.toFixed(1)}" height="${lh.toFixed(1)}" fill="#009624" opacity="0.85"/>`;
     });
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     svg.setAttribute("preserveAspectRatio", "none");

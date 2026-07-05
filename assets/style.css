@@ -10,10 +10,12 @@
   --card-border: #1e1e3a;
   --text: #e0e0ef;
   --dim: #6e6e8a;
-  --green: #00E676;
-  --green-dark: #00C853;
-  --red: #FF1744;
-  --orange: #FF6D00;
+  /* 액센트 3색 — 공유 디자인 토큰 값 정렬 (2026-07-05): green/red/orange.
+     yellow(#FFD600)·blue는 이 페이지 고유 유지. */
+  --green: #22C55E;
+  --green-dark: #16A34A;
+  --red: #E8331A;
+  --orange: #FF6A1A;
   --yellow: #FFD600;
   --blue: #448aff;
   --radius: 14px;
@@ -438,8 +440,8 @@ a:hover { text-decoration: underline; }
 }
 .chat-msg-text { color: var(--text); font-size: 13px; }
 .chat-msg-time { font-size: 10px; color: #555; margin-left: 6px; }
-.chat-msg-admin .chat-msg-nick { color: #FF1744 !important; }
-.chat-msg-admin .chat-msg-text { color: #FF1744; }
+.chat-msg-admin .chat-msg-nick { color: #E8331A !important; }
+.chat-msg-admin .chat-msg-text { color: #E8331A; }
 .chat-banned {
   flex: 1;
   display: flex;
@@ -492,7 +494,7 @@ a:hover { text-decoration: underline; }
 .chat-send:disabled { opacity: 0.3; cursor: not-allowed; }
 .chat-admin-action {
   display: inline-block;
-  background: #FF1744;
+  background: #E8331A;
   color: #fff;
   font-size: 10px;
   font-weight: 700;

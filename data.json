@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T11:30:05+09:00",
+  "updated_at": "2026-07-07T11:35:05+09:00",
   "current": {
     "date": "2026-07-07",
     "score": 7.4,
@@ -10,7 +10,7 @@
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-07-07 11:00:28"
+    "realtime_time": "2026-07-07 11:30:24"
   },
   "nasdaq": {
     "price": 26121.16,
@@ -5978,10 +5978,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 2.3,
-      "time": "11:30"
-    },
-    {
       "score": 19.6,
       "time": "12:00"
     },
@@ -6168,6 +6164,10 @@
     {
       "score": 18.2,
       "time": "11:00"
+    },
+    {
+      "score": 2.0,
+      "time": "11:30"
     }
   ],
   "shortpos": {

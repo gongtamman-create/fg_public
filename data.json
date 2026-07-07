@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-07-07T13:00:35+09:00",
+  "updated_at": "2026-07-07T13:05:03+09:00",
   "current": {
     "date": "2026-07-07",
-    "score": 2.6,
+    "score": 13.2,
     "grade": "극단적 공포",
     "daily_score": 40.6,
     "hybrid_score": null,
@@ -10,12 +10,12 @@
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-07-07 12:30:36"
+    "realtime_time": "2026-07-07 13:02:03"
   },
   "nasdaq": {
-    "price": null,
-    "change": null,
-    "change_pct": null
+    "price": 26121.16,
+    "change": 288.49,
+    "change_pct": 1.12
   },
   "history": [
     {
@@ -5397,16 +5397,16 @@
     "zones": [
       {
         "name": "매수 시그널",
-        "trades": 46,
-        "return": 4.0,
-        "win_rate": 69.6,
+        "trades": 41,
+        "return": 4.35,
+        "win_rate": 70.7,
         "hold_days": 20
       },
       {
         "name": "과열 시그널",
-        "trades": 25,
-        "return": 0.85,
-        "win_rate": 48.0,
+        "trades": 19,
+        "return": 1.79,
+        "win_rate": 52.6,
         "hold_days": 20
       },
       {
@@ -5475,9 +5475,9 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": null,
-    "cnn_grade": null,
-    "our_score": 2.6,
+    "cnn_score": 43.9,
+    "cnn_grade": "공포",
+    "our_score": 13.2,
     "our_grade": "극단적 공포"
   },
   "action_detail": {
@@ -5527,12 +5527,12 @@
   "signal_chart": [
     {
       "date": "2026-04-09",
-      "composite": -6.3,
+      "composite": -5.3,
       "signal": "neutral"
     },
     {
       "date": "2026-04-10",
-      "composite": -6.7,
+      "composite": -5.7,
       "signal": "neutral"
     },
     {
@@ -5547,7 +5547,7 @@
     },
     {
       "date": "2026-04-13",
-      "composite": 27.8,
+      "composite": 23.6,
       "signal": "weak_buy"
     },
     {
@@ -5557,17 +5557,17 @@
     },
     {
       "date": "2026-04-15",
-      "composite": -25.6,
+      "composite": -21.8,
       "signal": "weak_sell"
     },
     {
       "date": "2026-04-16",
-      "composite": -19.0,
+      "composite": -16.1,
       "signal": "weak_sell"
     },
     {
       "date": "2026-04-17",
-      "composite": -19.0,
+      "composite": -16.1,
       "signal": "weak_sell"
     },
     {
@@ -5582,27 +5582,27 @@
     },
     {
       "date": "2026-04-20",
-      "composite": 21.3,
+      "composite": 18.1,
       "signal": "weak_buy"
     },
     {
       "date": "2026-04-21",
-      "composite": -3.2,
+      "composite": -2.7,
       "signal": "neutral"
     },
     {
       "date": "2026-04-22",
-      "composite": 16.7,
-      "signal": "weak_buy"
+      "composite": 14.2,
+      "signal": "neutral"
     },
     {
       "date": "2026-04-23",
-      "composite": -2.6,
+      "composite": -2.2,
       "signal": "neutral"
     },
     {
       "date": "2026-04-24",
-      "composite": -4.3,
+      "composite": -3.7,
       "signal": "neutral"
     },
     {
@@ -5617,7 +5617,7 @@
     },
     {
       "date": "2026-04-27",
-      "composite": -18.5,
+      "composite": -15.8,
       "signal": "weak_sell"
     },
     {
@@ -5627,7 +5627,7 @@
     },
     {
       "date": "2026-04-29",
-      "composite": 29.2,
+      "composite": 24.8,
       "signal": "weak_buy"
     },
     {
@@ -5637,7 +5637,7 @@
     },
     {
       "date": "2026-05-01",
-      "composite": -3.7,
+      "composite": -3.1,
       "signal": "neutral"
     },
     {
@@ -5652,27 +5652,27 @@
     },
     {
       "date": "2026-05-04",
-      "composite": -17.6,
+      "composite": -15.0,
       "signal": "weak_sell"
     },
     {
       "date": "2026-05-05",
-      "composite": 33.6,
+      "composite": 28.5,
       "signal": "weak_buy"
     },
     {
       "date": "2026-05-06",
-      "composite": -5.4,
+      "composite": -4.6,
       "signal": "neutral"
     },
     {
       "date": "2026-05-07",
-      "composite": -2.6,
+      "composite": -2.2,
       "signal": "neutral"
     },
     {
       "date": "2026-05-08",
-      "composite": 20.3,
+      "composite": 17.2,
       "signal": "weak_buy"
     },
     {
@@ -5687,28 +5687,28 @@
     },
     {
       "date": "2026-05-11",
-      "composite": 22.4,
+      "composite": 19.0,
       "signal": "weak_buy"
     },
     {
       "date": "2026-05-12",
-      "composite": -0.8,
+      "composite": -0.7,
       "signal": "neutral"
     },
     {
       "date": "2026-05-13",
-      "composite": 30.6,
+      "composite": 26.0,
       "signal": "weak_buy"
     },
     {
       "date": "2026-05-14",
-      "composite": -5.8,
+      "composite": -4.9,
       "signal": "neutral"
     },
     {
       "date": "2026-05-15",
       "composite": -20,
-      "signal": "weak_sell"
+      "signal": "neutral"
     },
     {
       "date": "2026-05-16",
@@ -5722,13 +5722,13 @@
     },
     {
       "date": "2026-05-18",
-      "composite": 35.3,
+      "composite": 30.0,
       "signal": "weak_buy"
     },
     {
       "date": "2026-05-19",
-      "composite": 35.3,
-      "signal": "buy"
+      "composite": 30.0,
+      "signal": "weak_buy"
     },
     {
       "date": "2026-05-20",
@@ -5737,7 +5737,7 @@
     },
     {
       "date": "2026-05-21",
-      "composite": 35.3,
+      "composite": 30.0,
       "signal": "weak_buy"
     },
     {
@@ -5757,27 +5757,27 @@
     },
     {
       "date": "2026-05-25",
-      "composite": 7.3,
+      "composite": 6.2,
       "signal": "neutral"
     },
     {
       "date": "2026-05-26",
-      "composite": 22.4,
+      "composite": 19.0,
       "signal": "weak_buy"
     },
     {
       "date": "2026-05-27",
-      "composite": 26.2,
+      "composite": 22.3,
       "signal": "weak_buy"
     },
     {
       "date": "2026-05-28",
-      "composite": -0.2,
+      "composite": -0.1,
       "signal": "neutral"
     },
     {
       "date": "2026-05-29",
-      "composite": -4.1,
+      "composite": -3.5,
       "signal": "neutral"
     },
     {
@@ -5792,27 +5792,27 @@
     },
     {
       "date": "2026-06-01",
-      "composite": 34.2,
+      "composite": 29.1,
       "signal": "weak_buy"
     },
     {
       "date": "2026-06-02",
-      "composite": -11.0,
+      "composite": -9.3,
       "signal": "neutral"
     },
     {
       "date": "2026-06-03",
-      "composite": 15.5,
-      "signal": "weak_buy"
+      "composite": 13.2,
+      "signal": "neutral"
     },
     {
       "date": "2026-06-04",
-      "composite": 47.1,
+      "composite": 40.0,
       "signal": "weak_buy"
     },
     {
       "date": "2026-06-05",
-      "composite": 14.9,
+      "composite": 12.7,
       "signal": "neutral"
     },
     {
@@ -5827,12 +5827,12 @@
     },
     {
       "date": "2026-06-08",
-      "composite": 41.0,
+      "composite": 34.9,
       "signal": "weak_buy"
     },
     {
       "date": "2026-06-09",
-      "composite": 7.9,
+      "composite": 6.7,
       "signal": "neutral"
     },
     {
@@ -5847,7 +5847,7 @@
     },
     {
       "date": "2026-06-12",
-      "composite": -3.6,
+      "composite": -3.1,
       "signal": "neutral"
     },
     {
@@ -5862,7 +5862,7 @@
     },
     {
       "date": "2026-06-15",
-      "composite": 0.7,
+      "composite": 0.6,
       "signal": "neutral"
     },
     {
@@ -5877,7 +5877,7 @@
     },
     {
       "date": "2026-06-18",
-      "composite": 19.3,
+      "composite": 16.4,
       "signal": "weak_buy"
     },
     {
@@ -5907,17 +5907,17 @@
     },
     {
       "date": "2026-06-24",
-      "composite": 35.3,
+      "composite": 30.0,
       "signal": "weak_buy"
     },
     {
       "date": "2026-06-25",
-      "composite": 53.1,
+      "composite": 45.1,
       "signal": "weak_buy"
     },
     {
       "date": "2026-06-26",
-      "composite": 41.7,
+      "composite": 35.4,
       "signal": "weak_buy"
     },
     {
@@ -5932,22 +5932,22 @@
     },
     {
       "date": "2026-06-29",
-      "composite": 9.2,
+      "composite": 7.8,
       "signal": "neutral"
     },
     {
       "date": "2026-06-30",
-      "composite": -2.7,
+      "composite": -2.3,
       "signal": "neutral"
     },
     {
       "date": "2026-07-01",
-      "composite": 35.3,
-      "signal": "buy"
+      "composite": 30.0,
+      "signal": "weak_buy"
     },
     {
       "date": "2026-07-02",
-      "composite": 35.3,
+      "composite": 30.0,
       "signal": "weak_buy"
     },
     {
@@ -6164,6 +6164,10 @@
     {
       "score": 2.0,
       "time": "12:30"
+    },
+    {
+      "score": 33.8,
+      "time": "13:02"
     }
   ],
   "shortpos": {

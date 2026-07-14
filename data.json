@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15T06:35:03+09:00",
+  "updated_at": "2026-07-15T06:40:04+09:00",
   "current": {
     "date": "2026-07-14",
     "score": 28.4,
@@ -6199,110 +6199,110 @@
     }
   ],
   "shortpos": {
-    "date": "2026-07-14",
-    "activity": 250,
+    "date": "2026-07-15",
+    "activity": 251,
     "shorts": [
       {
         "ticker": "SOXX",
+        "count": 1
+      }
+    ],
+    "longs": [
+      {
+        "ticker": "USO",
         "count": 2
       }
     ],
-    "longs": [],
     "trend": [
-      {
-        "date": "2026-05-31",
-        "short": 0,
-        "long": 0
-      },
       {
         "date": "2026-06-01",
         "short": 10,
-        "long": 0
+        "long": 11
       },
       {
         "date": "2026-06-02",
         "short": 12,
-        "long": 0
+        "long": 6
       },
       {
         "date": "2026-06-03",
         "short": 18,
-        "long": 0
+        "long": 12
       },
       {
         "date": "2026-06-04",
         "short": 5,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-06-05",
         "short": 12,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-06-06",
         "short": 2,
-        "long": 0
+        "long": 6
       },
       {
         "date": "2026-06-07",
         "short": 1,
-        "long": 0
+        "long": 8
       },
       {
         "date": "2026-06-08",
         "short": 13,
-        "long": 0
+        "long": 8
       },
       {
         "date": "2026-06-09",
         "short": 26,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-06-10",
         "short": 14,
-        "long": 0
+        "long": 18
       },
       {
         "date": "2026-06-11",
         "short": 9,
-        "long": 0
+        "long": 12
       },
       {
         "date": "2026-06-12",
         "short": 66,
-        "long": 0
+        "long": 9
       },
       {
         "date": "2026-06-13",
         "short": 78,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-06-14",
         "short": 6,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-06-15",
         "short": 23,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-06-16",
         "short": 91,
-        "long": 0
+        "long": 9
       },
       {
         "date": "2026-06-17",
         "short": 33,
-        "long": 0
+        "long": 11
       },
       {
         "date": "2026-06-18",
         "short": 23,
-        "long": 0
+        "long": 10
       },
       {
         "date": "2026-06-19",
@@ -6317,47 +6317,47 @@
       {
         "date": "2026-06-21",
         "short": 0,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-06-22",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-06-23",
         "short": 1,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-06-24",
         "short": 0,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-06-25",
         "short": 7,
-        "long": 0
+        "long": 5
       },
       {
         "date": "2026-06-26",
         "short": 1,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-06-27",
         "short": 0,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-06-28",
         "short": 0,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-06-29",
         "short": 0,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-06-30",
@@ -6367,32 +6367,32 @@
       {
         "date": "2026-07-01",
         "short": 3,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-07-02",
         "short": 1,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-07-03",
         "short": 4,
-        "long": 0
+        "long": 5
       },
       {
         "date": "2026-07-04",
         "short": 0,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-07-05",
         "short": 0,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-07-06",
         "short": 0,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-07-07",
@@ -6402,17 +6402,17 @@
       {
         "date": "2026-07-08",
         "short": 0,
-        "long": 0
+        "long": 4
       },
       {
         "date": "2026-07-09",
         "short": 2,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-07-10",
         "short": 2,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-07-11",
@@ -6422,26 +6422,31 @@
       {
         "date": "2026-07-12",
         "short": 0,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-07-13",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-07-14",
         "short": 2,
         "long": 0
+      },
+      {
+        "date": "2026-07-15",
+        "short": 1,
+        "long": 2
       }
     ],
     "trendShortTicker": "SOXX",
-    "trendLongTicker": null,
+    "trendLongTicker": "USO",
     "strength": {
-      "score": 58,
-      "share": 0.8,
-      "heatZ": -0.7,
-      "repPerPost": 3.2,
+      "score": 41,
+      "share": 0.4,
+      "heatZ": -0.2,
+      "repPerPost": 3.3,
       "ticker": "SOXX"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

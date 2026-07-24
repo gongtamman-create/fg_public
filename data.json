@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-25T02:40:03+09:00",
+  "updated_at": "2026-07-25T02:45:03+09:00",
   "current": {
     "date": "2026-07-24",
     "score": 58.2,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-07-25 02:30:26"
   },
   "nasdaq": {
-    "price": 25122.97,
-    "change": -14.72,
-    "change_pct": -0.06
+    "price": 25102.36,
+    "change": -35.33,
+    "change_pct": -0.14
   },
   "history": [
     {

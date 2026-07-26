@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-26T23:55:03+09:00",
+  "updated_at": "2026-07-27T00:00:03+09:00",
   "current": {
     "date": "2026-07-26",
     "score": 55.8,
@@ -7,8 +7,8 @@
     "daily_score": 30.3,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "strong_buy",
+    "signal_label": "적극 매수",
     "realtime": true,
     "realtime_time": "2026-07-26 23:30:22"
   },
@@ -5557,10 +5557,10 @@
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "개장 확인 필요",
-    "reason": "공포 구간 (FG 30) [휴장] — 개장 후 기술적 지표 확인 필요",
+    "action": "적극 매수",
+    "action_key": "strong_buy",
+    "confidence": "85%+",
+    "reason": "공포 극심 (FG 30) + 가격 급락 (RSI 35) = 버핏 매수 조건 충족",
     "proximity": {
       "buy": {
         "fg_gap": 9.7,
@@ -5581,13 +5581,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "35.0 (전일)",
-        "status": "과매도 (휴장)"
+        "value": "35.0",
+        "status": "과매도"
       },
       {
         "name": "MA이탈",
-        "value": "-2.9% (전일)",
-        "status": "급락 (휴장)"
+        "value": "-2.9%",
+        "status": "급락"
       }
     ],
     "similar_history": {

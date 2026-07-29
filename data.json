@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-07-30T07:00:03+09:00",
+  "updated_at": "2026-07-30T07:05:02+09:00",
   "current": {
-    "date": "2026-07-29",
-    "score": 6.0,
+    "date": "2026-07-30",
+    "score": 10.0,
     "grade": "극단적 공포",
-    "daily_score": 42.3,
+    "daily_score": 23.8,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "strong_buy",
+    "signal_label": "적극 매수",
     "realtime": true,
-    "realtime_time": "2026-07-30 06:30:22"
+    "realtime_time": "2026-07-30 07:00:22"
   },
   "nasdaq": {
     "price": 24442.94,
@@ -18,13 +18,6 @@
     "change_pct": -1.74
   },
   "history": [
-    {
-      "date": "2026-05-01",
-      "score": 63.0,
-      "hybrid": null,
-      "nasdaq_close": 25114.44,
-      "nasdaq_pct": 0.89
-    },
     {
       "date": "2026-05-02",
       "score": 69.8,
@@ -644,6 +637,13 @@
     {
       "date": "2026-07-29",
       "score": 42.3,
+      "hybrid": null,
+      "nasdaq_close": 24442.94,
+      "nasdaq_pct": -1.74
+    },
+    {
+      "date": "2026-07-30",
+      "score": 23.8,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5477,11 +5477,15 @@
     {
       "date": "2026-07-29",
       "score": 42.3
+    },
+    {
+      "date": "2026-07-30",
+      "score": 23.8
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-07-28",
-    "trading_days": 831,
+    "period": "2022-01-03 ~ 2026-07-29",
+    "trading_days": 832,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5506,9 +5510,9 @@
       },
       {
         "name": "극공포 (<=20)",
-        "trades": 18,
-        "return": 9.6,
-        "win_rate": 72.0,
+        "trades": 19,
+        "return": 8.6,
+        "win_rate": 68.0,
         "hold_days": 40
       },
       {
@@ -5527,15 +5531,15 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 53,
-        "return": 8.8,
-        "win_rate": 79.0,
+        "trades": 54,
+        "return": 8.4,
+        "win_rate": 78.0,
         "hold_days": 40
       },
       {
         "name": "공포 (<=30)",
-        "trades": 22,
-        "return": 11.8,
+        "trades": 23,
+        "return": 11.4,
         "win_rate": 91.0,
         "hold_days": 120
       },
@@ -5548,15 +5552,15 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 89,
-        "return": 6.9,
+        "trades": 90,
+        "return": 6.7,
         "win_rate": 76.0,
         "hold_days": 40
       },
       {
         "name": "공포 (<=35)",
-        "trades": 52,
-        "return": 10.3,
+        "trades": 53,
+        "return": 10.1,
         "win_rate": 87.0,
         "hold_days": 120
       }
@@ -5565,59 +5569,54 @@
   "cnn_comparison": {
     "cnn_score": 32.3,
     "cnn_grade": "공포",
-    "our_score": 6.0,
+    "our_score": 10.0,
     "our_grade": "극단적 공포"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "~68%",
-    "reason": "공포 접근 (FG 42, RSI 34) — 추가 하락 시 매수 기회",
+    "action": "적극 매수",
+    "action_key": "strong_buy",
+    "confidence": "85%+",
+    "reason": "공포 극심 (FG 24) + 가격 급락 (RSI 28) = 버핏 매수 조건 충족",
     "proximity": {
       "buy": {
-        "fg_gap": -2.3,
-        "rsi_gap": 1.5,
-        "pct": 47
+        "fg_gap": 16.2,
+        "rsi_gap": 7.5,
+        "pct": 79
       },
       "sell": {
-        "fg_gap": -32.7,
-        "rsi_gap": -41.5,
+        "fg_gap": -51.2,
+        "rsi_gap": -47.5,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "42.3",
-        "status": "중립"
+        "value": "23.8",
+        "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "33.5",
+        "value": "27.5",
         "status": "과매도"
       },
       {
         "name": "MA이탈",
-        "value": "-2.7%",
+        "value": "-4.0%",
         "status": "급락"
       }
     ],
     "similar_history": {
-      "count": 115,
-      "win_5d": 52.6,
-      "avg_5d": 1.21,
-      "win_10d": 52.6,
-      "avg_10d": 2.18,
-      "win_20d": 51.3,
-      "avg_20d": 2.12
+      "count": 39,
+      "win_5d": 66.7,
+      "avg_5d": 1.54,
+      "win_10d": 85.3,
+      "avg_10d": 2.93,
+      "win_20d": 76.5,
+      "avg_20d": 4.8
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-05-01",
-      "composite": -3.1,
-      "signal": "neutral"
-    },
     {
       "date": "2026-05-02",
       "composite": -17.6,
@@ -6060,15 +6059,16 @@
     },
     {
       "date": "2026-07-29",
-      "composite": 5.0,
+      "composite": 7.9,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-07-30",
+      "composite": 60,
+      "signal": "strong_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 13.7,
-      "time": "07:00"
-    },
     {
       "score": 34.1,
       "time": "07:30"
@@ -6256,6 +6256,10 @@
     {
       "score": 3.3,
       "time": "06:30"
+    },
+    {
+      "score": 15.5,
+      "time": "07:00"
     }
   ],
   "shortpos": {

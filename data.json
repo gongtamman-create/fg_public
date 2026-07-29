@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T23:50:03+09:00",
+  "updated_at": "2026-07-29T23:55:03+09:00",
   "current": {
     "date": "2026-07-29",
     "score": 9.8,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-07-29 23:30:22"
   },
   "nasdaq": {
-    "price": 24611.08,
-    "change": -265.83,
-    "change_pct": -1.07
+    "price": 24636.6,
+    "change": -240.31,
+    "change_pct": -0.97
   },
   "history": [
     {
@@ -5563,7 +5563,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 34.4,
+    "cnn_score": 34.3,
     "cnn_grade": "공포",
     "our_score": 9.8,
     "our_grade": "극단적 공포"

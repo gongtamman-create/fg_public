@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T06:35:04+09:00",
+  "updated_at": "2026-07-31T06:40:07+09:00",
   "current": {
     "date": "2026-07-30",
     "score": 38.7,
@@ -6263,54 +6263,49 @@
     }
   ],
   "shortpos": {
-    "date": "2026-07-30",
-    "activity": 251,
+    "date": "2026-07-31",
+    "activity": 247,
     "shorts": [
       {
-        "ticker": "QQQ",
-        "count": 1
-      },
-      {
-        "ticker": "TSLA",
-        "count": 1
+        "ticker": "USO",
+        "count": 2
       }
     ],
     "longs": [
       {
-        "ticker": "SOXX",
-        "count": 1
+        "ticker": "XLE",
+        "count": 2
+      },
+      {
+        "ticker": "AAPL",
+        "count": 2
       }
     ],
     "trend": [
       {
-        "date": "2026-06-16",
-        "short": 2,
-        "long": 0
-      },
-      {
         "date": "2026-06-17",
         "short": 0,
-        "long": 0
+        "long": 3
       },
       {
         "date": "2026-06-18",
         "short": 0,
-        "long": 0
+        "long": 5
       },
       {
         "date": "2026-06-19",
-        "short": 0,
-        "long": 0
+        "short": 1,
+        "long": 1
       },
       {
         "date": "2026-06-20",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-06-21",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-06-22",
@@ -6320,17 +6315,17 @@
       {
         "date": "2026-06-23",
         "short": 0,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-06-24",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-06-25",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-06-26",
@@ -6340,12 +6335,12 @@
       {
         "date": "2026-06-27",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-06-28",
-        "short": 1,
-        "long": 1
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-06-29",
@@ -6360,7 +6355,7 @@
       {
         "date": "2026-07-01",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-07-02",
@@ -6380,7 +6375,7 @@
       {
         "date": "2026-07-05",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-07-06",
@@ -6390,12 +6385,12 @@
       {
         "date": "2026-07-07",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-07-08",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-07-09",
@@ -6435,7 +6430,7 @@
       {
         "date": "2026-07-16",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-07-17",
@@ -6474,7 +6469,7 @@
       },
       {
         "date": "2026-07-24",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6490,7 +6485,7 @@
       {
         "date": "2026-07-27",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-07-28",
@@ -6504,18 +6499,23 @@
       },
       {
         "date": "2026-07-30",
-        "short": 1,
-        "long": 1
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-07-31",
+        "short": 2,
+        "long": 2
       }
     ],
-    "trendShortTicker": "QQQ",
-    "trendLongTicker": "SOXX",
+    "trendShortTicker": "USO",
+    "trendLongTicker": "XLE",
     "strength": {
-      "score": 42,
-      "share": 0.4,
-      "heatZ": -0.1,
-      "repPerPost": 3.4,
-      "ticker": "QQQ"
+      "score": 61,
+      "share": 0.8,
+      "heatZ": -2.1,
+      "repPerPost": 3.9,
+      "ticker": "USO"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   }

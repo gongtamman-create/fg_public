@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T04:35:08+09:00",
+  "updated_at": "2026-08-01T04:40:06+09:00",
   "current": {
     "date": "2026-07-31",
     "score": 36.2,
@@ -13,8 +13,8 @@
     "realtime_time": "2026-08-01 04:30:29"
   },
   "nasdaq": {
-    "price": 25380.09,
-    "change": 257.91,
+    "price": 25381.08,
+    "change": 258.9,
     "change_pct": 1.03
   },
   "history": [
@@ -5571,7 +5571,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 44.1,
+    "cnn_score": 43.9,
     "cnn_grade": "공포",
     "our_score": 36.2,
     "our_grade": "공포"

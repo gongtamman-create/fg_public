@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-08-02T04:30:05+09:00",
+  "updated_at": "2026-08-02T04:35:05+09:00",
   "current": {
     "date": "2026-08-01",
-    "score": 22.7,
+    "score": 22.4,
     "grade": "공포",
     "daily_score": 29.8,
     "hybrid_score": null,
@@ -10,7 +10,7 @@
     "signal": "buy_wait",
     "signal_label": "매수 대기",
     "realtime": true,
-    "realtime_time": "2026-08-02 04:00:39"
+    "realtime_time": "2026-08-02 04:30:29"
   },
   "nasdaq": {
     "price": 25373.85,
@@ -5577,7 +5577,7 @@
   "cnn_comparison": {
     "cnn_score": 42.5,
     "cnn_grade": "공포",
-    "our_score": 22.7,
+    "our_score": 22.4,
     "our_grade": "공포"
   },
   "action_detail": {
@@ -6078,10 +6078,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 34.5,
-      "time": "04:30"
-    },
-    {
       "score": 23.7,
       "time": "05:00"
     },
@@ -6268,6 +6264,10 @@
     {
       "score": 24.7,
       "time": "04:00"
+    },
+    {
+      "score": 15.8,
+      "time": "04:30"
     }
   ],
   "shortpos": {

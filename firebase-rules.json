@@ -1,26 +1,21 @@
 {
+  "_comment": "Firebase RTDB 보안 규칙 — Firebase Console > Realtime Database > 규칙에 붙여넣어 게시한다. 이 파일은 배포본의 사본이며 자동 동기화되지 않는다(콘솔이 정본). ⚠ 2026-08-05 이전 버전은 문자열 안에 개행이 있어 JSON 파싱이 깨져 붙여넣기 자체가 불가능했다 — 반드시 유효 JSON 유지. 검증: python3 -c \"import json;json.load(open('firebase-rules.json'))\"",
+  "_stage": "STAGE A (2026-08-05) — 클라이언트 무변경으로 관리자 사칭을 차단한다. 밴 우회(클라이언트가 자기 IP를 신고하는 구조)는 여기서 못 막으며 STAGE B(functions/api/chat.js 경유)에서 해소된다. STAGE B 배포 후 firebase-rules.stage-b.json으로 교체할 것.",
+  "_admin_uid": "pVNCtNqzoGgmmUSnshkBIICaz452 — RTDB 규칙에는 상수 선언이 없어 리터럴로 박아야 한다. assets/chat.js의 ADMIN_UID와 반드시 일치시킬 것(둘 중 하나만 바뀌면 관리자가 조용히 권한을 잃거나 사칭 차단이 풀린다).",
   "rules": {
     "messages": {
       ".read": true,
       ".indexOn": ["ts"],
       "$msgId": {
         ".write": "!data.exists() && newData.exists()",
-        ".validate": "newData.hasChildren(['nick','text','ts','ip'])
-          && newData.child('text').isString()
-          && newData.child('text').val().length >= 1
-          && newData.child('text').val().length <= 20
-          && newData.child('nick').isString()
-          && newData.child('nick').val().length <= 30
-          && newData.child('ts').isNumber()
-          && newData.child('ip').isString()
-          && (!newData.hasChild('admin') || newData.child('admin').isBoolean())"
+        ".validate": "newData.hasChildren(['nick','text','ts','ip']) && newData.child('text').isString() && newData.child('text').val().length >= 1 && newData.child('text').val().length <= 20 && newData.child('nick').isString() && newData.child('nick').val().length <= 30 && newData.child('ts').isNumber() && newData.child('ts').val() <= (now + 60000) && newData.child('ts').val() >= (now - 600000) && newData.child('ip').isString() && newData.child('ip').val().length <= 64 && (!newData.hasChild('admin') || (newData.child('admin').isBoolean() && (newData.child('admin').val() === false || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452')))) && (newData.child('nick').val() !== '살충제' || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'))"
       }
     },
     "bans": {
       ".read": true,
       "$ipHash": {
         ".write": "auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'",
-        ".validate": "newData.hasChildren(['banned_at','banned_by'])"
+        ".validate": "newData.hasChildren(['banned_at','banned_by']) && newData.child('banned_at').isNumber() && newData.child('banned_by').isString() && $ipHash.length <= 64"
       }
     },
     "votes": {
@@ -28,17 +23,15 @@
       "$date": {
         "$ipHash": {
           ".write": "auth != null && !data.exists() && newData.exists()",
-          ".validate": "newData.hasChildren(['vote','ts'])
-            && (newData.child('vote').val() === 'up' || newData.child('vote').val() === 'down')
-            && newData.child('ts').isNumber()
-            && (!newData.hasChild('nick') || newData.child('nick').isString())"
+          ".validate": "newData.hasChildren(['vote','ts']) && (newData.child('vote').val() === 'up' || newData.child('vote').val() === 'down') && newData.child('ts').isNumber() && (!newData.hasChild('nick') || newData.child('nick').isString())"
         }
       }
     },
     "presence": {
       ".read": true,
       "$hash": {
-        ".write": true
+        ".write": true,
+        ".validate": "newData.isBoolean() && newData.val() === true && $hash.length <= 64"
       }
     },
     "$other": {

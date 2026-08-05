@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-08-05T22:15:04+09:00",
+  "updated_at": "2026-08-06T02:05:04+09:00",
   "current": {
     "date": "2026-08-05",
-    "score": 38.7,
-    "grade": "공포",
+    "score": 52.7,
+    "grade": "중립",
     "daily_score": 44.5,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-08-05 22:00:24"
+    "realtime_time": "2026-08-06 02:00:37"
   },
   "nasdaq": {
-    "price": 26584.99,
-    "change": 671.09,
-    "change_pct": 2.59
+    "price": 26475.79,
+    "change": -109.2,
+    "change_pct": -0.41
   },
   "history": [
     {
@@ -5591,10 +5591,10 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 59.2,
+    "cnn_score": 60.6,
     "cnn_grade": "탐욕",
-    "our_score": 38.7,
-    "our_grade": "공포"
+    "our_score": 52.7,
+    "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
@@ -6094,38 +6094,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 41.7,
-      "time": "22:30"
-    },
-    {
-      "score": 54.8,
-      "time": "23:00"
-    },
-    {
-      "score": 83.8,
-      "time": "23:30"
-    },
-    {
-      "score": 55.3,
-      "time": "00:00"
-    },
-    {
-      "score": 48.8,
-      "time": "00:30"
-    },
-    {
-      "score": 64.4,
-      "time": "01:00"
-    },
-    {
-      "score": 66.3,
-      "time": "01:30"
-    },
-    {
-      "score": 61.7,
-      "time": "02:00"
-    },
-    {
       "score": 55.6,
       "time": "02:30"
     },
@@ -6284,6 +6252,38 @@
     {
       "score": 50.1,
       "time": "22:00"
+    },
+    {
+      "score": 39.3,
+      "time": "22:30"
+    },
+    {
+      "score": 55.5,
+      "time": "23:00"
+    },
+    {
+      "score": 62.8,
+      "time": "23:30"
+    },
+    {
+      "score": 21.3,
+      "time": "00:00"
+    },
+    {
+      "score": 44.6,
+      "time": "00:30"
+    },
+    {
+      "score": 45.3,
+      "time": "01:00"
+    },
+    {
+      "score": 48.9,
+      "time": "01:30"
+    },
+    {
+      "score": 63.8,
+      "time": "02:00"
     }
   ],
   "shortpos": {

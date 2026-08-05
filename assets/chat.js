@@ -23,12 +23,16 @@
   const MSG_EXPIRE_MS = 10 * 60 * 1000; // 10분
   const ADMIN_UID = "pVNCtNqzoGgmmUSnshkBIICaz452";
 
-  /* ── 금칙어 ── */
-  const BANNED_WORDS = [
-    "씨발", "시발", "ㅅㅂ", "ㅂㅅ", "병신", "지랄",
-    "카톡", "텔레그램", "오픈채팅", "http", "www",
-    "미주갤", "디시", "dcinside", "갤러리",
-  ];
+  /* ── 금칙어 ──
+     SSOT = assets/banned-words.json (서버 functions/api/chat.js와 공유).
+     여기 로드분은 **즉시 피드백용 UX**일 뿐이고 실제 차단은 서버가 한다 —
+     로드 전이거나 실패해도 서버가 막으므로 폴백 목록을 두지 않는다.
+     금칙어 추가는 JSON 한 곳만 고치면 클라이언트·서버 양쪽에 반영된다. */
+  let BANNED_WORDS = [];
+  fetch("/assets/banned-words.json")
+    .then((r) => r.json())
+    .then((j) => { BANNED_WORDS = j.words || []; })
+    .catch(() => {});
 
   /* ── 닉네임 풀 ── */
   const ADJ = [
@@ -340,24 +344,54 @@
       return;
     }
 
-    const ipHash = await getIpHash();
-    const msg = {
-      nick: myNick,
-      text: text,
-      ts: Date.now(),
-      ip: ipHash,
-      admin: isAdmin || false,
-    };
-
     chatInput.value = "";
     chatInput.focus();
 
-    if (firebaseReady) {
-      db.ref("messages").push(msg);
-    } else {
-      // Firebase 미연결 시 로컬 렌더만
-      appendMessage(msg);
+    // ── 관리자: Firebase Auth로 직접 쓰기 (규칙이 auth.uid로 검증) ──
+    // 일반 경로(/api/chat)는 admin=false를 고정하므로 관리자는 이쪽을 써야 한다.
+    if (isAdmin && firebaseReady) {
+      db.ref("messages").push({
+        nick: myNick, text: text, ts: Date.now(),
+        ip: await getIpHash(), admin: true,
+      });
+      return;
     }
+
+    // ── 일반 유저: 서버 경유 (2026-08-05) ──
+    // 직접 쓰기를 하지 않는 이유: 브라우저가 자기 IP를 자기가 신고하는 구조라
+    // ipify 요청을 막거나 콘솔에서 push()를 직접 부르면 밴이 뚫렸다. 이제 서버가
+    // CF-Connecting-IP로 해싱하므로 클라이언트가 거짓말할 수 없다.
+    // ⚠ 실패 시 직접 쓰기로 폴백하지 않는다(fail-closed) — 폴백을 두면 함수를
+    //    죽이는 것만으로 우회가 되어 서버 검증이 무의미해진다.
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: text, nick: myNick }),
+      });
+      if (res.ok) return;
+
+      const err = await res.json().catch(() => ({}));
+      if (res.status === 403 && err.error === "banned") {
+        isBanned = true;
+        chatInputRow.style.display = "none";
+        chatBanned.style.display = "flex";
+        return;
+      }
+      if (res.status === 429) {
+        notifyInput((err.retry_in || 5) + "초 후 전송 가능");
+        return;
+      }
+      notifyInput(err.error === "banned word" ? "부적절한 단어 포함" : "전송 실패");
+    } catch {
+      notifyInput("전송 실패 — 연결 확인");
+    }
+  }
+
+  // 입력창 placeholder로 2초간 안내 (기존 쿨다운·금칙어 안내와 동일한 방식)
+  function notifyInput(message) {
+    chatInput.placeholder = message;
+    setTimeout(() => { chatInput.placeholder = "메시지 (" + MAX_MSG_LEN + "자)"; }, 2000);
   }
 
   /* ════════════════════════════════════════

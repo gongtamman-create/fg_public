@@ -1,27 +1,57 @@
+// ═══════════════════════════════════════════════════════════════════════════
+//  Firebase RTDB 보안 규칙 — STAGE B (2026-08-05)
+//
+//  배포: cd <이 파일 위치> && firebase deploy --only database --project gongtamcom
+//        (또는 Firebase Console > Realtime Database > 규칙 탭에 붙여넣고 "게시")
+//
+//  ⚠ 최상위에는 "rules" 키 하나만 허용된다. 설명은 이 파일처럼 // 주석으로 달 것
+//     (RTDB 규칙 파일은 JSONC를 받는다). 2026-08-05 이전 버전은 문자열 안에 개행이
+//     들어가 JSON 파싱조차 깨져 붙여넣기가 불가능했고, 그래서 저장소 사본과 실배포본을
+//     대조할 방법이 없었다.
+//
+//  STAGE B: messages 직접 쓰기가 관리자 전용이다. 일반 유저 메시지는
+//     functions/api/chat.js 가 FIREBASE_DB_SECRET 으로 쓰므로 규칙을 우회한다
+//     = 브라우저에서 messages 에 직접 push 하는 경로가 사라진다.
+//     이로써 위조 ip 해시 주입과 밴 우회가 동시에 막힌다.
+//  롤백: git show HEAD:firebase-rules.json 으로 STAGE A 복원 후 재배포.
+//
+//  ADMIN_UID = pVNCtNqzoGgmmUSnshkBIICaz452
+//     RTDB 규칙에는 상수 선언이 없어 리터럴로 박아야 한다. assets/chat.js의 ADMIN_UID와
+//     반드시 동시 수정할 것 — 한쪽만 바뀌면 관리자가 조용히 권한을 잃거나 사칭 차단이 풀린다.
+// ═══════════════════════════════════════════════════════════════════════════
 {
-  "_comment": "Firebase RTDB 보안 규칙 — Firebase Console > Realtime Database > 규칙에 붙여넣어 게시한다. 이 파일은 배포본의 사본이며 자동 동기화되지 않는다(콘솔이 정본). ⚠ 2026-08-05 이전 버전은 문자열 안에 개행이 있어 JSON 파싱이 깨져 붙여넣기 자체가 불가능했다 — 반드시 유효 JSON 유지. 검증: python3 -c \"import json;json.load(open('firebase-rules.json'))\"",
-  "_stage": "STAGE A (2026-08-05) — 클라이언트 무변경으로 관리자 사칭을 차단한다. 밴 우회(클라이언트가 자기 IP를 신고하는 구조)는 여기서 못 막으며 STAGE B(functions/api/chat.js 경유)에서 해소된다. STAGE B 배포 후 firebase-rules.stage-b.json으로 교체할 것.",
-  "_admin_uid": "pVNCtNqzoGgmmUSnshkBIICaz452 — RTDB 규칙에는 상수 선언이 없어 리터럴로 박아야 한다. assets/chat.js의 ADMIN_UID와 반드시 일치시킬 것(둘 중 하나만 바뀌면 관리자가 조용히 권한을 잃거나 사칭 차단이 풀린다).",
   "rules": {
     "messages": {
       ".read": true,
       ".indexOn": ["ts"],
       "$msgId": {
-        ".write": "!data.exists() && newData.exists()",
+        // 관리자만 직접 쓰기. 일반 유저는 /api/chat 경유(DB 시크릿이 규칙 우회).
+        // 생성만 허용 — 수정·삭제 불가
+        ".write": "auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452' && !data.exists() && newData.exists()",
+        // admin=true 와 '살충제' 닉은 관리자 인증이 있을 때만.
+        // (구 규칙은 admin 을 "불리언이기만 하면" 통과시켜 누구나 사칭 가능했다)
+        // ts 상한 = 미래 타임스탬프로 메시지를 목록 상단에 영구 고정하는 것 차단
         ".validate": "newData.hasChildren(['nick','text','ts','ip']) && newData.child('text').isString() && newData.child('text').val().length >= 1 && newData.child('text').val().length <= 20 && newData.child('nick').isString() && newData.child('nick').val().length <= 30 && newData.child('ts').isNumber() && newData.child('ts').val() <= (now + 60000) && newData.child('ts').val() >= (now - 600000) && newData.child('ip').isString() && newData.child('ip').val().length <= 64 && (!newData.hasChild('admin') || (newData.child('admin').isBoolean() && (newData.child('admin').val() === false || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452')))) && (newData.child('nick').val() !== '살충제' || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'))"
       }
     },
     "bans": {
       ".read": true,
       "$ipHash": {
+        // 밴 생성은 관리자 전용 — 클라이언트 isAdmin 변수를 조작해도 여기서 막힌다
         ".write": "auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'",
         ".validate": "newData.hasChildren(['banned_at','banned_by']) && newData.child('banned_at').isNumber() && newData.child('banned_by').isString() && $ipHash.length <= 64"
       }
+    },
+    "chat_rate": {
+      // 서버(/api/chat)만 쓰는 쿨다운 타임스탬프. DB 시크릿으로만 접근(규칙 우회).
+      ".read": false,
+      ".write": false
     },
     "votes": {
       ".read": true,
       "$date": {
         "$ipHash": {
+          // 실제 쓰기는 /api/vote 가 DB 시크릿으로 수행(규칙 우회). 클라이언트 직접 쓰기 차단.
           ".write": "auth != null && !data.exists() && newData.exists()",
           ".validate": "newData.hasChildren(['vote','ts']) && (newData.child('vote').val() === 'up' || newData.child('vote').val() === 'down') && newData.child('ts').isNumber() && (!newData.hasChild('nick') || newData.child('nick').isString())"
         }
@@ -30,6 +60,8 @@
     "presence": {
       ".read": true,
       "$hash": {
+        // 접속자 수 카운트용. 값은 true 고정 — 구 규칙은 아무 데이터나 무제한 쓰기였다.
+        // 삭제(onDisconnect)는 validate 대상이 아니므로 그대로 동작한다.
         ".write": true,
         ".validate": "newData.isBoolean() && newData.val() === true && $hash.length <= 64"
       }

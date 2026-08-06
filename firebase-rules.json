@@ -66,35 +66,12 @@
         ".validate": "newData.isBoolean() && newData.val() === true && $hash.length <= 64"
       }
     },
-    // ── 멀티룸 (2026-08-06): 임베드 사이트별 채팅방 ──
-    // gongtam은 위의 기존 최상위 경로를 그대로 쓰고(무중단), 신규 방만 여기 추가한다.
-    // 각 방의 messages/presence 규칙은 최상위와 동일한 잠금 — 방을 추가할 때는
-    // functions/api/chat.js의 ROOMS에도 같은 키를 넣어야 한다.
-    // 밴 목록(bans/)은 방 구분 없이 공유 — 한 번 밴이면 모든 방에서 밴.
+    // ── 멀티룸 네임스페이스 (2026-08-06) ──
+    // 임베드 사이트별 방을 분리할 때 rooms/<방>/ 아래에 최상위와 동일한 잠금으로 추가한다
+    // (functions/api/chat.js ROOMS에도 같은 키 필수). hupe 방은 2026-08-06 당일 제거 —
+    // redalert.red가 gongtam 방을 공유하기로 결정(rooms/hupe 규칙·데이터 삭제).
+    // 현재는 전부 잠금 — 방 없음.
     "rooms": {
-      "hupe": {
-        "messages": {
-          ".read": true,
-          ".indexOn": ["ts"],
-          "$msgId": {
-            // 관리자만 직접 쓰기. 일반 유저는 /api/chat 경유(DB 시크릿이 규칙 우회).
-            ".write": "auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452' && !data.exists() && newData.exists()",
-            ".validate": "newData.hasChildren(['nick','text','ts','ip']) && newData.child('text').isString() && newData.child('text').val().length >= 1 && newData.child('text').val().length <= 20 && newData.child('nick').isString() && newData.child('nick').val().length <= 30 && newData.child('ts').isNumber() && newData.child('ts').val() <= (now + 60000) && newData.child('ts').val() >= (now - 600000) && newData.child('ip').isString() && newData.child('ip').val().length <= 64 && (!newData.hasChild('admin') || (newData.child('admin').isBoolean() && (newData.child('admin').val() === false || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452')))) && (newData.child('nick').val() !== '살충제' || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'))"
-          }
-        },
-        "presence": {
-          ".read": true,
-          "$hash": {
-            ".write": true,
-            ".validate": "newData.isBoolean() && newData.val() === true && $hash.length <= 64"
-          }
-        },
-        "chat_rate": {
-          // 서버(/api/chat)만 쓰는 쿨다운 타임스탬프. DB 시크릿으로만 접근(규칙 우회).
-          ".read": false,
-          ".write": false
-        }
-      },
       "$other_room": {
         ".read": false,
         ".write": false

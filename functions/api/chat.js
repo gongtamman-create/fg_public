@@ -41,9 +41,10 @@ const ADMIN_NICK = "살충제";
 
 // 방 화이트리스트. gongtam은 기존 최상위 경로 유지(라이브 무중단·하위호환),
 // 신규 방은 rooms/<방>/ 네임스페이스를 쓴다.
+// hupe 항목은 2026-08-06 제거 — redalert.red도 gongtam 방을 공유하기로 결정
+// (임베드가 data-room="gongtam"). 분리 복원 시 여기+firebase-rules.json에 방 추가.
 const ROOMS = {
   gongtam: { messages: "messages", rate: "chat_rate" },
-  hupe: { messages: "rooms/hupe/messages", rate: "rooms/hupe/chat_rate" },
 };
 
 // CORS 허용 오리진. 임베드 사이트가 늘면 여기에 추가.

@@ -23,15 +23,21 @@
  *   · 밴 여부 (실제 IP 해시 기준, 전 방 공유)
  *   · 쿨다운 5초 (방별 chat_rate/<ipHash>)
  *   · 길이 1~20자
- *   · 금칙어 (assets/banned-words.json SSOT — 서버 전용 검증이므로
- *     임베드 사이트에 목록 파일을 배포하지 않아도 차단은 동일하게 걸린다)
+ *   · 금칙어 2종 합집합 — assets/banned-words.json(욕설·스팸, 공개) +
+ *     functions/api/banned-words-private.json(출처 관련, 비공개). 서버 검증이라
+ *     임베드 사이트에 목록 파일을 배포하지 않아도 차단은 동일하게 걸린다
  *   · admin=false 고정 — 관리자 사칭 원천 차단. 관리자 메시지는 이 경로를 쓰지 않고
  *     Firebase Auth로 직접 쓴다(규칙이 auth.uid로 검증).
  *
  * 환경변수 필요: FIREBASE_DB_SECRET (vote.js와 동일 키)
  *   미설정 시 규칙에 막혀 쓰기가 실패한다 → 500 반환(조용한 무시 금지).
  */
+// 금칙어는 **공개 가능한 것과 아닌 것**으로 갈린다(2026-08-12 분리).
+//   · assets/banned-words.json  = 욕설·스팸. 클라이언트가 fetch해 즉시 피드백 → 공개 불가피.
+//   · functions/api/banned-words-private.json = 출처 관련. functions/ 아래라 정적 서빙되지 않는다.
+// 서버는 둘을 **합쳐서** 검증하므로 차단 능력은 분리 전과 동일하다.
 import BANNED from "../../assets/banned-words.json";
+import BANNED_PRIVATE from "./banned-words-private.json";
 
 const DB_URL = "https://gongtamcom-default-rtdb.firebaseio.com";
 const MAX_MSG_LEN = 20;
@@ -66,9 +72,12 @@ async function sha256Hex(s) {
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+// 공개 목록 + 서버 전용 목록 합집합. 한쪽 파일이 비어도 다른 쪽은 계속 걸린다.
+const ALL_BANNED = [...(BANNED.words || []), ...(BANNED_PRIVATE.words || [])];
+
 function containsBannedWord(text) {
   const lower = text.toLowerCase();
-  return (BANNED.words || []).some((w) => lower.includes(String(w).toLowerCase()));
+  return ALL_BANNED.some((w) => lower.includes(String(w).toLowerCase()));
 }
 
 export async function onRequestPost(context) {

@@ -1,0 +1,8 @@
+{
+  "_comment": "서버 전용 금칙어 (2026-08-12 분리). functions/ 아래라 Cloudflare Pages가 정적 서빙하지 않는다 — chat.js가 빌드 타임 import로만 읽고, 공개 URL로는 SPA fallback(index.html)이 나간다(실측 확인).",
+  "_why": "이 단어들은 '차단한다는 사실 자체'가 데이터 출처를 자백한다. 공개 목록(assets/banned-words.json)에 두면 누구나 열어보고 '이 사이트가 왜 하필 이 커뮤니티 이름만 막는가'를 역추적할 수 있다 — static_build.py의 FORBIDDEN_WORDS가 산출물에서 막는 바로 그 단어를 옆 파일이 실어 나르던 자기모순. 욕설·스팸과 달리 이 목록은 공개될 수 없다.",
+  "_note": "차단 능력은 분리 전과 동일하다. 클라이언트는 이 단어에 즉시 피드백을 못 주지만 서버가 400 'banned word'를 반환하고 chat.js가 '부적절한 단어 포함'을 띄운다. 공개 파일 _note가 명시하듯 클라이언트 검사는 UX일 뿐 방어가 아니다.",
+  "words": [
+    "미주갤", "디시", "dcinside", "갤러리"
+  ]
+}

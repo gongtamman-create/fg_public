@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-08-14T07:00:03+09:00",
+  "updated_at": "2026-08-14T07:05:02+09:00",
   "current": {
-    "date": "2026-08-13",
-    "score": 59.6,
+    "date": "2026-08-14",
+    "score": 51.2,
     "grade": "중립",
-    "daily_score": 47.3,
+    "daily_score": 50.3,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-08-14 06:30:26"
+    "realtime_time": "2026-08-14 07:00:22"
   },
   "nasdaq": {
     "price": 26803.03,
@@ -18,13 +18,6 @@
     "change_pct": 0.81
   },
   "history": [
-    {
-      "date": "2026-05-16",
-      "score": 23.4,
-      "hybrid": null,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-05-17",
       "score": 23.6,
@@ -644,6 +637,13 @@
     {
       "date": "2026-08-13",
       "score": 47.3,
+      "hybrid": null,
+      "nasdaq_close": 26803.03,
+      "nasdaq_pct": 0.81
+    },
+    {
+      "date": "2026-08-14",
+      "score": 50.3,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5537,11 +5537,15 @@
     {
       "date": "2026-08-13",
       "score": 47.3
+    },
+    {
+      "date": "2026-08-14",
+      "score": 50.3
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-08-12",
-    "trading_days": 842,
+    "period": "2022-01-03 ~ 2026-08-13",
+    "trading_days": 843,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5625,59 +5629,54 @@
   "cnn_comparison": {
     "cnn_score": 66.1,
     "cnn_grade": "탐욕",
-    "our_score": 59.6,
+    "our_score": 51.2,
     "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 47, RSI 62 — 뚜렷한 방향성 없음",
+    "reason": "FG 50, RSI 65 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
-        "fg_gap": -7.3,
-        "rsi_gap": -27.1,
-        "pct": 26
+        "fg_gap": -10.3,
+        "rsi_gap": -30.2,
+        "pct": 16
       },
       "sell": {
-        "fg_gap": -27.7,
-        "rsi_gap": -12.9,
-        "pct": 7
+        "fg_gap": -24.7,
+        "rsi_gap": -9.8,
+        "pct": 17
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "47.3",
+        "value": "50.3",
         "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "62.1",
+        "value": "65.2",
         "status": "과매수 접근"
       },
       {
         "name": "MA이탈",
-        "value": "+2.9%",
+        "value": "+3.3%",
         "status": "과열 접근"
       }
     ],
     "similar_history": {
-      "count": 219,
-      "win_5d": 61.0,
-      "avg_5d": 0.34,
-      "win_10d": 60.9,
-      "avg_10d": 0.51,
-      "win_20d": 60.5,
-      "avg_20d": 0.53
+      "count": 233,
+      "win_5d": 59.9,
+      "avg_5d": 0.26,
+      "win_10d": 57.6,
+      "avg_10d": 0.46,
+      "win_20d": 59.2,
+      "avg_20d": 0.33
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-05-16",
-      "composite": 35.3,
-      "signal": "weak_buy"
-    },
     {
       "date": "2026-05-17",
       "composite": 35.3,
@@ -6122,13 +6121,14 @@
       "date": "2026-08-13",
       "composite": 0.0,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-08-14",
+      "composite": -8.2,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 38.7,
-      "time": "07:00"
-    },
     {
       "score": 25.8,
       "time": "07:30"
@@ -6316,6 +6316,10 @@
     {
       "score": 53.5,
       "time": "06:30"
+    },
+    {
+      "score": 41.1,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6575,11 +6579,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-05-16",
-      "index": 87,
-      "hot": false
-    },
     {
       "date": "2026-05-17",
       "index": 93,
@@ -7023,6 +7022,11 @@
     {
       "date": "2026-08-13",
       "index": 44,
+      "hot": false
+    },
+    {
+      "date": "2026-08-14",
+      "index": 60,
       "hot": false
     }
   ]

@@ -21,6 +21,7 @@
 <ul style="margin:8px 0 0 16px;font-size:13px;color:#6e6e8a;">
   <li><strong style="color:#e0e0ef;">IP 해시</strong>: 채팅 밴 관리 및 중복 투표 방지 목적으로 IP 주소를 SHA-256 해시로 변환하여 저장합니다. IP 주소 확인을 위해 제3자 서비스(ipify.org)에 요청을 전송하며, 원본 IP 주소는 본 서비스 서버에 저장되지 않습니다.</li>
   <li><strong style="color:#e0e0ef;">투표/예측 데이터</strong>: 투표 선택과 종가 예측값은 IP 해시와 함께 Firebase에 저장되며, 1일 1회 제한 및 랭킹 표시에 사용됩니다.</li>
+  <li><strong style="color:#e0e0ef;">방문 통계</strong>: 서비스 개선을 위해 페이지 방문 시각·경로·유입 경로(리퍼러)·브라우저 종류를 자체 수집 서버로 전송합니다. 쿠키나 광고 식별자는 사용하지 않으며, IP 주소는 SHA-256 해시로만 저장되고 원본은 저장되지 않습니다.</li>
 </ul>
 </section>
 

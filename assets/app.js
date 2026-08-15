@@ -310,8 +310,8 @@
       $("#stat-cnn-grade").style.color = g.color;
     }
 
-    // 한강 수온
-    fetchHangang();
+    // 한강 수온 (data.json에 서버가 굽는다 — 구 api.hangang.life 직접 fetch는 서비스 사망으로 제거)
+    renderHangang(d.hangang);
     // 나스닥 실시간
     fetchNasdaq();
   }
@@ -334,21 +334,21 @@
     } catch (e) {}
   }
 
-  async function fetchHangang() {
+  function renderHangang(h) {
+    // 한강 수온 — 서버(static_build.py)가 서울 열린데이터광장에서 받아 data.json에 포함.
+    // 구 api.hangang.life 클라이언트 fetch는 서비스 사망+CORS로 2026-08-16 제거.
     try {
-      const res = await fetch("https://api.hangang.life/");
-      const j = await res.json();
-      const su = j.DATAs?.DATA?.HANGANG?.["선유"];
-      if (su) {
-        $("#stat-hangang").textContent = su.TEMP + "°C";
-        const t = su.LAST_UPDATE?.slice(11, 16) || "";
-        $("#stat-hangang-time").textContent = t ? t + " 측정" : "";
-        // 수온별 색상
-        const temp = parseFloat(su.TEMP);
-        if (temp <= 10) $("#stat-hangang").style.color = "#4FC3F7";
-        else if (temp <= 20) $("#stat-hangang").style.color = "#81C784";
-        else $("#stat-hangang").style.color = "#FF8A65";
+      if (!h || h.temp == null) {
+        $("#stat-hangang").textContent = "--";
+        $("#stat-hangang-time").textContent = "";
+        return;
       }
+      $("#stat-hangang").textContent = h.temp + "°C";
+      $("#stat-hangang-time").textContent = h.time ? h.time + " 측정" : "";
+      // 수온별 색상
+      if (h.temp <= 10) $("#stat-hangang").style.color = "#4FC3F7";
+      else if (h.temp <= 20) $("#stat-hangang").style.color = "#81C784";
+      else $("#stat-hangang").style.color = "#FF8A65";
     } catch (e) {
       $("#stat-hangang").textContent = "--";
     }

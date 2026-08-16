@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-08-17T07:00:03+09:00",
+  "updated_at": "2026-08-17T07:05:02+09:00",
   "current": {
-    "date": "2026-08-16",
-    "score": 60.7,
-    "grade": "탐욕",
-    "daily_score": 34.2,
+    "date": "2026-08-17",
+    "score": 51.7,
+    "grade": "중립",
+    "daily_score": 60.9,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망 (공포 접근)",
+    "signal_label": "관망 (탐욕 접근)",
     "realtime": true,
-    "realtime_time": "2026-08-17 06:30:22"
+    "realtime_time": "2026-08-17 07:00:23"
   },
   "nasdaq": {
     "price": 26729.16,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-05-19",
-      "score": 12.9,
-      "hybrid": null,
-      "nasdaq_close": 25870.71,
-      "nasdaq_pct": -0.84
-    },
     {
       "date": "2026-05-20",
       "score": 41.4,
@@ -650,6 +643,13 @@
     {
       "date": "2026-08-16",
       "score": 34.2,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-08-17",
+      "score": 60.9,
       "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
@@ -5555,6 +5555,10 @@
     {
       "date": "2026-08-16",
       "score": 34.2
+    },
+    {
+      "date": "2026-08-17",
+      "score": 60.9
     }
   ],
   "backtest": {
@@ -5563,9 +5567,9 @@
     "zones": [
       {
         "name": "매수 시그널",
-        "trades": 44,
-        "return": 4.12,
-        "win_rate": 68.2,
+        "trades": 45,
+        "return": 4.19,
+        "win_rate": 68.9,
         "hold_days": 20
       },
       {
@@ -5643,31 +5647,31 @@
   "cnn_comparison": {
     "cnn_score": 65.0,
     "cnn_grade": "탐욕",
-    "our_score": 60.7,
-    "our_grade": "탐욕"
+    "our_score": 51.7,
+    "our_grade": "중립"
   },
   "action_detail": {
-    "action": "관망 (공포 접근)",
+    "action": "관망 (탐욕 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 34으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 61으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
     "proximity": {
       "buy": {
-        "fg_gap": 5.8,
+        "fg_gap": -20.9,
         "rsi_gap": -28.3,
-        "pct": 19
+        "pct": 0
       },
       "sell": {
-        "fg_gap": -40.8,
+        "fg_gap": -14.1,
         "rsi_gap": -11.7,
-        "pct": 11
+        "pct": 14
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "34.2",
-        "status": "매수 구간"
+        "value": "60.9",
+        "status": "탐욕 접근"
       },
       {
         "name": "RSI(14)",
@@ -5676,26 +5680,21 @@
       },
       {
         "name": "MA이탈",
-        "value": "+2.3%",
-        "status": "과열 접근"
+        "value": "+2.0%",
+        "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 95,
-      "win_5d": 57.4,
-      "avg_5d": -0.04,
-      "win_10d": 56.7,
-      "avg_10d": 0.29,
-      "win_20d": 64.8,
-      "avg_20d": 0.75
+      "count": 283,
+      "win_5d": 62.2,
+      "avg_5d": 0.27,
+      "win_10d": 58.0,
+      "avg_10d": 0.34,
+      "win_20d": 61.1,
+      "avg_20d": 0.59
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-05-19",
-      "composite": 30.0,
-      "signal": "weak_buy"
-    },
     {
       "date": "2026-05-20",
       "composite": 0.0,
@@ -6140,13 +6139,14 @@
       "date": "2026-08-16",
       "composite": 20.8,
       "signal": "weak_buy"
+    },
+    {
+      "date": "2026-08-17",
+      "composite": -1.5,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 19.5,
-      "time": "07:00"
-    },
     {
       "score": 14.5,
       "time": "07:30"
@@ -6334,6 +6334,10 @@
     {
       "score": 55.2,
       "time": "06:30"
+    },
+    {
+      "score": 39.7,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6590,11 +6594,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-05-19",
-      "index": 137,
-      "hot": false
-    },
     {
       "date": "2026-05-20",
       "index": 83,
@@ -7038,6 +7037,11 @@
     {
       "date": "2026-08-16",
       "index": 52,
+      "hot": false
+    },
+    {
+      "date": "2026-08-17",
+      "index": 81,
       "hot": false
     }
   ]

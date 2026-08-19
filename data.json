@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T01:20:02+09:00",
+  "updated_at": "2026-08-20T01:25:03+09:00",
   "current": {
     "date": "2026-08-19",
     "score": 80.1,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-08-20 01:00:20"
   },
   "nasdaq": {
-    "price": 26451.1,
-    "change": 161.39,
-    "change_pct": 0.61
+    "price": 26432.91,
+    "change": 143.2,
+    "change_pct": 0.54
   },
   "hangang": {
     "temp": 28.3,

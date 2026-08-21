@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T23:55:03+09:00",
+  "updated_at": "2026-08-22T00:00:03+09:00",
   "current": {
     "date": "2026-08-21",
     "score": 50.7,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-08-21 23:30:22"
   },
   "nasdaq": {
-    "price": 26113.37,
-    "change": 46.2,
-    "change_pct": 0.18
+    "price": 26146.11,
+    "change": 78.94,
+    "change_pct": 0.3
   },
   "hangang": {
     "temp": 28.2,
@@ -5661,7 +5661,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 55.6,
+    "cnn_score": 55.5,
     "cnn_grade": "탐욕",
     "our_score": 50.7,
     "our_grade": "중립"
@@ -5670,7 +5670,7 @@
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 45으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 45으로 공포 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
         "fg_gap": -4.8,
@@ -5691,13 +5691,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "46.4",
-        "status": "중립"
+        "value": "46.4 (전일)",
+        "status": "중립 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-1.4%",
-        "status": "정상"
+        "value": "-1.4% (전일)",
+        "status": "정상 (휴장)"
       }
     ],
     "similar_history": {

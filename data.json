@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T05:05:03+09:00",
+  "updated_at": "2026-08-22T05:10:02+09:00",
   "current": {
     "date": "2026-08-21",
     "score": 47.5,
@@ -19,7 +19,7 @@
   },
   "hangang": {
     "temp": 28.0,
-    "time": "04:00",
+    "time": "05:00",
     "ymd": "20260822",
     "station": "선유"
   },
@@ -5661,7 +5661,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 55.5,
+    "cnn_score": 55.6,
     "cnn_grade": "탐욕",
     "our_score": 47.5,
     "our_grade": "중립"

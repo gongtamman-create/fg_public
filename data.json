@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T06:35:03+09:00",
+  "updated_at": "2026-08-22T06:40:03+09:00",
   "current": {
     "date": "2026-08-21",
     "score": 48.9,
@@ -6357,38 +6357,33 @@
     }
   ],
   "shortpos": {
-    "date": "2026-08-21",
+    "date": "2026-08-22",
     "activity": 252,
     "shorts": [
       {
-        "ticker": "SOXX",
-        "count": 2
+        "ticker": "PLTR",
+        "count": 1
       },
       {
-        "ticker": "SPY",
+        "ticker": "USO",
         "count": 1
       }
     ],
     "longs": [],
     "trend": [
       {
-        "date": "2026-07-08",
+        "date": "2026-07-09",
         "short": 0,
         "long": 0
       },
       {
-        "date": "2026-07-09",
-        "short": 2,
-        "long": 0
-      },
-      {
         "date": "2026-07-10",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-11",
-        "short": 3,
+        "short": 0,
         "long": 0
       },
       {
@@ -6403,27 +6398,27 @@
       },
       {
         "date": "2026-07-14",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-15",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-16",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-17",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-18",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6433,7 +6428,7 @@
       },
       {
         "date": "2026-07-20",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
@@ -6443,12 +6438,12 @@
       },
       {
         "date": "2026-07-22",
-        "short": 6,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-23",
-        "short": 8,
+        "short": 0,
         "long": 0
       },
       {
@@ -6458,7 +6453,7 @@
       },
       {
         "date": "2026-07-25",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
@@ -6468,12 +6463,12 @@
       },
       {
         "date": "2026-07-27",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-07-28",
-        "short": 3,
+        "short": 0,
         "long": 0
       },
       {
@@ -6513,12 +6508,12 @@
       },
       {
         "date": "2026-08-05",
-        "short": 2,
+        "short": 1,
         "long": 0
       },
       {
         "date": "2026-08-06",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6528,7 +6523,7 @@
       },
       {
         "date": "2026-08-08",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6553,12 +6548,12 @@
       },
       {
         "date": "2026-08-13",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-08-14",
-        "short": 3,
+        "short": 0,
         "long": 0
       },
       {
@@ -6573,38 +6568,43 @@
       },
       {
         "date": "2026-08-17",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-08-18",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-08-19",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-08-20",
-        "short": 3,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-08-21",
-        "short": 2,
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-08-22",
+        "short": 1,
         "long": 0
       }
     ],
-    "trendShortTicker": "SOXX",
+    "trendShortTicker": "PLTR",
     "trendLongTicker": null,
     "strength": {
-      "score": 58,
-      "share": 0.8,
-      "heatZ": 1.7,
-      "repPerPost": 3.9,
-      "ticker": "SOXX"
+      "score": 37,
+      "share": 0.4,
+      "heatZ": 1.5,
+      "repPerPost": 5.1,
+      "ticker": "PLTR"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },

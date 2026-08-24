@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25T04:05:03+09:00",
+  "updated_at": "2026-08-25T04:10:03+09:00",
   "current": {
     "date": "2026-08-24",
     "score": 34.7,
@@ -13,13 +13,13 @@
     "realtime_time": "2026-08-25 04:00:22"
   },
   "nasdaq": {
-    "price": 26028.07,
-    "change": -152.39,
-    "change_pct": -0.58
+    "price": 26022.79,
+    "change": -157.67,
+    "change_pct": -0.6
   },
   "hangang": {
-    "temp": 27.9,
-    "time": "03:00",
+    "temp": 27.8,
+    "time": "04:00",
     "ymd": "20260825",
     "station": "선유"
   },

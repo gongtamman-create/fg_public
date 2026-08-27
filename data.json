@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-08-28T02:30:03+09:00",
+  "updated_at": "2026-08-28T02:38:53+09:00",
   "current": {
     "date": "2026-08-27",
-    "score": 71.7,
+    "score": 69.2,
     "grade": "탐욕",
     "daily_score": 43.0,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 44.1,
+    "hybrid_grade": "중립",
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-08-28 02:00:32"
+    "realtime_time": "2026-08-28 02:30:20"
   },
   "nasdaq": {
-    "price": 26520.61,
-    "change": 390.41,
-    "change_pct": 1.49
+    "price": 26524.08,
+    "change": 393.88,
+    "change_pct": 1.51
   },
   "hangang": {
     "temp": 28.7,
@@ -27,630 +27,630 @@
     {
       "date": "2026-05-30",
       "score": 59.4,
-      "hybrid": null,
+      "hybrid": 59.9,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-05-31",
       "score": 36.5,
-      "hybrid": null,
+      "hybrid": 37.1,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-01",
       "score": 14.9,
-      "hybrid": null,
+      "hybrid": 16.5,
       "nasdaq_close": 27086.81,
       "nasdaq_pct": 0.42
     },
     {
       "date": "2026-06-02",
       "score": 68.2,
-      "hybrid": null,
+      "hybrid": 71.8,
       "nasdaq_close": 27093.9,
       "nasdaq_pct": 0.03
     },
     {
       "date": "2026-06-03",
       "score": 33.4,
-      "hybrid": null,
+      "hybrid": 35.1,
       "nasdaq_close": 26853.98,
       "nasdaq_pct": -0.89
     },
     {
       "date": "2026-06-04",
       "score": 10.0,
-      "hybrid": null,
+      "hybrid": 7.9,
       "nasdaq_close": 26830.96,
       "nasdaq_pct": -0.09
     },
     {
       "date": "2026-06-05",
       "score": 37.2,
-      "hybrid": null,
+      "hybrid": 33.2,
       "nasdaq_close": 25709.43,
       "nasdaq_pct": -4.18
     },
     {
       "date": "2026-06-06",
       "score": 15.3,
-      "hybrid": null,
+      "hybrid": 14.9,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-07",
       "score": 2.0,
-      "hybrid": null,
+      "hybrid": 2.0,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-08",
       "score": 2.0,
-      "hybrid": null,
+      "hybrid": 2.0,
       "nasdaq_close": 25929.66,
       "nasdaq_pct": 0.86
     },
     {
       "date": "2026-06-09",
       "score": 55.4,
-      "hybrid": null,
+      "hybrid": 52.4,
       "nasdaq_close": 25678.82,
       "nasdaq_pct": -0.97
     },
     {
       "date": "2026-06-10",
       "score": 17.5,
-      "hybrid": null,
+      "hybrid": 13.3,
       "nasdaq_close": 25169.5,
       "nasdaq_pct": -1.98
     },
     {
       "date": "2026-06-11",
       "score": 33.0,
-      "hybrid": null,
+      "hybrid": 29.4,
       "nasdaq_close": 25311.71,
       "nasdaq_pct": 0.57
     },
     {
       "date": "2026-06-12",
       "score": 42.4,
-      "hybrid": null,
+      "hybrid": 40.8,
       "nasdaq_close": 25888.84,
       "nasdaq_pct": 0.31
     },
     {
       "date": "2026-06-13",
       "score": 61.0,
-      "hybrid": null,
+      "hybrid": 59.3,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-14",
       "score": 56.0,
-      "hybrid": null,
+      "hybrid": 56.4,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-15",
       "score": 51.6,
-      "hybrid": null,
+      "hybrid": 56.0,
       "nasdaq_close": 26683.94,
       "nasdaq_pct": 3.07
     },
     {
       "date": "2026-06-16",
       "score": 59.9,
-      "hybrid": null,
+      "hybrid": 62.2,
       "nasdaq_close": 26376.34,
       "nasdaq_pct": -1.15
     },
     {
       "date": "2026-06-17",
       "score": 28.3,
-      "hybrid": null,
+      "hybrid": 27.3,
       "nasdaq_close": 26021.66,
       "nasdaq_pct": -1.34
     },
     {
       "date": "2026-06-18",
       "score": 31.8,
-      "hybrid": null,
+      "hybrid": 34.7,
       "nasdaq_close": 26517.93,
       "nasdaq_pct": 1.91
     },
     {
       "date": "2026-06-19",
       "score": 43.3,
-      "hybrid": null,
+      "hybrid": 44.0,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-20",
       "score": 17.8,
-      "hybrid": null,
+      "hybrid": 18.9,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-21",
       "score": 6.2,
-      "hybrid": null,
+      "hybrid": 6.2,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-22",
       "score": 33.7,
-      "hybrid": null,
+      "hybrid": 33.2,
       "nasdaq_close": 26166.6,
       "nasdaq_pct": -1.32
     },
     {
       "date": "2026-06-23",
       "score": 30.6,
-      "hybrid": null,
+      "hybrid": 29.4,
       "nasdaq_close": 25587.04,
       "nasdaq_pct": -2.21
     },
     {
       "date": "2026-06-24",
       "score": 13.4,
-      "hybrid": null,
+      "hybrid": 13.5,
       "nasdaq_close": 25476.63,
       "nasdaq_pct": -0.43
     },
     {
       "date": "2026-06-25",
       "score": 7.3,
-      "hybrid": null,
+      "hybrid": 8.4,
       "nasdaq_close": 25358.6,
       "nasdaq_pct": -0.46
     },
     {
       "date": "2026-06-26",
       "score": 23.0,
-      "hybrid": null,
+      "hybrid": 20.9,
       "nasdaq_close": 25297.62,
       "nasdaq_pct": -0.24
     },
     {
       "date": "2026-06-27",
       "score": 34.2,
-      "hybrid": null,
+      "hybrid": 32.4,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-28",
       "score": 28.1,
-      "hybrid": null,
+      "hybrid": 29.0,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-06-29",
       "score": 36.1,
-      "hybrid": null,
+      "hybrid": 35.3,
       "nasdaq_close": 25820.14,
       "nasdaq_pct": 2.07
     },
     {
       "date": "2026-06-30",
       "score": 41.8,
-      "hybrid": null,
+      "hybrid": 45.1,
       "nasdaq_close": 26213.72,
       "nasdaq_pct": 1.52
     },
     {
       "date": "2026-07-01",
       "score": 16.7,
-      "hybrid": null,
+      "hybrid": 13.0,
       "nasdaq_close": 26040.03,
       "nasdaq_pct": -0.66
     },
     {
       "date": "2026-07-02",
       "score": 21.3,
-      "hybrid": null,
+      "hybrid": 17.8,
       "nasdaq_close": 25832.67,
       "nasdaq_pct": -0.8
     },
     {
       "date": "2026-07-03",
       "score": 25.3,
-      "hybrid": null,
+      "hybrid": 27.7,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-04",
       "score": 43.5,
-      "hybrid": null,
+      "hybrid": 42.6,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-05",
       "score": 40.8,
-      "hybrid": null,
+      "hybrid": 38.7,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-06",
       "score": 41.6,
-      "hybrid": null,
+      "hybrid": 38.3,
       "nasdaq_close": 26121.16,
       "nasdaq_pct": 1.12
     },
     {
       "date": "2026-07-07",
       "score": 40.6,
-      "hybrid": null,
+      "hybrid": 42.4,
       "nasdaq_close": 25818.69,
       "nasdaq_pct": -1.16
     },
     {
       "date": "2026-07-08",
       "score": 45.0,
-      "hybrid": null,
+      "hybrid": 40.4,
       "nasdaq_close": 25870.65,
       "nasdaq_pct": 0.2
     },
     {
       "date": "2026-07-09",
       "score": 28.9,
-      "hybrid": null,
+      "hybrid": 30.7,
       "nasdaq_close": 26206.89,
       "nasdaq_pct": 1.3
     },
     {
       "date": "2026-07-10",
       "score": 55.9,
-      "hybrid": null,
+      "hybrid": 54.2,
       "nasdaq_close": 26281.61,
       "nasdaq_pct": 0.29
     },
     {
       "date": "2026-07-11",
       "score": 24.1,
-      "hybrid": null,
+      "hybrid": 23.7,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-12",
       "score": 59.3,
-      "hybrid": null,
+      "hybrid": 57.2,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-13",
       "score": 16.0,
-      "hybrid": null,
+      "hybrid": 10.4,
       "nasdaq_close": 25873.18,
       "nasdaq_pct": -1.55
     },
     {
       "date": "2026-07-14",
       "score": 9.8,
-      "hybrid": null,
+      "hybrid": 9.2,
       "nasdaq_close": 26107.01,
       "nasdaq_pct": 0.9
     },
     {
       "date": "2026-07-15",
       "score": 38.6,
-      "hybrid": null,
+      "hybrid": 35.6,
       "nasdaq_close": 26269.23,
       "nasdaq_pct": 0.62
     },
     {
       "date": "2026-07-16",
       "score": 36.0,
-      "hybrid": null,
+      "hybrid": 33.9,
       "nasdaq_close": 25881.95,
       "nasdaq_pct": -1.47
     },
     {
       "date": "2026-07-17",
       "score": 30.3,
-      "hybrid": null,
+      "hybrid": 27.7,
       "nasdaq_close": 25520.24,
       "nasdaq_pct": -1.4
     },
     {
       "date": "2026-07-18",
       "score": 40.5,
-      "hybrid": null,
+      "hybrid": 37.3,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-19",
       "score": 16.8,
-      "hybrid": null,
+      "hybrid": 15.6,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-20",
       "score": 25.8,
-      "hybrid": null,
+      "hybrid": 24.2,
       "nasdaq_close": 25508.07,
       "nasdaq_pct": -0.05
     },
     {
       "date": "2026-07-21",
       "score": 41.6,
-      "hybrid": null,
+      "hybrid": 39.8,
       "nasdaq_close": 25837.21,
       "nasdaq_pct": 1.29
     },
     {
       "date": "2026-07-22",
       "score": 50.7,
-      "hybrid": null,
+      "hybrid": 50.2,
       "nasdaq_close": 25690.9,
       "nasdaq_pct": -0.57
     },
     {
       "date": "2026-07-23",
       "score": 31.9,
-      "hybrid": null,
+      "hybrid": 25.4,
       "nasdaq_close": 25137.69,
       "nasdaq_pct": -2.15
     },
     {
       "date": "2026-07-24",
       "score": 32.0,
-      "hybrid": null,
+      "hybrid": 26.8,
       "nasdaq_close": 24975.82,
       "nasdaq_pct": -0.64
     },
     {
       "date": "2026-07-25",
       "score": 40.7,
-      "hybrid": null,
+      "hybrid": 38.2,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-26",
       "score": 30.3,
-      "hybrid": null,
+      "hybrid": 27.5,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-07-27",
       "score": 24.6,
-      "hybrid": null,
+      "hybrid": 20.3,
       "nasdaq_close": 24932.08,
       "nasdaq_pct": -0.18
     },
     {
       "date": "2026-07-28",
       "score": 17.7,
-      "hybrid": null,
+      "hybrid": 14.6,
       "nasdaq_close": 24876.91,
       "nasdaq_pct": -0.22
     },
     {
       "date": "2026-07-29",
       "score": 42.3,
-      "hybrid": null,
+      "hybrid": 40.2,
       "nasdaq_close": 24442.94,
       "nasdaq_pct": -1.74
     },
     {
       "date": "2026-07-30",
       "score": 23.8,
-      "hybrid": null,
+      "hybrid": 20.3,
       "nasdaq_close": 25122.18,
       "nasdaq_pct": 2.78
     },
     {
       "date": "2026-07-31",
       "score": 40.8,
-      "hybrid": null,
+      "hybrid": 40.3,
       "nasdaq_close": 25373.85,
       "nasdaq_pct": 1.0
     },
     {
       "date": "2026-08-01",
       "score": 29.8,
-      "hybrid": null,
+      "hybrid": 26.6,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-02",
       "score": 11.5,
-      "hybrid": null,
+      "hybrid": 10.8,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-03",
       "score": 31.0,
-      "hybrid": null,
+      "hybrid": 29.9,
       "nasdaq_close": 25913.9,
       "nasdaq_pct": 2.13
     },
     {
       "date": "2026-08-04",
       "score": 45.7,
-      "hybrid": null,
+      "hybrid": 45.7,
       "nasdaq_close": 26584.99,
       "nasdaq_pct": 2.59
     },
     {
       "date": "2026-08-05",
       "score": 44.5,
-      "hybrid": null,
+      "hybrid": 42.0,
       "nasdaq_close": 26363.44,
       "nasdaq_pct": -0.83
     },
     {
       "date": "2026-08-06",
       "score": 35.7,
-      "hybrid": null,
+      "hybrid": 35.0,
       "nasdaq_close": 26348.35,
       "nasdaq_pct": -0.06
     },
     {
       "date": "2026-08-07",
       "score": 33.4,
-      "hybrid": null,
+      "hybrid": 33.4,
       "nasdaq_close": 26690.62,
       "nasdaq_pct": 1.3
     },
     {
       "date": "2026-08-08",
       "score": 43.6,
-      "hybrid": null,
+      "hybrid": 44.0,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-09",
       "score": 47.2,
-      "hybrid": null,
+      "hybrid": 47.4,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-10",
       "score": 36.5,
-      "hybrid": null,
+      "hybrid": 30.7,
       "nasdaq_close": 26605.36,
       "nasdaq_pct": -0.32
     },
     {
       "date": "2026-08-11",
       "score": 36.4,
-      "hybrid": null,
+      "hybrid": 32.2,
       "nasdaq_close": 26445.45,
       "nasdaq_pct": -0.6
     },
     {
       "date": "2026-08-12",
       "score": 17.5,
-      "hybrid": null,
+      "hybrid": 17.8,
       "nasdaq_close": 26588.49,
       "nasdaq_pct": 0.54
     },
     {
       "date": "2026-08-13",
       "score": 47.3,
-      "hybrid": null,
+      "hybrid": 49.7,
       "nasdaq_close": 26803.03,
       "nasdaq_pct": 0.81
     },
     {
       "date": "2026-08-14",
       "score": 50.3,
-      "hybrid": null,
+      "hybrid": 52.4,
       "nasdaq_close": 26729.16,
       "nasdaq_pct": -0.28
     },
     {
       "date": "2026-08-15",
       "score": 39.2,
-      "hybrid": null,
+      "hybrid": 34.1,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-16",
       "score": 34.2,
-      "hybrid": null,
+      "hybrid": 34.8,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-17",
       "score": 60.9,
-      "hybrid": null,
+      "hybrid": 63.6,
       "nasdaq_close": 26644.91,
       "nasdaq_pct": -0.32
     },
     {
       "date": "2026-08-18",
       "score": 41.9,
-      "hybrid": null,
+      "hybrid": 40.0,
       "nasdaq_close": 26289.71,
       "nasdaq_pct": -1.33
     },
     {
       "date": "2026-08-19",
       "score": 28.0,
-      "hybrid": null,
+      "hybrid": 26.5,
       "nasdaq_close": 26331.09,
       "nasdaq_pct": 0.16
     },
     {
       "date": "2026-08-20",
       "score": 75.4,
-      "hybrid": null,
+      "hybrid": 75.4,
       "nasdaq_close": 26067.17,
       "nasdaq_pct": -1.0
     },
     {
       "date": "2026-08-21",
       "score": 44.8,
-      "hybrid": null,
+      "hybrid": 45.1,
       "nasdaq_close": 26180.46,
       "nasdaq_pct": 0.43
     },
     {
       "date": "2026-08-22",
       "score": 63.8,
-      "hybrid": null,
+      "hybrid": 61.9,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-23",
       "score": 64.9,
-      "hybrid": null,
+      "hybrid": 64.5,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-08-24",
       "score": 98.0,
-      "hybrid": null,
+      "hybrid": 98.0,
       "nasdaq_close": 25980.19,
       "nasdaq_pct": -0.76
     },
     {
       "date": "2026-08-25",
       "score": 57.8,
-      "hybrid": null,
+      "hybrid": 60.6,
       "nasdaq_close": 26151.3,
       "nasdaq_pct": 0.66
     },
     {
       "date": "2026-08-26",
       "score": 61.9,
-      "hybrid": null,
+      "hybrid": 58.7,
       "nasdaq_close": 26130.2,
       "nasdaq_pct": -0.08
     },
     {
       "date": "2026-08-27",
       "score": 43.0,
-      "hybrid": null,
+      "hybrid": 44.1,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5685,9 +5685,9 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 59.3,
+    "cnn_score": 59.1,
     "cnn_grade": "탐욕",
-    "our_score": 71.7,
+    "our_score": 69.2,
     "our_grade": "탐욕"
   },
   "action_detail": {
@@ -6188,10 +6188,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 26.8,
-      "time": "02:30"
-    },
-    {
       "score": 17.3,
       "time": "03:00"
     },
@@ -6378,6 +6374,10 @@
     {
       "score": 76.7,
       "time": "02:00"
+    },
+    {
+      "score": 60.2,
+      "time": "02:30"
     }
   ],
   "shortpos": {

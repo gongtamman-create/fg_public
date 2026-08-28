@@ -145,11 +145,20 @@
     // 게이지
     animateGauge(c.score ?? 0);
     $("#gauge-date").textContent = c.date;
-    // 실시간 배지
-    if (c.realtime && c.realtime_time) {
-      const el = $("#realtime-badge");
-      el.style.display = "flex";
+    // 실시간 배지 + AI 하이브리드 필 (컨테이너는 어느 쪽이든 있으면 노출)
+    const hasRt = c.realtime && c.realtime_time;
+    const hasHybrid = c.hybrid_score != null;
+    if (hasRt || hasHybrid) $("#realtime-badge").style.display = "flex";
+    if (hasRt) {
       $("#rt-label").textContent = "실시간 · " + c.realtime_time.slice(11, 16);
+    } else {
+      $("#rt-label").parentElement.style.display = "none"; // 실시간 없으면 그 필만 숨김
+    }
+    if (hasHybrid) {
+      // 하이브리드 = 키워드 + AI 감성 보강 블렌드 (2026-08-28 레인 소생 후 첫 표면)
+      const hp = $("#hybrid-pill");
+      hp.style.display = "";
+      $("#hybrid-label").textContent = `AI 하이브리드 ${Math.round(c.hybrid_score)}` + (c.hybrid_grade ? ` · ${c.hybrid_grade}` : "");
     }
 
     // 24시간 스파크라인

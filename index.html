@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1787902803">
+<link rel="stylesheet" href="assets/style.css?v=1787903703">
 </head>
 <body>
 <div id="app">
@@ -87,18 +87,56 @@
         <div class="gauge-grade" id="gauge-grade">로딩 중</div>
       </div>
     </div>
+    <!-- 3눈금 병기 (개선안 A, 2026-08-28) — 실시간(게이지)·일일·AI가 갈라지는 날이 정보다.
+         괴리 = 실시간 − 일일: 어제 마감 심리 대비 오늘 장중 심리가 어느 쪽으로 움직이는가 -->
     <div class="score-pills" id="realtime-badge" style="display:none;">
-      <div class="pill">
-        <span class="pill-label" id="rt-label">실시간</span>
+      <div class="pill" id="pill-daily" style="display:none;">
+        <span class="pill-label">일일(어제 마감)</span>
+        <span class="pill-value mono" id="pill-daily-v">--</span>
       </div>
-      <!-- AI 하이브리드 점수 (2026-08-28) — 키워드 점수에 LLM 감성 보강을 섞은 별도 눈금.
-           둘이 갈라지는 날이 정보다 (예: 키워드 43 vs 하이브리드 44는 합의, 큰 괴리는 재료 확인 신호) -->
-      <div class="pill" id="hybrid-pill" style="display:none;">
-        <span class="pill-label" id="hybrid-label">AI</span>
+      <div class="pill-divider"></div>
+      <div class="pill" id="pill-hybrid" style="display:none;">
+        <span class="pill-label">AI 하이브리드</span>
+        <span class="pill-value mono" id="pill-hybrid-v">--</span>
+      </div>
+      <div class="pill-divider"></div>
+      <div class="pill" id="pill-gap" style="display:none;">
+        <span class="pill-label">괴리(실시간−일일)</span>
+        <span class="pill-value mono" id="pill-gap-v">--</span>
       </div>
     </div>
     <p class="gauge-date" id="gauge-date"></p>
   </section>
+
+  <!-- ── ★ 개미 vs 월가 (개선안 A: 9번째 섹션 → 히어로 직하 승격) ── -->
+  <section class="vs-strip" id="vs-strip" style="display:none;">
+    <div class="vs-row">
+      <div class="vs-col">
+        <span class="vs-label">개미공탐</span>
+        <span class="vs-score mono" id="vs-our">--</span>
+        <span class="vs-grade" id="vs-our-grade"></span>
+      </div>
+      <div class="vs-mid">
+        <span class="vs-label">괴리</span>
+        <span class="vs-gap mono" id="vs-gap">--</span>
+        <div class="vs-bar"><div class="vs-bar-fill" id="vs-bar-fill"></div></div>
+      </div>
+      <div class="vs-col">
+        <span class="vs-label">CNN 월가</span>
+        <span class="vs-score mono" id="vs-cnn">--</span>
+        <span class="vs-grade" id="vs-cnn-grade"></span>
+      </div>
+    </div>
+    <p class="vs-note" id="vs-note"></p>
+  </section>
+
+  <!-- ── 섹션 칩 내비 (개선안 A: 긴 단일 스크롤에 앵커) ── -->
+  <nav class="chip-nav" id="chip-nav">
+    <button class="chip active" data-target="trend-card">추이</button>
+    <button class="chip" data-target="bt-card">백테스트</button>
+    <button class="chip" data-target="shortpos-section">숏 군중</button>
+    <button class="chip" data-target="method-card">방법</button>
+  </nav>
 
   <!-- ── 24시간 실시간 추이 ── -->
   <section class="spark-section" id="spark-section" style="display:none;">
@@ -120,9 +158,9 @@
       <span class="stat-sub" id="stat-nasdaq-pct"></span>
     </div>
     <div class="stat-card">
-      <span class="stat-label">CNN F&G</span>
-      <span class="stat-value" id="stat-cnn">--</span>
-      <span class="stat-sub" id="stat-cnn-grade"></span>
+      <span class="stat-label">숏 군중</span>
+      <span class="stat-value" id="stat-short">--</span>
+      <span class="stat-sub" id="stat-short-sub"></span>
     </div>
     <div class="stat-card">
       <span class="stat-label">한강 🌊</span>
@@ -153,7 +191,7 @@
   </section>
 
   <!-- ── 추이 차트 (SVG) ── -->
-  <section class="card">
+  <section class="card" id="trend-card">
     <div class="chart-header">
       <h3 class="section-title">공탐지수 추이</h3>
       <div class="chart-tabs">
@@ -162,6 +200,10 @@
         <button class="chart-tab" data-days="90">90일</button>
       </div>
     </div>
+    <div class="chart-legend">
+      <span><i class="leg-line" style="background:#448aff;"></i>키워드</span>
+      <span><i class="leg-line leg-dash" style="background:#FFAB00;"></i>AI 하이브리드</span>
+    </div>
     <div class="svg-chart-wrap">
       <svg id="trend-svg" class="trend-svg" preserveAspectRatio="none"></svg>
       <div class="chart-tooltip" id="chart-tooltip"></div>
@@ -169,7 +211,7 @@
   </section>
 
   <!-- ── 백테스트 성과 ── -->
-  <section class="card">
+  <section class="card" id="bt-card">
     <div class="chart-header">
       <h3 class="section-title">백테스트 성과</h3>
       <div class="chart-tabs">
@@ -242,7 +284,7 @@
   </section>
 
   <!-- ── 산출 방법론 ── -->
-  <section class="card method-card">
+  <section class="card method-card" id="method-card">
     <h3 class="section-title">산출 방법</h3>
     <p class="method-desc">온라인 투자자 커뮤니티의 게시글을 AI가 실시간 분석하여 산출합니다.</p>
     <div class="method-stats">
@@ -263,25 +305,6 @@
         <div class="method-label">20일 평균 수익</div>
       </div>
     </div>
-  </section>
-
-  <!-- ── CNN 비교 ── -->
-  <section class="card">
-    <h3 class="section-title">CNN Fear & Greed 비교</h3>
-    <div class="cnn-compare" id="cnn-compare">
-      <div class="cnn-col">
-        <span class="cnn-label">개미공탐</span>
-        <div class="cnn-score" id="cmp-our">--</div>
-        <div class="cnn-grade" id="cmp-our-grade"></div>
-      </div>
-      <div class="cnn-vs-badge">VS</div>
-      <div class="cnn-col">
-        <span class="cnn-label">CNN</span>
-        <div class="cnn-score" id="cmp-cnn">--</div>
-        <div class="cnn-grade" id="cmp-cnn-grade"></div>
-      </div>
-    </div>
-    <p class="cnn-note" id="cmp-note"></p>
   </section>
 
   <!-- ── 일별 기록 ── -->
@@ -331,9 +354,9 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" integrity="sha384-sEVIly94UBRLKWdkYoPpSG7GD/e79YHMrxVyZaOk712Ga7+EAw6w1EFi+xBzBdd+" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js" integrity="sha384-1/m+A1jVWbD3yiK3/vtFvm1+LjK1WLpSoDY+Kaxppwn/yP9BVSgdHTNQVOjrzUO5" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" integrity="sha384-EkqK+ezBWJuvO3hfrSx2iVqr3YQbhmnzn8kPhOpBZ+0GMVU5oGSgptwIu8D84HjE" crossorigin="anonymous"></script>
-<script src="assets/app.js?v=1787902803"></script>
-<script src="assets/activity-chart.js?v=1787902803" defer></script>
-<script src="assets/chat.js?v=1787902803"></script>
+<script src="assets/app.js?v=1787903703"></script>
+<script src="assets/activity-chart.js?v=1787903703" defer></script>
+<script src="assets/chat.js?v=1787903703"></script>
 <!-- first-party 방문 통계 (2026-08-15) — 무쿠키, IP는 수집 서버가 SHA-256 해시로만 저장 (privacy.html §1).
      sessionStorage dedupe: 과거 SW 자가정리(sw.js)가 강제 새로고침하는 1회 방문의 이중 집계 방지. -->
 <script>

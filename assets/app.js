@@ -145,20 +145,34 @@
     // 게이지
     animateGauge(c.score ?? 0);
     $("#gauge-date").textContent = c.date;
-    // 실시간 배지 + AI 하이브리드 필 (컨테이너는 어느 쪽이든 있으면 노출)
-    const hasRt = c.realtime && c.realtime_time;
+    // 3눈금 병기 (개선안 A) — 게이지=실시간, 필=일일/AI/괴리. 갈라지는 날이 정보다.
+    const hasDaily = c.daily_score != null;
     const hasHybrid = c.hybrid_score != null;
-    if (hasRt || hasHybrid) $("#realtime-badge").style.display = "flex";
-    if (hasRt) {
-      $("#rt-label").textContent = "실시간 · " + c.realtime_time.slice(11, 16);
-    } else {
-      $("#rt-label").parentElement.style.display = "none"; // 실시간 없으면 그 필만 숨김
+    if (hasDaily || hasHybrid) $("#realtime-badge").style.display = "flex";
+    if (hasDaily) {
+      $("#pill-daily").style.display = "";
+      const dv = $("#pill-daily-v");
+      dv.textContent = Math.round(c.daily_score);
+      dv.style.color = scoreColor(c.daily_score);
+      // 괴리 = 실시간 − 일일 (실시간이 게이지 점수)
+      if (c.score != null) {
+        $("#pill-gap").style.display = "";
+        const gap = Math.round(c.score - c.daily_score);
+        const gv = $("#pill-gap-v");
+        gv.textContent = (gap >= 0 ? "+" : "") + gap;
+        // 방향 색: 공포 쪽 이동=빨강, 탐욕 쪽=초록, 미미(±3)는 회색 — 서술이지 신호 아님
+        gv.style.color = Math.abs(gap) <= 3 ? "#6e6e8a" : gap < 0 ? "#E10600" : "#00C853";
+      }
     }
     if (hasHybrid) {
-      // 하이브리드 = 키워드 + AI 감성 보강 블렌드 (2026-08-28 레인 소생 후 첫 표면)
-      const hp = $("#hybrid-pill");
-      hp.style.display = "";
-      $("#hybrid-label").textContent = `AI 하이브리드 ${Math.round(c.hybrid_score)}` + (c.hybrid_grade ? ` · ${c.hybrid_grade}` : "");
+      $("#pill-hybrid").style.display = "";
+      const hv = $("#pill-hybrid-v");
+      hv.textContent = Math.round(c.hybrid_score);
+      hv.style.color = scoreColor(c.hybrid_score);
+    }
+    // 게이지 하단 날짜줄에 실시간 시각 병기
+    if (c.realtime && c.realtime_time) {
+      $("#gauge-date").textContent = `실시간 ${c.realtime_time.slice(11, 16)} · ${c.date}`;
     }
 
     // 24시간 스파크라인
@@ -174,6 +188,7 @@
     // 차트
     renderTrendChart(30);
     initChartTabs();
+    initChipNav();
 
     // 백테스트
     renderBacktest(d.backtest, 20);
@@ -188,7 +203,7 @@
     initCalendarNav();
 
     // CNN 비교 (실시간 점수 반영)
-    renderCNN(d.cnn_comparison);
+    renderVsStrip(d.cnn_comparison);
 
     // 일별 기록
     renderDayTable(d.history);
@@ -310,14 +325,7 @@
     }
 
 
-    // CNN
-    const cnn = d.cnn_comparison;
-    if (cnn && cnn.cnn_score != null) {
-      $("#stat-cnn").textContent = Math.round(cnn.cnn_score);
-      const g = getGrade(cnn.cnn_score);
-      $("#stat-cnn-grade").textContent = g.label;
-      $("#stat-cnn-grade").style.color = g.color;
-    }
+    // (개선안 A) CNN 스탯 카드는 히어로 VS 스트립으로 승격 — 그 자리는 숏 군중(renderShortposStrength가 채움)
 
     // 한강 수온 (data.json에 서버가 굽는다 — 구 api.hangang.life 직접 fetch는 서비스 사망으로 제거)
     renderHangang(d.hangang);
@@ -755,7 +763,13 @@
     const wrap = $("#shortpos-strength");
     if (!wrap) return;
     const st = sp && sp.strength;
-    if (!st || typeof st.score !== "number") { wrap.style.display = "none"; return; }
+    if (!st || typeof st.score !== "number") {
+      wrap.style.display = "none";
+      // 강도 데이터 없어도 스탯 카드는 활동 건수로 폴백 (빈 '--' 방지)
+      const stv = $("#stat-short");
+      if (stv && sp && typeof sp.activity === "number") { stv.textContent = sp.activity; stv.style.color = "#9a9ab0"; const sts = $("#stat-short-sub"); if (sts) sts.textContent = "오늘 활동(건)"; }
+      return;
+    }
     wrap.style.display = "";
     const score = Math.max(0, Math.min(100, st.score));
     // 색: 약함(회색)→중간(주황)→강함(빨강)
@@ -772,6 +786,11 @@
       const heat = (typeof st.heatZ === "number" && st.heatZ > 0) ? `과열 +${st.heatZ}σ · ` : "";
       sub.textContent = `${tier} · 오늘 글의 ${st.share}%가 ${st.ticker} 숏 · ${heat}글당 댓글 ${st.repPerPost} (활동량 보정·역대 백분위)`;
     }
+    // 스탯 3열의 숏 군중 카드 — 위 강도 계산과 같은 값(별도 계산 금지)
+    const stv = $("#stat-short");
+    if (stv) { stv.textContent = score; stv.style.color = color; }
+    const sts = $("#stat-short-sub");
+    if (sts) { sts.textContent = `${st.ticker || ""} ${tier}`; sts.style.color = color; }
   }
 
   function renderShortposTrend(sp) {
@@ -895,24 +914,51 @@
   /* ════════════════════════════════════════
      CNN 비교
      ════════════════════════════════════════ */
-  function renderCNN(cnn) {
-    if (!cnn) return;
-    $("#cmp-our").textContent = cnn.our_score != null ? Math.round(cnn.our_score) : "--";
-    $("#cmp-our").style.color = scoreColor(cnn.our_score);
-    $("#cmp-our-grade").textContent = cnn.our_grade || "";
-    $("#cmp-our-grade").style.color = scoreColor(cnn.our_score);
+  // 섹션 칩 내비 (개선안 A) — 앵커 스크롤 + 활성 표시. 숨겨진 섹션(display:none)은 칩도 숨김.
+  function initChipNav() {
+    const nav = $("#chip-nav");
+    if (!nav) return;
+    nav.querySelectorAll(".chip").forEach((chip) => {
+      const target = document.getElementById(chip.dataset.target);
+      if (!target || target.style.display === "none") { chip.style.display = "none"; return; }
+      chip.addEventListener("click", () => {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        nav.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
+        chip.classList.add("active");
+      });
+    });
+  }
+
+  function renderVsStrip(cnn) {
+    // 개미 vs 월가 — 구 CNN 비교 카드(9번째 섹션)의 히어로 직하 승격판 (개선안 A).
+    // 선행 문구(r=0.59)는 구 카드에서 계승 — 기존 검증 주장만 사용, 새 주장 발명 금지.
+    if (!cnn || cnn.our_score == null) return;
+    const el = $("#vs-strip");
+    if (!el) return;
+    el.style.display = "";
+    $("#vs-our").textContent = Math.round(cnn.our_score);
+    $("#vs-our").style.color = scoreColor(cnn.our_score);
+    $("#vs-our-grade").textContent = cnn.our_grade || "";
+    $("#vs-our-grade").style.color = scoreColor(cnn.our_score);
 
     if (cnn.cnn_score != null) {
-      $("#cmp-cnn").textContent = Math.round(cnn.cnn_score);
-      $("#cmp-cnn").style.color = scoreColor(cnn.cnn_score);
-      $("#cmp-cnn-grade").textContent = cnn.cnn_grade || "";
-      $("#cmp-cnn-grade").style.color = scoreColor(cnn.cnn_score);
+      $("#vs-cnn").textContent = Math.round(cnn.cnn_score);
+      $("#vs-cnn").style.color = scoreColor(cnn.cnn_score);
+      $("#vs-cnn-grade").textContent = cnn.cnn_grade || "";
+      $("#vs-cnn-grade").style.color = scoreColor(cnn.cnn_score);
+      const gap = Math.abs(cnn.our_score - cnn.cnn_score);
+      $("#vs-gap").textContent = gap.toFixed(1) + "p";
+      // 괴리 바: 0~100 축 위에 두 점수 사이 구간 칠하기
+      const lo = Math.min(cnn.our_score, cnn.cnn_score);
+      const fill = $("#vs-bar-fill");
+      fill.style.left = lo + "%";
+      fill.style.width = Math.max(2, gap) + "%";
       const diff = Math.round(cnn.our_score - cnn.cnn_score);
       const sign = diff >= 0 ? "+" : "";
-      $("#cmp-note").textContent = `차이 ${sign}${diff}점 · 개미공탐이 CNN 대비 2~3일 선행 (r=0.59)`;
+      $("#vs-note").textContent = `차이 ${sign}${diff}점 · 개미공탐이 CNN 대비 2~3일 선행 (r=0.59)`;
     } else {
-      $("#cmp-cnn").textContent = "--";
-      $("#cmp-note").textContent = "CNN 데이터 없음";
+      $("#vs-cnn").textContent = "--";
+      $("#vs-note").textContent = "CNN 데이터 없음";
     }
   }
 

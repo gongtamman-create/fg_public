@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T13:00:03+09:00",
+  "updated_at": "2026-08-30T13:05:03+09:00",
   "current": {
     "date": "2026-08-30",
     "score": 97.8,
@@ -10,7 +10,7 @@
     "signal": "caution",
     "signal_label": "과열 주의",
     "realtime": true,
-    "realtime_time": "2026-08-30 12:30:25"
+    "realtime_time": "2026-08-30 13:00:22"
   },
   "nasdaq": {
     "price": null,
@@ -6200,10 +6200,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 24.6,
-      "time": "13:00"
-    },
-    {
       "score": 22.3,
       "time": "13:30"
     },
@@ -6390,6 +6386,10 @@
     {
       "score": 98.0,
       "time": "12:30"
+    },
+    {
+      "score": 97.8,
+      "time": "13:00"
     }
   ],
   "shortpos": {

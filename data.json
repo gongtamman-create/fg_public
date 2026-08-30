@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-30T10:20:03+09:00",
+  "updated_at": "2026-08-30T10:25:03+09:00",
   "current": {
     "date": "2026-08-30",
     "score": 44.7,
     "grade": "중립",
     "daily_score": 77.7,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 78.6,
+    "hybrid_grade": "탐욕",
     "signal": "caution",
     "signal_label": "과열 주의",
     "realtime": true,
@@ -650,7 +650,7 @@
     {
       "date": "2026-08-30",
       "score": 77.7,
-      "hybrid": null,
+      "hybrid": 78.6,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }

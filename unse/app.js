@@ -70,28 +70,57 @@ function hexagramLines(lines, movingLine) {
     .join('');
 }
 
-/** 운세가 나온 근거 세 축을 그린다. */
-function renderBasis(b) {
+/**
+ * 오늘 닿은 세 가지를 그린다.
+ *
+ * 앞면에는 문장만 내보내고, 용어·각도·점수 같은 셈의 재료는 접힌 영역으로 보낸다.
+ * 근거는 보여주되 계산서처럼 읽히지 않게 하려는 것이다.
+ */
+function renderBasis(b, total) {
   const hx = b.hexagram;
 
+  const setVerdict = (id, word, score) => {
+    $(id).textContent = word;
+    $(id).className = `br-verdict ${scoreClass(score)}`;
+  };
+
   $('hx-glyph').innerHTML = hexagramLines(hx.lines, hx.movingLine);
-  $('hx-name').textContent = `${hx.no}. ${hx.ko} ${hx.hanja}`;
-  $('hx-struct').textContent =
-    `${hx.upper.symbol} 상${hx.upper.ko}(${hx.upper.nature}) · ${hx.lower.symbol} 하${hx.lower.ko}(${hx.lower.nature})`;
+  $('hx-name').textContent = `${hx.ko} ${hx.hanja}`;
+  $('hx-struct').textContent = `위는 ${hx.upper.nature}, 아래는 ${hx.lower.nature}`;
   $('hx-text').textContent = hx.text;
   $('hx-moving').textContent = hx.movingText;
-  $('hx-verdict').textContent = `${hx.fortuneLabel} ${fmtScore(hx.score)}`;
-  $('hx-verdict').className = `br-verdict ${scoreClass(hx.score)}`;
+  setVerdict('hx-verdict', hx.verdict, hx.score);
 
-  $('rel-title').textContent = `${b.ganji.name}(${b.ganji.hanja})일 — ${b.relation.detail}`;
+  $('rel-title').textContent = `오늘은 ${b.ganji.name}(${b.ganji.hanja})의 날입니다.`;
   $('rel-text').textContent = b.relation.text;
-  $('rel-verdict').textContent = `${b.relation.label} ${fmtScore(b.relation.score)}`;
-  $('rel-verdict').className = `br-verdict ${scoreClass(b.relation.score)}`;
+  setVerdict('rel-verdict', b.relation.verdict, b.relation.score);
 
-  $('asp-title').textContent = `당신의 별자리와 ${b.aspect.separation}도 떨어져 있습니다`;
+  $('asp-title').textContent = `해는 오늘 ${b.aspect.sunSignKo}에 머뭅니다.`;
   $('asp-text').textContent = b.aspect.text;
-  $('asp-verdict').textContent = `${b.aspect.label} ${fmtScore(b.aspect.score)}`;
-  $('asp-verdict').className = `br-verdict ${scoreClass(b.aspect.score)}`;
+  setVerdict('asp-verdict', b.aspect.verdict, b.aspect.score);
+
+  // 접힌 셈법 — 여기서만 용어와 숫자를 드러낸다.
+  const rows = [
+    ['괘', `제${hx.no}괘 ${hx.ko} · ${hx.movingLine}효 동 · ${hx.fortuneLabel}`, hx.score],
+    ['날', `${b.ganji.name}일 · ${b.relation.detail} · ${b.relation.label}`, b.relation.score],
+    ['하늘', `${b.aspect.label}${b.aspect.key === 'none' ? '' : ` ${b.aspect.separation}°`}`, b.aspect.score],
+  ];
+  $('method-list').innerHTML =
+    rows
+      .map(
+        ([tag, desc, s]) => `
+        <li>
+          <span class="ml-tag">${tag}</span>
+          <span class="ml-desc">${desc}</span>
+          <span class="ml-score ${scoreClass(s)}">${fmtScore(s)}</span>
+        </li>`
+      )
+      .join('') +
+    `<li class="ml-total">
+       <span class="ml-tag">합</span>
+       <span class="ml-desc">기본 50에 위 셋을 더한 값</span>
+       <span class="ml-score">${total}점</span>
+     </li>`;
 }
 
 function renderFortune(f) {
@@ -119,7 +148,7 @@ function renderFortune(f) {
   $('lk-color').textContent = f.lucky.color;
   $('lk-time').textContent = f.lucky.time;
 
-  renderBasis(f.basis);
+  renderBasis(f.basis, f.score);
 
   $('sector-line').textContent =
     `오늘 당신의 기운과 맞닿은 분야: ${f.sectors.map((s) => s.ko).join(' · ')}`;

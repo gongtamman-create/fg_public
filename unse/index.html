@@ -82,13 +82,14 @@
       </div>
     </div>
 
-    <!-- 오늘의 근거 -->
+    <!-- 오늘 당신에게 닿은 것 -->
     <div class="card basis-card">
-      <h2>오늘 이 운세가 나온 근거</h2>
+      <h2>오늘 당신에게 닿은 것</h2>
+      <p class="sub lead">괘가 하나, 날이 하나, 하늘이 하나.<br>세 가지가 겹쳐 오늘의 자리를 만듭니다.</p>
 
       <div class="basis-row">
         <div class="br-head">
-          <span class="br-tag">주역</span>
+          <span class="br-tag">괘</span>
           <span class="br-verdict" id="hx-verdict"></span>
         </div>
         <div class="hexagram">
@@ -104,7 +105,7 @@
 
       <div class="basis-row">
         <div class="br-head">
-          <span class="br-tag">일진</span>
+          <span class="br-tag">날</span>
           <span class="br-verdict" id="rel-verdict"></span>
         </div>
         <p class="br-title" id="rel-title"></p>
@@ -113,17 +114,22 @@
 
       <div class="basis-row">
         <div class="br-head">
-          <span class="br-tag">태양</span>
+          <span class="br-tag">하늘</span>
           <span class="br-verdict" id="asp-verdict"></span>
         </div>
         <p class="br-title" id="asp-title"></p>
         <p class="br-text" id="asp-text"></p>
       </div>
 
-      <p class="note">
-        주역 괘는 매화역수(梅花易數) 시간점으로, 일진은 육십갑자와 띠의 지지 관계로,
-        태양의 각은 그날 태양 황경과 별자리의 각도로 계산합니다. 무작위 요소는 없습니다.
-      </p>
+      <details class="method">
+        <summary>어떻게 셈했는지 보기</summary>
+        <ul class="method-list" id="method-list"></ul>
+        <p class="note">
+          괘는 매화역수(梅花易數) 시간점으로 뽑고, 날은 그날 육십갑자의 지지와 당신 띠의
+          관계를 보며, 하늘은 태양의 황경과 당신 별자리 사이의 각을 잽니다.
+          무작위로 정해지는 것은 하나도 없습니다.
+        </p>
+      </details>
     </div>
 
     <!-- 광고: 인피드 -->

@@ -49,6 +49,51 @@ function renderMarket(market) {
     .join('');
 }
 
+/** 점수를 부호와 함께 표기. 0이면 영향 없음으로 적는다. */
+const fmtScore = (v) => (v === 0 ? '영향 없음' : `${v > 0 ? '+' : ''}${v}`);
+
+const scoreClass = (v) => (v > 0 ? 'plus' : v < 0 ? 'minus' : 'zero');
+
+/**
+ * 여섯 효를 직접 그린다. 유니코드 괘 기호(U+4DC0~)는 기기별 폰트 지원이 고르지 않아
+ * 안드로이드 등에서 네모로 깨지기 때문에 쓰지 않는다.
+ * lines는 아래에서 위 순서라 화면에 그릴 때 뒤집는다. 동효는 따로 표시한다.
+ */
+function hexagramLines(lines, movingLine) {
+  return lines
+    .map((v, i) => {
+      const isMoving = i + 1 === movingLine;
+      const cls = `yao ${v ? 'yang' : 'yin'}${isMoving ? ' moving' : ''}`;
+      return `<div class="${cls}"><i></i><i></i></div>`;
+    })
+    .reverse()
+    .join('');
+}
+
+/** 운세가 나온 근거 세 축을 그린다. */
+function renderBasis(b) {
+  const hx = b.hexagram;
+
+  $('hx-glyph').innerHTML = hexagramLines(hx.lines, hx.movingLine);
+  $('hx-name').textContent = `${hx.no}. ${hx.ko} ${hx.hanja}`;
+  $('hx-struct').textContent =
+    `${hx.upper.symbol} 상${hx.upper.ko}(${hx.upper.nature}) · ${hx.lower.symbol} 하${hx.lower.ko}(${hx.lower.nature})`;
+  $('hx-text').textContent = hx.text;
+  $('hx-moving').textContent = hx.movingText;
+  $('hx-verdict').textContent = `${hx.fortuneLabel} ${fmtScore(hx.score)}`;
+  $('hx-verdict').className = `br-verdict ${scoreClass(hx.score)}`;
+
+  $('rel-title').textContent = `${b.ganji.name}(${b.ganji.hanja})일 — ${b.relation.detail}`;
+  $('rel-text').textContent = b.relation.text;
+  $('rel-verdict').textContent = `${b.relation.label} ${fmtScore(b.relation.score)}`;
+  $('rel-verdict').className = `br-verdict ${scoreClass(b.relation.score)}`;
+
+  $('asp-title').textContent = `당신의 별자리와 ${b.aspect.separation}도 떨어져 있습니다`;
+  $('asp-text').textContent = b.aspect.text;
+  $('asp-verdict').textContent = `${b.aspect.label} ${fmtScore(b.aspect.score)}`;
+  $('asp-verdict').className = `br-verdict ${scoreClass(b.aspect.score)}`;
+}
+
 function renderFortune(f) {
   $('w-emoji').textContent = f.western.emoji;
   $('w-name').textContent = f.western.ko;
@@ -73,6 +118,8 @@ function renderFortune(f) {
   $('lk-num').textContent = f.lucky.number;
   $('lk-color').textContent = f.lucky.color;
   $('lk-time').textContent = f.lucky.time;
+
+  renderBasis(f.basis);
 
   $('sector-line').textContent =
     `오늘 당신의 기운과 맞닿은 분야: ${f.sectors.map((s) => s.ko).join(' · ')}`;

@@ -170,7 +170,43 @@ button:active { filter: brightness(.9); }
   background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px;
 }
 .lucky small { display: block; font-size: 11px; color: var(--muted); margin-bottom: 3px; }
-.lucky b { font-size: 15px; color: var(--gold); }
+/* 시간대가 "미시 (13시~15시)"처럼 길어질 수 있어 줄바꿈을 허용한다. */
+.lucky b { font-size: 14px; color: var(--gold); line-height: 1.35; display: block; word-break: keep-all; }
+
+/* ── 근거 (주역·일진·태양) ─────────────── */
+.basis-row { padding: 16px 0; border-top: 1px solid var(--line); }
+.basis-row:first-of-type { padding-top: 4px; border-top: 0; }
+
+.br-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.br-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  color: var(--gold); background: rgba(240,198,116,.1);
+  border: 1px solid rgba(240,198,116,.25);
+  border-radius: 6px; padding: 3px 9px;
+}
+.br-verdict { font-size: 13px; font-weight: 600; }
+.br-verdict.plus  { color: #ffd98a; }
+.br-verdict.minus { color: #9fb4e8; }
+.br-verdict.zero  { color: var(--muted); font-weight: 500; }
+
+.br-title { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+.br-text { margin: 0; font-size: 14px; color: #d3d8f0; }
+.br-sub { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+
+.hexagram { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+
+/* 여섯 효를 막대로 그린다. 양(⚊)은 이어진 한 줄, 음(⚋)은 가운데가 끊긴 두 줄. */
+.hx-glyph { display: grid; gap: 4px; width: 46px; flex: 0 0 46px; }
+.yao { display: flex; gap: 5px; height: 5px; }
+.yao > i { display: block; height: 100%; background: var(--gold-dim); border-radius: 1px; }
+.yao.yang > i { flex: 1; }
+.yao.yang > i:last-child { display: none; } /* 양효는 한 줄로 이어진다 */
+.yao.yang > i:first-child { flex: 1 0 100%; }
+.yao.yin > i { flex: 1; }
+/* 동효 — 지금 움직이는 자리라 밝게 표시한다. */
+.yao.moving > i { background: var(--gold); box-shadow: 0 0 6px rgba(240,198,116,.55); }
+.hx-id b { display: block; font-size: 16px; letter-spacing: -.01em; }
+.hx-id span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
 
 /* ── 시장 ─────────────────────────────── */
 .fg { display: flex; align-items: center; gap: 16px; }

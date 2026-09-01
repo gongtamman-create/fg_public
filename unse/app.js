@@ -208,6 +208,11 @@ async function init() {
   $('asof').textContent = `${DATA.date} 기준`;
   renderMarket(DATA.market);
 
+  // 데이터가 다 실린 뒤에야 버튼을 연다.
+  const btn = $('submit-btn');
+  btn.disabled = false;
+  btn.textContent = '운세 보기';
+
   const saved = safeStore(() => localStorage.getItem(STORE_KEY));
   if (saved) {
     $('birth').value = saved;
@@ -252,6 +257,9 @@ $('share-btn').addEventListener('click', async () => {
 
 init().catch((e) => {
   console.error(e);
+  const btn = $('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '불러오지 못했습니다';
   $('input-card').insertAdjacentHTML(
     'beforeend',
     '<p class="err">데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</p>'

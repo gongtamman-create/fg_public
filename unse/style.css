@@ -102,6 +102,7 @@ button {
   border: 1px solid transparent; transition: filter .15s, background .15s;
 }
 button:active { filter: brightness(.9); }
+button:disabled { opacity: .45; cursor: default; filter: none; }
 .primary { background: linear-gradient(180deg, var(--gold), var(--gold-dim)); color: #241a05; }
 .ghost { background: transparent; border-color: var(--line); color: var(--text); flex: 1; }
 

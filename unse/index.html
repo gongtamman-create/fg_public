@@ -40,7 +40,8 @@
       <label class="visually-hidden" for="birth">생년월일</label>
       <input type="date" id="birth" name="birth" required
              min="1920-01-01" max="2020-12-31" value="1990-01-01">
-      <button type="submit" class="primary">운세 보기</button>
+      <!-- data.json 을 받기 전에는 눌러도 아무 일이 없으므로 아예 막아 둔다. app.js 가 푼다. -->
+      <button type="submit" class="primary" id="submit-btn" disabled>불러오는 중…</button>
     </form>
   </section>
 

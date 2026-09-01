@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>오늘의 투자 운세 — 별자리 · 띠로 보는 하루</title>
+<meta name="description" content="별자리와 띠로 보는 오늘의 운세. 시장의 공포탐욕지수와 함께, 오늘 당신과 인연이 닿은 종목을 확인해 보세요.">
+<meta name="theme-color" content="#0b0d17">
+<link rel="canonical" href="https://gongtam.com/unse/">
+<meta property="og:url" content="https://gongtam.com/unse/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="오늘의 투자 운세">
+<meta property="og:description" content="별자리 × 띠 144가지 조합. 오늘 당신과 인연이 닿은 종목은?">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="stars" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="logo">✦ 오늘의 투자 운세</span>
+    <span class="asof" id="asof"></span>
+  </div>
+</header>
+
+<!-- 광고: 상단 배너 (승인 후 코드 삽입) -->
+<div class="wrap ad-slot" data-ad="top" hidden></div>
+
+<main class="wrap">
+
+  <!-- ── 입력 ──────────────────────────────────────── -->
+  <section class="card intro" id="input-card">
+    <h1>생년월일을 넣어보세요</h1>
+    <p class="sub">별자리와 띠를 계산해 오늘의 운세를 봅니다.<br>
+      입력한 날짜는 <strong>이 브라우저에만</strong> 남고 서버로 전송되지 않습니다.</p>
+
+    <form id="birth-form" autocomplete="off">
+      <label class="visually-hidden" for="birth">생년월일</label>
+      <input type="date" id="birth" name="birth" required
+             min="1920-01-01" max="2020-12-31" value="1990-01-01">
+      <button type="submit" class="primary">운세 보기</button>
+    </form>
+  </section>
+
+  <!-- ── 결과 ──────────────────────────────────────── -->
+  <section id="result" hidden>
+
+    <div class="card sign-card">
+      <div class="signs">
+        <div class="sign">
+          <span class="sign-emoji" id="w-emoji"></span>
+          <span class="sign-name" id="w-name"></span>
+          <span class="sign-el" id="w-el"></span>
+        </div>
+        <span class="times">×</span>
+        <div class="sign">
+          <span class="sign-emoji" id="c-emoji"></span>
+          <span class="sign-name" id="c-name"></span>
+          <span class="sign-el" id="c-el"></span>
+        </div>
+      </div>
+
+      <div class="score-wrap">
+        <div class="gauge" id="gauge"><span id="score-num">0</span><small>점</small></div>
+        <p class="headline" id="headline"></p>
+      </div>
+
+      <div class="detail-grid">
+        <div><span class="dt-label">재물의 기운</span><div class="bar"><i id="bar-wealth"></i></div><span class="dt-num" id="num-wealth"></span></div>
+        <div><span class="dt-label">때를 보는 눈</span><div class="bar"><i id="bar-timing"></i></div><span class="dt-num" id="num-timing"></span></div>
+        <div><span class="dt-label">판단의 맑기</span><div class="bar"><i id="bar-insight"></i></div><span class="dt-num" id="num-insight"></span></div>
+      </div>
+
+      <p class="advice" id="advice"></p>
+
+      <div class="lucky">
+        <div><small>행운의 숫자</small><b id="lk-num"></b></div>
+        <div><small>행운의 색</small><b id="lk-color"></b></div>
+        <div><small>좋은 시간대</small><b id="lk-time"></b></div>
+      </div>
+    </div>
+
+    <!-- 광고: 인피드 -->
+    <div class="ad-slot" data-ad="mid" hidden></div>
+
+    <!-- 시장의 기운 -->
+    <div class="card market-card">
+      <h2>오늘 시장의 기운</h2>
+      <div class="fg">
+        <div class="fg-dial">
+          <div class="fg-num" id="fg-score">--</div>
+          <div class="fg-label" id="fg-label">--</div>
+        </div>
+        <p class="fg-mood" id="fg-mood"></p>
+      </div>
+      <div class="fg-parts" id="fg-parts"></div>
+      <p class="note">보유 중인 시장 데이터로 직접 산출한 지수입니다. 0에 가까울수록 공포, 100에 가까울수록 탐욕입니다.</p>
+    </div>
+
+    <!-- 인연 종목 -->
+    <div class="card ticker-card">
+      <h2>오늘 당신과 인연이 닿은 종목</h2>
+      <p class="sub" id="sector-line"></p>
+      <ul class="tickers" id="tickers"></ul>
+      <p class="warn">
+        운세에 따라 고른 것이며 <strong>추천이 아닙니다.</strong>
+        표시된 수치는 <span id="data-date"></span> 기준의 공개된 과거 데이터입니다.
+        투자 판단과 그 결과는 본인에게 있습니다.
+      </p>
+    </div>
+
+    <div class="actions">
+      <button class="ghost" id="share-btn">결과 공유하기</button>
+      <button class="ghost" id="again-btn">다시 입력</button>
+    </div>
+
+    <!-- 광고: 하단 -->
+    <div class="ad-slot" data-ad="bottom" hidden></div>
+  </section>
+
+</main>
+
+<footer class="wrap site-footer">
+  <p class="disclaimer">
+    본 서비스는 <strong>오락 목적</strong>으로 제공됩니다. 제공되는 어떤 내용도
+    투자 자문·권유·매매 신호가 아니며, 특정 종목의 매수·매도를 권하지 않습니다.
+    수익을 보장하지 않으며 투자 결정에 따른 손실의 책임은 이용자 본인에게 있습니다.
+  </p>
+  <p class="credit">시장 데이터 · 공포탐욕지수 제공</p>
+</footer>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>

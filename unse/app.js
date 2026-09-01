@@ -6,7 +6,7 @@
  *   생년월일은 절대 네트워크로 나가지 않으며 localStorage에만 남는다.
  */
 
-import { getWesternZodiac, getChineseZodiac } from './zodiac.js';
+import { getWesternZodiac, getChineseZodiac } from './zodiac.js?v=28c52715';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -47,6 +47,50 @@ function renderMarket(market) {
       </div>`
     )
     .join('');
+}
+
+const reducedMotion = () =>
+  window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+
+/**
+ * 총운 점수를 0에서 세어 올리고 게이지를 함께 채운다.
+ * conic-gradient 의 각도는 CSS transition 이 안 먹어서 프레임마다 직접 갱신한다.
+ */
+function animateScore(target) {
+  const num = $('score-num');
+  const gauge = $('gauge');
+
+  if (reducedMotion()) {
+    num.textContent = target;
+    gauge.style.setProperty('--pct', `${target}%`);
+    return;
+  }
+
+  const DURATION = 1100;
+  let start = null;
+
+  const step = (now) => {
+    if (start === null) start = now;
+    const t = Math.min(1, (now - start) / DURATION);
+    const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+    const v = target * eased;
+    num.textContent = Math.round(v);
+    gauge.style.setProperty('--pct', `${v}%`);
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+/** 결과 카드들을 시차를 두고 띄운다. */
+function revealCards() {
+  const cards = [...$('result').children].filter((el) => !el.hidden);
+  cards.forEach((el, i) => {
+    el.classList.add('reveal');
+    // 레이아웃이 한 번 잡힌 뒤에 클래스를 붙여야 전환이 실제로 일어난다.
+    requestAnimationFrame(() => {
+      setTimeout(() => el.classList.add('in'), reducedMotion() ? 0 : i * 90);
+    });
+  });
 }
 
 /** 점수를 부호와 함께 표기. 0이면 영향 없음으로 적는다. */
@@ -132,10 +176,8 @@ function renderFortune(f) {
   $('c-name').textContent = `${f.chinese.ko}띠`;
   $('c-el').textContent = `${f.chinese.element}의 기운`;
 
-  $('score-num').textContent = f.score;
   $('gauge').dataset.band = f.band;
-  // 원형 게이지: 점수만큼 채운다.
-  $('gauge').style.setProperty('--pct', `${f.score}%`);
+  animateScore(f.score);
   $('headline').textContent = f.headline;
   $('advice').textContent = f.advice;
 
@@ -179,9 +221,11 @@ function renderFortune(f) {
 
   $('data-date').textContent = f.date;
   $('input-card').hidden = true;
+  for (const el of $('result').children) el.classList.remove('reveal', 'in');
   $('result').hidden = false;
   for (const el of document.querySelectorAll('.ad-slot')) el.hidden = false;
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  revealCards();
 }
 
 /* ── 동작 ──────────────────────────────────────────── */

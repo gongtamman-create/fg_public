@@ -356,6 +356,31 @@ button:disabled { opacity: .4; cursor: default; }
 .tk-price .up { color: var(--up); }
 .tk-price .down { color: var(--down); }
 .tk-omen { margin: 12px 0 10px; font-size: 13.5px; color: var(--text-2); line-height: 1.72; }
+/* 종목 궁합 — 상장일로 세운 종목의 사주와 사용자 띠를 견준 결과 */
+.tk-compat {
+  --tc: var(--gold);
+  margin: 14px 0 12px; padding: 13px 14px;
+  background: rgba(255,255,255,.028);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+}
+.tk-compat[data-tone=best]    { --tc: #ffd98a; border-color: rgba(255,217,138,.3); }
+.tk-compat[data-tone=good]    { --tc: var(--gold); }
+.tk-compat[data-tone=neutral] { --tc: var(--muted); }
+.tk-compat[data-tone=bad]     { --tc: #94a8de; }
+.tk-compat[data-tone=worst]   { --tc: #7f8cc4; border-color: rgba(127,140,196,.28); }
+
+.tc-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+.tc-title { font-size: 11px; font-weight: 800; letter-spacing: .12em; color: var(--faint); }
+.tc-verdict { font-size: 12.5px; color: var(--tc); font-weight: 600; }
+.tc-verdict b { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.tc-bar { height: 4px; }
+.tc-bar > i { background: linear-gradient(90deg, rgba(255,255,255,.12), var(--tc)); }
+
+.tc-line { margin: 10px 0 0; font-size: 12.5px; color: var(--text-2); line-height: 1.68; }
+.tc-elem { margin: 5px 0 0; font-size: 12px; color: var(--faint); line-height: 1.68; }
+
 .tk-meta { display: flex; gap: 7px; flex-wrap: wrap; }
 .tk-meta span {
   font-size: 10.5px; color: var(--faint);

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
-<link rel="stylesheet" href="./style.css?v=28c52715">
+<link rel="stylesheet" href="./style.css?v=6820b909">
 </head>
 <body>
 
@@ -91,7 +91,16 @@
     <!-- 오늘 당신에게 닿은 것 -->
     <div class="card basis-card">
       <h2>오늘 당신에게 닿은 것</h2>
-      <p class="sub lead">괘가 하나, 날이 하나, 하늘이 하나.<br>세 가지가 겹쳐 오늘의 자리를 만듭니다.</p>
+      <p class="sub lead">나를 이루는 것 하나, 오늘의 날 하나,<br>괘 하나, 하늘 하나. 넷이 겹쳐 오늘의 자리를 만듭니다.</p>
+
+      <div class="basis-row">
+        <div class="br-head">
+          <span class="br-tag">나</span>
+          <span class="br-verdict" id="god-verdict"></span>
+        </div>
+        <p class="br-title" id="god-title"></p>
+        <p class="br-text" id="god-text"></p>
+      </div>
 
       <div class="basis-row">
         <div class="br-head">
@@ -131,9 +140,9 @@
         <summary>어떻게 셈했는지 보기</summary>
         <ul class="method-list" id="method-list"></ul>
         <p class="note">
-          괘는 매화역수(梅花易數) 시간점으로 뽑고, 날은 그날 육십갑자의 지지와 당신 띠의
-          관계를 보며, 하늘은 태양의 황경과 당신 별자리 사이의 각을 잽니다.
-          무작위로 정해지는 것은 하나도 없습니다.
+          ‘나’는 태어난 날의 간지(일주)를 세워 오늘 천간과의 십성을 보고, ‘날’은 일지와
+          오늘 지지의 관계를, ‘괘’는 매화역수 시간점을, ‘하늘’은 태양 황경과 별자리의
+          각을 잽니다. 무작위로 정해지는 것은 하나도 없습니다.
         </p>
       </details>
     </div>
@@ -187,6 +196,6 @@
   <p class="credit">시장 데이터 · 공포탐욕지수 제공</p>
 </footer>
 
-<script type="module" src="./app.js?v=28c52715"></script>
+<script type="module" src="./app.js?v=6820b909"></script>
 </body>
 </html>

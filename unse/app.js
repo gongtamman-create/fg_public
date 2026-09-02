@@ -1,17 +1,22 @@
 /**
  * 프론트엔드.
  *
- * 서버가 없으므로 하는 일은 단순하다:
- *   data.json(144개 조합 전부)을 받아두고, 생년월일로 조합 키를 만들어 꺼내 그린다.
- *   생년월일은 절대 네트워크로 나가지 않으며 localStorage에만 남는다.
+ * 운세를 여기서 직접 계산한다. 일주(60)까지 넣으면 경우의 수가 8천을 넘어
+ * 미리 구워 둘 수 없기 때문이다. 서버와 같은 엔진 파일을 그대로 불러 쓰므로
+ * 로직이 갈라질 일은 없다.
+ *
+ * data.json 에는 시장 데이터와 종목 표만 담긴다.
+ * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { getWesternZodiac, getChineseZodiac } from './zodiac.js?v=28c52715';
+import { buildFortune } from './engine.js?v=6820b909';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
 
 let DATA = null;
+let TICKERS = null;   // 짧은 키를 엔진이 아는 이름으로 편 것
+let CURRENT = null;   // 마지막으로 그린 운세 (공유에 쓴다)
 
 /* ── 유틸 ──────────────────────────────────────────── */
 
@@ -135,9 +140,14 @@ function renderBasis(b, total) {
   $('hx-moving').textContent = hx.movingText;
   setVerdict('hx-verdict', hx.verdict, hx.score);
 
+  $('god-title').textContent =
+    `당신은 ${b.pillar.name}(${b.pillar.hanja})일에 태어났습니다. 오늘의 기운은 ${b.tenGod.label}(${b.tenGod.hanja}).`;
+  $('god-text').textContent = b.tenGod.text;
+  setVerdict('god-verdict', b.tenGod.verdict, b.tenGod.score);
+
   $('rel-title').textContent = `오늘은 ${b.ganji.name}(${b.ganji.hanja})의 날입니다.`;
-  $('rel-text').textContent = b.relation.text;
-  setVerdict('rel-verdict', b.relation.verdict, b.relation.score);
+  $('rel-text').textContent = b.dayRelation.text;
+  setVerdict('rel-verdict', b.dayRelation.verdict, b.dayRelation.score);
 
   $('asp-title').textContent = `해는 오늘 ${b.aspect.sunSignKo}에 머뭅니다.`;
   $('asp-text').textContent = b.aspect.text;
@@ -145,8 +155,10 @@ function renderBasis(b, total) {
 
   // 접힌 셈법 — 여기서만 용어와 숫자를 드러낸다.
   const rows = [
+    ['나', `일주 ${b.pillar.name} · 오늘 천간과 ${b.tenGod.label}`, b.tenGod.score],
+    ['날', `${b.ganji.name}일 · 일지 ${b.pillar.ji}와 ${b.dayRelation.detail}`, b.dayRelation.score],
+    ['띠', `${b.yearRelation.detail} · ${b.yearRelation.label}`, b.yearRelation.score],
     ['괘', `제${hx.no}괘 ${hx.ko} · ${hx.movingLine}효 동 · ${hx.fortuneLabel}`, hx.score],
-    ['날', `${b.ganji.name}일 · ${b.relation.detail} · ${b.relation.label}`, b.relation.score],
     ['하늘', `${b.aspect.label}${b.aspect.key === 'none' ? '' : ` ${b.aspect.separation}°`}`, b.aspect.score],
   ];
   $('method-list').innerHTML =
@@ -162,9 +174,29 @@ function renderBasis(b, total) {
       .join('') +
     `<li class="ml-total">
        <span class="ml-tag">합</span>
-       <span class="ml-desc">기본 50에 위 셋을 더한 값</span>
+       <span class="ml-desc">축마다 무게를 달리해 더한 값</span>
        <span class="ml-score">${total}점</span>
      </li>`;
+}
+
+/**
+ * 종목 궁합 블록.
+ * 상장일을 못 구한 종목은 궁합 자체가 없으므로 아무것도 그리지 않는다.
+ * 없는 궁합을 지어내느니 비워 두는 편이 낫다.
+ */
+function compatBlock(t) {
+  if (!t.compat) return '';
+  const c = t.compat;
+  return `
+    <div class="tk-compat" data-tone="${c.tone}">
+      <div class="tc-head">
+        <span class="tc-title">궁합</span>
+        <span class="tc-verdict"><b>${c.score}</b> · ${c.label}</span>
+      </div>
+      <div class="bar tc-bar"><i style="width:${c.score}%"></i></div>
+      <p class="tc-line">${t.compatLine}</p>
+      ${c.element.text ? `<p class="tc-elem">${c.element.text}</p>` : ''}
+    </div>`;
 }
 
 function renderFortune(f) {
@@ -210,6 +242,7 @@ function renderFortune(f) {
           </div>
         </div>
         <p class="tk-omen">${t.omen}</p>
+        ${compatBlock(t)}
         <div class="tk-meta">
           <span>${t.sectorKo}</span>
           <span>RSI ${typeof t.rsi14 === 'number' ? t.rsi14.toFixed(0) : '—'}</span>
@@ -230,24 +263,30 @@ function renderFortune(f) {
 
 /* ── 동작 ──────────────────────────────────────────── */
 
+/** 전송량을 줄이려고 짧게 줄여 둔 키를 엔진이 아는 이름으로 되돌린다. */
+const expandTicker = (r) => ({
+  ticker: r.t, name: r.n, sector: r.s,
+  price: r.p, chg1d: r.c, rsi14: r.rsi, trend: r.tr, cross: r.x,
+  ret_20d: r.r20, pct_from_high52: r.ph, pct_from_low52: r.pl,
+  vol_ratio: r.v, rs_rank: r.rs,
+});
+
 function show(birthStr) {
   if (!DATA) return;
   const [y, m, d] = birthStr.split('-').map(Number);
   if (!y || !m || !d) return;
 
-  const w = getWesternZodiac(m, d);
-  const c = getChineseZodiac(y, m, d);
-  const f = DATA.combos[`${w.id}-${c.id}`];
-  if (!f) return;
-
+  CURRENT = buildFortune({ y, m, d }, DATA.date, TICKERS, DATA.ipo ?? {});
   safeStore(() => localStorage.setItem(STORE_KEY, birthStr));
-  renderFortune(f);
+  renderFortune(CURRENT);
 }
 
 async function init() {
   // 날짜를 붙여 캐시를 우회한다. 자정 이후 낡은 결과가 남는 것을 막는다.
   const res = await fetch(`./data.json?v=${new Date().toISOString().slice(0, 10)}`);
   DATA = await res.json();
+
+  TICKERS = DATA.tickers.map(expandTicker);
 
   $('asof').textContent = `${DATA.date} 기준`;
   renderMarket(DATA.market);
@@ -276,12 +315,7 @@ $('again-btn').addEventListener('click', () => {
 });
 
 $('share-btn').addEventListener('click', async () => {
-  const f = DATA?.combos[
-    (() => {
-      const [y, m, d] = $('birth').value.split('-').map(Number);
-      return `${getWesternZodiac(m, d).id}-${getChineseZodiac(y, m, d).id}`;
-    })()
-  ];
+  const f = CURRENT;
   if (!f) return;
 
   const text = `[오늘의 투자 운세] ${f.western.ko} × ${f.chinese.ko}띠 — ${f.score}점\n${f.headline}`;

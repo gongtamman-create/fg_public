@@ -80,13 +80,31 @@ const WESTERN_AFFINITY = {
   water: { 'Health Care': 3, 'Utilities': 2, 'Consumer Staples': 2, 'Financials': 1 },
 };
 
-/** 오행 → 섹터 가중치. */
+/**
+ * 오행 → 섹터 가중치.
+ *
+ * 십성(十星)으로 잡는다. 사주에서 **내가 극하는 오행이 재성(財星)**, 곧 재물이다.
+ * 투자를 보는 앱이므로 재성 자리를 가장 높이 치고, 나를 생해주는 인성이 그다음,
+ * 나와 같은 비겁은 가장 낮게 둔다. 비겁은 몫을 나눠 갖는 자리라 재물로는 약하다.
+ *
+ * 이렇게 해야 `compat.js` 의 궁합 판정과도 앞뒤가 맞는다.
+ * 예전처럼 같은 오행 섹터만 뽑으면 '인연이 닿은 종목'이 죄다 비겁으로 나와
+ * 궁합 점수가 낮게 깔리는 모순이 생긴다.
+ *
+ *   섹터 오행: 나무=헬스케어·경기소비재·커뮤니케이션 / 불=에너지·정보기술
+ *              흙=부동산·소재 / 쇠=금융·산업재 / 물=유틸리티·필수소비재
+ */
 const ELEMENT_AFFINITY = {
-  wood:  { 'Health Care': 3, 'Consumer Discretionary': 2, 'Communication Services': 2 },
-  fire:  { 'Energy': 3, 'Information Technology': 2, 'Consumer Discretionary': 1 },
-  earth: { 'Real Estate': 3, 'Materials': 2, 'Industrials': 2 },
-  metal: { 'Financials': 3, 'Industrials': 2, 'Materials': 2 },
-  water: { 'Utilities': 3, 'Consumer Staples': 2, 'Health Care': 1 },
+  // 나무 → 재성은 흙, 인성은 물
+  wood:  { 'Real Estate': 3, 'Materials': 3, 'Utilities': 2, 'Consumer Staples': 2, 'Health Care': 1 },
+  // 불 → 재성은 쇠, 인성은 나무
+  fire:  { 'Financials': 3, 'Industrials': 3, 'Health Care': 2, 'Consumer Discretionary': 2, 'Energy': 1 },
+  // 흙 → 재성은 물, 인성은 불
+  earth: { 'Utilities': 3, 'Consumer Staples': 3, 'Energy': 2, 'Information Technology': 2, 'Real Estate': 1 },
+  // 쇠 → 재성은 나무, 인성은 흙
+  metal: { 'Health Care': 3, 'Consumer Discretionary': 3, 'Communication Services': 2, 'Real Estate': 2, 'Financials': 1 },
+  // 물 → 재성은 불, 인성은 쇠
+  water: { 'Energy': 3, 'Information Technology': 3, 'Financials': 2, 'Industrials': 2, 'Utilities': 1 },
 };
 
 export const ELEMENT_KO = {

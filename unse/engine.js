@@ -1,11 +1,16 @@
 /**
  * 운세 생성 엔진.
  *
- * 총운은 전통 체계 세 축의 합으로만 결정된다. 난수가 개입하지 않는다.
+ * 총운은 전통 체계 네 축의 가중합으로만 결정된다. 난수가 개입하지 않는다.
  *
- *   1. 주역 괘   — 매화역수 시간점으로 뽑은 64괘의 길흉        (-18 ~ +18)
- *   2. 일진 지지 — 그날 육십갑자와 띠의 관계 (삼합·충 등)      (-25 ~ +28)
- *   3. 태양 각   — 그날 태양 황경과 별자리의 어스펙트           (-18 ~ +18)
+ *   일간 십성 ×1.0   — 내 일간과 오늘 천간의 관계 (재성·인성·겁재 …)  (-16 ~ +20)
+ *   일지 관계 ×0.8   — 내 일지와 오늘 지지의 관계 (삼합·충 …)         (-25 ~ +28)
+ *   띠 관계   ×0.35  — 내 년지와 오늘 지지의 관계. 이 앱의 뿌리라 남겨 두되 가볍게
+ *   주역 괘   ×0.7   — 매화역수 시간점으로 뽑은 64괘의 길흉            (-18 ~ +18)
+ *   태양 각   ×0.5   — 그날 태양 황경과 별자리의 어스펙트              (-18 ~ +18)
+ *
+ * 무게중심은 일간이다. 사주에서 오늘의 운을 볼 때 기준이 되는 것이 일주(日柱)이고
+ * 그중 일간이 곧 '나'이기 때문이다.
  *
  * 시드 난수는 '어느 종목을 보여줄까'를 고르는 데만 남겨 두었다.
  * 종목 선택은 길흉 주장이 아니라 표시 대상을 정하는 절차이므로 여기에 두어도 무방하다.
@@ -17,11 +22,11 @@
 import {
   sectorAffinity, SECTOR_KO, ELEMENT_KO, CHINESE,
   getWesternZodiac, getChineseZodiac,
-} from './zodiac.js?v=6820b909';
-import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=6820b909';
-import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=6820b909';
-import { castHexagram } from './iching.js?v=6820b909';
-import { stockCompatibility, compatLine } from './compat.js?v=6820b909';
+} from './zodiac.js?v=c761fde6';
+import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=c761fde6';
+import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=c761fde6';
+import { castHexagram } from './iching.js?v=c761fde6';
+import { stockCompatibility, compatLine } from './compat.js?v=c761fde6';
 
 /* ── 시드 난수 (종목 선택 전용) ─────────────────────────────── */
 
@@ -369,6 +374,10 @@ export function buildFortune(birth, today, snapshot, ipo = {}) {
   return {
     birth: `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`,
     date: today,
+
+    // 화면에서 임의의 종목 궁합을 즉석에서 셈할 때 쓰는 값.
+    // 사용자의 지지와 오행을 그때마다 다시 구하지 않도록 여기서 함께 내보낸다.
+    self: { jiIndex, element: chinese.element },
     western: { id: western.id, ko: western.ko, emoji: western.emoji, element: ELEMENT_KO[western.element] },
     chinese: { id: chinese.id, ko: chinese.ko, emoji: chinese.emoji, hanja: chinese.hanja, element: ELEMENT_KO[chinese.element] },
 

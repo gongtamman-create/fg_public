@@ -9,7 +9,9 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=6820b909';
+import { buildFortune } from './engine.js?v=c761fde6';
+import { stockCompatibility, compatLine } from './compat.js?v=c761fde6';
+import { SECTOR_KO } from './zodiac.js?v=c761fde6';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -199,6 +201,30 @@ function compatBlock(t) {
     </div>`;
 }
 
+/** 종목 카드 한 장. 인연 종목과 검색 결과가 같은 모양이어야 하므로 함수로 둔다. */
+function tickerCard(t) {
+  return `
+    <li class="ticker">
+      <div class="tk-top">
+        <div class="tk-id">
+          <b>${t.ticker}</b>
+          <span>${t.name ?? ''}</span>
+        </div>
+        <div class="tk-price">
+          <b>${fmtPrice(t.price)}</b>
+          <span class="${signClass(t.chg1d)}">${fmtPct(t.chg1d)}</span>
+        </div>
+      </div>
+      ${t.omen ? `<p class="tk-omen">${t.omen}</p>` : ''}
+      ${compatBlock(t)}
+      <div class="tk-meta">
+        <span>${t.sectorKo}</span>
+        <span>RSI ${typeof t.rsi14 === 'number' ? t.rsi14.toFixed(0) : '—'}</span>
+        <span>20일 ${fmtPct(t.ret_20d)}</span>
+      </div>
+    </li>`;
+}
+
 function renderFortune(f) {
   $('w-emoji').textContent = f.western.emoji;
   $('w-name').textContent = f.western.ko;
@@ -227,30 +253,7 @@ function renderFortune(f) {
   $('sector-line').textContent =
     `오늘 당신의 기운과 맞닿은 분야: ${f.sectors.map((s) => s.ko).join(' · ')}`;
 
-  $('tickers').innerHTML = f.tickers
-    .map(
-      (t) => `
-      <li class="ticker">
-        <div class="tk-top">
-          <div class="tk-id">
-            <b>${t.ticker}</b>
-            <span>${t.name ?? ''}</span>
-          </div>
-          <div class="tk-price">
-            <b>${fmtPrice(t.price)}</b>
-            <span class="${signClass(t.chg1d)}">${fmtPct(t.chg1d)}</span>
-          </div>
-        </div>
-        <p class="tk-omen">${t.omen}</p>
-        ${compatBlock(t)}
-        <div class="tk-meta">
-          <span>${t.sectorKo}</span>
-          <span>RSI ${typeof t.rsi14 === 'number' ? t.rsi14.toFixed(0) : '—'}</span>
-          <span>20일 ${fmtPct(t.ret_20d)}</span>
-        </div>
-      </li>`
-    )
-    .join('');
+  $('tickers').innerHTML = f.tickers.map(tickerCard).join('');
 
   $('data-date').textContent = f.date;
   $('input-card').hidden = true;
@@ -259,6 +262,68 @@ function renderFortune(f) {
   for (const el of document.querySelectorAll('.ad-slot')) el.hidden = false;
   window.scrollTo({ top: 0, behavior: 'smooth' });
   revealCards();
+}
+
+
+/* ── 내 종목 궁합 ──────────────────────────────────── */
+
+/**
+ * 티커 또는 회사 이름으로 종목을 찾는다.
+ * 티커 완전 일치를 가장 앞에 두고, 그다음 이름이 그 말로 시작하는 것,
+ * 마지막으로 이름 어딘가에 들어 있는 것 순으로 최대 3개까지 돌려준다.
+ */
+function findTickers(query, limit = 3) {
+  const q = query.trim().toUpperCase();
+  if (!q) return [];
+
+  const exact = [];
+  const starts = [];
+  const contains = [];
+
+  for (const t of TICKERS) {
+    const tk = t.ticker.toUpperCase();
+    const nm = (t.name ?? '').toUpperCase();
+    if (tk === q) exact.push(t);
+    else if (tk.startsWith(q) || nm.startsWith(q)) starts.push(t);
+    else if (nm.includes(q)) contains.push(t);
+  }
+  return [...exact, ...starts, ...contains].slice(0, limit);
+}
+
+function runLookup(query) {
+  const msg = $('lookup-msg');
+  const list = $('lookup-result');
+
+  if (!CURRENT) return;
+
+  const found = findTickers(query);
+  if (!found.length) {
+    list.innerHTML = '';
+    msg.textContent = `'${query}' 로는 찾지 못했습니다. S&P 500 종목만 담고 있습니다.`;
+    msg.hidden = false;
+    return;
+  }
+
+  msg.hidden = true;
+  const { jiIndex, element } = CURRENT.self;
+
+  list.innerHTML = found
+    .map((t) => {
+      const compat = stockCompatibility(jiIndex, element, DATA.ipo?.[t.ticker], t.sector);
+      return tickerCard({
+        ...t,
+        sectorKo: SECTOR_KO[t.sector] ?? t.sector,
+        compat,
+        compatLine: compatLine(compat, CURRENT.chinese.ko),
+      });
+    })
+    .join('');
+
+  // 상장일이 없어 궁합을 못 낸 경우를 알려 준다. 조용히 빈 카드가 나가면 고장으로 보인다.
+  if (found.every((t) => !DATA.ipo?.[t.ticker])) {
+    msg.textContent = '이 종목은 상장일을 구하지 못해 궁합을 낼 수 없습니다.';
+    msg.hidden = false;
+  }
 }
 
 /* ── 동작 ──────────────────────────────────────────── */
@@ -288,6 +353,11 @@ async function init() {
 
   TICKERS = DATA.tickers.map(expandTicker);
 
+  // 티커 자동완성 목록. 517개라 한 번에 넣어도 부담이 없다.
+  $('ticker-list').innerHTML = TICKERS
+    .map((t) => `<option value="${t.ticker}">${(t.name ?? '').replace(/"/g, '&quot;')}</option>`)
+    .join('');
+
   $('asof').textContent = `${DATA.date} 기준`;
   renderMarket(DATA.market);
 
@@ -308,7 +378,15 @@ $('birth-form').addEventListener('submit', (e) => {
   show($('birth').value);
 });
 
+$('lookup-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  runLookup($('lookup').value);
+});
+
 $('again-btn').addEventListener('click', () => {
+  $('lookup').value = '';
+  $('lookup-result').innerHTML = '';
+  $('lookup-msg').hidden = true;
   $('result').hidden = true;
   $('input-card').hidden = false;
   window.scrollTo({ top: 0, behavior: 'smooth' });

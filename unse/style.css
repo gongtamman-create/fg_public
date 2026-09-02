@@ -388,6 +388,25 @@ button:disabled { opacity: .4; cursor: default; }
   font-variant-numeric: tabular-nums;
 }
 
+/* ── 내 종목 궁합 검색 ────────────────────── */
+#lookup-form { display: flex; gap: 8px; margin-bottom: 4px; }
+#lookup {
+  flex: 1; min-width: 0;
+  padding: 13px 14px; font-size: 15px; font-family: inherit;
+  color: var(--text); background: rgba(0,0,0,.28);
+  border: 1px solid var(--line); border-radius: 12px;
+  transition: border-color .18s, background .18s;
+}
+#lookup::placeholder { color: var(--faint); }
+#lookup:focus { outline: none; border-color: var(--gold-dim); background: rgba(0,0,0,.4); }
+#lookup-form .primary { flex: 0 0 auto; padding: 13px 18px; font-size: 14px; }
+
+.lookup-msg {
+  margin: 14px 0 0; font-size: 12.5px; color: var(--muted);
+  padding: 12px 14px; border: 1px dashed var(--line); border-radius: 11px;
+}
+#lookup-result:not(:empty) { margin-top: 16px; }
+
 .warn {
   margin: 18px 0 0; font-size: 11.5px; color: var(--faint); line-height: 1.75;
   padding: 13px 14px; border: 1px dashed var(--line); border-radius: 11px;

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
-<link rel="stylesheet" href="./style.css?v=6820b909">
+<link rel="stylesheet" href="./style.css?v=c761fde6">
 </head>
 <body>
 
@@ -176,6 +176,24 @@
       </p>
     </div>
 
+    <!-- 내 종목 궁합 -->
+    <div class="card lookup-card">
+      <h2>내 종목과의 궁합</h2>
+      <p class="sub">들고 있는 종목의 티커나 회사 이름을 넣어보세요.
+        상장일로 그 종목의 사주를 세워 당신과 견줍니다.</p>
+
+      <form id="lookup-form" autocomplete="off">
+        <label class="visually-hidden" for="lookup">종목 티커 또는 이름</label>
+        <input type="text" id="lookup" list="ticker-list" placeholder="예: AAPL, Nvidia"
+               spellcheck="false" enterkeyhint="search">
+        <datalist id="ticker-list"></datalist>
+        <button type="submit" class="primary">궁합 보기</button>
+      </form>
+
+      <p class="lookup-msg" id="lookup-msg" hidden></p>
+      <ul class="tickers" id="lookup-result"></ul>
+    </div>
+
     <div class="actions">
       <button class="ghost" id="share-btn">결과 공유하기</button>
       <button class="ghost" id="again-btn">다시 입력</button>
@@ -196,6 +214,6 @@
   <p class="credit">시장 데이터 · 공포탐욕지수 제공</p>
 </footer>
 
-<script type="module" src="./app.js?v=6820b909"></script>
+<script type="module" src="./app.js?v=c761fde6"></script>
 </body>
 </html>

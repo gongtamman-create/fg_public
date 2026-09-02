@@ -22,11 +22,11 @@
 import {
   sectorAffinity, SECTOR_KO, ELEMENT_KO, CHINESE,
   getWesternZodiac, getChineseZodiac,
-} from './zodiac.js?v=5238e064';
-import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=5238e064';
-import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=5238e064';
-import { castHexagram } from './iching.js?v=5238e064';
-import { stockCompatibility, compatLine } from './compat.js?v=5238e064';
+} from './zodiac.js?v=c301b378';
+import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=c301b378';
+import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=c301b378';
+import { castHexagram } from './iching.js?v=c301b378';
+import { stockCompatibility, compatLine } from './compat.js?v=c301b378';
 
 /* ── 시드 난수 (종목 선택 전용) ─────────────────────────────── */
 

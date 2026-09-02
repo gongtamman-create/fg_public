@@ -9,9 +9,10 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=5238e064';
-import { stockCompatibility, compatLine } from './compat.js?v=5238e064';
-import { SECTOR_KO } from './zodiac.js?v=5238e064';
+import { buildFortune } from './engine.js?v=c301b378';
+import { stockCompatibility, compatLine } from './compat.js?v=c301b378';
+import { SECTOR_KO } from './zodiac.js?v=c301b378';
+import { renderShareCard } from './share.js?v=c301b378';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -426,18 +427,49 @@ $('share-btn').addEventListener('click', async () => {
   const f = CURRENT;
   if (!f) return;
 
-  const text = `[오늘의 투자 운세] ${f.western.ko} × ${f.chinese.ko}띠 — ${f.score}점\n${f.headline}`;
+  const btn = $('share-btn');
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '이미지 만드는 중…';
+
+  const text = `[오늘의 투자 운세] ${f.western.ko} × ${f.chinese.ko}띠 — ${f.score}점
+${f.headline}`;
   const url = location.origin + location.pathname;
 
-  if (navigator.share) {
-    try { await navigator.share({ title: '오늘의 투자 운세', text, url }); return; } catch { /* 취소 */ }
-  }
   try {
-    await navigator.clipboard.writeText(`${text}\n${url}`);
-    const b = $('share-btn');
-    const old = b.textContent;
-    b.textContent = '복사되었습니다';
-    setTimeout(() => { b.textContent = old; }, 1600);
+    const blob = await renderShareCard(f);
+    const file = new File([blob], 'today-fortune.jpg', { type: 'image/jpeg' });
+
+    // 1순위: 이미지를 그대로 공유. 카톡·인스타에 결과가 그림으로 올라간다.
+    if (navigator.canShare?.({ files: [file] })) {
+      await navigator.share({ files: [file], text, url });
+      return;
+    }
+
+    // 2순위: 이미지 저장. 공유 시트가 없는 데스크톱 브라우저용.
+    const href = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = href;
+    a.download = '오늘의운세.jpg';
+    a.click();
+    URL.revokeObjectURL(href);
+    btn.textContent = '이미지를 저장했습니다';
+    setTimeout(() => { btn.textContent = label; }, 2000);
+    return;
+  } catch (e) {
+    if (e?.name === 'AbortError') return; // 사용자가 공유를 취소한 것
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+    if (btn.textContent === '이미지 만드는 중…') btn.textContent = label;
+  }
+
+  // 3순위: 이미지가 안 되면 글이라도 남긴다.
+  try {
+    await navigator.clipboard.writeText(`${text}
+${url}`);
+    btn.textContent = '내용을 복사했습니다';
+    setTimeout(() => { btn.textContent = label; }, 2000);
   } catch { /* 무시 */ }
 });
 

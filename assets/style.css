@@ -560,3 +560,29 @@ a:hover { text-decoration: underline; }
 .chart-legend { display: flex; gap: 12px; font-size: 10px; color: #9a9ab0; margin: 0 0 6px; }
 .chart-legend .leg-line { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 4px; }
 .chart-legend .leg-dash { background-image: linear-gradient(90deg, currentColor 60%, transparent 40%); }
+
+
+/* 오늘의 투자 운세 배너 */
+.unse-banner {
+  display: flex; align-items: center; gap: 12px;
+  margin: 16px 0; padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(255,214,0,.07), rgba(22,22,42,.9));
+  border: 1px solid rgba(255,214,0,.28);
+  border-radius: var(--radius);
+  text-decoration: none; color: var(--text);
+  transition: border-color .18s, transform .12s ease;
+}
+.unse-banner:active { transform: scale(.99); }
+.unse-banner:hover { border-color: rgba(255,214,0,.5); }
+.unse-icon {
+  flex: 0 0 38px; height: 38px;
+  display: grid; place-content: center;
+  font-size: 19px; color: var(--yellow);
+  background: rgba(255,214,0,.1);
+  border: 1px solid rgba(255,214,0,.22);
+  border-radius: 50%;
+}
+.unse-copy { flex: 1; min-width: 0; }
+.unse-copy b { display: block; font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+.unse-copy small { display: block; font-size: 11.5px; color: var(--dim); margin-top: 2px; }
+.unse-go { flex: 0 0 auto; color: var(--yellow); font-size: 17px; opacity: .75; }

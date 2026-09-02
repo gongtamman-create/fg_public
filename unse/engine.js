@@ -22,11 +22,11 @@
 import {
   sectorAffinity, SECTOR_KO, ELEMENT_KO, CHINESE,
   getWesternZodiac, getChineseZodiac,
-} from './zodiac.js?v=c761fde6';
-import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=c761fde6';
-import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=c761fde6';
-import { castHexagram } from './iching.js?v=c761fde6';
-import { stockCompatibility, compatLine } from './compat.js?v=c761fde6';
+} from './zodiac.js?v=5238e064';
+import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=5238e064';
+import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=5238e064';
+import { castHexagram } from './iching.js?v=5238e064';
+import { stockCompatibility, compatLine } from './compat.js?v=5238e064';
 
 /* ── 시드 난수 (종목 선택 전용) ─────────────────────────────── */
 
@@ -317,8 +317,9 @@ function pickTickers(rng, snapshot, affinity, count = 3) {
  * @param {string} today    기준일 'YYYY-MM-DD'
  * @param {Array}  snapshot 종목 스냅샷
  * @param {object} ipo      티커 → 상장일
+ * @param {string} market   'KR' | 'US' — 인연 종목을 어느 시장에서 고를지
  */
-export function buildFortune(birth, today, snapshot, ipo = {}) {
+export function buildFortune(birth, today, snapshot, ipo = {}, market = 'KR') {
   const { y, m, d } = birth;
   const [ty, tm, td] = today.split('-').map(Number);
 
@@ -368,12 +369,19 @@ export function buildFortune(birth, today, snapshot, ipo = {}) {
   const colorPool = [...ELEMENT_COLORS[western.element], ...ELEMENT_COLORS[chinese.element]];
 
   const affinity = sectorAffinity(western, chinese);
-  const rng = mulberry32(xmur3(`${today}|${y}-${m}-${d}`)());
-  const tickers = pickTickers(rng, snapshot, affinity);
+  // 시장이 바뀌면 뽑히는 종목도 달라져야 하므로 시드에 시장을 넣는다.
+  const rng = mulberry32(xmur3(`${today}|${y}-${m}-${d}|${market}`)());
+  // 인연 종목은 '후보' 표시가 있는 것 중에서만 고른다(한국은 거래대금 상위).
+  // 검색은 전 종목을 대상으로 하므로 여기서만 좁힌다.
+  const inMarket = snapshot.filter((r) => (r.market ?? 'US') === market);
+  const flagged = inMarket.filter((r) => r.candidate);
+  const pool = flagged.length >= 40 ? flagged : inMarket;
+  const tickers = pickTickers(rng, pool.length ? pool : snapshot, affinity);
 
   return {
     birth: `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`,
     date: today,
+    market,
 
     // 화면에서 임의의 종목 궁합을 즉석에서 셈할 때 쓰는 값.
     // 사용자의 지지와 오행을 그때마다 다시 구하지 않도록 여기서 함께 내보낸다.
@@ -437,6 +445,7 @@ export function buildFortune(birth, today, snapshot, ipo = {}) {
         trend: t.trend,
         ret_20d: t.ret_20d,
         pct_from_high52: t.pct_from_high52,
+        market: t.market ?? 'US',
         omen: t.omen,
         compat,
         compatLine: compatLine(compat, chinese.ko),

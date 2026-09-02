@@ -9,21 +9,28 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=c761fde6';
-import { stockCompatibility, compatLine } from './compat.js?v=c761fde6';
-import { SECTOR_KO } from './zodiac.js?v=c761fde6';
+import { buildFortune } from './engine.js?v=5238e064';
+import { stockCompatibility, compatLine } from './compat.js?v=5238e064';
+import { SECTOR_KO } from './zodiac.js?v=5238e064';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
+const MARKET_KEY = 'fortune.market';
 
 let DATA = null;
 let TICKERS = null;   // 짧은 키를 엔진이 아는 이름으로 편 것
 let CURRENT = null;   // 마지막으로 그린 운세 (공유에 쓴다)
+let MARKET = 'KR';    // 인연 종목을 어느 시장에서 고를지
 
 /* ── 유틸 ──────────────────────────────────────────── */
 
-const fmtPrice = (v) =>
-  typeof v === 'number' ? `$${v.toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '—';
+/** 한국은 원화 정수, 미국은 달러 소수 둘째 자리. */
+const fmtPrice = (v, market) => {
+  if (typeof v !== 'number') return '—';
+  return market === 'KR'
+    ? `₩${Math.round(v).toLocaleString('ko-KR')}`
+    : `$${v.toLocaleString('en-US', { maximumFractionDigits: 2 })}`;
+};
 
 const fmtPct = (v) =>
   typeof v === 'number' ? `${v > 0 ? '+' : ''}${v.toFixed(2)}%` : '—';
@@ -211,13 +218,14 @@ function tickerCard(t) {
           <span>${t.name ?? ''}</span>
         </div>
         <div class="tk-price">
-          <b>${fmtPrice(t.price)}</b>
+          <b>${fmtPrice(t.price, t.market)}</b>
           <span class="${signClass(t.chg1d)}">${fmtPct(t.chg1d)}</span>
         </div>
       </div>
       ${t.omen ? `<p class="tk-omen">${t.omen}</p>` : ''}
       ${compatBlock(t)}
       <div class="tk-meta">
+        ${t.marketKo ? `<span class="tk-mkt">${t.marketKo}</span>` : ''}
         <span>${t.sectorKo}</span>
         <span>RSI ${typeof t.rsi14 === 'number' ? t.rsi14.toFixed(0) : '—'}</span>
         <span>20일 ${fmtPct(t.ret_20d)}</span>
@@ -253,9 +261,12 @@ function renderFortune(f) {
   $('sector-line').textContent =
     `오늘 당신의 기운과 맞닿은 분야: ${f.sectors.map((s) => s.ko).join(' · ')}`;
 
+  // 한국과 미국은 장 마감일이 달라 기준일이 갈린다. 보고 있는 시장의 날짜를 적는다.
+  $('data-date').textContent =
+    (MARKET === 'KR' ? DATA.krDate : DATA.date) ?? f.date;
+
   $('tickers').innerHTML = f.tickers.map(tickerCard).join('');
 
-  $('data-date').textContent = f.date;
   $('input-card').hidden = true;
   for (const el of $('result').children) el.classList.remove('reveal', 'in');
   $('result').hidden = false;
@@ -313,6 +324,7 @@ function runLookup(query) {
       return tickerCard({
         ...t,
         sectorKo: SECTOR_KO[t.sector] ?? t.sector,
+        marketKo: t.market === 'KR' ? '한국' : '미국',
         compat,
         compatLine: compatLine(compat, CURRENT.chinese.ko),
       });
@@ -330,7 +342,7 @@ function runLookup(query) {
 
 /** 전송량을 줄이려고 짧게 줄여 둔 키를 엔진이 아는 이름으로 되돌린다. */
 const expandTicker = (r) => ({
-  ticker: r.t, name: r.n, sector: r.s,
+  ticker: r.t, name: r.n, sector: r.s, market: r.m ?? 'US', candidate: r.b === 1,
   price: r.p, chg1d: r.c, rsi14: r.rsi, trend: r.tr, cross: r.x,
   ret_20d: r.r20, pct_from_high52: r.ph, pct_from_low52: r.pl,
   vol_ratio: r.v, rs_rank: r.rs,
@@ -341,7 +353,7 @@ function show(birthStr) {
   const [y, m, d] = birthStr.split('-').map(Number);
   if (!y || !m || !d) return;
 
-  CURRENT = buildFortune({ y, m, d }, DATA.date, TICKERS, DATA.ipo ?? {});
+  CURRENT = buildFortune({ y, m, d }, DATA.date, TICKERS, DATA.ipo ?? {}, MARKET);
   safeStore(() => localStorage.setItem(STORE_KEY, birthStr));
   renderFortune(CURRENT);
 }
@@ -366,6 +378,12 @@ async function init() {
   btn.disabled = false;
   btn.textContent = '운세 보기';
 
+  const savedMarket = safeStore(() => localStorage.getItem(MARKET_KEY));
+  if (savedMarket === 'US' || savedMarket === 'KR') {
+    MARKET = savedMarket;
+    for (const b of $('market-tabs').children) b.classList.toggle('active', b.dataset.market === MARKET);
+  }
+
   const saved = safeStore(() => localStorage.getItem(STORE_KEY));
   if (saved) {
     $('birth').value = saved;
@@ -376,6 +394,18 @@ async function init() {
 $('birth-form').addEventListener('submit', (e) => {
   e.preventDefault();
   show($('birth').value);
+});
+
+$('market-tabs').addEventListener('click', (e) => {
+  const btn = e.target.closest('.mkt');
+  if (!btn || btn.dataset.market === MARKET) return;
+
+  MARKET = btn.dataset.market;
+  for (const b of $('market-tabs').children) b.classList.toggle('active', b === btn);
+  safeStore(() => localStorage.setItem(MARKET_KEY, MARKET));
+
+  // 시장이 바뀌면 인연 종목이 달라진다. 운세 자체는 그대로이므로 다시 계산해 덮어 그린다.
+  if (CURRENT) show($('birth').value);
 });
 
 $('lookup-form').addEventListener('submit', (e) => {

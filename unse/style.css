@@ -339,6 +339,21 @@ button:disabled { opacity: .4; cursor: default; }
 .fp-head { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px; }
 .fp-head b { color: var(--gold); font-weight: 700; font-variant-numeric: tabular-nums; }
 
+/* ── 시장 탭 ──────────────────────────── */
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.card-head h2 { margin: 0; }
+
+.market-tabs { display: flex; gap: 4px; flex: 0 0 auto; padding: 3px; background: rgba(0,0,0,.28); border: 1px solid var(--line-soft); border-radius: 10px; }
+.mkt {
+  padding: 6px 12px; font-size: 12px; font-weight: 700;
+  background: transparent; border: 0; border-radius: 7px;
+  color: var(--muted); font-family: inherit; letter-spacing: -.02em;
+  transition: color .15s, background .15s;
+}
+.mkt.active { background: rgba(242,205,130,.12); color: var(--gold); }
+
+.tk-mkt { color: var(--gold-dim) !important; background: rgba(242,205,130,.08) !important; }
+
 /* ── 종목 ─────────────────────────────── */
 .tickers { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .ticker {

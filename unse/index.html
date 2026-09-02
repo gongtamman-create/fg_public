@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
-<link rel="stylesheet" href="./style.css?v=c761fde6">
+<link rel="stylesheet" href="./style.css?v=5238e064">
 </head>
 <body>
 
@@ -166,7 +166,13 @@
 
     <!-- 인연 종목 -->
     <div class="card ticker-card">
-      <h2>오늘 당신과 인연이 닿은 종목</h2>
+      <div class="card-head">
+        <h2>오늘 당신과 인연이 닿은 종목</h2>
+        <div class="market-tabs" id="market-tabs" role="tablist">
+          <button class="mkt active" data-market="KR" role="tab">한국</button>
+          <button class="mkt" data-market="US" role="tab">미국</button>
+        </div>
+      </div>
       <p class="sub" id="sector-line"></p>
       <ul class="tickers" id="tickers"></ul>
       <p class="warn">
@@ -214,6 +220,6 @@
   <p class="credit">시장 데이터 · 공포탐욕지수 제공</p>
 </footer>
 
-<script type="module" src="./app.js?v=c761fde6"></script>
+<script type="module" src="./app.js?v=5238e064"></script>
 </body>
 </html>

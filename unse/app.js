@@ -9,10 +9,10 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=c301b378';
-import { stockCompatibility, compatLine } from './compat.js?v=c301b378';
-import { SECTOR_KO } from './zodiac.js?v=c301b378';
-import { renderShareCard } from './share.js?v=c301b378';
+import { buildFortune } from './engine.js?v=0d165b7a';
+import { stockCompatibility, compatLine } from './compat.js?v=0d165b7a';
+import { SECTOR_KO } from './zodiac.js?v=0d165b7a';
+import { renderShareCard } from './share.js?v=0d165b7a';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -37,6 +37,29 @@ const fmtPct = (v) =>
   typeof v === 'number' ? `${v > 0 ? '+' : ''}${v.toFixed(2)}%` : '—';
 
 const signClass = (v) => (typeof v !== 'number' ? '' : v > 0 ? 'up' : v < 0 ? 'down' : '');
+
+/**
+ * 오늘 날짜(KST) 'YYYY-MM-DD'.
+ *
+ * 운세의 '오늘'은 시세 날짜가 아니라 달력의 오늘이어야 한다. 예전엔 data.json 의
+ * 미국 시세 날짜를 그대로 썼는데, 그러면 일진·괘·태양각이 늘 하루(월요일엔 사흘) 늦었다.
+ * 한국 서비스이므로 시간대를 서울로 못 박는다. 해외에서 열어도 같은 날짜가 나온다.
+ */
+const todayKST = () =>
+  new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+
+/** 15분 단위 캐시 키. 빌드가 나간 뒤 최대 15분 안에 새 data.json 을 받게 한다. */
+const cacheKey = () => {
+  const p = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false,
+  }).formatToParts(new Date());
+  const g = (t) => p.find((x) => x.type === t).value;
+  const q = String(Math.floor(Number(g('minute')) / 15) * 15).padStart(2, '0');
+  return `${g('year')}-${g('month')}-${g('day')}T${g('hour')}${q}`;
+};
 
 /** localStorage는 사생활 보호 모드 등에서 접근 자체가 throw 할 수 있다. */
 function safeStore(fn, fallback = null) {
@@ -354,14 +377,14 @@ function show(birthStr) {
   const [y, m, d] = birthStr.split('-').map(Number);
   if (!y || !m || !d) return;
 
-  CURRENT = buildFortune({ y, m, d }, DATA.date, TICKERS, DATA.ipo ?? {}, MARKET);
+  CURRENT = buildFortune({ y, m, d }, todayKST(), TICKERS, DATA.ipo ?? {}, MARKET);
   safeStore(() => localStorage.setItem(STORE_KEY, birthStr));
   renderFortune(CURRENT);
 }
 
 async function init() {
-  // 날짜를 붙여 캐시를 우회한다. 자정 이후 낡은 결과가 남는 것을 막는다.
-  const res = await fetch(`./data.json?v=${new Date().toISOString().slice(0, 10)}`);
+  // 15분 단위 키를 붙여 캐시를 우회한다. 하루 두 번 빌드가 나가므로 날짜 단위로는 너무 성기다.
+  const res = await fetch(`./data.json?v=${cacheKey()}`);
   DATA = await res.json();
 
   TICKERS = DATA.tickers.map(expandTicker);
@@ -371,7 +394,7 @@ async function init() {
     .map((t) => `<option value="${t.ticker}">${(t.name ?? '').replace(/"/g, '&quot;')}</option>`)
     .join('');
 
-  $('asof').textContent = `${DATA.date} 기준`;
+  $('asof').textContent = `오늘 ${todayKST()}`;
   renderMarket(DATA.market);
 
   // 데이터가 다 실린 뒤에야 버튼을 연다.
@@ -395,6 +418,11 @@ async function init() {
 $('birth-form').addEventListener('submit', (e) => {
   e.preventDefault();
   show($('birth').value);
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || !CURRENT) return;
+  if (CURRENT.date !== todayKST()) show($('birth').value);
 });
 
 $('market-tabs').addEventListener('click', (e) => {

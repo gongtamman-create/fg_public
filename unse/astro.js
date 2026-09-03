@@ -9,7 +9,7 @@
  * 어스펙트 판정에 ±6~8도의 허용범위(orb)를 쓰므로 이 정도 오차는 결과에 영향을 주지 않는다.
  */
 
-import { jdn } from './saju.js?v=c301b378';
+import { jdn } from './saju.js?v=0d165b7a';
 
 /** 회귀황도 12궁 순서. 양자리 0도에서 시작한다. */
 export const TROPICAL_ORDER = [

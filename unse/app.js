@@ -9,10 +9,10 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=0d165b7a';
-import { stockCompatibility, compatLine } from './compat.js?v=0d165b7a';
-import { SECTOR_KO } from './zodiac.js?v=0d165b7a';
-import { renderShareCard } from './share.js?v=0d165b7a';
+import { buildFortune } from './engine.js?v=81948995';
+import { stockCompatibility, compatLine } from './compat.js?v=81948995';
+import { SECTOR_KO } from './zodiac.js?v=81948995';
+import { renderShareCard } from './share.js?v=81948995';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -257,12 +257,36 @@ function tickerCard(t) {
     </li>`;
 }
 
+/**
+ * 별자리·띠 배지에 일러스트를 얹는다.
+ *
+ * 이미지를 먼저 받아 본 뒤 성공했을 때만 배경으로 깐다. 배경만 바꾸면 404 일 때
+ * 이모지까지 지워져 빈 원이 남기 때문이다. 실패하면 이모지가 그대로 남는다.
+ * 파일은 img/<kind>/<id>.webp — id 는 zodiac.js 의 것과 같다.
+ */
+function applySignImage(el, kind, id) {
+  el.classList.remove('has-img');
+  el.style.backgroundImage = '';
+  const url = `./img/${kind}/${id}.webp`;
+  const probe = new Image();
+  probe.onload = () => {
+    // 그 사이 다른 결과로 바뀌었으면 덮어쓰지 않는다.
+    if (el.dataset.imgId !== id) return;
+    el.style.backgroundImage = `url("${url}")`;
+    el.classList.add('has-img');
+  };
+  el.dataset.imgId = id;
+  probe.src = url;
+}
+
 function renderFortune(f) {
   $('w-emoji').textContent = f.western.emoji;
+  applySignImage($('w-emoji'), 'sign', f.western.id);
   $('w-name').textContent = f.western.ko;
   $('w-el').textContent = `${f.western.element}의 기운`;
 
   $('c-emoji').textContent = f.chinese.emoji;
+  applySignImage($('c-emoji'), 'animal', f.chinese.id);
   $('c-name').textContent = `${f.chinese.ko}띠`;
   $('c-el').textContent = `${f.chinese.element}의 기운`;
 

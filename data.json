@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-05T20:15:03+09:00",
+  "updated_at": "2026-09-05T20:20:04+09:00",
   "current": {
     "date": "2026-09-05",
     "score": 37.8,
@@ -18,10 +18,10 @@
     "change_pct": -0.29
   },
   "hangang": {
-    "temp": 27.1,
+    "temp": 25.9,
     "time": "20:00",
     "ymd": "20260905",
-    "station": "탄천"
+    "station": "선유"
   },
   "history": [
     {

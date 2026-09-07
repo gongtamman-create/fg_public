@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-09-08T07:00:03+09:00",
+  "updated_at": "2026-09-08T07:05:03+09:00",
   "current": {
-    "date": "2026-09-07",
-    "score": 10.2,
+    "date": "2026-09-08",
+    "score": 11.5,
     "grade": "극단적 공포",
-    "daily_score": 37.9,
-    "hybrid_score": 40.7,
-    "hybrid_grade": "중립",
+    "daily_score": 18.2,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-09-08 06:30:22"
+    "realtime_time": "2026-09-08 07:00:26"
   },
   "nasdaq": {
     "price": 26506.99,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-06-10",
-      "score": 17.5,
-      "hybrid": 13.3,
-      "nasdaq_close": 25169.5,
-      "nasdaq_pct": -1.98
-    },
     {
       "date": "2026-06-11",
       "score": 33.0,
@@ -651,6 +644,13 @@
       "date": "2026-09-07",
       "score": 37.9,
       "hybrid": 40.7,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-09-08",
+      "score": 18.2,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5643,6 +5643,10 @@
     {
       "date": "2026-09-07",
       "score": 37.9
+    },
+    {
+      "date": "2026-09-08",
+      "score": 18.2
     }
   ],
   "backtest": {
@@ -5731,22 +5735,22 @@
   "cnn_comparison": {
     "cnn_score": 41.9,
     "cnn_grade": "공포",
-    "our_score": 10.2,
+    "our_score": 11.5,
     "our_grade": "극단적 공포"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 38으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 18으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": 2.1,
+        "fg_gap": 21.8,
         "rsi_gap": -20.8,
-        "pct": 7
+        "pct": 73
       },
       "sell": {
-        "fg_gap": -37.1,
+        "fg_gap": -56.8,
         "rsi_gap": -19.2,
         "pct": 0
       }
@@ -5754,7 +5758,7 @@
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "37.9",
+        "value": "18.2",
         "status": "매수 구간"
       },
       {
@@ -5769,21 +5773,16 @@
       }
     ],
     "similar_history": {
-      "count": 143,
-      "win_5d": 53.2,
-      "avg_5d": -0.16,
-      "win_10d": 49.3,
-      "avg_10d": -0.07,
-      "win_20d": 54.1,
-      "avg_20d": 0.16
+      "count": 29,
+      "win_5d": 51.7,
+      "avg_5d": -0.13,
+      "win_10d": 41.4,
+      "avg_10d": 0.08,
+      "win_20d": 34.5,
+      "avg_20d": -0.13
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-06-10",
-      "composite": 60,
-      "signal": "strong_buy"
-    },
     {
       "date": "2026-06-11",
       "composite": 60,
@@ -6226,15 +6225,16 @@
     },
     {
       "date": "2026-09-07",
-      "composite": 4.9,
+      "composite": 4.2,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-09-08",
+      "composite": 37.6,
+      "signal": "buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 44.5,
-      "time": "07:00"
-    },
     {
       "score": 59.8,
       "time": "07:30"
@@ -6422,6 +6422,10 @@
     {
       "score": 11.9,
       "time": "06:30"
+    },
+    {
+      "score": 12.4,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6673,11 +6677,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-06-10",
-      "index": 195,
-      "hot": true
-    },
     {
       "date": "2026-06-11",
       "index": 160,
@@ -7121,6 +7120,11 @@
     {
       "date": "2026-09-07",
       "index": 62,
+      "hot": false
+    },
+    {
+      "date": "2026-09-08",
+      "index": 46,
       "hot": false
     }
   ]

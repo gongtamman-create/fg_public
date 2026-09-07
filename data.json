@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-09-07T10:25:03+09:00",
+  "updated_at": "2026-09-07T10:30:03+09:00",
   "current": {
     "date": "2026-09-07",
     "score": 34.0,
     "grade": "공포",
     "daily_score": 37.9,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 40.7,
+    "hybrid_grade": "중립",
     "signal": "buy_wait",
     "signal_label": "매수 대기",
     "realtime": true,
@@ -650,7 +650,7 @@
     {
       "date": "2026-09-07",
       "score": 37.9,
-      "hybrid": null,
+      "hybrid": 40.7,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }

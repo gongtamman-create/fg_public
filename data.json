@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T08:20:04+09:00",
+  "updated_at": "2026-09-09T08:25:03+09:00",
   "current": {
     "date": "2026-09-09",
     "score": 45.0,
@@ -6229,8 +6229,8 @@
     },
     {
       "date": "2026-09-08",
-      "composite": 37.6,
-      "signal": "buy"
+      "composite": 32.0,
+      "signal": "weak_buy"
     },
     {
       "date": "2026-09-09",

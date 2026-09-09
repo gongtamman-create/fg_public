@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T06:35:03+09:00",
+  "updated_at": "2026-09-10T06:40:08+09:00",
   "current": {
     "date": "2026-09-09",
     "score": 50.3,
@@ -6433,30 +6433,24 @@
     }
   ],
   "shortpos": {
-    "date": "2026-09-09",
+    "date": "2026-09-10",
     "activity": 252,
     "shorts": [
+      {
+        "ticker": "USO",
+        "count": 1
+      },
       {
         "ticker": "SOXX",
         "count": 1
       }
     ],
-    "longs": [
-      {
-        "ticker": "USO",
-        "count": 1
-      }
-    ],
+    "longs": [],
     "trend": [
       {
-        "date": "2026-07-27",
-        "short": 1,
-        "long": 3
-      },
-      {
         "date": "2026-07-28",
-        "short": 3,
-        "long": 1
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-07-29",
@@ -6470,13 +6464,13 @@
       },
       {
         "date": "2026-07-31",
-        "short": 0,
+        "short": 2,
         "long": 0
       },
       {
         "date": "2026-08-01",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-08-02",
@@ -6491,56 +6485,56 @@
       {
         "date": "2026-08-04",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-08-05",
-        "short": 2,
-        "long": 4
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-06",
-        "short": 1,
-        "long": 2
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-07",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-08",
-        "short": 1,
-        "long": 2
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-09",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-10",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-11",
-        "short": 0,
+        "short": 2,
         "long": 0
       },
       {
         "date": "2026-08-12",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-13",
-        "short": 2,
-        "long": 2
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-14",
-        "short": 3,
+        "short": 1,
         "long": 0
       },
       {
@@ -6551,42 +6545,42 @@
       {
         "date": "2026-08-16",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-17",
-        "short": 2,
-        "long": 1
-      },
-      {
-        "date": "2026-08-18",
-        "short": 1,
-        "long": 1
-      },
-      {
-        "date": "2026-08-19",
-        "short": 1,
-        "long": 0
-      },
-      {
-        "date": "2026-08-20",
-        "short": 3,
-        "long": 1
-      },
-      {
-        "date": "2026-08-21",
-        "short": 2,
-        "long": 0
-      },
-      {
-        "date": "2026-08-22",
         "short": 0,
         "long": 0
       },
       {
-        "date": "2026-08-23",
+        "date": "2026-08-18",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-08-19",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-08-20",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-08-21",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-08-22",
         "short": 1,
-        "long": 3
+        "long": 0
+      },
+      {
+        "date": "2026-08-23",
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-24",
@@ -6595,38 +6589,38 @@
       },
       {
         "date": "2026-08-25",
-        "short": 2,
-        "long": 4
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-26",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-08-27",
-        "short": 1,
-        "long": 2
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-28",
-        "short": 3,
+        "short": 1,
         "long": 0
       },
       {
         "date": "2026-08-29",
-        "short": 1,
-        "long": 2
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-08-30",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-31",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-09-01",
@@ -6635,53 +6629,58 @@
       },
       {
         "date": "2026-09-02",
-        "short": 1,
-        "long": 1
+        "short": 0,
+        "long": 0
       },
       {
         "date": "2026-09-03",
         "short": 0,
-        "long": 3
-      },
-      {
-        "date": "2026-09-04",
-        "short": 3,
-        "long": 1
-      },
-      {
-        "date": "2026-09-05",
-        "short": 1,
-        "long": 3
-      },
-      {
-        "date": "2026-09-06",
-        "short": 2,
-        "long": 1
-      },
-      {
-        "date": "2026-09-07",
-        "short": 2,
         "long": 0
       },
       {
-        "date": "2026-09-08",
+        "date": "2026-09-04",
         "short": 0,
         "long": 0
       },
       {
-        "date": "2026-09-09",
+        "date": "2026-09-05",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-06",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-07",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-08",
         "short": 1,
-        "long": 1
+        "long": 0
+      },
+      {
+        "date": "2026-09-09",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-10",
+        "short": 1,
+        "long": 0
       }
     ],
-    "trendShortTicker": "SOXX",
-    "trendLongTicker": "USO",
+    "trendShortTicker": "USO",
+    "trendLongTicker": null,
     "strength": {
-      "score": 39,
+      "score": 40,
       "share": 0.4,
       "heatZ": -0.2,
-      "repPerPost": 4.8,
-      "ticker": "SOXX"
+      "repPerPost": 3.6,
+      "ticker": "USO"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },

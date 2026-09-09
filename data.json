@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-09-10T07:00:03+09:00",
+  "updated_at": "2026-09-10T07:05:05+09:00",
   "current": {
-    "date": "2026-09-09",
-    "score": 50.3,
+    "date": "2026-09-10",
+    "score": 43.3,
     "grade": "중립",
-    "daily_score": 61.4,
-    "hybrid_score": 60.7,
-    "hybrid_grade": "탐욕",
+    "daily_score": 46.1,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망 (탐욕 접근)",
+    "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-09-10 06:30:24"
+    "realtime_time": "2026-09-10 07:00:25"
   },
   "nasdaq": {
     "price": 26253.34,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-06-12",
-      "score": 42.4,
-      "hybrid": 40.8,
-      "nasdaq_close": 25888.84,
-      "nasdaq_pct": 0.31
-    },
     {
       "date": "2026-06-13",
       "score": 61.0,
@@ -651,6 +644,13 @@
       "date": "2026-09-09",
       "score": 61.4,
       "hybrid": 60.7,
+      "nasdaq_close": 26253.34,
+      "nasdaq_pct": -0.64
+    },
+    {
+      "date": "2026-09-10",
+      "score": 46.1,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5651,11 +5651,15 @@
     {
       "date": "2026-09-09",
       "score": 61.4
+    },
+    {
+      "date": "2026-09-10",
+      "score": 46.1
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-09-08",
-    "trading_days": 860,
+    "period": "2022-01-03 ~ 2026-09-09",
+    "trading_days": 861,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5680,16 +5684,16 @@
       },
       {
         "name": "극공포 (<=20)",
-        "trades": 26,
-        "return": 6.8,
-        "win_rate": 73.0,
+        "trades": 27,
+        "return": 6.6,
+        "win_rate": 74.0,
         "hold_days": 40
       },
       {
         "name": "극공포 (<=20)",
-        "trades": 7,
-        "return": 12.3,
-        "win_rate": 86.0,
+        "trades": 8,
+        "return": 13.1,
+        "win_rate": 88.0,
         "hold_days": 120
       },
       {
@@ -5701,15 +5705,15 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 65,
-        "return": 7.3,
+        "trades": 66,
+        "return": 7.2,
         "win_rate": 80.0,
         "hold_days": 40
       },
       {
         "name": "공포 (<=30)",
-        "trades": 34,
-        "return": 13.1,
+        "trades": 35,
+        "return": 13.2,
         "win_rate": 94.0,
         "hold_days": 120
       },
@@ -5722,16 +5726,16 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 106,
+        "trades": 107,
         "return": 5.9,
-        "win_rate": 77.0,
+        "win_rate": 78.0,
         "hold_days": 40
       },
       {
         "name": "공포 (<=35)",
-        "trades": 66,
-        "return": 11.4,
-        "win_rate": 89.0,
+        "trades": 67,
+        "return": 11.5,
+        "win_rate": 90.0,
         "hold_days": 120
       }
     ]
@@ -5739,59 +5743,54 @@
   "cnn_comparison": {
     "cnn_score": 39.0,
     "cnn_grade": "공포",
-    "our_score": 50.3,
+    "our_score": 43.3,
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "관망 (탐욕 접근)",
+    "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 61으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
+    "reason": "FG 46, RSI 48 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
-        "fg_gap": -21.4,
-        "rsi_gap": -17.8,
-        "pct": 0
+        "fg_gap": -6.1,
+        "rsi_gap": -12.5,
+        "pct": 38
       },
       "sell": {
-        "fg_gap": -13.6,
-        "rsi_gap": -22.2,
-        "pct": 5
+        "fg_gap": -28.9,
+        "rsi_gap": -27.5,
+        "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "61.4",
-        "status": "탐욕 접근"
+        "value": "46.1",
+        "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "52.8",
+        "value": "47.5",
         "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "+0.3%",
+        "value": "-0.3%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 284,
-      "win_5d": 59.7,
-      "avg_5d": 0.12,
-      "win_10d": 55.5,
-      "avg_10d": -0.12,
-      "win_20d": 53.8,
-      "avg_20d": 0.58
+      "count": 207,
+      "win_5d": 54.4,
+      "avg_5d": 0.2,
+      "win_10d": 55.9,
+      "avg_10d": 0.29,
+      "win_20d": 55.4,
+      "avg_20d": 1.43
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-06-12",
-      "composite": -3.1,
-      "signal": "neutral"
-    },
     {
       "date": "2026-06-13",
       "composite": -1.2,
@@ -6234,15 +6233,16 @@
     },
     {
       "date": "2026-09-09",
-      "composite": -2.3,
+      "composite": -2.0,
+      "signal": "neutral"
+    },
+    {
+      "date": "2026-09-10",
+      "composite": 0.0,
       "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 48.1,
-      "time": "07:00"
-    },
     {
       "score": 47.1,
       "time": "07:30"
@@ -6430,6 +6430,10 @@
     {
       "score": 43.1,
       "time": "06:30"
+    },
+    {
+      "score": 33.3,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6685,11 +6689,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-06-12",
-      "index": 176,
-      "hot": true
-    },
     {
       "date": "2026-06-13",
       "index": 197,
@@ -7133,6 +7132,11 @@
     {
       "date": "2026-09-09",
       "index": 59,
+      "hot": false
+    },
+    {
+      "date": "2026-09-10",
+      "index": 109,
       "hot": false
     }
   ]

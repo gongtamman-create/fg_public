@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-11T06:35:04+09:00",
+  "updated_at": "2026-09-11T06:40:05+09:00",
   "current": {
     "date": "2026-09-10",
     "score": 40.4,
@@ -6437,12 +6437,12 @@
     }
   ],
   "shortpos": {
-    "date": "2026-09-10",
-    "activity": 252,
+    "date": "2026-09-11",
+    "activity": 250,
     "shorts": [
       {
         "ticker": "USO",
-        "count": 1
+        "count": 3
       },
       {
         "ticker": "SOXX",
@@ -6451,11 +6451,6 @@
     ],
     "longs": [],
     "trend": [
-      {
-        "date": "2026-07-28",
-        "short": 0,
-        "long": 0
-      },
       {
         "date": "2026-07-29",
         "short": 0,
@@ -6675,15 +6670,20 @@
         "date": "2026-09-10",
         "short": 1,
         "long": 0
+      },
+      {
+        "date": "2026-09-11",
+        "short": 3,
+        "long": 0
       }
     ],
     "trendShortTicker": "USO",
     "trendLongTicker": null,
     "strength": {
-      "score": 40,
-      "share": 0.4,
-      "heatZ": -0.2,
-      "repPerPost": 3.6,
+      "score": 78,
+      "share": 1.2,
+      "heatZ": -1.4,
+      "repPerPost": 4.8,
       "ticker": "USO"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

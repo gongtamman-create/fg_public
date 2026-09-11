@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-09-12T07:00:05+09:00",
+  "updated_at": "2026-09-12T07:05:07+09:00",
   "current": {
-    "date": "2026-09-11",
-    "score": 73.0,
+    "date": "2026-09-12",
+    "score": 63.1,
     "grade": "탐욕",
-    "daily_score": 38.1,
-    "hybrid_score": 36.1,
-    "hybrid_grade": "공포",
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "daily_score": 73.7,
+    "hybrid_score": null,
+    "hybrid_grade": null,
+    "signal": "caution",
+    "signal_label": "과열 주의",
     "realtime": true,
-    "realtime_time": "2026-09-12 06:30:25"
+    "realtime_time": "2026-09-12 07:00:27"
   },
   "nasdaq": {
     "price": 26333.04,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-06-14",
-      "score": 56.0,
-      "hybrid": 56.4,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-06-15",
       "score": 51.6,
@@ -651,6 +644,13 @@
       "date": "2026-09-11",
       "score": 38.1,
       "hybrid": 36.1,
+      "nasdaq_close": 26333.04,
+      "nasdaq_pct": 0.96
+    },
+    {
+      "date": "2026-09-12",
+      "score": 73.7,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5659,11 +5659,15 @@
     {
       "date": "2026-09-11",
       "score": 38.1
+    },
+    {
+      "date": "2026-09-12",
+      "score": 73.7
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-09-10",
-    "trading_days": 862,
+    "period": "2022-01-03 ~ 2026-09-11",
+    "trading_days": 863,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5716,9 +5720,9 @@
       },
       {
         "name": "공포 (<=30)",
-        "trades": 36,
-        "return": 13.4,
-        "win_rate": 94.0,
+        "trades": 37,
+        "return": 13.6,
+        "win_rate": 95.0,
         "hold_days": 120
       },
       {
@@ -5737,8 +5741,8 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 68,
-        "return": 11.6,
+        "trades": 69,
+        "return": 11.8,
         "win_rate": 90.0,
         "hold_days": 120
       }
@@ -5747,59 +5751,54 @@
   "cnn_comparison": {
     "cnn_score": 33.3,
     "cnn_grade": "공포",
-    "our_score": 73.0,
+    "our_score": 63.1,
     "our_grade": "탐욕"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
+    "action": "과열 주의",
+    "action_key": "caution",
     "confidence": "개장 확인 필요",
-    "reason": "공포 구간 (FG 38) [휴장] — 개장 후 기술적 지표 확인 필요",
+    "reason": "강한 탐욕 (FG 74) [휴장] — 개장 후 기술적 지표 확인 필요",
     "proximity": {
       "buy": {
-        "fg_gap": 1.9,
-        "rsi_gap": -7.7,
-        "pct": 31
+        "fg_gap": -33.7,
+        "rsi_gap": -15.5,
+        "pct": 0
       },
       "sell": {
-        "fg_gap": -36.9,
-        "rsi_gap": -32.3,
-        "pct": 0
+        "fg_gap": -1.3,
+        "rsi_gap": -24.5,
+        "pct": 46
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "38.1",
-        "status": "매수 구간"
+        "value": "73.7",
+        "status": "탐욕 접근"
       },
       {
         "name": "RSI(14)",
-        "value": "42.7 (전일)",
+        "value": "50.5 (전일)",
         "status": "중립 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-0.9% (전일)",
+        "value": "-0.0% (전일)",
         "status": "정상 (휴장)"
       }
     ],
     "similar_history": {
-      "count": 149,
-      "win_5d": 52.0,
-      "avg_5d": 0.27,
-      "win_10d": 57.1,
-      "avg_10d": 1.28,
-      "win_20d": 59.9,
-      "avg_20d": 1.96
+      "count": 123,
+      "win_5d": 55.3,
+      "avg_5d": 0.64,
+      "win_10d": 58.2,
+      "avg_10d": 0.66,
+      "win_20d": 53.7,
+      "avg_20d": 0.98
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-06-14",
-      "composite": 0.0,
-      "signal": "neutral"
-    },
     {
       "date": "2026-06-15",
       "composite": 0.6,
@@ -6242,15 +6241,16 @@
     },
     {
       "date": "2026-09-11",
-      "composite": 13.1,
+      "composite": 11.1,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-09-12",
+      "composite": -22.6,
+      "signal": "weak_sell"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 81.2,
-      "time": "07:00"
-    },
     {
       "score": 75.7,
       "time": "07:30"
@@ -6438,6 +6438,10 @@
     {
       "score": 65.7,
       "time": "06:30"
+    },
+    {
+      "score": 51.0,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6698,11 +6702,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-06-14",
-      "index": 75,
-      "hot": false
-    },
     {
       "date": "2026-06-15",
       "index": 129,
@@ -7146,6 +7145,11 @@
     {
       "date": "2026-09-11",
       "index": 86,
+      "hot": false
+    },
+    {
+      "date": "2026-09-12",
+      "index": 78,
       "hot": false
     }
   ]

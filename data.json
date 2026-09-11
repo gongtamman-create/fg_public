@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-09-11T10:25:04+09:00",
+  "updated_at": "2026-09-11T10:30:03+09:00",
   "current": {
     "date": "2026-09-11",
     "score": 38.9,
     "grade": "공포",
     "daily_score": 38.1,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 36.1,
+    "hybrid_grade": "공포",
     "signal": "buy_wait",
     "signal_label": "매수 대기",
     "realtime": true,
@@ -643,14 +643,14 @@
     {
       "date": "2026-09-10",
       "score": 46.1,
-      "hybrid": 49.2,
+      "hybrid": 49.1,
       "nasdaq_close": 26081.72,
       "nasdaq_pct": -0.65
     },
     {
       "date": "2026-09-11",
       "score": 38.1,
-      "hybrid": null,
+      "hybrid": 36.1,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }

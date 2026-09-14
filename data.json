@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T06:35:04+09:00",
+  "updated_at": "2026-09-15T06:40:06+09:00",
   "current": {
     "date": "2026-09-14",
     "score": 60.4,
@@ -6453,30 +6453,16 @@
     }
   ],
   "shortpos": {
-    "date": "2026-09-14",
-    "activity": 252,
+    "date": "2026-09-15",
+    "activity": 251,
     "shorts": [
       {
         "ticker": "SOXX",
-        "count": 1
-      }
-    ],
-    "longs": [
-      {
-        "ticker": "QQQ",
         "count": 2
-      },
-      {
-        "ticker": "USO",
-        "count": 1
       }
     ],
+    "longs": [],
     "trend": [
-      {
-        "date": "2026-08-01",
-        "short": 0,
-        "long": 0
-      },
       {
         "date": "2026-08-02",
         "short": 0,
@@ -6585,7 +6571,7 @@
       {
         "date": "2026-08-23",
         "short": 1,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-24",
@@ -6605,7 +6591,7 @@
       {
         "date": "2026-08-27",
         "short": 1,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-08-28",
@@ -6695,16 +6681,21 @@
       {
         "date": "2026-09-14",
         "short": 1,
-        "long": 2
+        "long": 0
+      },
+      {
+        "date": "2026-09-15",
+        "short": 2,
+        "long": 0
       }
     ],
     "trendShortTicker": "SOXX",
-    "trendLongTicker": "QQQ",
+    "trendLongTicker": null,
     "strength": {
-      "score": 40,
-      "share": 0.4,
-      "heatZ": -0.2,
-      "repPerPost": 5.9,
+      "score": 64,
+      "share": 0.8,
+      "heatZ": -0.8,
+      "repPerPost": 3.3,
       "ticker": "SOXX"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

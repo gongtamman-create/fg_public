@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-09-16T10:20:03+09:00",
+  "updated_at": "2026-09-16T10:25:03+09:00",
   "current": {
     "date": "2026-09-16",
     "score": 41.9,
     "grade": "중립",
     "daily_score": 40.2,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 39.1,
+    "hybrid_grade": "공포",
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
@@ -643,14 +643,14 @@
     {
       "date": "2026-09-15",
       "score": 64.5,
-      "hybrid": 68.6,
+      "hybrid": 68.7,
       "nasdaq_close": 25981.57,
       "nasdaq_pct": -0.78
     },
     {
       "date": "2026-09-16",
       "score": 40.2,
-      "hybrid": null,
+      "hybrid": 39.1,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }

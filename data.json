@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T16:05:04+09:00",
+  "updated_at": "2026-09-17T16:10:06+09:00",
   "current": {
     "date": "2026-09-17",
     "score": 46.2,
@@ -19,7 +19,7 @@
   },
   "hangang": {
     "temp": 24.1,
-    "time": "15:00",
+    "time": "16:00",
     "ymd": "20260917",
     "station": "선유"
   },
@@ -5769,7 +5769,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 26.4,
+    "cnn_score": 26.3,
     "cnn_grade": "공포",
     "our_score": 46.2,
     "our_grade": "중립"

@@ -9,14 +9,15 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=81948995';
-import { stockCompatibility, compatLine } from './compat.js?v=81948995';
-import { SECTOR_KO } from './zodiac.js?v=81948995';
-import { renderShareCard } from './share.js?v=81948995';
+import { buildFortune } from './engine.js?v=26125c82';
+import { stockCompatibility, compatLine } from './compat.js?v=26125c82';
+import { SECTOR_KO } from './zodiac.js?v=26125c82';
+import { renderShareCard } from './share.js?v=26125c82';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
 const MARKET_KEY = 'fortune.market';
+const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
 
 let DATA = null;
 let TICKERS = null;   // 짧은 키를 엔진이 아는 이름으로 편 것
@@ -75,13 +76,13 @@ function renderMarket(market) {
   $('fg-score').parentElement.dataset.tone = fg.tone;
   $('fg-mood').textContent = market.mood;
 
-  $('fg-parts').innerHTML = fg.parts
+  $('fg-parts').innerHTML = (Array.isArray(fg.parts) ? fg.parts : []).filter(p => p && Number.isFinite(p.value))
     .map(
       (p) => `
       <div class="fg-part">
-        <div class="fp-head"><span>${p.label}</span><b>${p.raw}</b></div>
-        <div class="bar"><i style="width:${p.value.toFixed(0)}%"></i></div>
-        <small>${p.desc}</small>
+        <div class="fp-head"><span>${escapeHTML(p.label)}</span><b>${escapeHTML(p.raw)}</b></div>
+        <div class="bar"><i style="width:${Math.max(0, Math.min(100, p.value)).toFixed(0)}%"></i></div>
+        <small>${escapeHTML(p.desc)}</small>
       </div>`
     )
     .join('');
@@ -227,7 +228,7 @@ function compatBlock(t) {
         <span class="tc-verdict"><b>${c.score}</b> · ${c.label}</span>
       </div>
       <div class="bar tc-bar"><i style="width:${c.score}%"></i></div>
-      <p class="tc-line">${t.compatLine}</p>
+      <p class="tc-line">${escapeHTML(t.compatLine)}</p>
       ${c.element.text ? `<p class="tc-elem">${c.element.text}</p>` : ''}
     </div>`;
 }
@@ -238,19 +239,19 @@ function tickerCard(t) {
     <li class="ticker">
       <div class="tk-top">
         <div class="tk-id">
-          <b>${t.ticker}</b>
-          <span>${t.name ?? ''}</span>
+          <b>${escapeHTML(t.ticker)}</b>
+          <span>${escapeHTML(t.name)}</span>
         </div>
         <div class="tk-price">
           <b>${fmtPrice(t.price, t.market)}</b>
           <span class="${signClass(t.chg1d)}">${fmtPct(t.chg1d)}</span>
         </div>
       </div>
-      ${t.omen ? `<p class="tk-omen">${t.omen}</p>` : ''}
+      ${t.omen ? `<p class="tk-omen">${escapeHTML(t.omen)}</p>` : ''}
       ${compatBlock(t)}
       <div class="tk-meta">
-        ${t.marketKo ? `<span class="tk-mkt">${t.marketKo}</span>` : ''}
-        <span>${t.sectorKo}</span>
+        ${t.marketKo ? `<span class="tk-mkt">${escapeHTML(t.marketKo)}</span>` : ''}
+        <span>${escapeHTML(t.sectorKo)}</span>
         <span>RSI ${typeof t.rsi14 === 'number' ? t.rsi14.toFixed(0) : '—'}</span>
         <span>20일 ${fmtPct(t.ret_20d)}</span>
       </div>
@@ -358,7 +359,7 @@ function runLookup(query) {
   const found = findTickers(query);
   if (!found.length) {
     list.innerHTML = '';
-    msg.textContent = `'${query}' 로는 찾지 못했습니다. S&P 500 종목만 담고 있습니다.`;
+    msg.textContent = `'${query}' 로는 찾지 못했습니다. 미국 S&P 500과 한국 코스피 종목을 검색할 수 있습니다.`;
     msg.hidden = false;
     return;
   }
@@ -390,18 +391,19 @@ function runLookup(query) {
 
 /** 전송량을 줄이려고 짧게 줄여 둔 키를 엔진이 아는 이름으로 되돌린다. */
 const expandTicker = (r) => ({
-  ticker: r.t, name: r.n, sector: r.s, market: r.m ?? 'US', candidate: r.b === 1,
+  ticker: r.t, name: typeof r.n === 'string' ? r.n : r.t, sector: typeof r.s === 'string' ? r.s : '', market: r.m === 'KR' ? 'KR' : 'US', candidate: r.b === 1,
   price: r.p, chg1d: r.c, rsi14: r.rsi, trend: r.tr, cross: r.x,
   ret_20d: r.r20, pct_from_high52: r.ph, pct_from_low52: r.pl,
   vol_ratio: r.v, rs_rank: r.rs,
 });
 
 function show(birthStr) {
-  if (!DATA) return;
+  if (!DATA || typeof birthStr !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(birthStr)) return;
   const [y, m, d] = birthStr.split('-').map(Number);
   if (!y || !m || !d) return;
 
   CURRENT = buildFortune({ y, m, d }, todayKST(), TICKERS, DATA.ipo ?? {}, MARKET);
+  if (!CURRENT) return;
   safeStore(() => localStorage.setItem(STORE_KEY, birthStr));
   renderFortune(CURRENT);
 }
@@ -409,13 +411,15 @@ function show(birthStr) {
 async function init() {
   // 15분 단위 키를 붙여 캐시를 우회한다. 하루 두 번 빌드가 나가므로 날짜 단위로는 너무 성기다.
   const res = await fetch(`./data.json?v=${cacheKey()}`);
+  if (!res.ok) throw new Error(`시장 데이터 HTTP ${res.status}`);
   DATA = await res.json();
-
-  TICKERS = DATA.tickers.map(expandTicker);
+  if (!DATA || !Array.isArray(DATA.tickers) || !DATA.market?.fearGreed
+    || typeof DATA.market.fearGreed !== 'object') throw new Error('시장 데이터 형식이 올바르지 않습니다.');
+  TICKERS = DATA.tickers.filter(r => r && typeof r.t === 'string' && /^[A-Za-z0-9.^=-]+$/.test(r.t)).map(expandTicker);
 
   // 티커 자동완성 목록. 517개라 한 번에 넣어도 부담이 없다.
   $('ticker-list').innerHTML = TICKERS
-    .map((t) => `<option value="${t.ticker}">${(t.name ?? '').replace(/"/g, '&quot;')}</option>`)
+    .map((t) => `<option value="${escapeHTML(t.ticker)}">${escapeHTML(t.name)}</option>`)
     .join('');
 
   $('asof').textContent = `오늘 ${todayKST()}`;
@@ -426,14 +430,12 @@ async function init() {
   btn.disabled = false;
   btn.textContent = '운세 보기';
 
+  const hashMarket = new URLSearchParams(location.hash.slice(1)).get('market');
   const savedMarket = safeStore(() => localStorage.getItem(MARKET_KEY));
-  if (savedMarket === 'US' || savedMarket === 'KR') {
-    MARKET = savedMarket;
-    for (const b of $('market-tabs').children) b.classList.toggle('active', b.dataset.market === MARKET);
-  }
+  selectMarket(['KR', 'US'].includes(hashMarket) ? hashMarket : savedMarket || 'KR');
 
   const saved = safeStore(() => localStorage.getItem(STORE_KEY));
-  if (saved) {
+  if (typeof saved === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(saved)) {
     $('birth').value = saved;
     show(saved);
   }
@@ -449,17 +451,20 @@ document.addEventListener('visibilitychange', () => {
   if (CURRENT.date !== todayKST()) show($('birth').value);
 });
 
-$('market-tabs').addEventListener('click', (e) => {
-  const btn = e.target.closest('.mkt');
-  if (!btn || btn.dataset.market === MARKET) return;
-
-  MARKET = btn.dataset.market;
-  for (const b of $('market-tabs').children) b.classList.toggle('active', b === btn);
+function selectMarket(market) {
+  if (!['KR', 'US'].includes(market)) market = 'KR';
+  MARKET = market;
+  for (const button of $('market-tabs').children) button.classList.toggle('active', button.dataset.market === MARKET);
   safeStore(() => localStorage.setItem(MARKET_KEY, MARKET));
-
-  // 시장이 바뀌면 인연 종목이 달라진다. 운세 자체는 그대로이므로 다시 계산해 덮어 그린다.
+  history.replaceState(null, '', `#market=${MARKET}`);
   if (CURRENT) show($('birth').value);
+}
+
+$('market-tabs').addEventListener('click', event => {
+  const button = event.target.closest('.mkt');
+  if (button && button.dataset.market !== MARKET) selectMarket(button.dataset.market);
 });
+window.addEventListener('hashchange', () => selectMarket(new URLSearchParams(location.hash.slice(1)).get('market')));
 
 $('lookup-form').addEventListener('submit', (e) => {
   e.preventDefault();

@@ -11,8 +11,8 @@
  * 여기서도 난수는 쓰지 않는다.
  */
 
-import { dayGanji, jiRelation, JI } from './saju.js?v=81948995';
-import { CHINESE } from './zodiac.js?v=81948995';
+import { dayGanji, jiRelation, JI } from './saju.js?v=26125c82';
+import { CHINESE } from './zodiac.js?v=26125c82';
 
 /** 섹터에 오행을 배속한다. zodiac.js 의 오행→섹터 성향과 앞뒤가 맞도록 정했다. */
 export const SECTOR_ELEMENT = {
@@ -117,7 +117,11 @@ const GRADES = [
  * @returns {object|null}       상장일이 없으면 null — 궁합을 지어내지 않는다.
  */
 export function stockCompatibility(userJiIndex, userElement, ipoDate, sector) {
-  if (!ipoDate) return null;
+  if (typeof ipoDate !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(ipoDate)
+    || !Number.isInteger(userJiIndex) || userJiIndex < 0 || userJiIndex > 11
+    || !Object.hasOwn(ELEMENT_KO, userElement)) return null;
+  const timestamp = Date.parse(ipoDate);
+  if (!Number.isFinite(timestamp) || new Date(timestamp).toISOString().slice(0, 10) !== ipoDate) return null;
 
   const [y, m, d] = ipoDate.split('-').map(Number);
   if (!y || !m || !d) return null;

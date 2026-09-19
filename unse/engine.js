@@ -22,11 +22,11 @@
 import {
   sectorAffinity, SECTOR_KO, ELEMENT_KO, CHINESE,
   getWesternZodiac, getChineseZodiac,
-} from './zodiac.js?v=81948995';
-import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=81948995';
-import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=81948995';
-import { castHexagram } from './iching.js?v=81948995';
-import { stockCompatibility, compatLine } from './compat.js?v=81948995';
+} from './zodiac.js?v=26125c82';
+import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=26125c82';
+import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=26125c82';
+import { castHexagram } from './iching.js?v=26125c82';
+import { stockCompatibility, compatLine } from './compat.js?v=26125c82';
 
 /* ── 시드 난수 (종목 선택 전용) ─────────────────────────────── */
 
@@ -320,6 +320,15 @@ function pickTickers(rng, snapshot, affinity, count = 3) {
  * @param {string} market   'KR' | 'US' — 인연 종목을 어느 시장에서 고를지
  */
 export function buildFortune(birth, today, snapshot, ipo = {}, market = 'KR') {
+  if (!birth || typeof birth !== 'object' || ![birth.y, birth.m, birth.d].every(Number.isInteger)
+    || typeof today !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(today)) return null;
+  const birthDate = new Date(Date.UTC(birth.y, birth.m - 1, birth.d));
+  if (birth.y < 1900 || birth.y > 2100 || birthDate.getUTCFullYear() !== birth.y
+    || birthDate.getUTCMonth() + 1 !== birth.m || birthDate.getUTCDate() !== birth.d
+    || !Number.isFinite(Date.parse(today)) || new Date(today).toISOString().slice(0, 10) !== today) return null;
+  snapshot = Array.isArray(snapshot) ? snapshot.filter(r => r && typeof r === 'object') : [];
+  ipo = ipo && typeof ipo === 'object' && !Array.isArray(ipo) ? ipo : {};
+  market = market === 'US' ? 'US' : 'KR';
   const { y, m, d } = birth;
   const [ty, tm, td] = today.split('-').map(Number);
 

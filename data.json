@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-09-27T07:00:03+09:00",
+  "updated_at": "2026-09-27T07:05:04+09:00",
   "current": {
-    "date": "2026-09-26",
-    "score": 37.1,
+    "date": "2026-09-27",
+    "score": 26.7,
     "grade": "공포",
-    "daily_score": 56.2,
-    "hybrid_score": 56.0,
-    "hybrid_grade": "중립",
+    "daily_score": 60.0,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망",
+    "signal_label": "관망 (탐욕 접근)",
     "realtime": true,
-    "realtime_time": "2026-09-27 06:30:22"
+    "realtime_time": "2026-09-27 07:00:23"
   },
   "nasdaq": {
     "price": 27068.72,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-06-29",
-      "score": 36.1,
-      "hybrid": 35.3,
-      "nasdaq_close": 25820.14,
-      "nasdaq_pct": 2.07
-    },
     {
       "date": "2026-06-30",
       "score": 41.8,
@@ -651,6 +644,13 @@
       "date": "2026-09-26",
       "score": 56.2,
       "hybrid": 56.0,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-09-27",
+      "score": 60.0,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5719,6 +5719,10 @@
     {
       "date": "2026-09-26",
       "score": 56.2
+    },
+    {
+      "date": "2026-09-27",
+      "score": 60.0
     }
   ],
   "backtest": {
@@ -5807,22 +5811,22 @@
   "cnn_comparison": {
     "cnn_score": 37,
     "cnn_grade": "공포",
-    "our_score": 37.1,
+    "our_score": 26.7,
     "our_grade": "공포"
   },
   "action_detail": {
-    "action": "관망",
+    "action": "관망 (탐욕 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 56 — 중립 구간 [휴장]",
+    "reason": "FG 60으로 탐욕 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
-        "fg_gap": -16.2,
+        "fg_gap": -20.0,
         "rsi_gap": -28.5,
         "pct": 0
       },
       "sell": {
-        "fg_gap": -18.8,
+        "fg_gap": -15.0,
         "rsi_gap": -11.5,
         "pct": 12
       }
@@ -5830,7 +5834,7 @@
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "56.2",
+        "value": "60.0",
         "status": "중립"
       },
       {
@@ -5840,26 +5844,21 @@
       },
       {
         "name": "MA이탈",
-        "value": "+2.0% (전일)",
+        "value": "+1.9% (전일)",
         "status": "정상 (휴장)"
       }
     ],
     "similar_history": {
-      "count": 282,
-      "win_5d": 61.3,
-      "avg_5d": 0.24,
-      "win_10d": 56.2,
-      "avg_10d": 0.29,
-      "win_20d": 59.1,
-      "avg_20d": 0.45
+      "count": 288,
+      "win_5d": 60.5,
+      "avg_5d": 0.18,
+      "win_10d": 56.1,
+      "avg_10d": 0.25,
+      "win_20d": 60.0,
+      "avg_20d": 0.43
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-06-29",
-      "composite": 7.8,
-      "signal": "neutral"
-    },
     {
       "date": "2026-06-30",
       "composite": -2.3,
@@ -6304,13 +6303,14 @@
       "date": "2026-09-26",
       "composite": 0.0,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-09-27",
+      "composite": 0.0,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 56.1,
-      "time": "07:00"
-    },
     {
       "score": 51.7,
       "time": "07:30"
@@ -6498,15 +6498,14 @@
     {
       "score": 27.1,
       "time": "06:30"
+    },
+    {
+      "score": 16.8,
+      "time": "07:00"
     }
   ],
   "shortpos": null,
   "activity": [
-    {
-      "date": "2026-06-29",
-      "index": 98,
-      "hot": false
-    },
     {
       "date": "2026-06-30",
       "index": 103,
@@ -6950,6 +6949,11 @@
     {
       "date": "2026-09-26",
       "index": 87,
+      "hot": false
+    },
+    {
+      "date": "2026-09-27",
+      "index": 101,
       "hot": false
     }
   ]

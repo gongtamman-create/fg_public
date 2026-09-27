@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T23:55:02+09:00",
+  "updated_at": "2026-09-28T00:00:03+09:00",
   "current": {
     "date": "2026-09-27",
     "score": 74.7,
@@ -8,7 +8,7 @@
     "hybrid_score": 60.4,
     "hybrid_grade": "탐욕",
     "signal": "neutral",
-    "signal_label": "관망 (탐욕 접근)",
+    "signal_label": "관망",
     "realtime": true,
     "realtime_time": "2026-09-27 23:30:23"
   },
@@ -5815,10 +5815,10 @@
     "our_grade": "탐욕"
   },
   "action_detail": {
-    "action": "관망 (탐욕 접근)",
+    "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 60으로 탐욕 접근 중 [휴장] — 개장 후 추이 확인",
+    "reason": "FG 60, RSI 64 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
         "fg_gap": -20.0,
@@ -5839,13 +5839,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "63.5 (전일)",
-        "status": "과매수 접근 (휴장)"
+        "value": "63.5",
+        "status": "과매수 접근"
       },
       {
         "name": "MA이탈",
-        "value": "+1.9% (전일)",
-        "status": "정상 (휴장)"
+        "value": "+1.9%",
+        "status": "정상"
       }
     ],
     "similar_history": {

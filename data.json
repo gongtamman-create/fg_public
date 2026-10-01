@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-02T07:00:03+09:00",
+  "updated_at": "2026-10-02T07:05:04+09:00",
   "current": {
-    "date": "2026-10-01",
-    "score": 48.6,
+    "date": "2026-10-02",
+    "score": 41.9,
     "grade": "중립",
-    "daily_score": 8.6,
-    "hybrid_score": 6.1,
-    "hybrid_grade": "극단적 공포",
+    "daily_score": 36.2,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-10-02 06:30:23"
+    "realtime_time": "2026-10-02 07:00:25"
   },
   "nasdaq": {
     "price": 26871.6,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-07-04",
-      "score": 43.5,
-      "hybrid": 42.6,
-      "nasdaq_close": null,
-      "nasdaq_pct": null
-    },
     {
       "date": "2026-07-05",
       "score": 40.8,
@@ -651,6 +644,13 @@
       "date": "2026-10-01",
       "score": 8.6,
       "hybrid": 6.1,
+      "nasdaq_close": 26871.6,
+      "nasdaq_pct": 0.04
+    },
+    {
+      "date": "2026-10-02",
+      "score": 36.2,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5739,11 +5739,15 @@
     {
       "date": "2026-10-01",
       "score": 8.6
+    },
+    {
+      "date": "2026-10-02",
+      "score": 36.2
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-09-30",
-    "trading_days": 876,
+    "period": "2022-01-03 ~ 2026-10-01",
+    "trading_days": 877,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5827,59 +5831,54 @@
   "cnn_comparison": {
     "cnn_score": 28.1,
     "cnn_grade": "공포",
-    "our_score": 48.6,
+    "our_score": 41.9,
     "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 9으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
+    "reason": "FG 36으로 공포 쪽 접근 중 — 40 이하 진입 시 매수 준비",
     "proximity": {
       "buy": {
-        "fg_gap": 31.4,
-        "rsi_gap": -21.2,
-        "pct": 100
+        "fg_gap": 3.8,
+        "rsi_gap": -21.5,
+        "pct": 13
       },
       "sell": {
-        "fg_gap": -66.4,
-        "rsi_gap": -18.8,
+        "fg_gap": -38.8,
+        "rsi_gap": -18.5,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "8.6",
+        "value": "36.2",
         "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "56.2",
+        "value": "56.5",
         "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "+0.7%",
+        "value": "+0.6%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 16,
-      "win_5d": 43.8,
-      "avg_5d": -0.47,
-      "win_10d": 43.8,
-      "avg_10d": 0.45,
-      "win_20d": 31.2,
-      "avg_20d": -0.23
+      "count": 144,
+      "win_5d": 52.1,
+      "avg_5d": -0.24,
+      "win_10d": 51.8,
+      "avg_10d": -0.01,
+      "win_20d": 54.0,
+      "avg_20d": 0.15
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-07-04",
-      "composite": 0.0,
-      "signal": "neutral"
-    },
     {
       "date": "2026-07-05",
       "composite": 0.0,
@@ -6322,15 +6321,16 @@
     },
     {
       "date": "2026-10-01",
-      "composite": 35.3,
-      "signal": "buy"
+      "composite": 30.0,
+      "signal": "weak_buy"
+    },
+    {
+      "date": "2026-10-02",
+      "composite": 8.9,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 3.8,
-      "time": "07:00"
-    },
     {
       "score": 3.4,
       "time": "07:30"
@@ -6518,6 +6518,10 @@
     {
       "score": 45.1,
       "time": "06:30"
+    },
+    {
+      "score": 30.1,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6782,11 +6786,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-07-04",
-      "index": 27,
-      "hot": false
-    },
     {
       "date": "2026-07-05",
       "index": 78,
@@ -7230,6 +7229,11 @@
     {
       "date": "2026-10-01",
       "index": 69,
+      "hot": false
+    },
+    {
+      "date": "2026-10-02",
+      "index": 76,
       "hot": false
     }
   ]

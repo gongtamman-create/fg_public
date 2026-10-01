@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-01T16:00:02+09:00",
+  "updated_at": "2026-10-01T16:05:03+09:00",
   "current": {
     "date": "2026-10-01",
-    "score": 91.4,
+    "score": 85.3,
     "grade": "극단적 탐욕",
     "daily_score": 8.6,
     "hybrid_score": 6.1,
@@ -10,7 +10,7 @@
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-10-01 15:30:21"
+    "realtime_time": "2026-10-01 16:00:32"
   },
   "nasdaq": {
     "price": 26861.06,
@@ -5827,7 +5827,7 @@
   "cnn_comparison": {
     "cnn_score": 30.7,
     "cnn_grade": "공포",
-    "our_score": 91.4,
+    "our_score": 85.3,
     "our_grade": "극단적 탐욕"
   },
   "action_detail": {
@@ -6328,10 +6328,6 @@
   ],
   "realtime_24h": [
     {
-      "score": 45.9,
-      "time": "16:00"
-    },
-    {
       "score": 44.4,
       "time": "16:30"
     },
@@ -6518,6 +6514,10 @@
     {
       "score": 86.7,
       "time": "15:30"
+    },
+    {
+      "score": 75.4,
+      "time": "16:00"
     }
   ],
   "shortpos": {

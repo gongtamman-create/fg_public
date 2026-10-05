@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-06T07:00:04+09:00",
+  "updated_at": "2026-10-06T07:05:02+09:00",
   "current": {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "score": 98.0,
     "grade": "극단적 탐욕",
-    "daily_score": 64.8,
-    "hybrid_score": 63.8,
-    "hybrid_grade": "탐욕",
-    "signal": "neutral",
-    "signal_label": "관망 (탐욕 접근)",
+    "daily_score": 98.0,
+    "hybrid_score": null,
+    "hybrid_grade": null,
+    "signal": "caution",
+    "signal_label": "과열 주의",
     "realtime": true,
-    "realtime_time": "2026-10-06 06:30:22"
+    "realtime_time": "2026-10-06 07:00:25"
   },
   "nasdaq": {
     "price": 27477.31,
@@ -24,13 +24,6 @@
     "station": "선유"
   },
   "history": [
-    {
-      "date": "2026-07-08",
-      "score": 45.0,
-      "hybrid": 40.4,
-      "nasdaq_close": 25870.65,
-      "nasdaq_pct": 0.2
-    },
     {
       "date": "2026-07-09",
       "score": 28.9,
@@ -651,6 +644,13 @@
       "date": "2026-10-05",
       "score": 64.8,
       "hybrid": 63.8,
+      "nasdaq_close": 27477.31,
+      "nasdaq_pct": 1.05
+    },
+    {
+      "date": "2026-10-06",
+      "score": 98.0,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -5755,11 +5755,15 @@
     {
       "date": "2026-10-05",
       "score": 64.8
+    },
+    {
+      "date": "2026-10-06",
+      "score": 98.0
     }
   ],
   "backtest": {
-    "period": "2022-01-03 ~ 2026-10-02",
-    "trading_days": 878,
+    "period": "2022-01-03 ~ 2026-10-05",
+    "trading_days": 879,
     "zones": [
       {
         "name": "매수 시그널",
@@ -5826,8 +5830,8 @@
       },
       {
         "name": "공포 (<=35)",
-        "trades": 115,
-        "return": 5.9,
+        "trades": 116,
+        "return": 5.8,
         "win_rate": 79.0,
         "hold_days": 40
       },
@@ -5847,55 +5851,50 @@
     "our_grade": "극단적 탐욕"
   },
   "action_detail": {
-    "action": "관망 (탐욕 접근)",
-    "action_key": "neutral",
-    "confidence": "-",
-    "reason": "FG 65으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
+    "action": "과열 주의",
+    "action_key": "caution",
+    "confidence": "참고용",
+    "reason": "탐욕 접근 (FG 98, RSI 70) — 과열 징후 모니터링",
     "proximity": {
       "buy": {
-        "fg_gap": -24.8,
-        "rsi_gap": -29.1,
+        "fg_gap": -58.0,
+        "rsi_gap": -35.0,
         "pct": 0
       },
       "sell": {
-        "fg_gap": -10.2,
-        "rsi_gap": -10.9,
-        "pct": 30
+        "fg_gap": 23.0,
+        "rsi_gap": -5.0,
+        "pct": 100
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "64.8",
-        "status": "탐욕 접근"
+        "value": "98.0",
+        "status": "과열 구간"
       },
       {
         "name": "RSI(14)",
-        "value": "64.1",
+        "value": "70.0",
         "status": "과매수 접근"
       },
       {
         "name": "MA이탈",
-        "value": "+1.2%",
+        "value": "+1.9%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 265,
-      "win_5d": 58.5,
-      "avg_5d": 0.1,
-      "win_10d": 56.3,
-      "avg_10d": 0.3,
-      "win_20d": 62.0,
-      "avg_20d": 0.53
+      "count": 7,
+      "win_5d": 57.1,
+      "avg_5d": 0.5,
+      "win_10d": 57.1,
+      "avg_10d": 0.74,
+      "win_20d": 100.0,
+      "avg_20d": 2.12
     }
   },
   "signal_chart": [
-    {
-      "date": "2026-07-08",
-      "composite": 0.0,
-      "signal": "neutral"
-    },
     {
       "date": "2026-07-09",
       "composite": 22.2,
@@ -6338,15 +6337,16 @@
     },
     {
       "date": "2026-10-05",
-      "composite": -11.3,
+      "composite": -9.6,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-10-06",
+      "composite": -24.7,
+      "signal": "weak_sell"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 68.6,
-      "time": "07:00"
-    },
     {
       "score": 65.2,
       "time": "07:30"
@@ -6538,6 +6538,10 @@
     {
       "score": 98.0,
       "time": "06:30"
+    },
+    {
+      "score": 98.0,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -6798,11 +6802,6 @@
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },
   "activity": [
-    {
-      "date": "2026-07-08",
-      "index": 82,
-      "hot": false
-    },
     {
       "date": "2026-07-09",
       "index": 67,
@@ -7246,6 +7245,11 @@
     {
       "date": "2026-10-05",
       "index": 122,
+      "hot": false
+    },
+    {
+      "date": "2026-10-06",
+      "index": 82,
       "hot": false
     }
   ]

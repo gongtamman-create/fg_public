@@ -371,23 +371,10 @@
     }
   }
 
-  /* ════════════════════════════════════════
-     공통: IP 해시 (chat.js와 공유)
-     ════════════════════════════════════════ */
-  let _ipHash = "";
-  async function getIpHash() {
-    if (_ipHash) return _ipHash;
-    try {
-      const res = await fetch("https://api.ipify.org?format=json");
-      const data = await res.json();
-      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(data.ip));
-      _ipHash = Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
-    } catch {
-      _ipHash = "anon_" + Math.random().toString(36).slice(2, 10);
-    }
-    return _ipHash;
-  }
-
+  /* 2026-10-05 제거: 클라이언트 IP 해시 함수(ipify 조회 + SHA-256)와 그 유일한 호출자 loadVoteResults.
+     둘 다 호출되지 않는 죽은 코드였고, 서버 해시가 HMAC 으로 바뀌어 클라이언트가 votes/ 키와 자기
+     해시를 대조하는 것 자체가 불가능해졌다. "내 투표"는 /api/vote 응답을 localStorage(vote_<날짜>)에
+     저장한 것이 정본이다. 이 삭제로 사이트의 ipify 의존이 사라진다(CSP connect-src 에도 없음). */
   function getFirebaseDb() {
     if (typeof firebase !== "undefined" && firebase.apps && firebase.apps.length > 0) {
       return firebase.database();
@@ -466,30 +453,6 @@
         }
       });
     });
-  }
-
-  async function loadVoteResults(dateStr) {
-    const db = getFirebaseDb();
-    if (!db) return;
-    const snap = await db.ref(`votes/${dateStr}`).once("value");
-    const data = snap.val();
-    if (!data) return;
-
-    let upCount = 0, downCount = 0;
-    const myHash = await getIpHash();
-    let myVote = null;
-    Object.entries(data).forEach(([hash, v]) => {
-      if (!v || typeof v !== "object") return;
-      if (v.vote === "up") upCount++;
-      else downCount++;
-      if (hash === myHash) myVote = v.vote;
-    });
-
-    const total = upCount + downCount;
-    const upPct = total > 0 ? Math.round((upCount / total) * 100) : 50;
-    const result = { up: upPct, down: 100 - upPct, my: myVote, total: total };
-    localStorage.setItem("vote_" + dateStr, JSON.stringify(result));
-    showVoteResult(result);
   }
 
   function showVoteResult(result) {

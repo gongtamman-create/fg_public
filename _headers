@@ -24,9 +24,29 @@
   Cache-Control: no-cache, no-store, must-revalidate
   Service-Worker-Allowed: /
 
+# ── 보안 헤더 (전 경로) ──
+# Content-Security-Policy (2026-10-05 신설) — index.html / assets/*.js / unse/* / privacy·disclaimer.html 이 실제로
+# 로드하는 것의 목록에서 만들었다. 새 외부 리소스를 쓰면 여기도 같은 커밋에서 추가할 것 — CSP 차단은 콘솔에만 찍히고
+# 화면엔 아무 표시가 없다(채팅·접속자 수가 조용히 죽는다).
+#   script-src  : 'self' + www.gstatic.com(Firebase compat SDK) + *.firebaseio.com(RTDB 롱폴 .lp 폴백이 스크립트 주입 —
+#                 WS 되는 브라우저에선 증상 0 이라 빠뜨리기 쉽다, 2026-08-06 실측) + apis.google.com(Firebase Auth 가
+#                 Safari·모바일에서는 이메일 로그인만 써도 gapi 스크립트와 Auth iframe 을 선제 로드한다 — 빼면 그 브라우저만 관리자 로그인 실패)
+#                 + static.cloudflareinsights.com(CF Web Analytics — 토글 대기 중, 켰을 때 조용히 공집합이 되지 않게 선허용).
+#                 'unsafe-inline' 없음: 인라인 <script> 는 2026-10-05 전부 외부 파일(assets/boot.js, beacon.js)로 분리했다.
+#                 index.html 에 인라인 <script> 를 다시 넣으면 차단된다 — 외부 파일로 둘 것.
+#   style-src   : 'unsafe-inline' 필요 — index.html style= 속성 35개 + privacy/disclaimer 의 style= + 채팅 관리자 overlay innerHTML.
+#                 fonts.googleapis.com(JetBrains Mono/Noto Sans KR) + cdn.jsdelivr.net(unse Pretendard CSS).
+#   font-src    : fonts.gstatic.com + cdn.jsdelivr.net(Pretendard woff2).
+#   connect-src : 'self'(data.json, /api/nasdaq·vote·chat·presence) + *.firebaseio.com https/wss(RTDB 구독 — wss 빠지면 구독 실패)
+#                 + *.googleapis.com(Firebase Auth REST: identitytoolkit/securetoken/www) + redalert.red(방문 비콘) + cloudflareinsights.com.
+#                 api.ipify.org 는 2026-10-05 클라이언트에서 제거돼 없다.
+#   frame-src   : *.firebaseio.com(롱폴 샤드 iframe, 2026-08-06 실측) + gongtamcom.firebaseapp.com(Auth iframe — 위 gapi 와 같은 선제 로드).
+#   frame-ancestors 'none' = X-Frame-Options DENY 와 동일 의미(둘 다 둔다 — 구형 브라우저).
+# Permissions-Policy: 사이트가 쓰지 않는 강력 기능 차단. web-share(unse 공유)·clipboard 는 건드리지 않는다.
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.gstatic.com https://*.firebaseio.com https://apis.google.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' https://*.firebaseio.com wss://*.firebaseio.com https://*.googleapis.com https://redalert.red https://cloudflareinsights.com; frame-src https://*.firebaseio.com https://gongtamcom.firebaseapp.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests

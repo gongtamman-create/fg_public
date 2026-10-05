@@ -1,6 +1,7 @@
 /* ══════════════════════════════════════════
    개미공탐지수 — 실시간 채팅 (chat.js)
    Firebase Realtime Database · XSS 방지
+   접속자 수·밴 표시 = /api/presence 하트비트 (2026-10-05, ipify·클라이언트 IP 해시 제거)
    ══════════════════════════════════════════ */
 (function () {
   "use strict";
@@ -72,7 +73,6 @@
   /* ── 상태 ── */
   let db = null;
   let myNick = "";
-  let myIpHash = "";
   let isAdmin = false;
   let isBanned = false;
   let lastSendTime = 0;
@@ -87,6 +87,9 @@
     myNick = getOrCreateNick();
     renderNick();
 
+    // 접속자 수는 서버 경유라 Firebase 와 무관 — SDK 로드가 실패해도 뜬다
+    const firstBeat = startPresence();
+
     // Firebase 초기화
     if (typeof firebase !== "undefined" && FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY") {
       try {
@@ -94,10 +97,9 @@
         db = firebase.database();
         firebaseReady = true;
         checkAdmin();
-        initPresence();
-        checkBan().then(() => {
-          if (!isBanned) listenMessages();
-        });
+        // 첫 하트비트의 banned 판정을 기다린 뒤 수신 시작(구 checkBan 과 같은 순서). 실패(null)면 열람은
+        // 허용 — 전송은 서버가 매번 다시 판정하므로 여기서 fail-open 이어도 우회가 아니다.
+        firstBeat.then(() => { if (!isBanned) listenMessages(); });
       } catch (e) {
         console.warn("Firebase 초기화 실패:", e);
       }
@@ -238,39 +240,18 @@
   }
 
   /* ════════════════════════════════════════
-     IP 해시 (SHA-256)
-     ════════════════════════════════════════ */
-  async function getIpHash() {
-    if (myIpHash) return myIpHash;
-    try {
-      const res = await fetch("https://api.ipify.org?format=json");
-      const data = await res.json();
-      const ip = data.ip;
-      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(ip));
-      myIpHash = Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
-      return myIpHash;
-    } catch {
-      myIpHash = "unknown_" + Math.random().toString(36).slice(2);
-      return myIpHash;
-    }
+     밴 표시 (UX) — 실제 차단은 서버(/api/chat 403)
+     ════════════════════════════════════════
+     구 checkBan: ipify 로 내 IP 를 알아내 SHA-256 → bans/<hash> 직접 조회. ipify 의존 + 키 없는 해시
+     (서버가 HMAC 으로 바뀌어 클라이언트는 자기 키를 계산할 수도 없다) → 2026-10-05 제거.
+     지금은 /api/presence 하트비트 응답의 banned 와 전송 시 403 으로 표시한다. */
+  function markBanned() {
+    isBanned = true;
+    chatInputRow.style.display = "none";
+    chatBanned.style.display = "flex";
   }
 
-  /* ════════════════════════════════════════
-     밴 체크
-     ════════════════════════════════════════ */
-  async function checkBan() {
-    if (!firebaseReady) return;
-    const hash = await getIpHash();
-    try {
-      const snap = await db.ref("bans/" + hash).once("value");
-      if (snap.exists()) {
-        isBanned = true;
-        chatInputRow.style.display = "none";
-        chatBanned.style.display = "flex";
-      }
-    } catch {}
-  }
-
+  /* 밴 생성 (관리자) — 키는 메시지에 실린 서버 해시 msg.ip. 규칙이 auth.uid 로 검증. */
   async function banUser(ipHash) {
     if (!firebaseReady || !isAdmin) return;
     const user = firebase.auth().currentUser;
@@ -282,26 +263,59 @@
   }
 
   /* ════════════════════════════════════════
-     접속자 수 (Presence)
-     ════════════════════════════════════════ */
-  async function initPresence() {
-    if (!firebaseReady) return;
-    const hash = await getIpHash();
-    const presRef = db.ref("presence/" + hash);
-    const connRef = db.ref(".info/connected");
+     접속자 수 (Presence) — 서버 경유 하트비트 (2026-10-05)
+     ════════════════════════════════════════
+     이전: 브라우저가 presence/<sha256(ip)> 를 직접 set + onDisconnect().remove() (규칙 .write:true).
+       ① 누구나 임의 키 무제한 생성(라이브 노드에 'test123' 쓰레기 키 실측) ② 키=IP 해시가 공개 읽기
+       ③ ipify 로 자기 IP 를 자기가 조회.
+     지금: POST /api/presence 를 45초마다. 서버가 CF-Connecting-IP 를 키 기반 해시로 바꿔
+       presence/<hash>=하트비트 시각 으로 기록하고, 2분 넘게 조용한 항목을 정리한 뒤 count 만 돌려준다.
+       onDisconnect 대체 = pagehide 의 leave 비콘 + 서버 TTL. 응답 banned 로 밴 표시도 겸한다.
+     본문은 text/plain — 단순 요청(preflight 없음) + sendBeacon 호환. */
+  const PRESENCE_URL = "/api/presence";
+  const HEARTBEAT_MS = 45 * 1000;
 
-    connRef.on("value", (snap) => {
-      if (snap.val() === true) {
-        presRef.onDisconnect().remove();
-        presRef.set(true);
+  async function heartbeat() {
+    try {
+      const res = await fetch(PRESENCE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({}),
+      });
+      const j = await res.json().catch(() => null);
+      if (!j || typeof j !== "object") return null;
+      // 429(같은 IP 의 다른 탭이 방금 보냄)에도 count 는 실려 온다
+      if (typeof j.count === "number") chatOnline.textContent = j.count + "명";
+      if (j.banned === true) markBanned();
+      return j;
+    } catch {
+      return null; // 네트워크 실패 — 표시는 이전 값 유지
+    }
+  }
+
+  function leavePresence() {
+    const body = JSON.stringify({ leave: true });
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(PRESENCE_URL, new Blob([body], { type: "text/plain" }));
+        return;
       }
-    });
+    } catch {}
+    try {
+      fetch(PRESENCE_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body, keepalive: true }).catch(() => {});
+    } catch {}
+  }
 
-    // 접속자 수 리스너
-    db.ref("presence").on("value", (snap) => {
-      const count = snap.numChildren();
-      chatOnline.textContent = count + "명";
+  /** 첫 하트비트 Promise 를 돌려준다(밴 판정 대기용). */
+  function startPresence() {
+    const first = heartbeat();
+    setInterval(heartbeat, HEARTBEAT_MS);
+    // 탭이 다시 보이면 즉시 갱신 — 백그라운드에서 타이머가 늦춰져 TTL 을 넘겼을 수 있다
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") heartbeat();
     });
+    window.addEventListener("pagehide", leavePresence);
+    return first;
   }
 
   /* ════════════════════════════════════════
@@ -350,9 +364,11 @@
     // ── 관리자: Firebase Auth로 직접 쓰기 (규칙이 auth.uid로 검증) ──
     // 일반 경로(/api/chat)는 admin=false를 고정하므로 관리자는 이쪽을 써야 한다.
     if (isAdmin && firebaseReady) {
+      // ip 는 규칙상 필수 문자열이지만 관리자 메시지엔 살충 버튼이 붙지 않아 쓰이지 않는다.
+      // 구 코드는 ipify 로 얻은 관리자 IP 의 SHA-256 을 공개 노드에 실었다 → 상수로 대체 (2026-10-05).
       db.ref("messages").push({
         nick: myNick, text: text, ts: Date.now(),
-        ip: await getIpHash(), admin: true,
+        ip: "admin", admin: true,
       });
       return;
     }
@@ -372,12 +388,7 @@
       if (res.ok) return;
 
       const err = await res.json().catch(() => ({}));
-      if (res.status === 403 && err.error === "banned") {
-        isBanned = true;
-        chatInputRow.style.display = "none";
-        chatBanned.style.display = "flex";
-        return;
-      }
+      if (res.status === 403 && err.error === "banned") { markBanned(); return; }
       if (res.status === 429) {
         notifyInput((err.retry_in || 5) + "초 후 전송 가능");
         return;

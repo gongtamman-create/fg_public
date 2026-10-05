@@ -1,23 +1,30 @@
 // ═══════════════════════════════════════════════════════════════════════════
-//  Firebase RTDB 보안 규칙 — STAGE B (2026-08-05)
+//  Firebase RTDB 보안 규칙 — STAGE C (2026-10-05)
 //
-//  배포: cd <이 파일 위치> && firebase deploy --only database --project gongtamcom
-//        (또는 Firebase Console > Realtime Database > 규칙 탭에 붙여넣고 "게시")
+//  배포: Firebase Console > Realtime Database > 규칙 탭에 이 파일 전체를 붙여넣고 "게시"
+//        (또는 firebase deploy --only database --project gongtamcom — 이 머신에는 CLI 없음)
 //
 //  ⚠ 최상위에는 "rules" 키 하나만 허용된다. 설명은 이 파일처럼 // 주석으로 달 것
 //     (RTDB 규칙 파일은 JSONC를 받는다). 2026-08-05 이전 버전은 문자열 안에 개행이
 //     들어가 JSON 파싱조차 깨져 붙여넣기가 불가능했고, 그래서 저장소 사본과 실배포본을
 //     대조할 방법이 없었다.
 //
-//  STAGE B: messages 직접 쓰기가 관리자 전용이다. 일반 유저 메시지는
+//  STAGE B (2026-08-05): messages 직접 쓰기가 관리자 전용이다. 일반 유저 메시지는
 //     functions/api/chat.js 가 FIREBASE_DB_SECRET 으로 쓰므로 규칙을 우회한다
 //     = 브라우저에서 messages 에 직접 push 하는 경로가 사라진다.
 //     이로써 위조 ip 해시 주입과 밴 우회가 동시에 막힌다.
-//  롤백: git show HEAD:firebase-rules.json 으로 STAGE A 복원 후 재배포.
+//  STAGE C (2026-10-05): 남아 있던 클라이언트 쓰기 경로 2곳을 닫는다.
+//     · presence — .read/.write 모두 false. 접속자 집계는 functions/api/presence.js 가 시크릿으로 하고
+//       숫자만 돌려준다. (구 규칙 .write:true 는 누구나 임의 키 무제한 생성 + 키=IP 해시 공개 읽기)
+//     · votes — 클라이언트 .write false. 쓰기는 functions/api/vote.js 만. (구 규칙 auth!=null 은 Auth
+//       사용자가 임의 해시 키로 투표를 심을 수 있는 틈)
+//     · IP 해시가 SHA-256(ip) → HMAC-SHA256(시크릿, ip) 로 바뀌었다(functions/_lib/shared.js). 길이는
+//       같은 64자 hex 라 아래 validate 는 그대로다. 구 해시 키의 bans/ 는 새 해시와 맞지 않는다(재발급).
+//  롤백: git show <이전 커밋>:firebase-rules.json 으로 복원 후 재게시.
 //
 //  ADMIN_UID = pVNCtNqzoGgmmUSnshkBIICaz452
-//     RTDB 규칙에는 상수 선언이 없어 리터럴로 박아야 한다. assets/chat.js의 ADMIN_UID와
-//     반드시 동시 수정할 것 — 한쪽만 바뀌면 관리자가 조용히 권한을 잃거나 사칭 차단이 풀린다.
+//     RTDB 규칙에는 상수 선언이 없어 리터럴로 박아야 한다. assets/chat.js 와 hupe chat-widget.js 의
+//     ADMIN_UID 와 반드시 동시 수정할 것 — 한쪽만 바뀌면 관리자가 조용히 권한을 잃거나 사칭 차단이 풀린다.
 // ═══════════════════════════════════════════════════════════════════════════
 {
   "rules": {
@@ -31,6 +38,7 @@
         // admin=true 와 '살충제' 닉은 관리자 인증이 있을 때만.
         // (구 규칙은 admin 을 "불리언이기만 하면" 통과시켜 누구나 사칭 가능했다)
         // ts 상한 = 미래 타임스탬프로 메시지를 목록 상단에 영구 고정하는 것 차단
+        // ip = 서버 HMAC 해시(64자) 또는 관리자 직접 쓰기의 상수 'admin'
         ".validate": "newData.hasChildren(['nick','text','ts','ip']) && newData.child('text').isString() && newData.child('text').val().length >= 1 && newData.child('text').val().length <= 20 && newData.child('nick').isString() && newData.child('nick').val().length <= 30 && newData.child('ts').isNumber() && newData.child('ts').val() <= (now + 60000) && newData.child('ts').val() >= (now - 600000) && newData.child('ip').isString() && newData.child('ip').val().length <= 64 && (!newData.hasChild('admin') || (newData.child('admin').isBoolean() && (newData.child('admin').val() === false || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452')))) && (newData.child('nick').val() !== '살충제' || (auth != null && auth.uid === 'pVNCtNqzoGgmmUSnshkBIICaz452'))"
       }
     },
@@ -51,24 +59,22 @@
       ".read": true,
       "$date": {
         "$ipHash": {
-          // 실제 쓰기는 /api/vote 가 DB 시크릿으로 수행(규칙 우회). 클라이언트 직접 쓰기 차단.
-          ".write": "auth != null && !data.exists() && newData.exists()",
+          // 쓰기는 /api/vote 가 DB 시크릿으로만 수행(규칙 우회). 클라이언트 직접 쓰기 전면 차단 (STAGE C).
+          // validate 는 시크릿 쓰기에는 적용되지 않지만 데이터 형태의 문서로 남긴다.
+          ".write": false,
           ".validate": "newData.hasChildren(['vote','ts']) && (newData.child('vote').val() === 'up' || newData.child('vote').val() === 'down') && newData.child('ts').isNumber() && (!newData.hasChild('nick') || newData.child('nick').isString())"
         }
       }
     },
     "presence": {
-      ".read": true,
-      "$hash": {
-        // 접속자 수 카운트용. 값은 true 고정 — 구 규칙은 아무 데이터나 무제한 쓰기였다.
-        // 삭제(onDisconnect)는 validate 대상이 아니므로 그대로 동작한다.
-        ".write": true,
-        ".validate": "newData.isBoolean() && newData.val() === true && $hash.length <= 64"
-      }
+      // 서버(/api/presence)만 쓰는 접속자 하트비트: presence/<hmac> = 마지막 하트비트 시각(ms).
+      // 키가 IP 해시라 읽기도 닫는다 — 접속자 수는 /api/presence 가 숫자만 돌려준다 (STAGE C).
+      ".read": false,
+      ".write": false
     },
     // ── 멀티룸 네임스페이스 (2026-08-06) ──
     // 임베드 사이트별 방을 분리할 때 rooms/<방>/ 아래에 최상위와 동일한 잠금으로 추가한다
-    // (functions/api/chat.js ROOMS에도 같은 키 필수). hupe 방은 2026-08-06 당일 제거 —
+    // (functions/_lib/shared.js ROOMS에도 같은 키 필수). hupe 방은 2026-08-06 당일 제거 —
     // redalert.red가 gongtam 방을 공유하기로 결정(rooms/hupe 규칙·데이터 삭제).
     // 현재는 전부 잠금 — 방 없음.
     "rooms": {

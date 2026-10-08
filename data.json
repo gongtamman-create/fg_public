@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T06:35:03+09:00",
+  "updated_at": "2026-10-09T06:40:04+09:00",
   "current": {
     "date": "2026-10-08",
     "score": 19.8,
@@ -6549,21 +6549,20 @@
     }
   ],
   "shortpos": {
-    "date": "2026-10-08",
-    "activity": 252,
+    "date": "2026-10-09",
+    "activity": 249,
     "shorts": [
       {
-        "ticker": "NVDA",
+        "ticker": "QQQ",
+        "count": 1
+      },
+      {
+        "ticker": "USO",
         "count": 1
       }
     ],
     "longs": [],
     "trend": [
-      {
-        "date": "2026-08-25",
-        "short": 0,
-        "long": 0
-      },
       {
         "date": "2026-08-26",
         "short": 0,
@@ -6581,7 +6580,7 @@
       },
       {
         "date": "2026-08-29",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6616,7 +6615,7 @@
       },
       {
         "date": "2026-09-05",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6681,7 +6680,7 @@
       },
       {
         "date": "2026-09-18",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -6721,7 +6720,7 @@
       },
       {
         "date": "2026-09-26",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -6731,7 +6730,7 @@
       },
       {
         "date": "2026-09-28",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -6751,7 +6750,7 @@
       },
       {
         "date": "2026-10-02",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -6781,18 +6780,23 @@
       },
       {
         "date": "2026-10-08",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-10-09",
         "short": 1,
         "long": 0
       }
     ],
-    "trendShortTicker": "NVDA",
+    "trendShortTicker": "QQQ",
     "trendLongTicker": null,
     "strength": {
-      "score": 38,
+      "score": 49,
       "share": 0.4,
-      "heatZ": 0.6,
-      "repPerPost": 3.1,
-      "ticker": "NVDA"
+      "heatZ": -2.4,
+      "repPerPost": 2.9,
+      "ticker": "QQQ"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },

@@ -1,4 +1,465 @@
 {
-  "error": "데이터 없음",
-  "updated_at": "2026-10-11T07:00:02+09:00"
+  "updated_at": "2026-10-11T07:05:03+09:00",
+  "current": {
+    "date": "2026-10-11",
+    "score": 56.7,
+    "grade": "중립",
+    "daily_score": 49.5,
+    "hybrid_score": null,
+    "hybrid_grade": null,
+    "signal": "neutral",
+    "signal_label": "관망",
+    "realtime": true,
+    "realtime_time": "2026-10-11 07:00:10"
+  },
+  "nasdaq": {
+    "price": 27366.17,
+    "change": 172.83,
+    "change_pct": 0.64
+  },
+  "hangang": {
+    "temp": 21.3,
+    "time": "06:00",
+    "ymd": "20261011",
+    "station": "선유"
+  },
+  "history": [
+    {
+      "date": "2026-10-10",
+      "score": 46.7,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    },
+    {
+      "date": "2026-10-11",
+      "score": 49.5,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
+    }
+  ],
+  "history_full": [
+    {
+      "date": "2026-10-10",
+      "score": 46.7
+    },
+    {
+      "date": "2026-10-11",
+      "score": 49.5
+    }
+  ],
+  "backtest": {
+    "period": "",
+    "trading_days": 0,
+    "zones": []
+  },
+  "cnn_comparison": {
+    "cnn_score": 45,
+    "cnn_grade": "공포",
+    "our_score": 56.7,
+    "our_grade": "중립"
+  },
+  "action_detail": null,
+  "signal_chart": null,
+  "realtime_24h": [
+    {
+      "score": 45.9,
+      "time": "13:30"
+    },
+    {
+      "score": 41.0,
+      "time": "14:00"
+    },
+    {
+      "score": 38.2,
+      "time": "14:30"
+    },
+    {
+      "score": 41.0,
+      "time": "15:00"
+    },
+    {
+      "score": 42.1,
+      "time": "15:30"
+    },
+    {
+      "score": 45.7,
+      "time": "16:00"
+    },
+    {
+      "score": 45.2,
+      "time": "16:30"
+    },
+    {
+      "score": 41.2,
+      "time": "17:00"
+    },
+    {
+      "score": 39.5,
+      "time": "17:30"
+    },
+    {
+      "score": 33.4,
+      "time": "18:00"
+    },
+    {
+      "score": 42.0,
+      "time": "18:30"
+    },
+    {
+      "score": 52.3,
+      "time": "19:00"
+    },
+    {
+      "score": 62.8,
+      "time": "19:30"
+    },
+    {
+      "score": 61.7,
+      "time": "20:00"
+    },
+    {
+      "score": 49.8,
+      "time": "20:30"
+    },
+    {
+      "score": 50.5,
+      "time": "21:00"
+    },
+    {
+      "score": 47.7,
+      "time": "21:30"
+    },
+    {
+      "score": 48.9,
+      "time": "22:00"
+    },
+    {
+      "score": 51.1,
+      "time": "22:30"
+    },
+    {
+      "score": 49.8,
+      "time": "23:00"
+    },
+    {
+      "score": 52.7,
+      "time": "23:30"
+    },
+    {
+      "score": 52.2,
+      "time": "00:00"
+    },
+    {
+      "score": 56.4,
+      "time": "00:30"
+    },
+    {
+      "score": 51.5,
+      "time": "01:00"
+    },
+    {
+      "score": 45.6,
+      "time": "01:30"
+    },
+    {
+      "score": 43.6,
+      "time": "02:00"
+    },
+    {
+      "score": 43.5,
+      "time": "02:30"
+    },
+    {
+      "score": 43.4,
+      "time": "03:00"
+    },
+    {
+      "score": 43.9,
+      "time": "03:30"
+    },
+    {
+      "score": 40.0,
+      "time": "04:00"
+    },
+    {
+      "score": 43.0,
+      "time": "04:30"
+    },
+    {
+      "score": 56.2,
+      "time": "05:00"
+    },
+    {
+      "score": 57.5,
+      "time": "05:30"
+    },
+    {
+      "score": 58.6,
+      "time": "06:00"
+    },
+    {
+      "score": 55.7,
+      "time": "06:30"
+    },
+    {
+      "score": 55.7,
+      "time": "07:00"
+    }
+  ],
+  "shortpos": {
+    "date": "2026-10-11",
+    "activity": 252,
+    "shorts": [
+      {
+        "ticker": "SOXX",
+        "count": 1
+      }
+    ],
+    "longs": [
+      {
+        "ticker": "XLE",
+        "count": 1
+      }
+    ],
+    "trend": [
+      {
+        "date": "2026-08-28",
+        "short": 3,
+        "long": 0
+      },
+      {
+        "date": "2026-08-29",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-08-30",
+        "short": 0,
+        "long": 2
+      },
+      {
+        "date": "2026-08-31",
+        "short": 0,
+        "long": 1
+      },
+      {
+        "date": "2026-09-01",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-02",
+        "short": 1,
+        "long": 1
+      },
+      {
+        "date": "2026-09-03",
+        "short": 0,
+        "long": 2
+      },
+      {
+        "date": "2026-09-04",
+        "short": 3,
+        "long": 0
+      },
+      {
+        "date": "2026-09-05",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-06",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-09-07",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-09-08",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-09",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-10",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-11",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-12",
+        "short": 5,
+        "long": 1
+      },
+      {
+        "date": "2026-09-13",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-14",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-15",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-09-16",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-17",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-18",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-09-19",
+        "short": 3,
+        "long": 0
+      },
+      {
+        "date": "2026-09-20",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-21",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-22",
+        "short": 0,
+        "long": 1
+      },
+      {
+        "date": "2026-09-23",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-09-24",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-25",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-26",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-09-27",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-28",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-29",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-09-30",
+        "short": 4,
+        "long": 0
+      },
+      {
+        "date": "2026-10-01",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-10-02",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-10-03",
+        "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-10-04",
+        "short": 1,
+        "long": 1
+      },
+      {
+        "date": "2026-10-05",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-10-06",
+        "short": 1,
+        "long": 0
+      },
+      {
+        "date": "2026-10-07",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-10-08",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-10-09",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-10-10",
+        "short": 0,
+        "long": 0
+      },
+      {
+        "date": "2026-10-11",
+        "short": 1,
+        "long": 1
+      }
+    ],
+    "trendShortTicker": "SOXX",
+    "trendLongTicker": "XLE",
+    "strength": {
+      "score": 39,
+      "share": 0.4,
+      "heatZ": 0.6,
+      "repPerPost": 5.7,
+      "ticker": "SOXX"
+    },
+    "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
+  },
+  "activity": []
 }

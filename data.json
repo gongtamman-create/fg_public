@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-12T07:00:03+09:00",
+  "updated_at": "2026-10-12T07:05:02+09:00",
   "current": {
-    "date": "2026-10-11",
-    "score": 63.3,
+    "date": "2026-10-12",
+    "score": 61.4,
     "grade": "탐욕",
-    "daily_score": 49.5,
-    "hybrid_score": 47.7,
-    "hybrid_grade": "중립",
+    "daily_score": 55.2,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-10-12 06:30:11"
+    "realtime_time": "2026-10-12 07:00:10"
   },
   "nasdaq": {
     "price": 27366.17,
@@ -37,6 +37,13 @@
       "hybrid": 47.7,
       "nasdaq_close": null,
       "nasdaq_pct": null
+    },
+    {
+      "date": "2026-10-12",
+      "score": 55.2,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
     }
   ],
   "history_full": [
@@ -47,6 +54,10 @@
     {
       "date": "2026-10-11",
       "score": 49.5
+    },
+    {
+      "date": "2026-10-12",
+      "score": 55.2
     }
   ],
   "backtest": {
@@ -57,16 +68,12 @@
   "cnn_comparison": {
     "cnn_score": 45,
     "cnn_grade": "공포",
-    "our_score": 63.3,
+    "our_score": 61.4,
     "our_grade": "탐욕"
   },
   "action_detail": null,
   "signal_chart": null,
   "realtime_24h": [
-    {
-      "score": 55.7,
-      "time": "07:00"
-    },
     {
       "score": 55.8,
       "time": "07:30"
@@ -254,6 +261,10 @@
     {
       "score": 60.0,
       "time": "06:30"
+    },
+    {
+      "score": 60.9,
+      "time": "07:00"
     }
   ],
   "shortpos": null,

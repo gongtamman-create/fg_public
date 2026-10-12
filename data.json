@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T21:55:03+09:00",
+  "updated_at": "2026-10-12T22:00:34+09:00",
   "current": {
     "date": "2026-10-12",
     "score": 36.5,
@@ -74,10 +74,6 @@
   "action_detail": null,
   "signal_chart": null,
   "realtime_24h": [
-    {
-      "score": 55.9,
-      "time": "22:00"
-    },
     {
       "score": 46.7,
       "time": "22:30"
@@ -265,6 +261,10 @@
     {
       "score": 43.9,
       "time": "21:30"
+    },
+    {
+      "score": 42.6,
+      "time": "22:00"
     }
   ],
   "shortpos": null,

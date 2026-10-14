@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-14T23:05:02+09:00",
+  "updated_at": "2026-10-14T23:10:03+09:00",
   "current": {
     "date": "2026-10-14",
     "score": 42.6,
@@ -13,13 +13,13 @@
     "realtime_time": "2026-10-14 23:00:11"
   },
   "nasdaq": {
-    "price": 26996.44,
-    "change": -207.95,
-    "change_pct": -0.76
+    "price": 26969.83,
+    "change": -234.55,
+    "change_pct": -0.86
   },
   "hangang": {
-    "temp": 21.1,
-    "time": "22:00",
+    "temp": 20.9,
+    "time": "23:00",
     "ymd": "20261014",
     "station": "선유"
   },
@@ -88,7 +88,7 @@
     "zones": []
   },
   "cnn_comparison": {
-    "cnn_score": 42.1,
+    "cnn_score": 41.8,
     "cnn_grade": "공포",
     "our_score": 42.6,
     "our_grade": "중립"

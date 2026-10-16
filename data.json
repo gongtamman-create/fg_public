@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-16T21:30:03+09:00",
+  "updated_at": "2026-10-16T21:35:02+09:00",
   "current": {
     "date": "2026-10-16",
-    "score": 37.7,
-    "grade": "공포",
+    "score": 43.5,
+    "grade": "중립",
     "daily_score": 51.0,
     "hybrid_score": 51.6,
     "hybrid_grade": "중립",
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-10-16 21:00:09"
+    "realtime_time": "2026-10-16 21:30:22"
   },
   "nasdaq": {
     "price": 26713.03,
@@ -112,16 +112,12 @@
   "cnn_comparison": {
     "cnn_score": 32.1,
     "cnn_grade": "공포",
-    "our_score": 37.7,
-    "our_grade": "공포"
+    "our_score": 43.5,
+    "our_grade": "중립"
   },
   "action_detail": null,
   "signal_chart": null,
   "realtime_24h": [
-    {
-      "score": 41.0,
-      "time": "21:30"
-    },
     {
       "score": 49.7,
       "time": "22:00"
@@ -309,6 +305,10 @@
     {
       "score": 43.7,
       "time": "21:00"
+    },
+    {
+      "score": 48.7,
+      "time": "21:30"
     }
   ],
   "shortpos": {

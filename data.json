@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-16T09:50:02+09:00",
+  "updated_at": "2026-10-16T09:55:01+09:00",
   "current": {
     "date": "2026-10-16",
     "score": 41.1,
     "grade": "중립",
     "daily_score": 51.0,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 51.6,
+    "hybrid_grade": "중립",
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
@@ -62,14 +62,14 @@
     {
       "date": "2026-10-15",
       "score": 38.0,
-      "hybrid": 27.5,
+      "hybrid": 27.6,
       "nasdaq_close": 26713.03,
       "nasdaq_pct": 0.08
     },
     {
       "date": "2026-10-16",
       "score": 51.0,
-      "hybrid": null,
+      "hybrid": 51.6,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T21:05:03+09:00",
+  "updated_at": "2026-10-20T21:10:03+09:00",
   "current": {
     "date": "2026-10-20",
     "score": 35.4,
@@ -18,8 +18,8 @@
     "change_pct": 1.11
   },
   "hangang": {
-    "temp": 20.4,
-    "time": "20:00",
+    "temp": 20.5,
+    "time": "21:00",
     "ymd": "20261020",
     "station": "선유"
   },
@@ -154,7 +154,7 @@
     "zones": []
   },
   "cnn_comparison": {
-    "cnn_score": 21.6,
+    "cnn_score": 22.3,
     "cnn_grade": "극단적 공포",
     "our_score": 35.4,
     "our_grade": "공포"

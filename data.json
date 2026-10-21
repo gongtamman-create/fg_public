@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T21:05:03+09:00",
+  "updated_at": "2026-10-21T21:10:03+09:00",
   "current": {
     "date": "2026-10-21",
     "score": 47.6,
@@ -18,8 +18,8 @@
     "change_pct": -0.02
   },
   "hangang": {
-    "temp": 19.6,
-    "time": "20:00",
+    "temp": 19.5,
+    "time": "21:00",
     "ymd": "20261021",
     "station": "선유"
   },
@@ -165,7 +165,7 @@
     "zones": []
   },
   "cnn_comparison": {
-    "cnn_score": 28.8,
+    "cnn_score": 28.7,
     "cnn_grade": "공포",
     "our_score": 47.6,
     "our_grade": "중립"

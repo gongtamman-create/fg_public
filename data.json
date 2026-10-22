@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T17:10:02+09:00",
+  "updated_at": "2026-10-22T17:15:02+09:00",
   "current": {
     "date": "2026-10-22",
     "score": 31.4,
@@ -176,7 +176,7 @@
     "zones": []
   },
   "cnn_comparison": {
-    "cnn_score": 29.1,
+    "cnn_score": 28.8,
     "cnn_grade": "공포",
     "our_score": 31.4,
     "our_grade": "공포"

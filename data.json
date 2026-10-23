@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-24T07:00:03+09:00",
+  "updated_at": "2026-10-24T07:05:03+09:00",
   "current": {
-    "date": "2026-10-23",
-    "score": 54.0,
+    "date": "2026-10-24",
+    "score": 52.8,
     "grade": "중립",
-    "daily_score": 40.1,
-    "hybrid_score": 33.4,
-    "hybrid_grade": "공포",
+    "daily_score": 51.8,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-10-24 06:30:12"
+    "realtime_time": "2026-10-24 07:00:10"
   },
   "nasdaq": {
     "price": 25955.34,
@@ -119,6 +119,13 @@
       "date": "2026-10-23",
       "score": 40.1,
       "hybrid": 33.4,
+      "nasdaq_close": 25955.34,
+      "nasdaq_pct": -0.21
+    },
+    {
+      "date": "2026-10-24",
+      "score": 51.8,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -179,26 +186,26 @@
     {
       "date": "2026-10-23",
       "score": 40.1
+    },
+    {
+      "date": "2026-10-24",
+      "score": 51.8
     }
   ],
   "backtest": {
-    "period": "2026-10-12 ~ 2026-10-22",
-    "trading_days": 9,
+    "period": "2026-10-12 ~ 2026-10-23",
+    "trading_days": 10,
     "zones": []
   },
   "cnn_comparison": {
     "cnn_score": 21.0,
     "cnn_grade": "극단적 공포",
-    "our_score": 54.0,
+    "our_score": 52.8,
     "our_grade": "중립"
   },
   "action_detail": null,
   "signal_chart": null,
   "realtime_24h": [
-    {
-      "score": 29.3,
-      "time": "07:00"
-    },
     {
       "score": 34.1,
       "time": "07:30"
@@ -386,6 +393,10 @@
     {
       "score": 52.5,
       "time": "06:30"
+    },
+    {
+      "score": 51.8,
+      "time": "07:00"
     }
   ],
   "shortpos": {

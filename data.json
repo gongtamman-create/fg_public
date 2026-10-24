@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T12:00:04+09:00",
+  "updated_at": "2026-10-24T12:05:03+09:00",
   "current": {
     "date": "2026-10-24",
     "score": 44.7,
@@ -10,7 +10,7 @@
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-10-24 11:30:11"
+    "realtime_time": "2026-10-24 12:00:10"
   },
   "nasdaq": {
     "price": 25955.34,
@@ -207,10 +207,6 @@
   "signal_chart": null,
   "realtime_24h": [
     {
-      "score": 35.4,
-      "time": "12:00"
-    },
-    {
       "score": 35.3,
       "time": "12:30"
     },
@@ -397,6 +393,10 @@
     {
       "score": 45.8,
       "time": "11:30"
+    },
+    {
+      "score": 40.9,
+      "time": "12:00"
     }
   ],
   "shortpos": {

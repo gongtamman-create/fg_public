@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T06:35:03+09:00",
+  "updated_at": "2026-10-28T06:40:04+09:00",
   "current": {
     "date": "2026-10-27",
     "score": 41.3,
@@ -433,30 +433,29 @@
     }
   ],
   "shortpos": {
-    "date": "2026-10-27",
-    "activity": 255,
+    "date": "2026-10-28",
+    "activity": 251,
     "shorts": [
       {
         "ticker": "SOXX",
-        "count": 2
+        "count": 4
+      },
+      {
+        "ticker": "TSLA",
+        "count": 1
       }
     ],
     "longs": [
       {
-        "ticker": "QQQ",
+        "ticker": "XLE",
         "count": 1
       }
     ],
     "trend": [
       {
-        "date": "2026-09-13",
-        "short": 0,
-        "long": 0
-      },
-      {
         "date": "2026-09-14",
         "short": 1,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-09-15",
@@ -496,7 +495,7 @@
       {
         "date": "2026-09-22",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-09-23",
@@ -556,7 +555,7 @@
       {
         "date": "2026-10-04",
         "short": 1,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-10-05",
@@ -591,7 +590,7 @@
       {
         "date": "2026-10-11",
         "short": 1,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-10-12",
@@ -651,17 +650,17 @@
       {
         "date": "2026-10-23",
         "short": 2,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-24",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-25",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-10-26",
@@ -671,16 +670,21 @@
       {
         "date": "2026-10-27",
         "short": 2,
+        "long": 0
+      },
+      {
+        "date": "2026-10-28",
+        "short": 4,
         "long": 1
       }
     ],
     "trendShortTicker": "SOXX",
-    "trendLongTicker": "QQQ",
+    "trendLongTicker": "XLE",
     "strength": {
-      "score": 59,
-      "share": 0.8,
-      "heatZ": 2.8,
-      "repPerPost": 3.7,
+      "score": 87,
+      "share": 1.6,
+      "heatZ": 0.0,
+      "repPerPost": 3.4,
       "ticker": "SOXX"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

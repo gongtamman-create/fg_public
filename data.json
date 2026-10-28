@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T04:40:04+09:00",
+  "updated_at": "2026-10-29T04:45:03+09:00",
   "current": {
     "date": "2026-10-28",
     "score": 50.1,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-10-29 04:30:12"
   },
   "nasdaq": {
-    "price": 26478.57,
-    "change": 0.76,
-    "change_pct": 0.0
+    "price": 26503.94,
+    "change": 26.13,
+    "change_pct": 0.1
   },
   "hangang": {
     "temp": 16.6,
@@ -242,7 +242,7 @@
     "zones": []
   },
   "cnn_comparison": {
-    "cnn_score": 35.2,
+    "cnn_score": 35.1,
     "cnn_grade": "공포",
     "our_score": 50.1,
     "our_grade": "중립"

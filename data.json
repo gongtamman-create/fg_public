@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-30T07:00:03+09:00",
+  "updated_at": "2026-10-30T07:05:05+09:00",
   "current": {
-    "date": "2026-10-29",
-    "score": 40.0,
+    "date": "2026-10-30",
+    "score": 35.2,
     "grade": "공포",
-    "daily_score": 47.2,
+    "daily_score": 41.9,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "neutral",
-    "signal_label": "관망",
+    "signal": "buy_wait",
+    "signal_label": "매수 대기",
     "realtime": true,
-    "realtime_time": "2026-10-30 06:30:14"
+    "realtime_time": "2026-10-30 07:00:11"
   },
   "nasdaq": {
     "price": 26184.72,
@@ -161,6 +161,13 @@
       "date": "2026-10-29",
       "score": 47.2,
       "hybrid": null,
+      "nasdaq_close": 26184.72,
+      "nasdaq_pct": -1.38
+    },
+    {
+      "date": "2026-10-30",
+      "score": 41.9,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -245,11 +252,15 @@
     {
       "date": "2026-10-29",
       "score": 47.2
+    },
+    {
+      "date": "2026-10-30",
+      "score": 41.9
     }
   ],
   "backtest": {
-    "period": "2026-10-12 ~ 2026-10-28",
-    "trading_days": 13,
+    "period": "2026-10-12 ~ 2026-10-29",
+    "trading_days": 14,
     "zones": [
       {
         "name": "매수 시그널",
@@ -270,45 +281,45 @@
   "cnn_comparison": {
     "cnn_score": 34.6,
     "cnn_grade": "공포",
-    "our_score": 40.0,
+    "our_score": 35.2,
     "our_grade": "공포"
   },
   "action_detail": {
-    "action": "관망",
-    "action_key": "neutral",
-    "confidence": "-",
-    "reason": "FG 47, RSI 41 — 뚜렷한 방향성 없음",
+    "action": "매수 대기",
+    "action_key": "buy_wait",
+    "confidence": "~68%",
+    "reason": "공포 접근 (FG 42, RSI 35) — 추가 하락 시 매수 기회",
     "proximity": {
       "buy": {
-        "fg_gap": -7.2,
-        "rsi_gap": -6.2,
-        "pct": 55
+        "fg_gap": -1.9,
+        "rsi_gap": -0.4,
+        "pct": 92
       },
       "sell": {
-        "fg_gap": -27.8,
-        "rsi_gap": -33.8,
+        "fg_gap": -33.1,
+        "rsi_gap": -39.6,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "47.2",
+        "value": "41.9",
         "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "41.2",
+        "value": "35.4",
         "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "+0.2%",
+        "value": "-0.9%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 1,
+      "count": 2,
       "win_5d": null,
       "avg_5d": null,
       "win_10d": null,
@@ -415,15 +426,16 @@
     },
     {
       "date": "2026-10-29",
-      "composite": 2.9,
+      "composite": 2.5,
+      "signal": "neutral"
+    },
+    {
+      "date": "2026-10-30",
+      "composite": 2.6,
       "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 40.1,
-      "time": "07:00"
-    },
     {
       "score": 39.7,
       "time": "07:30"
@@ -611,6 +623,10 @@
     {
       "score": 36.3,
       "time": "06:30"
+    },
+    {
+      "score": 31.0,
+      "time": "07:00"
     }
   ],
   "shortpos": {

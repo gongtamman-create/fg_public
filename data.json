@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T23:55:05+09:00",
+  "updated_at": "2026-10-31T00:00:03+09:00",
   "current": {
     "date": "2026-10-30",
     "score": 41.5,
@@ -7,15 +7,15 @@
     "daily_score": 41.9,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "neutral",
+    "signal_label": "관망 (공포 접근)",
     "realtime": true,
     "realtime_time": "2026-10-30 23:30:11"
   },
   "nasdaq": {
-    "price": 25624.62,
-    "change": -560.1,
-    "change_pct": -2.14
+    "price": 25628.09,
+    "change": -556.63,
+    "change_pct": -2.13
   },
   "hangang": {
     "temp": 16.3,
@@ -285,10 +285,10 @@
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "~68%",
-    "reason": "공포 접근 (FG 42, RSI 35) — 추가 하락 시 매수 기회",
+    "action": "관망 (공포 접근)",
+    "action_key": "neutral",
+    "confidence": "-",
+    "reason": "FG 42으로 공포 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
         "fg_gap": -1.9,
@@ -309,13 +309,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "35.4",
-        "status": "중립"
+        "value": "35.4 (전일)",
+        "status": "중립 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-0.9%",
-        "status": "정상"
+        "value": "-0.9% (전일)",
+        "status": "정상 (휴장)"
       }
     ],
     "similar_history": {

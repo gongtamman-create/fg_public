@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T06:35:03+09:00",
+  "updated_at": "2026-11-02T06:40:04+09:00",
   "current": {
     "date": "2026-11-01",
     "score": 32.7,
@@ -662,29 +662,16 @@
     }
   ],
   "shortpos": {
-    "date": "2026-11-01",
-    "activity": 251,
+    "date": "2026-11-02",
+    "activity": 253,
     "shorts": [],
     "longs": [
-      {
-        "ticker": "SOXX",
-        "count": 1
-      },
-      {
-        "ticker": "USO",
-        "count": 1
-      },
       {
         "ticker": "NVDA",
         "count": 1
       }
     ],
     "trend": [
-      {
-        "date": "2026-09-18",
-        "short": 0,
-        "long": 0
-      },
       {
         "date": "2026-09-19",
         "short": 0,
@@ -733,12 +720,12 @@
       {
         "date": "2026-09-28",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-09-29",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-09-30",
@@ -773,12 +760,12 @@
       {
         "date": "2026-10-06",
         "short": 0,
-        "long": 0
+        "long": 2
       },
       {
         "date": "2026-10-07",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-08",
@@ -793,7 +780,7 @@
       {
         "date": "2026-10-10",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-11",
@@ -868,7 +855,7 @@
       {
         "date": "2026-10-25",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-26",
@@ -904,15 +891,20 @@
         "date": "2026-11-01",
         "short": 0,
         "long": 1
+      },
+      {
+        "date": "2026-11-02",
+        "short": 0,
+        "long": 1
       }
     ],
     "trendShortTicker": null,
-    "trendLongTicker": "SOXX",
+    "trendLongTicker": "NVDA",
     "strength": {
       "score": 29,
       "share": 0.0,
-      "heatZ": -0.1,
-      "repPerPost": 6.4,
+      "heatZ": 1.1,
+      "repPerPost": 5.7,
       "ticker": null
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

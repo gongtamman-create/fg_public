@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T21:10:04+09:00",
+  "updated_at": "2026-11-04T21:15:02+09:00",
   "current": {
     "date": "2026-11-04",
     "score": 56.9,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-11-04 21:00:14"
   },
   "nasdaq": {
-    "price": 25372.01,
-    "change": 207.7,
-    "change_pct": 0.83
+    "price": null,
+    "change": null,
+    "change_pct": null
   },
   "hangang": {
     "temp": 15.7,
@@ -334,8 +334,8 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 24.1,
-    "cnn_grade": "극단적 공포",
+    "cnn_score": null,
+    "cnn_grade": null,
     "our_score": 56.9,
     "our_grade": "중립"
   },
@@ -411,7 +411,7 @@
     },
     {
       "date": "2026-10-15",
-      "composite": 4.0,
+      "composite": 4.7,
       "signal": "neutral"
     },
     {
@@ -431,7 +431,7 @@
     },
     {
       "date": "2026-10-19",
-      "composite": 26.5,
+      "composite": 31.2,
       "signal": "neutral"
     },
     {
@@ -441,7 +441,7 @@
     },
     {
       "date": "2026-10-21",
-      "composite": -10.0,
+      "composite": -11.8,
       "signal": "neutral"
     },
     {
@@ -471,7 +471,7 @@
     },
     {
       "date": "2026-10-27",
-      "composite": -9.4,
+      "composite": -11.1,
       "signal": "neutral"
     },
     {
@@ -481,12 +481,12 @@
     },
     {
       "date": "2026-10-29",
-      "composite": 2.5,
+      "composite": 2.9,
       "signal": "neutral"
     },
     {
       "date": "2026-10-30",
-      "composite": 12.3,
+      "composite": 14.5,
       "signal": "neutral"
     },
     {
@@ -506,7 +506,7 @@
     },
     {
       "date": "2026-11-03",
-      "composite": 5.8,
+      "composite": 6.8,
       "signal": "neutral"
     },
     {

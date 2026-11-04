@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T06:35:02+09:00",
+  "updated_at": "2026-11-05T06:40:02+09:00",
   "current": {
     "date": "2026-11-04",
     "score": 47.7,
@@ -710,15 +710,11 @@
     }
   ],
   "shortpos": {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "activity": 252,
     "shorts": [
       {
-        "ticker": "AAPL",
-        "count": 1
-      },
-      {
-        "ticker": "SOXX",
+        "ticker": "QQQ",
         "count": 1
       }
     ],
@@ -729,11 +725,6 @@
       }
     ],
     "trend": [
-      {
-        "date": "2026-09-21",
-        "short": 0,
-        "long": 0
-      },
       {
         "date": "2026-09-22",
         "short": 0,
@@ -756,7 +747,7 @@
       },
       {
         "date": "2026-09-26",
-        "short": 0,
+        "short": 1,
         "long": 2
       },
       {
@@ -766,7 +757,7 @@
       },
       {
         "date": "2026-09-28",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -821,7 +812,7 @@
       },
       {
         "date": "2026-10-09",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -866,7 +857,7 @@
       },
       {
         "date": "2026-10-18",
-        "short": 0,
+        "short": 1,
         "long": 3
       },
       {
@@ -876,7 +867,7 @@
       },
       {
         "date": "2026-10-20",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -931,7 +922,7 @@
       },
       {
         "date": "2026-10-31",
-        "short": 0,
+        "short": 2,
         "long": 0
       },
       {
@@ -946,23 +937,28 @@
       },
       {
         "date": "2026-11-03",
-        "short": 1,
+        "short": 0,
         "long": 2
       },
       {
         "date": "2026-11-04",
+        "short": 0,
+        "long": 2
+      },
+      {
+        "date": "2026-11-05",
         "short": 1,
         "long": 2
       }
     ],
-    "trendShortTicker": "AAPL",
+    "trendShortTicker": "QQQ",
     "trendLongTicker": "USO",
     "strength": {
-      "score": 39,
+      "score": 40,
       "share": 0.4,
-      "heatZ": 0.4,
-      "repPerPost": 3.1,
-      "ticker": "AAPL"
+      "heatZ": 0.3,
+      "repPerPost": 2.9,
+      "ticker": "QQQ"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },

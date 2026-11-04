@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-05T07:00:03+09:00",
+  "updated_at": "2026-11-05T07:05:02+09:00",
   "current": {
-    "date": "2026-11-04",
-    "score": 47.7,
+    "date": "2026-11-05",
+    "score": 47.1,
     "grade": "중립",
-    "daily_score": 59.3,
+    "daily_score": 48.0,
     "hybrid_score": null,
     "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-11-05 06:30:09"
+    "realtime_time": "2026-11-05 07:00:10"
   },
   "nasdaq": {
     "price": 25736.51,
@@ -203,6 +203,13 @@
       "date": "2026-11-04",
       "score": 59.3,
       "hybrid": null,
+      "nasdaq_close": 25736.51,
+      "nasdaq_pct": 1.44
+    },
+    {
+      "date": "2026-11-05",
+      "score": 48.0,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -311,11 +318,15 @@
     {
       "date": "2026-11-04",
       "score": 59.3
+    },
+    {
+      "date": "2026-11-05",
+      "score": 48.0
     }
   ],
   "backtest": {
-    "period": "2026-10-12 ~ 2026-11-03",
-    "trading_days": 17,
+    "period": "2026-10-12 ~ 2026-11-04",
+    "trading_days": 18,
     "zones": [
       {
         "name": "매수 시그널",
@@ -336,49 +347,49 @@
   "cnn_comparison": {
     "cnn_score": 27.3,
     "cnn_grade": "공포",
-    "our_score": 47.7,
+    "our_score": 47.1,
     "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 59, RSI 30 — 뚜렷한 방향성 없음",
+    "reason": "FG 48, RSI 39 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
-        "fg_gap": -19.3,
-        "rsi_gap": 5.1,
-        "pct": 17
+        "fg_gap": -8.0,
+        "rsi_gap": -3.6,
+        "pct": 61
       },
       "sell": {
-        "fg_gap": -15.7,
-        "rsi_gap": -45.1,
+        "fg_gap": -27.0,
+        "rsi_gap": -36.4,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "59.3",
+        "value": "48.0",
         "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "29.9",
-        "status": "과매도"
+        "value": "38.6",
+        "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "-2.3%",
-        "status": "급락"
+        "value": "-0.9%",
+        "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 2,
-      "win_5d": 50.0,
-      "avg_5d": -1.52,
+      "count": 4,
+      "win_5d": 0.0,
+      "avg_5d": -3.71,
       "win_10d": 0.0,
-      "avg_10d": -2.25,
+      "avg_10d": -1.65,
       "win_20d": null,
       "avg_20d": null
     }
@@ -511,15 +522,16 @@
     },
     {
       "date": "2026-11-04",
-      "composite": 3.9,
+      "composite": -1.9,
+      "signal": "neutral"
+    },
+    {
+      "date": "2026-11-05",
+      "composite": 0.0,
       "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 59.8,
-      "time": "07:00"
-    },
     {
       "score": 61.3,
       "time": "07:30"
@@ -707,6 +719,10 @@
     {
       "score": 46.3,
       "time": "06:30"
+    },
+    {
+      "score": 45.9,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -986,6 +1002,11 @@
     {
       "date": "2026-11-04",
       "index": 137,
+      "hot": false
+    },
+    {
+      "date": "2026-11-05",
+      "index": 121,
       "hot": false
     }
   ]

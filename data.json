@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-07T07:00:04+09:00",
+  "updated_at": "2026-11-07T07:05:02+09:00",
   "current": {
-    "date": "2026-11-06",
-    "score": 44.5,
+    "date": "2026-11-07",
+    "score": 46.1,
     "grade": "중립",
-    "daily_score": 39.1,
+    "daily_score": 46.6,
     "hybrid_score": null,
     "hybrid_grade": null,
-    "signal": "buy_wait",
-    "signal_label": "매수 대기",
+    "signal": "neutral",
+    "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-11-07 06:30:10"
+    "realtime_time": "2026-11-07 07:00:11"
   },
   "nasdaq": {
     "price": 24579.42,
@@ -217,6 +217,13 @@
       "date": "2026-11-06",
       "score": 39.1,
       "hybrid": null,
+      "nasdaq_close": 24579.42,
+      "nasdaq_pct": 1.09
+    },
+    {
+      "date": "2026-11-07",
+      "score": 46.6,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -333,11 +340,15 @@
     {
       "date": "2026-11-06",
       "score": 39.1
+    },
+    {
+      "date": "2026-11-07",
+      "score": 46.6
     }
   ],
   "backtest": {
-    "period": "2026-10-12 ~ 2026-11-05",
-    "trading_days": 19,
+    "period": "2026-10-12 ~ 2026-11-06",
+    "trading_days": 20,
     "zones": [
       {
         "name": "매수 시그널",
@@ -358,49 +369,49 @@
   "cnn_comparison": {
     "cnn_score": 22.1,
     "cnn_grade": "극단적 공포",
-    "our_score": 44.5,
+    "our_score": 46.1,
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "매수 대기",
-    "action_key": "buy_wait",
-    "confidence": "개장 확인 필요",
-    "reason": "공포 구간 (FG 39) [휴장] — 개장 후 기술적 지표 확인 필요",
+    "action": "관망",
+    "action_key": "neutral",
+    "confidence": "-",
+    "reason": "FG 47 — 중립 구간 [휴장]",
     "proximity": {
       "buy": {
-        "fg_gap": 0.9,
-        "rsi_gap": 9.6,
-        "pct": 35
+        "fg_gap": -6.6,
+        "rsi_gap": 4.8,
+        "pct": 44
       },
       "sell": {
-        "fg_gap": -35.9,
-        "rsi_gap": -49.6,
+        "fg_gap": -28.4,
+        "rsi_gap": -44.8,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "39.1",
-        "status": "매수 구간"
+        "value": "46.6",
+        "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "25.4 (전일)",
+        "value": "30.2 (전일)",
         "status": "과매도 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-5.8% (전일)",
+        "value": "-4.5% (전일)",
         "status": "급락 (휴장)"
       }
     ],
     "similar_history": {
-      "count": 9,
-      "win_5d": 16.7,
-      "avg_5d": -2.59,
+      "count": 10,
+      "win_5d": 28.6,
+      "avg_5d": -1.95,
       "win_10d": 0.0,
-      "avg_10d": -3.96,
+      "avg_10d": -3.39,
       "win_20d": null,
       "avg_20d": null
     }
@@ -545,13 +556,14 @@
       "date": "2026-11-06",
       "composite": 60,
       "signal": "strong_buy"
+    },
+    {
+      "date": "2026-11-07",
+      "composite": 12.0,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 35.4,
-      "time": "07:00"
-    },
     {
       "score": 39.3,
       "time": "07:30"
@@ -735,6 +747,10 @@
     {
       "score": 45.6,
       "time": "06:30"
+    },
+    {
+      "score": 48.4,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -1025,6 +1041,11 @@
       "date": "2026-11-06",
       "index": 306,
       "hot": true
+    },
+    {
+      "date": "2026-11-07",
+      "index": 29,
+      "hot": false
     }
   ]
 }

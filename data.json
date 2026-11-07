@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T06:35:02+09:00",
+  "updated_at": "2026-11-08T06:40:03+09:00",
   "current": {
     "date": "2026-11-07",
     "score": 27.8,
@@ -758,35 +758,34 @@
     }
   ],
   "shortpos": {
-    "date": "2026-11-07",
+    "date": "2026-11-08",
     "activity": 253,
     "shorts": [
       {
         "ticker": "SOXX",
         "count": 1
+      },
+      {
+        "ticker": "USO",
+        "count": 1
       }
     ],
     "longs": [
       {
-        "ticker": "USO",
-        "count": 2
+        "ticker": "NVDA",
+        "count": 1
       }
     ],
     "trend": [
       {
-        "date": "2026-09-24",
-        "short": 1,
-        "long": 1
-      },
-      {
         "date": "2026-09-25",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-09-26",
         "short": 1,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-09-27",
@@ -801,27 +800,27 @@
       {
         "date": "2026-09-29",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-09-30",
         "short": 4,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-10-01",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-02",
         "short": 2,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-03",
         "short": 2,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-10-04",
@@ -841,7 +840,7 @@
       {
         "date": "2026-10-07",
         "short": 0,
-        "long": 4
+        "long": 0
       },
       {
         "date": "2026-10-08",
@@ -871,17 +870,17 @@
       {
         "date": "2026-10-13",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-10-14",
         "short": 2,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-15",
         "short": 2,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-10-16",
@@ -896,7 +895,7 @@
       {
         "date": "2026-10-18",
         "short": 0,
-        "long": 3
+        "long": 0
       },
       {
         "date": "2026-10-19",
@@ -911,7 +910,7 @@
       {
         "date": "2026-10-21",
         "short": 3,
-        "long": 3
+        "long": 0
       },
       {
         "date": "2026-10-22",
@@ -921,7 +920,7 @@
       {
         "date": "2026-10-23",
         "short": 2,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-10-24",
@@ -951,7 +950,7 @@
       {
         "date": "2026-10-29",
         "short": 0,
-        "long": 3
+        "long": 0
       },
       {
         "date": "2026-10-30",
@@ -971,41 +970,46 @@
       {
         "date": "2026-11-02",
         "short": 0,
-        "long": 0
+        "long": 1
       },
       {
         "date": "2026-11-03",
         "short": 1,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-11-04",
         "short": 1,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-11-05",
         "short": 0,
-        "long": 2
+        "long": 0
       },
       {
         "date": "2026-11-06",
         "short": 0,
-        "long": 1
+        "long": 0
       },
       {
         "date": "2026-11-07",
         "short": 1,
-        "long": 2
+        "long": 0
+      },
+      {
+        "date": "2026-11-08",
+        "short": 1,
+        "long": 1
       }
     ],
     "trendShortTicker": "SOXX",
-    "trendLongTicker": "USO",
+    "trendLongTicker": "NVDA",
     "strength": {
-      "score": 33,
+      "score": 34,
       "share": 0.4,
-      "heatZ": 1.0,
-      "repPerPost": 4.1,
+      "heatZ": 0.9,
+      "repPerPost": 5.4,
       "ticker": "SOXX"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"

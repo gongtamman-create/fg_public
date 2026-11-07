@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-11-07T21:55:02+09:00",
+  "updated_at": "2026-11-07T22:00:38+09:00",
   "current": {
     "date": "2026-11-07",
-    "score": 35.1,
+    "score": 36.8,
     "grade": "공포",
     "daily_score": 46.6,
     "hybrid_score": null,
@@ -10,7 +10,7 @@
     "signal": "neutral",
     "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-11-07 21:30:10"
+    "realtime_time": "2026-11-07 22:00:13"
   },
   "nasdaq": {
     "price": 24579.43,
@@ -369,7 +369,7 @@
   "cnn_comparison": {
     "cnn_score": 22.1,
     "cnn_grade": "극단적 공포",
-    "our_score": 35.1,
+    "our_score": 36.8,
     "our_grade": "공포"
   },
   "action_detail": {
@@ -444,7 +444,7 @@
     },
     {
       "date": "2026-10-15",
-      "composite": 4.0,
+      "composite": 4.7,
       "signal": "neutral"
     },
     {
@@ -464,7 +464,7 @@
     },
     {
       "date": "2026-10-19",
-      "composite": 26.5,
+      "composite": 31.2,
       "signal": "neutral"
     },
     {
@@ -474,7 +474,7 @@
     },
     {
       "date": "2026-10-21",
-      "composite": -10.0,
+      "composite": -11.8,
       "signal": "neutral"
     },
     {
@@ -504,7 +504,7 @@
     },
     {
       "date": "2026-10-27",
-      "composite": -9.4,
+      "composite": -11.1,
       "signal": "neutral"
     },
     {
@@ -514,12 +514,12 @@
     },
     {
       "date": "2026-10-29",
-      "composite": 2.5,
+      "composite": 2.9,
       "signal": "neutral"
     },
     {
       "date": "2026-10-30",
-      "composite": 12.3,
+      "composite": 14.5,
       "signal": "neutral"
     },
     {
@@ -539,17 +539,17 @@
     },
     {
       "date": "2026-11-03",
-      "composite": 5.8,
+      "composite": 6.8,
       "signal": "neutral"
     },
     {
       "date": "2026-11-04",
-      "composite": -1.9,
+      "composite": -2.2,
       "signal": "neutral"
     },
     {
       "date": "2026-11-05",
-      "composite": 16.8,
+      "composite": 19.8,
       "signal": "weak_buy"
     },
     {
@@ -564,10 +564,6 @@
     }
   ],
   "realtime_24h": [
-    {
-      "score": 52.2,
-      "time": "22:00"
-    },
     {
       "score": 46.7,
       "time": "22:30"
@@ -751,6 +747,10 @@
     {
       "score": 37.2,
       "time": "21:30"
+    },
+    {
+      "score": 39.8,
+      "time": "22:00"
     }
   ],
   "shortpos": {

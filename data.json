@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T10:25:03+09:00",
+  "updated_at": "2026-11-08T10:30:03+09:00",
   "current": {
     "date": "2026-11-08",
     "score": 33.2,
@@ -146,21 +146,21 @@
     {
       "date": "2026-10-27",
       "score": 64.7,
-      "hybrid": null,
+      "hybrid": 65.1,
       "nasdaq_close": 26477.81,
       "nasdaq_pct": 1.18
     },
     {
       "date": "2026-10-28",
       "score": 54.7,
-      "hybrid": null,
+      "hybrid": 53.5,
       "nasdaq_close": 26549.85,
       "nasdaq_pct": 0.27
     },
     {
       "date": "2026-10-29",
       "score": 47.2,
-      "hybrid": null,
+      "hybrid": 48.1,
       "nasdaq_close": 26184.72,
       "nasdaq_pct": -1.38
     },

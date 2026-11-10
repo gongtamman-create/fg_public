@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-10T10:10:03+09:00",
+  "updated_at": "2026-11-10T10:15:03+09:00",
   "current": {
     "date": "2026-11-10",
     "score": 43.7,
     "grade": "중립",
     "daily_score": 67.3,
-    "hybrid_score": null,
-    "hybrid_grade": null,
+    "hybrid_score": 72.0,
+    "hybrid_grade": "탐욕",
     "signal": "neutral",
     "signal_label": "관망 (탐욕 접근)",
     "realtime": true,
@@ -167,14 +167,14 @@
     {
       "date": "2026-10-30",
       "score": 41.9,
-      "hybrid": null,
+      "hybrid": 34.0,
       "nasdaq_close": 25437.0,
       "nasdaq_pct": -2.86
     },
     {
       "date": "2026-10-31",
       "score": 43.9,
-      "hybrid": null,
+      "hybrid": 36.7,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
@@ -188,63 +188,63 @@
     {
       "date": "2026-11-02",
       "score": 31.0,
-      "hybrid": null,
+      "hybrid": 26.8,
       "nasdaq_close": 25164.32,
       "nasdaq_pct": -1.07
     },
     {
       "date": "2026-11-03",
       "score": 46.1,
-      "hybrid": null,
+      "hybrid": 41.1,
       "nasdaq_close": 25372.01,
       "nasdaq_pct": 0.83
     },
     {
       "date": "2026-11-04",
       "score": 59.3,
-      "hybrid": null,
+      "hybrid": 56.8,
       "nasdaq_close": 25736.51,
       "nasdaq_pct": 1.44
     },
     {
       "date": "2026-11-05",
       "score": 48.0,
-      "hybrid": null,
+      "hybrid": 40.6,
       "nasdaq_close": 24315.0,
       "nasdaq_pct": -5.52
     },
     {
       "date": "2026-11-06",
       "score": 39.1,
-      "hybrid": null,
+      "hybrid": 31.3,
       "nasdaq_close": 24579.42,
       "nasdaq_pct": 1.09
     },
     {
       "date": "2026-11-07",
       "score": 46.6,
-      "hybrid": null,
+      "hybrid": 41.0,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-11-08",
       "score": 31.9,
-      "hybrid": null,
+      "hybrid": 30.1,
       "nasdaq_close": null,
       "nasdaq_pct": null
     },
     {
       "date": "2026-11-09",
       "score": 18.9,
-      "hybrid": null,
+      "hybrid": 15.2,
       "nasdaq_close": 25253.14,
       "nasdaq_pct": 2.74
     },
     {
       "date": "2026-11-10",
       "score": 67.3,
-      "hybrid": null,
+      "hybrid": 72.0,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }

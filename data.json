@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-12T07:00:03+09:00",
+  "updated_at": "2026-11-12T07:05:03+09:00",
   "current": {
-    "date": "2026-11-11",
-    "score": 70.2,
+    "date": "2026-11-12",
+    "score": 63.3,
     "grade": "탐욕",
-    "daily_score": 47.6,
-    "hybrid_score": 43.5,
-    "hybrid_grade": "중립",
+    "daily_score": 68.2,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망",
+    "signal_label": "관망 (탐욕 접근)",
     "realtime": true,
-    "realtime_time": "2026-11-12 06:30:11"
+    "realtime_time": "2026-11-12 07:00:10"
   },
   "nasdaq": {
     "price": 25466.19,
@@ -252,6 +252,13 @@
       "date": "2026-11-11",
       "score": 47.6,
       "hybrid": 43.5,
+      "nasdaq_close": 25466.19,
+      "nasdaq_pct": 1.6
+    },
+    {
+      "date": "2026-11-12",
+      "score": 68.2,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -388,11 +395,15 @@
     {
       "date": "2026-11-11",
       "score": 47.6
+    },
+    {
+      "date": "2026-11-12",
+      "score": 68.2
     }
   ],
   "backtest": {
-    "period": "2026-10-12 ~ 2026-11-10",
-    "trading_days": 22,
+    "period": "2026-10-12 ~ 2026-11-11",
+    "trading_days": 23,
     "zones": [
       {
         "name": "매수 시그널",
@@ -413,49 +424,49 @@
   "cnn_comparison": {
     "cnn_score": 37.0,
     "cnn_grade": "공포",
-    "our_score": 70.2,
+    "our_score": 63.3,
     "our_grade": "탐욕"
   },
   "action_detail": {
-    "action": "관망",
+    "action": "관망 (탐욕 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 48, RSI 40 — 뚜렷한 방향성 없음",
+    "reason": "FG 68으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
     "proximity": {
       "buy": {
-        "fg_gap": -7.6,
-        "rsi_gap": -5.0,
-        "pct": 58
+        "fg_gap": -28.2,
+        "rsi_gap": -11.0,
+        "pct": 13
       },
       "sell": {
-        "fg_gap": -27.4,
-        "rsi_gap": -35.0,
-        "pct": 0
+        "fg_gap": -6.8,
+        "rsi_gap": -29.0,
+        "pct": 27
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "47.6",
-        "status": "중립"
+        "value": "68.2",
+        "status": "탐욕 접근"
       },
       {
         "name": "RSI(14)",
-        "value": "40.0",
+        "value": "46.0",
         "status": "중립"
       },
       {
         "name": "MA이탈",
-        "value": "-1.6%",
+        "value": "+0.0%",
         "status": "정상"
       }
     ],
     "similar_history": {
-      "count": 5,
-      "win_5d": 25.0,
-      "avg_5d": -2.29,
+      "count": 3,
+      "win_5d": 0.0,
+      "avg_5d": -2.9,
       "win_10d": 0.0,
-      "avg_10d": -6.88,
+      "avg_10d": -7.17,
       "win_20d": null,
       "avg_20d": null
     }
@@ -625,13 +636,14 @@
       "date": "2026-11-11",
       "composite": 0.0,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-11-12",
+      "composite": -19.3,
+      "signal": "weak_sell"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 53.9,
-      "time": "07:00"
-    },
     {
       "score": 54.4,
       "time": "07:30"
@@ -819,6 +831,10 @@
     {
       "score": 64.9,
       "time": "06:30"
+    },
+    {
+      "score": 54.6,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -1134,6 +1150,11 @@
       "date": "2026-11-11",
       "index": 209,
       "hot": true
+    },
+    {
+      "date": "2026-11-12",
+      "index": 90,
+      "hot": false
     }
   ]
 }

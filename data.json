@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T06:35:02+09:00",
+  "updated_at": "2026-11-15T06:40:03+09:00",
   "current": {
     "date": "2026-11-14",
     "score": 40.0,
@@ -870,36 +870,35 @@
     }
   ],
   "shortpos": {
-    "date": "2026-11-14",
-    "activity": 249,
+    "date": "2026-11-15",
+    "activity": 252,
     "shorts": [
       {
-        "ticker": "USO",
-        "count": 1
-      },
-      {
-        "ticker": "IONQ",
-        "count": 1
-      },
-      {
-        "ticker": "QQQ",
-        "count": 1
-      },
-      {
         "ticker": "NVDA",
+        "count": 1
+      },
+      {
+        "ticker": "XLE",
+        "count": 1
+      },
+      {
+        "ticker": "MU",
+        "count": 1
+      },
+      {
+        "ticker": "SOXX",
+        "count": 1
+      },
+      {
+        "ticker": "USO",
         "count": 1
       }
     ],
     "longs": [],
     "trend": [
       {
-        "date": "2026-10-01",
-        "short": 0,
-        "long": 0
-      },
-      {
         "date": "2026-10-02",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -909,7 +908,7 @@
       },
       {
         "date": "2026-10-04",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -929,12 +928,12 @@
       },
       {
         "date": "2026-10-08",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
         "date": "2026-10-09",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -969,12 +968,12 @@
       },
       {
         "date": "2026-10-16",
-        "short": 3,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-10-17",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
@@ -984,12 +983,12 @@
       },
       {
         "date": "2026-10-19",
-        "short": 2,
+        "short": 0,
         "long": 0
       },
       {
         "date": "2026-10-20",
-        "short": 3,
+        "short": 0,
         "long": 0
       },
       {
@@ -999,7 +998,7 @@
       },
       {
         "date": "2026-10-22",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -1019,7 +1018,7 @@
       },
       {
         "date": "2026-10-26",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -1044,7 +1043,7 @@
       },
       {
         "date": "2026-10-31",
-        "short": 6,
+        "short": 0,
         "long": 0
       },
       {
@@ -1084,7 +1083,7 @@
       },
       {
         "date": "2026-11-08",
-        "short": 1,
+        "short": 0,
         "long": 0
       },
       {
@@ -1094,12 +1093,12 @@
       },
       {
         "date": "2026-11-10",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
         "date": "2026-11-11",
-        "short": 0,
+        "short": 1,
         "long": 0
       },
       {
@@ -1116,16 +1115,21 @@
         "date": "2026-11-14",
         "short": 1,
         "long": 0
+      },
+      {
+        "date": "2026-11-15",
+        "short": 1,
+        "long": 0
       }
     ],
-    "trendShortTicker": "USO",
+    "trendShortTicker": "NVDA",
     "trendLongTicker": null,
     "strength": {
-      "score": 51,
+      "score": 41,
       "share": 0.4,
-      "heatZ": -3.5,
-      "repPerPost": 5.0,
-      "ticker": "USO"
+      "heatZ": -0.2,
+      "repPerPost": 4.4,
+      "ticker": "NVDA"
     },
     "note": "개미가 하락(숏)·상승(롱) 베팅하는 종목 — 검증된 신호 아님, 군중심리 참고용"
   },

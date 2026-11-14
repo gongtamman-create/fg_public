@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-15T07:00:05+09:00",
+  "updated_at": "2026-11-15T07:05:03+09:00",
   "current": {
-    "date": "2026-11-14",
-    "score": 40.0,
+    "date": "2026-11-15",
+    "score": 38.4,
     "grade": "공포",
-    "daily_score": 50.4,
-    "hybrid_score": 38.6,
-    "hybrid_grade": "공포",
-    "signal": "neutral",
-    "signal_label": "관망",
+    "daily_score": 26.7,
+    "hybrid_score": null,
+    "hybrid_grade": null,
+    "signal": "buy_wait",
+    "signal_label": "매수 대기",
     "realtime": true,
-    "realtime_time": "2026-11-15 06:30:11"
+    "realtime_time": "2026-11-15 07:00:11"
   },
   "nasdaq": {
     "price": 25136.27,
@@ -275,6 +275,13 @@
       "hybrid": 38.6,
       "nasdaq_close": null,
       "nasdaq_pct": null
+    },
+    {
+      "date": "2026-11-15",
+      "score": 26.7,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
     }
   ],
   "history_full": [
@@ -421,6 +428,10 @@
     {
       "date": "2026-11-14",
       "score": 50.4
+    },
+    {
+      "date": "2026-11-15",
+      "score": 26.7
     }
   ],
   "backtest": {
@@ -446,22 +457,22 @@
   "cnn_comparison": {
     "cnn_score": 38.6,
     "cnn_grade": "공포",
-    "our_score": 40.0,
+    "our_score": 38.4,
     "our_grade": "공포"
   },
   "action_detail": {
-    "action": "관망",
-    "action_key": "neutral",
-    "confidence": "-",
-    "reason": "FG 50 — 중립 구간 [휴장]",
+    "action": "매수 대기",
+    "action_key": "buy_wait",
+    "confidence": "개장 확인 필요",
+    "reason": "극단적 공포 (FG 27) [휴장] — 개장 후 RSI/가격 확인 시 매수 검토",
     "proximity": {
       "buy": {
-        "fg_gap": -10.4,
+        "fg_gap": 13.3,
         "rsi_gap": -7.0,
-        "pct": 42
+        "pct": 71
       },
       "sell": {
-        "fg_gap": -24.6,
+        "fg_gap": -48.3,
         "rsi_gap": -33.0,
         "pct": 0
       }
@@ -469,8 +480,8 @@
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "50.4",
-        "status": "중립"
+        "value": "26.7",
+        "status": "매수 구간"
       },
       {
         "name": "RSI(14)",
@@ -479,16 +490,16 @@
       },
       {
         "name": "MA이탈",
-        "value": "-0.9% (전일)",
+        "value": "-0.7% (전일)",
         "status": "정상 (휴장)"
       }
     ],
     "similar_history": {
-      "count": 4,
+      "count": 1,
       "win_5d": 0.0,
-      "avg_5d": -3.4,
-      "win_10d": 0.0,
-      "avg_10d": -5.29,
+      "avg_5d": -0.46,
+      "win_10d": null,
+      "avg_10d": null,
       "win_20d": null,
       "avg_20d": null
     }
@@ -673,13 +684,14 @@
       "date": "2026-11-14",
       "composite": 0.0,
       "signal": "neutral"
+    },
+    {
+      "date": "2026-11-15",
+      "composite": 31.3,
+      "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 32.1,
-      "time": "07:00"
-    },
     {
       "score": 19.9,
       "time": "07:30"
@@ -867,6 +879,10 @@
     {
       "score": 38.2,
       "time": "06:30"
+    },
+    {
+      "score": 32.7,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -1208,6 +1224,11 @@
       "date": "2026-11-14",
       "index": 130,
       "hot": false
+    },
+    {
+      "date": "2026-11-15",
+      "index": 152,
+      "hot": true
     }
   ]
 }

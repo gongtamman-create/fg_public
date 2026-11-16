@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16T22:05:05+09:00",
+  "updated_at": "2026-11-16T22:10:03+09:00",
   "current": {
     "date": "2026-11-16",
     "score": 54.2,
@@ -19,7 +19,7 @@
   },
   "hangang": {
     "temp": 13.9,
-    "time": "21:00",
+    "time": "22:00",
     "ymd": "20261116",
     "station": "선유"
   },
@@ -466,7 +466,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 37.7,
+    "cnn_score": 37.4,
     "cnn_grade": "공포",
     "our_score": 54.2,
     "our_grade": "중립"

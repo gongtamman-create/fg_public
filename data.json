@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17T22:35:05+09:00",
+  "updated_at": "2026-11-17T22:40:02+09:00",
   "current": {
     "date": "2026-11-17",
     "score": 74.8,
@@ -477,7 +477,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 32.7,
+    "cnn_score": 32.6,
     "cnn_grade": "공포",
     "our_score": 74.8,
     "our_grade": "탐욕"

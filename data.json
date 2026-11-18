@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T03:50:03+09:00",
+  "updated_at": "2026-11-19T03:55:03+09:00",
   "current": {
     "date": "2026-11-18",
     "score": 66.9,
@@ -488,8 +488,8 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 24.8,
-    "cnn_grade": "극단적 공포",
+    "cnn_score": 25.6,
+    "cnn_grade": "공포",
     "our_score": 66.9,
     "our_grade": "탐욕"
   },

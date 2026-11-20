@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T23:45:03+09:00",
+  "updated_at": "2026-11-20T23:50:02+09:00",
   "current": {
     "date": "2026-11-20",
     "score": 63.7,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-11-20 23:30:11"
   },
   "nasdaq": {
-    "price": 23566.18,
-    "change": -313.02,
-    "change_pct": -1.31
+    "price": 23666.18,
+    "change": -213.02,
+    "change_pct": -0.89
   },
   "hangang": {
     "temp": 10.9,

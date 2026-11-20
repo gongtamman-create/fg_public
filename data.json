@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-21T07:00:03+09:00",
+  "updated_at": "2026-11-21T07:05:02+09:00",
   "current": {
-    "date": "2026-11-20",
-    "score": 38.1,
-    "grade": "공포",
-    "daily_score": 42.6,
-    "hybrid_score": 33.5,
-    "hybrid_grade": "공포",
+    "date": "2026-11-21",
+    "score": 48.8,
+    "grade": "중립",
+    "daily_score": 41.3,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
     "signal_label": "관망 (공포 접근)",
     "realtime": true,
-    "realtime_time": "2026-11-21 06:30:10"
+    "realtime_time": "2026-11-21 07:00:10"
   },
   "nasdaq": {
     "price": 22617.73,
@@ -315,6 +315,13 @@
       "date": "2026-11-20",
       "score": 42.6,
       "hybrid": 33.5,
+      "nasdaq_close": 22617.73,
+      "nasdaq_pct": -5.28
+    },
+    {
+      "date": "2026-11-21",
+      "score": 41.3,
+      "hybrid": null,
       "nasdaq_close": null,
       "nasdaq_pct": null
     }
@@ -487,11 +494,15 @@
     {
       "date": "2026-11-20",
       "score": 42.6
+    },
+    {
+      "date": "2026-11-21",
+      "score": 41.3
     }
   ],
   "backtest": {
-    "period": "2026-10-12 ~ 2026-11-19",
-    "trading_days": 29,
+    "period": "2026-10-12 ~ 2026-11-20",
+    "trading_days": 30,
     "zones": [
       {
         "name": "매수 시그널",
@@ -506,57 +517,71 @@
         "return": null,
         "win_rate": null,
         "hold_days": 20
+      },
+      {
+        "name": "공포 (<=30)",
+        "trades": 1,
+        "return": -7.3,
+        "win_rate": 0.0,
+        "hold_days": 20
+      },
+      {
+        "name": "공포 (<=35)",
+        "trades": 1,
+        "return": -7.3,
+        "win_rate": 0.0,
+        "hold_days": 20
       }
     ]
   },
   "cnn_comparison": {
     "cnn_score": 9.7,
     "cnn_grade": "극단적 공포",
-    "our_score": 38.1,
-    "our_grade": "공포"
+    "our_score": 48.8,
+    "our_grade": "중립"
   },
   "action_detail": {
     "action": "관망 (공포 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 43으로 공포 접근 중 [휴장] — 개장 후 추이 확인",
+    "reason": "FG 41으로 공포 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
-        "fg_gap": -2.6,
-        "rsi_gap": 6.1,
-        "pct": 62
+        "fg_gap": -1.3,
+        "rsi_gap": 14.2,
+        "pct": 93
       },
       "sell": {
-        "fg_gap": -32.4,
-        "rsi_gap": -46.1,
+        "fg_gap": -33.7,
+        "rsi_gap": -54.2,
         "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "42.6",
+        "value": "41.3",
         "status": "중립"
       },
       {
         "name": "RSI(14)",
-        "value": "28.9 (전일)",
+        "value": "20.8 (전일)",
         "status": "과매도 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-4.0% (전일)",
+        "value": "-8.3% (전일)",
         "status": "급락 (휴장)"
       }
     ],
     "similar_history": {
-      "count": 14,
-      "win_5d": 45.5,
-      "avg_5d": -0.62,
-      "win_10d": 18.2,
-      "avg_10d": -1.57,
+      "count": 12,
+      "win_5d": 50.0,
+      "avg_5d": -0.24,
+      "win_10d": 20.0,
+      "avg_10d": -0.99,
       "win_20d": 0.0,
-      "avg_20d": -4.94
+      "avg_20d": -7.08
     }
   },
   "signal_chart": [
@@ -767,15 +792,16 @@
     },
     {
       "date": "2026-11-20",
-      "composite": 11.4,
-      "signal": "neutral"
+      "composite": 33.0,
+      "signal": "weak_buy"
+    },
+    {
+      "date": "2026-11-21",
+      "composite": 29.9,
+      "signal": "weak_buy"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 33.5,
-      "time": "07:00"
-    },
     {
       "score": 35.6,
       "time": "07:30"
@@ -963,6 +989,10 @@
     {
       "score": 42.6,
       "time": "06:30"
+    },
+    {
+      "score": 55.3,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -1330,6 +1360,11 @@
     {
       "date": "2026-11-20",
       "index": 159,
+      "hot": true
+    },
+    {
+      "date": "2026-11-21",
+      "index": 385,
       "hot": true
     }
   ]

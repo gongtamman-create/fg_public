@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T22:10:03+09:00",
+  "updated_at": "2026-11-25T22:15:03+09:00",
   "current": {
     "date": "2026-11-25",
     "score": 52.8,
@@ -579,7 +579,7 @@
     ]
   },
   "cnn_comparison": {
-    "cnn_score": 11.6,
+    "cnn_score": 12.3,
     "cnn_grade": "극단적 공포",
     "our_score": 52.8,
     "our_grade": "중립"

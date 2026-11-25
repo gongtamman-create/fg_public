@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T23:55:02+09:00",
+  "updated_at": "2026-11-26T00:00:03+09:00",
   "current": {
     "date": "2026-11-25",
     "score": 57.8,
@@ -13,9 +13,9 @@
     "realtime_time": "2026-11-25 23:30:12"
   },
   "nasdaq": {
-    "price": 22835.77,
-    "change": -897.77,
-    "change_pct": -3.78
+    "price": 23011.25,
+    "change": -722.29,
+    "change_pct": -3.04
   },
   "hangang": {
     "temp": 8.4,
@@ -588,7 +588,7 @@
     "action": "관망 (탐욕 접근)",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 64으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
+    "reason": "FG 64으로 탐욕 접근 중 [휴장] — 개장 후 추이 확인",
     "proximity": {
       "buy": {
         "fg_gap": -23.7,
@@ -609,13 +609,13 @@
       },
       {
         "name": "RSI(14)",
-        "value": "40.6",
-        "status": "중립"
+        "value": "40.6 (전일)",
+        "status": "중립 (휴장)"
       },
       {
         "name": "MA이탈",
-        "value": "-2.5%",
-        "status": "급락"
+        "value": "-2.5% (전일)",
+        "status": "급락 (휴장)"
       }
     ],
     "similar_history": {

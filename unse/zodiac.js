@@ -1,3 +1,5 @@
+import { lichunDate } from './astro.js?v=cbf59976';
+
 /**
  * 별자리(12) · 띠(12) 판별과 오행/원소 → 섹터 성향 매핑.
  *
@@ -128,11 +130,12 @@ export function getWesternZodiac(month, day) {
 
 /**
  * 생년월일로 띠를 판별한다.
- * 사주에서 해가 바뀌는 기준은 양력 1월 1일이 아니라 입춘(대략 2월 4일)이므로
- * 2월 3일까지는 전년도 띠로 계산한다.
+ * 사주에서 해가 바뀌는 기준은 양력 1월 1일이 아니라 입춘이다. 입춘은 해마다 2월 3~5일(KST)
+ * 사이를 오가므로 `lichunDate()` 로 그해 입춘일을 구하고, 그날부터 새 띠로 본다.
+ * 생시를 받지 않으므로 입춘 당일에 태어난 사람은 시각과 무관하게 새 띠가 된다.
  */
 export function getChineseZodiac(year, month, day) {
-  const effectiveYear = (month < 2 || (month === 2 && day <= 3)) ? year - 1 : year;
+  const effectiveYear = month < 2 || (month === 2 && day < lichunDate(year)) ? year - 1 : year;
   const idx = ((effectiveYear - 4) % 12 + 12) % 12;
   return CHINESE[idx];
 }

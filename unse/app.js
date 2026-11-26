@@ -9,10 +9,10 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=26125c82';
-import { stockCompatibility, compatLine } from './compat.js?v=26125c82';
-import { SECTOR_KO } from './zodiac.js?v=26125c82';
-import { renderShareCard } from './share.js?v=26125c82';
+import { buildFortune } from './engine.js?v=cbf59976';
+import { stockCompatibility, compatLine } from './compat.js?v=cbf59976';
+import { SECTOR_KO } from './zodiac.js?v=cbf59976';
+import { renderShareCard } from './share.js?v=cbf59976';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';

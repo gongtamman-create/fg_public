@@ -4,12 +4,13 @@
  * 그날 태양의 황경을 구하고, 각 별자리 구간의 중심과 이루는 각도로 길흉을 본다.
  * 서양 점성술에서 실제로 쓰는 어스펙트(합·육각·사각·삼각·대충)를 그대로 적용한다.
  *
- * 태양 위치만 쓰기 때문에 천체력 파일이 필요 없다. 아래 근사식의 오차는 0.01도 수준이며,
- * 춘분·하지·추분·동지 네 지점에서 각각 0.39 / 0.62 / 0.97 / 0.13도로 검증했다.
+ * 태양 위치만 쓰기 때문에 천체력 파일이 필요 없다. 아래 근사식은 1900~2100년 매달 네 날짜에서
+ * Meeus 25장 식(광행차·장동 보정 포함)과 비교해 최대 0.012도 차이였다(2026-11-27 측정).
+ * 예전에는 날짜를 율리우스일로 바꿀 때 +0.5 를 더해 다음 날 자정 황경(약 1도 앞)을 쓰고 있었다.
  * 어스펙트 판정에 ±6~8도의 허용범위(orb)를 쓰므로 이 정도 오차는 결과에 영향을 주지 않는다.
  */
 
-import { jdn } from './saju.js?v=26125c82';
+import { jdn } from './saju.js?v=cbf59976';
 
 /** 회귀황도 12궁 순서. 양자리 0도에서 시작한다. */
 export const TROPICAL_ORDER = [
@@ -26,11 +27,25 @@ export function signCenter(signId) {
 
 /** 그날 자정(UT) 기준 태양 황경(도). */
 export function solarLongitude(y, m, d) {
-  const n = jdn(y, m, d) - 2451545.0 + 0.5;
+  // jdn() 은 그날 정오(UT)의 정수 율리우스일이다. 그날 자정(UT)은 JDN - 0.5 다.
+  return solarLongitudeAtDays(jdn(y, m, d) - 2451545.0 - 0.5);
+}
+
+function solarLongitudeAtDays(n) {
   const L = (280.460 + 0.9856474 * n) % 360;          // 평균황경
   const g = ((357.528 + 0.9856003 * n) % 360) * Math.PI / 180; // 평균근점이각
   const lambda = L + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g);
   return ((lambda % 360) + 360) % 360;
+}
+
+/** KST 달력 기준 입춘일. 생시를 받지 않는 입력이므로 해당 KST 날짜 전체를 새해로 본다. */
+export function lichunDate(year) {
+  for (let day = 1; day <= 8; day++) {
+    // KST 날짜의 끝(UTC 15시)을 평가해 절기 시각이 들어 있는 날짜부터 새해로 본다.
+    const n = jdn(year, 2, day) - 2451545.0 - 0.5 + 15 / 24;
+    if (solarLongitudeAtDays(n) >= 315) return day;
+  }
+  return 4;
 }
 
 /** 태양이 오늘 머무는 별자리. */

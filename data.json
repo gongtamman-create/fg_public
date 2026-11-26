@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-27T07:00:03+09:00",
+  "updated_at": "2026-11-27T07:05:03+09:00",
   "current": {
-    "date": "2026-11-26",
-    "score": 56.2,
+    "date": "2026-11-27",
+    "score": 56.3,
     "grade": "중립",
-    "daily_score": 77.1,
-    "hybrid_score": 74.3,
-    "hybrid_grade": "탐욕",
+    "daily_score": 54.9,
+    "hybrid_score": null,
+    "hybrid_grade": null,
     "signal": "neutral",
-    "signal_label": "관망 (탐욕 접근)",
+    "signal_label": "관망",
     "realtime": true,
-    "realtime_time": "2026-11-27 06:30:12"
+    "realtime_time": "2026-11-27 07:00:11"
   },
   "nasdaq": {
     "price": 23585.8,
@@ -359,6 +359,13 @@
       "hybrid": 74.3,
       "nasdaq_close": null,
       "nasdaq_pct": null
+    },
+    {
+      "date": "2026-11-27",
+      "score": 54.9,
+      "hybrid": null,
+      "nasdaq_close": null,
+      "nasdaq_pct": null
     }
   ],
   "history_full": [
@@ -553,6 +560,10 @@
     {
       "date": "2026-11-26",
       "score": 77.1
+    },
+    {
+      "date": "2026-11-27",
+      "score": 54.9
     }
   ],
   "backtest": {
@@ -592,31 +603,31 @@
   "cnn_comparison": {
     "cnn_score": 15.0,
     "cnn_grade": "극단적 공포",
-    "our_score": 56.2,
+    "our_score": 56.3,
     "our_grade": "중립"
   },
   "action_detail": {
-    "action": "관망 (탐욕 접근)",
+    "action": "관망",
     "action_key": "neutral",
     "confidence": "-",
-    "reason": "FG 77으로 탐욕 쪽 접근 중 — 과열 징후 모니터링",
+    "reason": "FG 55, RSI 39 — 뚜렷한 방향성 없음",
     "proximity": {
       "buy": {
-        "fg_gap": -37.1,
+        "fg_gap": -14.9,
         "rsi_gap": -4.4,
-        "pct": 35
+        "pct": 36
       },
       "sell": {
-        "fg_gap": 2.1,
+        "fg_gap": -20.1,
         "rsi_gap": -35.6,
-        "pct": 57
+        "pct": 0
       }
     },
     "indicators": [
       {
         "name": "공포탐욕",
-        "value": "77.1",
-        "status": "과열 구간"
+        "value": "54.9",
+        "status": "중립"
       },
       {
         "name": "RSI(14)",
@@ -625,18 +636,18 @@
       },
       {
         "name": "MA이탈",
-        "value": "-2.9%",
+        "value": "-2.7%",
         "status": "급락"
       }
     ],
     "similar_history": {
-      "count": 2,
-      "win_5d": 50.0,
-      "avg_5d": -1.91,
+      "count": 11,
+      "win_5d": 11.1,
+      "avg_5d": -2.85,
       "win_10d": 0.0,
-      "avg_10d": -10.3,
-      "win_20d": null,
-      "avg_20d": null
+      "avg_10d": -5.43,
+      "win_20d": 0.0,
+      "avg_20d": -6.25
     }
   },
   "signal_chart": [
@@ -877,15 +888,16 @@
     },
     {
       "date": "2026-11-26",
-      "composite": -31.3,
+      "composite": -26.6,
       "signal": "weak_sell"
+    },
+    {
+      "date": "2026-11-27",
+      "composite": 7.0,
+      "signal": "neutral"
     }
   ],
   "realtime_24h": [
-    {
-      "score": 80.5,
-      "time": "07:00"
-    },
     {
       "score": 68.6,
       "time": "07:30"
@@ -1073,6 +1085,10 @@
     {
       "score": 52.1,
       "time": "06:30"
+    },
+    {
+      "score": 57.5,
+      "time": "07:00"
     }
   ],
   "shortpos": {
@@ -1467,6 +1483,11 @@
       "date": "2026-11-26",
       "index": 158,
       "hot": true
+    },
+    {
+      "date": "2026-11-27",
+      "index": 23,
+      "hot": false
     }
   ]
 }

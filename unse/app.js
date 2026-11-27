@@ -9,10 +9,10 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune } from './engine.js?v=cbf59976';
-import { stockCompatibility, compatLine } from './compat.js?v=cbf59976';
-import { SECTOR_KO } from './zodiac.js?v=cbf59976';
-import { renderShareCard } from './share.js?v=cbf59976';
+import { buildFortune, kstDate, marketAge } from './engine.js?v=7f187dbe';
+import { stockCompatibility, compatLine } from './compat.js?v=7f187dbe';
+import { SECTOR_KO } from './zodiac.js?v=7f187dbe';
+import { renderShareCard } from './share.js?v=7f187dbe';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -28,16 +28,16 @@ let MARKET = 'KR';    // 인연 종목을 어느 시장에서 고를지
 
 /** 한국은 원화 정수, 미국은 달러 소수 둘째 자리. */
 const fmtPrice = (v, market) => {
-  if (typeof v !== 'number') return '—';
+  if (!Number.isFinite(v)) return '—';
   return market === 'KR'
     ? `₩${Math.round(v).toLocaleString('ko-KR')}`
     : `$${v.toLocaleString('en-US', { maximumFractionDigits: 2 })}`;
 };
 
 const fmtPct = (v) =>
-  typeof v === 'number' ? `${v > 0 ? '+' : ''}${v.toFixed(2)}%` : '—';
+  Number.isFinite(v) ? `${v > 0 ? '+' : ''}${v.toFixed(2)}%` : '—';
 
-const signClass = (v) => (typeof v !== 'number' ? '' : v > 0 ? 'up' : v < 0 ? 'down' : '');
+const signClass = (v) => (!Number.isFinite(v) ? '' : v > 0 ? 'up' : v < 0 ? 'down' : '');
 
 /**
  * 오늘 날짜(KST) 'YYYY-MM-DD'.
@@ -46,10 +46,10 @@ const signClass = (v) => (typeof v !== 'number' ? '' : v > 0 ? 'up' : v < 0 ? 'd
  * 미국 시세 날짜를 그대로 썼는데, 그러면 일진·괘·태양각이 늘 하루(월요일엔 사흘) 늦었다.
  * 한국 서비스이므로 시간대를 서울로 못 박는다. 해외에서 열어도 같은 날짜가 나온다.
  */
-const todayKST = () =>
-  new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
-  }).format(new Date());
+const todayKST = () => kstDate(new Date());
+
+/** 시세 기준일이 평일 며칠 뒤졌는지(engine.js 의 marketAge). 빌드가 멈춰도 화면이 스스로 알아챈다. */
+const priceAge = (dateStr) => marketAge(dateStr, todayKST());
 
 /** 15분 단위 캐시 키. 빌드가 나간 뒤 최대 15분 안에 새 data.json 을 받게 한다. */
 const cacheKey = () => {
@@ -69,14 +69,26 @@ function safeStore(fn, fallback = null) {
 
 /* ── 렌더 ──────────────────────────────────────────── */
 
-function renderMarket(market) {
+function renderMarket(market, usDate, krDate) {
   const fg = market.fearGreed;
-  $('fg-score').textContent = fg.score;
-  $('fg-label').textContent = fg.label;
-  $('fg-score').parentElement.dataset.tone = fg.tone;
-  $('fg-mood').textContent = market.mood;
+  $('fg-score').textContent = Number.isFinite(fg.score) ? fg.score : '--';
+  $('fg-label').textContent = fg.label ?? '--';
+  $('fg-score').parentElement.dataset.tone = fg.tone ?? 'neutral';
+  $('fg-mood').textContent = market.mood ?? '';
 
-  $('fg-parts').innerHTML = (Array.isArray(fg.parts) ? fg.parts : []).filter(p => p && Number.isFinite(p.value))
+  const parts = Array.isArray(fg.parts) ? fg.parts : [];
+  const partialEl = $('fg-partial');
+  if (fg.partial || parts.length < 6) {
+    const missingText = Array.isArray(fg.missing) && fg.missing.length
+      ? ` (빠진 요소: ${fg.missing.join(', ')})`
+      : '';
+    partialEl.textContent = `일부 요소가 빠져 남은 ${parts.length}개 요소만으로 계산한 값입니다${missingText}.`;
+    partialEl.hidden = false;
+  } else {
+    partialEl.hidden = true;
+  }
+
+  $('fg-parts').innerHTML = parts.filter(p => p && Number.isFinite(p.value))
     .map(
       (p) => `
       <div class="fg-part">
@@ -86,6 +98,27 @@ function renderMarket(market) {
       </div>`
     )
     .join('');
+
+  const marketAsof = $('market-asof');
+  const usAge = priceAge(usDate);
+  const krAge = priceAge(krDate);
+  const staleLabels = [];
+  if (krAge?.stale) staleLabels.push(`한국 ${krDate} (${krAge.days}일 전)`);
+  if (usAge?.stale) staleLabels.push(`미국 ${usDate} (${usAge.days}일 전)`);
+  if (staleLabels.length) {
+    marketAsof.textContent = `기준일 알림: ${staleLabels.join(' · ')} — 최신 시세가 아직 반영되지 않았습니다.`;
+    marketAsof.classList.add('stale-note');
+    marketAsof.hidden = false;
+  } else if (usDate || krDate) {
+    const partsDate = [];
+    if (krDate) partsDate.push(`한국 ${krDate}`);
+    if (usDate) partsDate.push(`미국 ${usDate}`);
+    marketAsof.textContent = `시세 기준일: ${partsDate.join(' · ')}`;
+    marketAsof.classList.remove('stale-note');
+    marketAsof.hidden = false;
+  } else {
+    marketAsof.hidden = true;
+  }
 }
 
 const reducedMotion = () =>
@@ -252,7 +285,7 @@ function tickerCard(t) {
       <div class="tk-meta">
         ${t.marketKo ? `<span class="tk-mkt">${escapeHTML(t.marketKo)}</span>` : ''}
         <span>${escapeHTML(t.sectorKo)}</span>
-        <span>RSI ${typeof t.rsi14 === 'number' ? t.rsi14.toFixed(0) : '—'}</span>
+        <span>RSI ${Number.isFinite(t.rsi14) ? t.rsi14.toFixed(0) : '—'}</span>
         <span>20일 ${fmtPct(t.ret_20d)}</span>
       </div>
     </li>`;
@@ -311,8 +344,11 @@ function renderFortune(f) {
     `오늘 당신의 기운과 맞닿은 분야: ${f.sectors.map((s) => s.ko).join(' · ')}`;
 
   // 한국과 미국은 장 마감일이 달라 기준일이 갈린다. 보고 있는 시장의 날짜를 적는다.
-  $('data-date').textContent =
-    (MARKET === 'KR' ? DATA.krDate : DATA.date) ?? f.date;
+  const marketDate = (MARKET === 'KR' ? DATA.krDate : DATA.date) ?? f.date;
+  const marketAgeNow = priceAge(marketDate);
+  $('data-date').textContent = marketAgeNow?.stale
+    ? `${marketDate} (${marketAgeNow.days}일 전 시세 — 최신 시세 미반영)`
+    : marketDate;
 
   $('tickers').innerHTML = f.tickers.map(tickerCard).join('');
 
@@ -367,21 +403,20 @@ function runLookup(query) {
   msg.hidden = true;
   const { jiIndex, element } = CURRENT.self;
 
-  list.innerHTML = found
-    .map((t) => {
-      const compat = stockCompatibility(jiIndex, element, DATA.ipo?.[t.ticker], t.sector);
-      return tickerCard({
-        ...t,
-        sectorKo: SECTOR_KO[t.sector] ?? t.sector,
-        marketKo: t.market === 'KR' ? '한국' : '미국',
-        compat,
-        compatLine: compatLine(compat, CURRENT.chinese.ko),
-      });
-    })
-    .join('');
+  const items = found.map((t) => {
+    const compat = stockCompatibility(jiIndex, element, DATA.ipo?.[t.ticker], t.sector);
+    return {
+      ...t,
+      sectorKo: SECTOR_KO[t.sector] ?? t.sector,
+      marketKo: t.market === 'KR' ? '한국' : '미국',
+      compat,
+      compatLine: compatLine(compat, CURRENT.chinese.ko),
+    };
+  });
+  list.innerHTML = items.map(tickerCard).join('');
 
-  // 상장일이 없어 궁합을 못 낸 경우를 알려 준다. 조용히 빈 카드가 나가면 고장으로 보인다.
-  if (found.every((t) => !DATA.ipo?.[t.ticker])) {
+  // 상장일이 없거나 형식이 깨져 궁합을 못 낸 경우를 알려 준다. 조용히 빈 카드가 나가면 고장으로 보인다.
+  if (items.every((t) => !t.compat)) {
     msg.textContent = '이 종목은 상장일을 구하지 못해 궁합을 낼 수 없습니다.';
     msg.hidden = false;
   }
@@ -398,14 +433,16 @@ const expandTicker = (r) => ({
 });
 
 function show(birthStr) {
-  if (!DATA || typeof birthStr !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(birthStr)) return;
+  if (!DATA || typeof birthStr !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(birthStr)) return false;
   const [y, m, d] = birthStr.split('-').map(Number);
-  if (!y || !m || !d) return;
+  if (!y || !m || !d) return false;
 
-  CURRENT = buildFortune({ y, m, d }, todayKST(), TICKERS, DATA.ipo ?? {}, MARKET);
-  if (!CURRENT) return;
+  const next = buildFortune({ y, m, d }, todayKST(), TICKERS, DATA.ipo ?? {}, MARKET);
+  if (!next) return false;
+  CURRENT = next;
   safeStore(() => localStorage.setItem(STORE_KEY, birthStr));
   renderFortune(CURRENT);
+  return true;
 }
 
 async function init() {
@@ -423,7 +460,7 @@ async function init() {
     .join('');
 
   $('asof').textContent = `오늘 ${todayKST()}`;
-  renderMarket(DATA.market);
+  renderMarket(DATA.market, DATA.date, DATA.krDate);
 
   // 데이터가 다 실린 뒤에야 버튼을 연다.
   const btn = $('submit-btn');
@@ -436,8 +473,8 @@ async function init() {
 
   const saved = safeStore(() => localStorage.getItem(STORE_KEY));
   if (typeof saved === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(saved)) {
-    $('birth').value = saved;
-    show(saved);
+    if (show(saved)) $('birth').value = saved;
+    else safeStore(() => localStorage.removeItem(STORE_KEY));
   }
 }
 

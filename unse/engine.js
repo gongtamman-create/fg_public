@@ -22,11 +22,48 @@
 import {
   sectorAffinity, SECTOR_KO, ELEMENT_KO, CHINESE,
   getWesternZodiac, getChineseZodiac,
-} from './zodiac.js?v=cbf59976';
-import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=cbf59976';
-import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=cbf59976';
-import { castHexagram } from './iching.js?v=cbf59976';
-import { stockCompatibility, compatLine } from './compat.js?v=cbf59976';
+} from './zodiac.js?v=7f187dbe';
+import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=7f187dbe';
+import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=7f187dbe';
+import { castHexagram } from './iching.js?v=7f187dbe';
+import { stockCompatibility, compatLine } from './compat.js?v=7f187dbe';
+
+/* ── 날짜 (KST 달력 · 시세 기준일 나이) ─────────────────────── */
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+export const isoDay = (s) => (typeof s === 'string' && ISO_DATE.test(s)
+  && Number.isFinite(Date.parse(`${s}T00:00:00Z`))
+  && new Date(`${s}T00:00:00Z`).toISOString().slice(0, 10) === s
+  ? Date.parse(`${s}T00:00:00Z`) / 86400000 : null);
+
+/** 시각 → 서울 달력 날짜 'YYYY-MM-DD'. 빌드와 브라우저가 같은 셈을 쓴다. */
+export function kstDate(at = new Date()) {
+  if (!(at instanceof Date) || !Number.isFinite(at.getTime())) return null;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(at);
+}
+
+/** 시세가 평일 이만큼 뒤지면 '낡은 재료'로 본다. 평소 간격은 평일 0~1일이다. */
+export const STALE_WEEKDAYS = 3;
+
+/**
+ * 시세 기준일이 오늘보다 얼마나 뒤졌나. 주말은 세지 않는다(장이 안 열리므로).
+ * 달력 날수로 재면 금요일 → 공휴일 낀 화요일이 4일이 돼 멀쩡한 시세를 낡았다고 했다.
+ * @returns {{days:number, weekdays:number, stale:boolean} | null} 날짜가 틀리면 null
+ */
+export function marketAge(dateStr, todayStr) {
+  const a = isoDay(dateStr);
+  const b = isoDay(todayStr);
+  if (a === null || b === null) return null;
+  const days = b - a;
+  let weekdays = 0;
+  for (let t = a + 1; t <= b && weekdays < 400; t++) {
+    const dow = new Date(t * 86400000).getUTCDay();
+    if (dow !== 0 && dow !== 6) weekdays++;
+  }
+  return { days, weekdays, stale: weekdays >= STALE_WEEKDAYS };
+}
 
 /* ── 시드 난수 (종목 선택 전용) ─────────────────────────────── */
 
@@ -167,7 +204,7 @@ function tickerOmen(row, rng, used = new Set()) {
     );
   }
 
-  if (typeof row.rsi14 === 'number') {
+  if (Number.isFinite(row.rsi14)) {
     if (row.rsi14 >= 70) {
       lines.push(
         '기운이 한껏 달아올라 있습니다. 뜨거운 것은 오래 붙잡기 어렵습니다.',
@@ -183,14 +220,14 @@ function tickerOmen(row, rng, used = new Set()) {
     }
   }
 
-  if (typeof row.pct_from_high52 === 'number' && row.pct_from_high52 > -3) {
+  if (Number.isFinite(row.pct_from_high52) && row.pct_from_high52 > -3) {
     lines.push(
       '52주 중 가장 높은 자리 근처에 서 있습니다.',
       '지난 1년을 통틀어 가장 높은 곳에 올라와 있습니다.',
       '일 년치 발자국 중 가장 높은 지점에 서 있습니다.'
     );
   }
-  if (typeof row.pct_from_low52 === 'number' && row.pct_from_low52 < 5) {
+  if (Number.isFinite(row.pct_from_low52) && row.pct_from_low52 < 5) {
     lines.push(
       '52주 중 가장 낮은 자리 근처에 머물러 있습니다.',
       '지난 1년을 통틀어 가장 낮은 곳에 내려와 있습니다.',
@@ -198,7 +235,7 @@ function tickerOmen(row, rng, used = new Set()) {
     );
   }
 
-  if (typeof row.ret_20d === 'number') {
+  if (Number.isFinite(row.ret_20d)) {
     if (row.ret_20d > 15) {
       lines.push(
         '최근 한 달 사이 눈에 띄게 몸집을 키웠습니다.',
@@ -214,7 +251,7 @@ function tickerOmen(row, rng, used = new Set()) {
     }
   }
 
-  if (typeof row.vol_ratio === 'number' && row.vol_ratio > 1.8) {
+  if (Number.isFinite(row.vol_ratio) && row.vol_ratio > 1.8) {
     lines.push(
       '평소보다 많은 사람이 오가며 발길이 잦아졌습니다.',
       '유난히 북적이는 자리입니다. 시선이 몰려 있습니다.',
@@ -223,7 +260,7 @@ function tickerOmen(row, rng, used = new Set()) {
   }
 
   // 당일 변동이 크면 그것부터 말한다. 장기 추세 문구가 급락한 날에 붙는 모순을 막는다.
-  if (typeof row.chg1d === 'number') {
+  if (Number.isFinite(row.chg1d)) {
     if (row.chg1d >= 3) {
       lines.push(
         '오늘 하루 성큼 발을 내디뎠습니다.',
@@ -262,6 +299,7 @@ function tickerOmen(row, rng, used = new Set()) {
 }
 
 function pickTickers(rng, snapshot, affinity, count = 3) {
+  const fin = (v) => (Number.isFinite(v) ? v : 0);
   const bySector = new Map();
   for (const row of snapshot) {
     if (!bySector.has(row.sector)) bySector.set(row.sector, []);
@@ -277,7 +315,7 @@ function pickTickers(rng, snapshot, affinity, count = 3) {
     if (chosen.length >= count) break;
     const pool = (bySector.get(sector) ?? [])
       .filter((r) => !used.has(r.ticker))
-      .sort((a, b) => (b.rs_rank ?? 0) - (a.rs_rank ?? 0) || (b.vol_ratio ?? 0) - (a.vol_ratio ?? 0))
+      .sort((a, b) => fin(b.rs_rank) - fin(a.rs_rank) || fin(b.vol_ratio) - fin(a.vol_ratio))
       .slice(0, 25);
     if (!pool.length) continue;
     const row = pick(rng, pool);
@@ -321,16 +359,18 @@ function pickTickers(rng, snapshot, affinity, count = 3) {
  */
 export function buildFortune(birth, today, snapshot, ipo = {}, market = 'KR') {
   if (!birth || typeof birth !== 'object' || ![birth.y, birth.m, birth.d].every(Number.isInteger)
-    || typeof today !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(today)) return null;
+    || isoDay(today) === null) return null;
   const birthDate = new Date(Date.UTC(birth.y, birth.m - 1, birth.d));
-  if (birth.y < 1900 || birth.y > 2100 || birthDate.getUTCFullYear() !== birth.y
-    || birthDate.getUTCMonth() + 1 !== birth.m || birthDate.getUTCDate() !== birth.d
-    || !Number.isFinite(Date.parse(today)) || new Date(today).toISOString().slice(0, 10) !== today) return null;
-  snapshot = Array.isArray(snapshot) ? snapshot.filter(r => r && typeof r === 'object') : [];
+  const [ty, tm, td] = today.split('-').map(Number);
+  if (birth.y < 1900 || birth.y > 2100
+    || birthDate.getUTCFullYear() !== birth.y
+    || birthDate.getUTCMonth() + 1 !== birth.m || birthDate.getUTCDate() !== birth.d) return null;
+  snapshot = Array.isArray(snapshot)
+    ? snapshot.filter((r) => r && typeof r === 'object' && typeof r.ticker === 'string' && r.ticker.trim() !== '')
+    : [];
   ipo = ipo && typeof ipo === 'object' && !Array.isArray(ipo) ? ipo : {};
   market = market === 'US' ? 'US' : 'KR';
   const { y, m, d } = birth;
-  const [ty, tm, td] = today.split('-').map(Number);
 
   const western = getWesternZodiac(m, d);
   const chinese = getChineseZodiac(y, m, d);
@@ -445,7 +485,7 @@ export function buildFortune(birth, today, snapshot, ipo = {}, market = 'KR') {
       const compat = stockCompatibility(jiIndex, chinese.element, ipo[t.ticker], t.sector);
       return {
         ticker: t.ticker,
-        name: t.name,
+        name: typeof t.name === 'string' && t.name.trim() ? t.name : t.ticker,
         sector: t.sector,
         sectorKo: SECTOR_KO[t.sector] ?? t.sector,
         price: t.price,

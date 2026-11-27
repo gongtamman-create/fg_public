@@ -101,7 +101,7 @@ function hexagram(g, x, y, w, lines, movingLine) {
 }
 
 const fmtPrice = (v, market) =>
-  typeof v !== 'number'
+  !Number.isFinite(v)
     ? '—'
     : market === 'KR'
       ? `₩${Math.round(v).toLocaleString('ko-KR')}`

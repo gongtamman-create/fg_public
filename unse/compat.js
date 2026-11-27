@@ -11,8 +11,8 @@
  * 여기서도 난수는 쓰지 않는다.
  */
 
-import { dayGanji, jiRelation, JI } from './saju.js?v=cbf59976';
-import { CHINESE } from './zodiac.js?v=cbf59976';
+import { dayGanji, jiRelation, JI } from './saju.js?v=7f187dbe';
+import { CHINESE } from './zodiac.js?v=7f187dbe';
 
 /** 섹터에 오행을 배속한다. zodiac.js 의 오행→섹터 성향과 앞뒤가 맞도록 정했다. */
 export const SECTOR_ELEMENT = {
@@ -39,6 +39,7 @@ const ELEMENT_KO = { wood: '나무', fire: '불', earth: '흙', metal: '쇠', wa
 
 /** 받침 유무에 따라 조사를 고른다. */
 function josa(word, withBatchim, without) {
+  if (typeof word !== 'string' || !word.length) return without;
   const last = word.charCodeAt(word.length - 1) - 0xac00;
   if (last < 0 || last > 11171) return without; // 한글이 아니면 무난한 쪽으로
   return last % 28 !== 0 ? withBatchim : without;
@@ -154,7 +155,8 @@ export function stockCompatibility(userJiIndex, userElement, ipoDate, sector) {
 
 /** 궁합을 한 줄로 이르는 말. 종목 카드에 붙는다. */
 export function compatLine(c, userAnimalKo) {
-  if (!c) return null;
+  if (!c || typeof c.ipoDate !== 'string' || !c.relation
+    || typeof userAnimalKo !== 'string' || !userAnimalKo.trim()) return null;
   const born = c.ipoDate.slice(0, 4);
   const rel =
     c.relation.key === 'pyeong'

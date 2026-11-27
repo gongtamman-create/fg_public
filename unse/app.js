@@ -9,10 +9,10 @@
  * 생년월일은 이 브라우저를 떠나지 않으며 localStorage 외에 남지 않는다.
  */
 
-import { buildFortune, kstDate, marketAge } from './engine.js?v=7f187dbe';
-import { stockCompatibility, compatLine } from './compat.js?v=7f187dbe';
-import { SECTOR_KO } from './zodiac.js?v=7f187dbe';
-import { renderShareCard } from './share.js?v=7f187dbe';
+import { buildFortune, kstDate, marketAge } from './engine.js?v=0379549f';
+import { stockCompatibility, compatLine } from './compat.js?v=0379549f';
+import { SECTOR_KO } from './zodiac.js?v=0379549f';
+import { renderShareCard } from './share.js?v=0379549f';
 
 const $ = (id) => document.getElementById(id);
 const STORE_KEY = 'fortune.birth';
@@ -71,24 +71,29 @@ function safeStore(fn, fallback = null) {
 
 function renderMarket(market, usDate, krDate) {
   const fg = market.fearGreed;
-  $('fg-score').textContent = Number.isFinite(fg.score) ? fg.score : '--';
-  $('fg-label').textContent = fg.label ?? '--';
-  $('fg-score').parentElement.dataset.tone = fg.tone ?? 'neutral';
-  $('fg-mood').textContent = market.mood ?? '';
+  const parts = Array.isArray(fg.parts) ? fg.parts.filter(p => p && Number.isFinite(p.value)) : [];
+  // 구성요소가 하나도 없으면 실린 점수가 있어도 믿지 않는다(옛 빌드는 이때 50 을 냈다).
+  const hasScore = Number.isFinite(fg.score) && parts.length > 0;
+  $('fg-score').textContent = hasScore ? fg.score : '--';
+  $('fg-label').textContent = hasScore ? (fg.label ?? '--') : '산출 불가';
+  $('fg-score').parentElement.dataset.tone = hasScore ? (fg.tone ?? 'neutral') : 'unavailable';
+  $('fg-mood').textContent = hasScore ? (market.mood ?? '') : '오늘은 시장의 기운을 셈할 재료가 모이지 않았습니다.';
 
-  const parts = Array.isArray(fg.parts) ? fg.parts : [];
   const partialEl = $('fg-partial');
-  if (fg.partial || parts.length < 6) {
-    const missingText = Array.isArray(fg.missing) && fg.missing.length
-      ? ` (빠진 요소: ${fg.missing.join(', ')})`
-      : '';
+  const missingText = Array.isArray(fg.missing) && fg.missing.length
+    ? ` (빠진 요소: ${fg.missing.join(', ')})`
+    : '';
+  if (!hasScore) {
+    partialEl.textContent = `구성요소가 모두 빠져 오늘은 지수를 내지 않았습니다${missingText}.`;
+    partialEl.hidden = false;
+  } else if (fg.partial || parts.length < 6) {
     partialEl.textContent = `일부 요소가 빠져 남은 ${parts.length}개 요소만으로 계산한 값입니다${missingText}.`;
     partialEl.hidden = false;
   } else {
     partialEl.hidden = true;
   }
 
-  $('fg-parts').innerHTML = parts.filter(p => p && Number.isFinite(p.value))
+  $('fg-parts').innerHTML = parts
     .map(
       (p) => `
       <div class="fg-part">
@@ -355,7 +360,8 @@ function renderFortune(f) {
   $('input-card').hidden = true;
   for (const el of $('result').children) el.classList.remove('reveal', 'in');
   $('result').hidden = false;
-  for (const el of document.querySelectorAll('.ad-slot')) el.hidden = false;
+  // 광고 자리는 실제 광고가 들어 있을 때만 연다. 빈 자리를 열면 '광고 영역' 상자가 공간만 차지한다.
+  for (const el of document.querySelectorAll('.ad-slot')) el.hidden = !el.firstElementChild;
   window.scrollTo({ top: 0, behavior: 'smooth' });
   revealCards();
 }

@@ -11,8 +11,8 @@
  * 여기서도 난수는 쓰지 않는다.
  */
 
-import { dayGanji, jiRelation, JI } from './saju.js?v=7f187dbe';
-import { CHINESE } from './zodiac.js?v=7f187dbe';
+import { dayGanji, jiRelation, JI } from './saju.js?v=0379549f';
+import { CHINESE } from './zodiac.js?v=0379549f';
 
 /** 섹터에 오행을 배속한다. zodiac.js 의 오행→섹터 성향과 앞뒤가 맞도록 정했다. */
 export const SECTOR_ELEMENT = {

@@ -22,11 +22,11 @@
 import {
   sectorAffinity, SECTOR_KO, ELEMENT_KO, CHINESE,
   getWesternZodiac, getChineseZodiac,
-} from './zodiac.js?v=7f187dbe';
-import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=7f187dbe';
-import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=7f187dbe';
-import { castHexagram } from './iching.js?v=7f187dbe';
-import { stockCompatibility, compatLine } from './compat.js?v=7f187dbe';
+} from './zodiac.js?v=0379549f';
+import { dayGanji, jiRelation, tenGod, RELATION_TEXT, RELATION_VERDICT, GAN, JI } from './saju.js?v=0379549f';
+import { sunAspect, ASPECT_TEXT, ASPECT_VERDICT, SIGN_KO, sunSign, TROPICAL_ORDER } from './astro.js?v=0379549f';
+import { castHexagram } from './iching.js?v=0379549f';
+import { stockCompatibility, compatLine } from './compat.js?v=0379549f';
 
 /* ── 날짜 (KST 달력 · 시세 기준일 나이) ─────────────────────── */
 

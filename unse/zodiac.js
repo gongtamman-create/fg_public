@@ -1,4 +1,4 @@
-import { lichunDate } from './astro.js?v=7f187dbe';
+import { lichunDate } from './astro.js?v=0379549f';
 
 /**
  * 별자리(12) · 띠(12) 판별과 오행/원소 → 섹터 성향 매핑.
